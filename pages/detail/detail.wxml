@@ -1,0 +1,11 @@
+<!--pages/detail/detail.wxml-->
+<view>
+  <video src=''/>
+ <button catchtap="showMsg">显示msg组件</button>
+</view>
+ <msg id="msg">
+
+ <view slot="before">这是slot before</view>
+ <view slot="after">这里是插入到组件slot name="after"中的内容</view>
+
+ </msg>

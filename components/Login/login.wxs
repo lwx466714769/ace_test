@@ -1,0 +1,17 @@
+var getSendTip = function(countdown) {
+  if (countdown) {
+    if ("正在发送" === countdown) {
+      return "正在发送"
+    } else if (100 === countdown) {
+      return "重新发送"
+    } else {
+      return countdown + ' 秒后可重发'
+    }
+  } else {
+    return "立即发送"
+  }
+}
+
+module.exports = {
+  getSendTip: getSendTip
+}
