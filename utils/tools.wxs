@@ -1,0 +1,53 @@
+// 金额补零
+var fixMoney = function(x) {
+  var val = null
+  if ('string' === typeof x) {
+    val = (parseFloat(x) / 100).toFixed(2)
+  } else if ('number' === typeof x) {
+    val = (x / 100).toFixed(2)
+  }
+  return val
+}
+
+// 改成小写
+var toLowerCase = function(x) {
+  var str = x + ''
+  return str.toLowerCase()
+}
+
+// 两数取小
+var min = function(x, y) {
+  return Math.min(x, y)
+}
+
+// 订单状态对应操作
+var orderState = function(x) {
+  switch(x) {
+    // 待支付 => 可以支付 | 取消订单
+    case "CREATED":
+      return "START"
+
+    // 已出票、已支付待确认（用户已支付，付款还未到公司账户） => 用户只能等待，不能对订单进行状态更新
+    case "PAYED":
+    case "UNSETTLED":
+      return "LOCK"
+
+    // 本次订单已完成（已消费）、已超时、已取消、审核未通过 => 用户可以删除订单
+    case "CONSUMED":
+    case "TIMEOUT":
+    case "CANCELED":
+    case "AUDITFAIL":
+      return "END"
+
+    // 正在审核 => 用户可以取消订单
+    case "AUDIT ":
+      return "CNACEL"
+  }
+}
+
+module.exports = {
+  fixMoney: fixMoney,
+  toLowerCase: toLowerCase,
+  min: min,
+  orderState: orderState
+}

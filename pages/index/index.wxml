@@ -1,0 +1,28 @@
+<view class='index'>
+  
+  <view class='header'>
+    <image src='/images/default.png' class='bg'></image>
+    <view class='info'>
+      <image src='/images/icon-personal_selected.png' class='head'/>
+      <text class='title'>DGR 2018</text>
+      <text class='intro'>简介简介简介简介简介简介简介简介简介简介简介简介简介</text>
+    </view>
+    <button>认证座驾</button>
+    <text>会员</text>
+  </view>
+  <view class='main'>
+    <view>  
+      <text>热议</text>|
+      <text>MyRide</text>
+    </view>
+    <scroll-view class='content'>
+    content
+    </scroll-view>
+    
+  </view>
+  <view class='footer'>
+      <view class='garage'>车库</view>
+      <view class='profile'>车主</view>
+  </view>
+  <view class='post' catchtap="goRelease">post</view>
+</view>

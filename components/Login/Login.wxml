@@ -1,0 +1,31 @@
+<wxs module='t' src='./login.wxs' />
+
+<view class='container' hidden="{{!isShow}}">
+  <view class='mask' wx:if='{{mask}}'></view>
+  <view class='confirm' animation='{{animation ? animationData : null}}'>
+    <view class='header'>
+      <view class='title'>登录AceCafe</view>
+      <view class='close-btn' catchtap='cancel'>×</view>
+    </view>
+    <view class='wrapper'>
+      <view class='item'>
+        <image src='/images/icon-phone.png' class='item__image'></image>
+        <input placeholder='请输入手机号码' class='item__input' type='number' 
+          value='{{phone}}' placeholder-class='placeholder' adjust-position='true'
+          maxlength='11' bindinput='modifyPhone'></input>
+        <text class='verify' catchtap='sendVerifyCode'>{{ t.getSendTip(countdown) }}</text>
+        <text class='error__phone' hidden='{{hide_error_phone}}'>手机号码错误</text>
+      </view>
+      <view class='item'>
+        <image src='/images/icon-key.png' class='item__image'></image>
+        <input placeholder='请输入验证码' class='item__input' 
+          type='number' value='{{code}}' adjust-position
+          placeholder-class='placeholder' 
+          maxlength='6' bindinput='modifyCode'></input>
+        <text class='error__phone' hidden='{{hide_error_code}}'>验证码错误</text>
+      </view>
+      <button class='handle-btn' open-type='getUserInfo' 
+        bindgetuserinfo='login'>登录</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,5 @@
+<!--components/msg.wxml-->
+<view class='msg' wx-if="{{show}}">这是一个信息窗
+  <slot name="before"></slot>
+  <slot name="after"></slot>
+</view>
