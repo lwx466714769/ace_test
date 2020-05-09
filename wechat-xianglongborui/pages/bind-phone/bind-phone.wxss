@@ -1,0 +1,110 @@
+/* pages/bind-phone/bind-phone.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  font-family: PingFangSC, -apple-system-font, Helvetica Neue, Helvetica, sans-serif;
+  font-size: 28rpx;
+}
+.button{
+  width: 690rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #000;
+  color: #fff;
+  font-size: 30rpx;
+  margin: 0 30rpx;
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 8rpx;
+  text-align: center;
+  display: block;
+}
+.bind-phone{
+  width: 100%;
+  height: 100%;
+}
+.bind-bg{
+  width: 100%;
+  height: 100%;
+}
+.bg-white{
+  position:absolute;
+  width:930rpx;
+  height:620rpx;
+  background:#fff;
+  transform:rotate(12deg);
+  top:245rpx;
+  left:-80rpx;
+}
+.bind-con{
+  position: absolute;
+  top: 420rpx;
+  left: 70rpx;
+}
+.bind-title{
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 30rpx;
+}
+.bind-info{
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #aaa;
+  font-size: 24rpx;
+}
+.bind-info navigator{
+  display: inline-block;
+  height: 60rpx;
+  color: rgb(59, 148, 253);
+}
+.btn-bind{
+  width: 288rpx;
+  position: absolute;
+  left: 280rpx;
+  top: 240rpx;
+}
+
+/* 账号合并成功modal */
+.show-login-wrap{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 99;
+}
+.show-login{
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background: #fff;
+  border-radius: 8rpx;
+}
+.modal-content{
+  color: #aaa;
+  padding: 60rpx 0;
+  text-align: center;
+  font-size: 30rpx;
+}
+.btn-modal-group{
+  display: flex;
+  border-top: solid 2rpx rgb(242,242,242);
+  height: 90rpx;
+  line-height: 90rpx;
+  align-items: center;
+  text-align: center;
+}
+.btn-modal{
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  font-size: 34rpx;
+}
+.btn-success{
+  color: rgb(79, 92, 163);
+}

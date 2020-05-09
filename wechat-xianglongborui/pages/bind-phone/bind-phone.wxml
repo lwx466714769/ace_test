@@ -1,0 +1,22 @@
+<!--pages/bind-phone/bind-phone.wxml-->
+<view class='bind-phone'>
+  <image class='bind-bg' src='https://img.acegear.com/bind-bg.jpg/w700_1'></image>
+  <view class='bg-white'></view>
+  <view class='bind-con'>
+    <view class='bind-title'>
+      <view>根据《互联网信息服务管理办法》</view>
+      <view>需要您绑定手机号</view>
+    </view>
+    <view class='bind-info'>点击绑定即同意
+    <navigator url='/pages/protocol/protocol?type=protocol'>《注册协议》</navigator><navigator url='/pages/protocol/protocol?type=secret'>《隐私政策》</navigator></view>
+    <button open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber" class='button btn-bind'>绑定</button>
+  </view>
+</view>
+<view class='show-login-wrap' wx:if='{{showLogin}}'>
+  <view class='show-login'>
+    <view class='modal-content'>账号合并成功</view>
+    <view class='btn-modal-group'>
+      <button class='btn-modal btn-success' open-type='getUserInfo' bindgetuserinfo='login'>好的</button>
+    </view>
+  </view>
+</view>

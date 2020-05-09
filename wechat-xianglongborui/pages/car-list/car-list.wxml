@@ -1,0 +1,20 @@
+<!--pages/car-list/car-list.wxml-->
+<!-- 特价 -->
+<view class="car-list">
+  <view class="car-item">
+    <image src="/images/default.png" class="car-img"></image>
+    <view class="car-info">
+      <view class="car-name">红旗旗舰版红旗旗舰版红旗旗舰版红旗旗舰版红旗旗舰版红旗旗舰版红旗旗舰版</view>
+      <view class="car-price">参考价：<text class="red">20.2万</text></view>
+      <view class="dealer">经销商/大众</view>
+    </view>
+  </view>
+  <view class="car-item">
+    <image src="/images/default.png" class="car-img"></image>
+    <view class="car-info">
+      <view class="car-name">红旗旗舰版</view>
+      <view class="car-price">参考价：<text class="red">20.2万</text></view>
+      <view class="dealer">经销商/大众</view>
+    </view>
+  </view>
+</view>

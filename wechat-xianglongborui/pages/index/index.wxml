@@ -1,0 +1,84 @@
+<!--pages/main/main.wxml-->
+<view class="main">
+  <image class="head" src="/images/default.png" mode="widthFix"></image>
+  
+<view class="block"> 
+  <button open-type="getUserInfo" bindgetuserinfo='goJoin' class="btn-join">报名活动</button>
+  <view class="join-num">
+    <view class="num">7</view><view class="num">7</view><view class="num">7</view><view class="num">7</view>
+      人已报名
+  </view>
+  <view class="join-head">
+    <image class="join-head-img" src="/images/default.png"/>
+    <image class="join-head-img" src="/images/default.png"/>
+    <image class="join-head-img" src="/images/default.png"/>
+  </view>
+  <view class="title">集团汽车品牌名录</view>
+  <navigator url="/pages/brand-list/brand-list" class="brand-list">
+    <image class="brand-img" src="/images/default.png" mode="aspectFill"></image>
+    <image class="brand-img" src="/images/default.png" mode="aspectFill"></image>
+    <image class="brand-img" src="/images/default.png" mode="aspectFill"></image>
+    <image class="brand-img" src="/images/default.png" mode="aspectFill"></image>
+    <image class="brand-img" src="/images/default.png" mode="aspectFill"></image>  </navigator> 
+    <view class="title">
+    <view>特价车专区</view><navigator url="/pages/car-list/car-list" class="more">更多>></navigator></view>
+    <swiper class="swiper" indicator-dots autoplay indicator-color="rgba(255,255,255,.5)" indicator-active-color="#fff">
+      <swiper-item class="swiper-item">
+        <image mode="aspectFill" src="https://img.acegear.com/81588926136_.pic_hd.jpg/w700_1"></image>
+      </swiper-item>
+      <swiper-item class="swiper-item">
+        <image mode="aspectFill" src="https://img.acegear.com/71588926123_.pic_hd.jpg/w700_1"></image>
+      </swiper-item>
+      <swiper-item class="swiper-item">
+        <image mode="aspectFill" src="https://img.acegear.com/61588926078_.pic_hd.jpg/w700_1"></image>
+      </swiper-item>
+    </swiper>
+
+<!-- 车险 -->
+  <view class="title">保险专区</view>
+  <image class="safe" mode="aspectFill" src="https://img.acegear.com/baoxian.png/w700_1"></image>
+    <view class="title">精品车改装</view>
+    <image class="card" mode="aspectFill" src="/images/default.png"></image>
+    <view class="title">集团产业链</view>
+    <view class="property">
+      <image class="property-img" mode="aspectFill" src="/images/default.png"></image>
+    </view>
+    <view catchtap="goSponsorList" class="title">活动福利券</view>
+    <view class="card-list">
+      <navigator url="/pages/sponsor/sponsor">
+        <image class="card" src="/images/default.png" mode="aspectFill"></image>
+      </navigator>
+    </view>
+    <view class="title">鸣谢单位</view>
+    <image class="card" mode="aspectFill" src="/images/default.png"></image>
+</view>
+  <view class="footer">
+    <view class="footer-content">
+      <button class="btn-inter">立即报名</button>
+      <view class="footer-right">
+        <view class="icon-wrap"><image src="/images/icon-share-gray.png" class="icon icon-share"></image></view>
+        <view catchtap="goPersonal" class="icon-wrap">
+          <image src="/images/icon-personal-gray.png" class="icon icon-profile"></image>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+</view>
+<view wx:if='{{showJoinForm}}' catchtap="showJoinForm" class="fixed-wrap">
+  <view class="join-form">
+    <view class="form-close" catchtap="showJoinForm">✕</view>
+    <view class="form-title">填写信息</view>
+    <view class="input-view">
+      <view class="input-name">姓 名</view>
+      <input class="input" placeholder="请填写真实姓名" placeholder-class="placeholder" bindinput="bingInputName"></input>
+    </view>
+    <view class="input-view">
+      <view class="input-name">电 话</view>
+      <input class="input" placeholder="请填写真实电话" placeholder-class="placeholder"></input>
+    </view>
+    <view>
+      <view class="btn-form">提交</view>
+    </view>
+  </view>
+</view>

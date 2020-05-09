@@ -1,0 +1,24 @@
+<!--personal/personal/personal.wxml-->
+<view class="personal">
+  <view class="head-bg">
+    <image class="head-img" src="/images/default.png" mode="aspectFill"></image>
+    <view class="head-name">HSUES</view>
+  </view>
+  <view class="list">
+    <navigator url='/personal/collect/collect' class='block'>
+      <image class='icon' src='/images/icon-personal.png' mode='aspectFit'></image>
+      <text class='block-text'>我的活动</text>
+      <view class='arrow'></view>
+    </navigator>
+    <navigator url='/personal/collect/collect' class='block'>
+      <image class='icon' src='/images/icon-personal.png' mode='aspectFit'></image>
+      <text class='block-text'>我的权益</text>
+      <view class='arrow'></view>
+    </navigator>
+    <navigator url='/personal/collect/collect' class='block'>
+      <image class='icon' src='/images/icon-personal.png' mode='aspectFit'></image>
+      <text class='block-text'>我的订单</text>
+      <view class='arrow'></view>
+    </navigator>
+  </view>
+</view>

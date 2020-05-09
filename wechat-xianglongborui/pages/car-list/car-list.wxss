@@ -1,0 +1,38 @@
+/* pages/car-list/car-list.wxss */
+.car-list{
+  box-sizing: border-box;
+  background: #efefef;
+}
+.car-item{
+  width: 100%;
+  padding: 30rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+  display: flex;
+  box-sizing: border-box;
+}
+.car-img{
+  width: 180rpx;
+  height: 140rpx;
+  margin-right: 20rpx;
+}
+.car-info{
+  flex: 1;
+}
+.car-name{
+  width: 490rpx;
+  margin-bottom: 14prx;
+  font-size: 28rpx;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.car-price{
+  margin:20rpx 0;
+  font-size: 24rpx;
+  color: #999;
+}
+.dealer{
+  color: #999;
+  font-size: 24rpx;
+}

@@ -1,0 +1,92 @@
+/**index.wxss**/
+/* 活动 */
+.event_row{
+  margin-top: 20rpx; 
+  display: flex;
+  justify-content: space-between;
+}
+
+.event_block{
+  width: 330rpx; 
+}
+.event_block .img{
+  width: 330rpx;
+  height: 186rpx;
+  background: #d7d8d9;
+}
+.event_block .description{
+  height: auto;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  font-size: 26rpx;
+  color: #666;
+}
+/* 推荐 */
+
+.information_content{
+  margin-top: 15rpx;
+  height: 170rpx;
+  overflow: hidden;
+}
+
+.content{
+  display: flex;
+  justify-content: space-between; 
+  height: 159rpx;
+}
+
+.bottom_line{
+  margin-top: 10rpx; 
+  border-bottom: 3rpx solid rgb(213, 213, 213);
+}
+
+.content_left{
+  width: 410rpx;
+}
+
+.content_right{
+  width: 250rpx;
+}
+
+.content_right image{
+  width: 250rpx;
+  height: 155rpx;
+}
+.type-mark{
+  width: 56rpx;
+  height: 28rpx;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  background: rgba(35,180,115,.2);
+  border-radius: 4rpx;
+  /* padding: 4rpx 6rpx; */
+  text-align: center;
+  color:rgb(35,180,115);
+  margin-right: 8rpx;
+  float: left;
+  margin-top: 10rpx;
+}
+.author{
+  margin-top: 20rpx; 
+  font-size: 24rpx;
+  color: rgb(153,153,153)
+}
+
+.title{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  font-size: 30rpx;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: inline-block;
+  height: 90rpx;
+  line-height: 46rpx;
+  word-wrap: break-word;
+}

@@ -1,0 +1,29 @@
+<!--pages/sponsor-list/sponsor-list.wxml-->
+<view class="sponsor-list">
+  <view class="block">
+    <view class="head">
+      <view class="title">
+        <image class="title-icon" src="/images/icon-personal.png"> </image>
+        <view>预约礼</view>
+      </view>
+      <view>订单选择门店：大众-页川瑞德</view>
+    </view>
+    <view class="item">
+      <view class="card">
+        <view class="circle circle-top"></view>
+        <view class="circle circle-bottom"></view>
+        <view class="card-logo">
+          <image class="logo" mode="aspectfill" src="/images/default.png"></image>
+        </view>
+        <view class="card-content">
+
+        </view>
+      </view>
+      <view class="item-code">
+        <view>权益码：AC1213455</view>
+        <view>截止日期：2020.12.30</view>
+      </view>
+      
+    </view>
+  </view>
+</view>

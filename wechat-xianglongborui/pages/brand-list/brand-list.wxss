@@ -1,0 +1,28 @@
+/* pages/brand-list/brand-list.wxss */
+page{
+  background: #efefef;
+}
+.brand-list{
+  background: #efefef;
+  padding: 20rpx;
+}
+.block{
+  background: #fff;
+  border-radius: 8rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.img{
+  width: 650rpx;
+  height: 650rpx;
+}
+.title{
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+.rule{
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}

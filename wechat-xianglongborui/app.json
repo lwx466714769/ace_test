@@ -1,0 +1,32 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/bind-phone/bind-phone",
+    "pages/sponsor/sponsor",
+    "pages/car-list/car-list",
+    "pages/map/map",
+    "pages/brand-list/brand-list",
+    "pages/protocol/protocol",
+    "pages/sponsor-list/sponsor-list"
+  ],
+  "subPackages": [
+    {
+      "root": "personal",
+      "pages": [
+        "personal/personal"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "祥龙博瑞",
+    "navigationBarTextStyle": "white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "签到需要获取您当前的位置"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}
