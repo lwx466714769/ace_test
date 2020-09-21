@@ -1,0 +1,380 @@
+.progress-wrap::after {
+  width: 0;
+  height: 0;
+  display: block;
+  content: '';
+  clear: both;
+  visibility: visible;
+}
+
+.card-wrap {
+  /*background: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, 0.5), transparent) 0 160rpx/100% 90rpx no-repeat;*/
+}
+
+.cardwrap {
+  width: 540rpx;
+  height: 300rpx;
+  margin: 50rpx auto 20rpx;
+  box-shadow: 2rpx 2rpx 12rpx #8c8c8c;
+  border-radius: 28rpx;
+}
+
+.slide-item {
+  width: 600rpx;
+  height: 380rpx;
+}
+.card_id {
+  font-size: 24rpx;
+  padding-left: 30rpx;
+  color:lightgray;
+}
+.card_slide{
+  width: 600rpx;
+  height: 330rpx;
+  box-shadow: 2rpx 2rpx 5rpx #8c8c8c;
+  border-radius: 5rpx;
+  margin: 5rpx auto;
+  overflow: hidden;
+}
+
+.swiper{
+  height: 380rpx;
+  width: 100%;
+}
+
+.middle {
+  width: 100%;
+  height: 100%;
+}
+
+.middledescription {
+  /*border-top: solid 3rpx #2a2a2a;*/
+  width: 100%;
+  margin: 0 30rpx;
+
+}
+
+.middledescription view {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.descriptionName {
+  padding-top: 30rpx;
+  line-height: 40rpx;
+  font-size: 36rpx;
+  letter-spacing: 2rpx;
+  font-weight: bold;
+}
+
+.descriptionText {
+  line-height:40rpx;
+  margin: 20rpx 0;
+  letter-spacing: 4rpx;
+  font-size: 28rpx;
+  color: rgb(153, 153, 153);
+  font-weight: lighter;
+  display: inline-block;
+  text-align: justify;
+}
+
+.validcard {
+  font-size: 28rpx;
+  margin: 20rpx 0;
+}
+
+.erweimamiddle {
+  width: 100%;
+  border-top: solid 3rpx #2a2a2a;
+}
+
+.erweima-wrap {
+  width: 400rpx;
+  margin: 40rpx auto;
+}
+
+.erweimawrap {
+  width: 400rpx;
+  height: 400rpx;
+  overflow: hidden;
+  border: 1rpx solid #f9f9f9;
+  position: relative;
+}
+
+.erweima {
+  width: 100%;
+  height: 100%;
+}
+
+.erweimaText {
+  display: block;
+  padding: 20rpx 0;
+  text-align: left;
+}
+
+.fail-wrap {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: -webkit-linear-gradient(left top, black, transparent);
+}
+
+.fail {
+  width: 230rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #fff;
+  background: #000;
+  position: absolute;
+  bottom: 60rpx;
+  right: 0;
+}
+
+.del-card {
+  width: 710rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.consume {
+  width: 100%;
+  height: 100rpx;
+  font-size: 28rpx;
+  background-color: white;
+  line-height: 80rpx;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30rpx;
+}
+
+.Record {
+  padding: 30rpx 0 30rpx 15rpx;
+  font-size: 28rpx;
+  position: relative;
+  margin: 0 30rpx;
+}
+.Record:before{
+  position: absolute;
+  left:0;
+  top:56rpx;
+  content:'';
+  width:6rpx;
+  height: 24rpx;
+  background: #000;
+  border-radius: 50rpx;
+}
+.RecordNum{
+  padding-right: 30rpx;
+}
+.mainData{
+  margin: 0 30rpx;
+}
+.Record-wrap {
+  width: 100%;
+}
+.Recordwrap {
+  height: 88rpx;
+  width: 100%;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  align-items: center;
+}
+
+.RecordwrapBg {
+  height: 88rpx;
+  width: 100%;
+  font-size: 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(244,244,244);
+}
+
+.RecordTime {
+  font-size: 28rpx;
+  color: rgb(153, 153, 153);
+  display: block;
+  margin: 0 30rpx;
+}
+
+.RecordTime-num {
+  font-size: 30rpx;
+  color: rgb(53, 53, 53);
+  margin: 0 30rpx;
+}
+
+.line {
+  height: 3rpx;
+  display: block;
+  background-color: rgb(244,244,244);
+  margin: 0 30rpx;
+}
+
+.erweimamiddle {
+  position: relative;
+}
+
+.progress-wrap {
+  width: 678rpx;
+  padding-right: 20rpx;
+  overflow: hidden;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin: 0 30rpx;
+}
+
+.progress {
+  padding: 0 5rpx 20rpx;
+}
+
+.progress progress {
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.progressnum {
+  width: 678rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.progress-right {
+  text-align: right;
+}
+
+/*.progress-right view {*/
+  /*margin-right: 30rpx;*/
+/*}*/
+
+.middledescription .proline {
+  width: 50rpx;
+  border-bottom: 3rpx solid #2a2a2a;
+  margin-bottom: 20rpx;
+}
+
+button.git-btn {
+  background: white;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  width: 678rpx;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+button::after {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+
+.git-btn .send {
+  height: 80rpx;
+  line-height: 80rpx;
+  width: 678rpx;
+  background: #000;
+}
+
+.wrap {
+  padding: 0 0 220rpx;
+}
+
+.textFont {
+  font-weight: bold;
+  font-size: 36rpx;
+}
+
+.textligter {
+  font-weight: lighter;
+  font-size: 24rpx;
+}
+
+.flexedBtn {
+  position: fixed;
+  padding-bottom: 20rpx;
+  right: 20rpx;
+  bottom: 0;
+  width: 710rpx;
+  background: white;
+}
+
+.active {
+  width: 14rpx;
+  height: 14rpx;
+  border: none;
+  box-sizing: border-box;
+  background-color: #2a2a2a;
+}
+
+.swiper_wrap {
+  position: relative;
+  padding-top: 34rpx;
+}
+
+.dots_wrap {
+  height: 14rpx;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  padding: 20rpx 0 25rpx;
+}
+/* 俱乐部 */
+.card-club{
+  display: flex;
+  padding: 30rpx;
+  align-items: center;
+}
+.club-img{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.club-name{
+  /*font-weight: bold;*/
+  margin-bottom: 10rpx;
+  color: black;
+}
+.head_title{
+  padding: 30rpx 0 30rpx 15rpx;
+  font-size: 28rpx;
+  position: relative;
+  margin: 0 30rpx;
+  /*border-bottom: solid 2rpx #d8d8d8;*/
+}
+.head_title:before{
+  position: absolute;
+  left:0;
+  top:41rpx;
+  content:'';
+  width:6rpx;
+  height: 24rpx;
+  background: #000;
+  border-radius: 50rpx;
+}
+
+.valid {
+  display: block;
+  padding: 0rpx 0 40rpx;
+  /*letter-spacing: 4rpx;*/
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+}

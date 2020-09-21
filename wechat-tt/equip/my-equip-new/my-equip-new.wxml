@@ -1,0 +1,162 @@
+<!--equip/equip-detail/equip-detail.wxml-->
+<!-- <import src='/template/post.wxml'/> -->
+<view id='detail' wx:if='{{equipDetail}}' class='equip-wrap'>
+<!-- 分享返回俱乐部 -->
+<!-- <view wx:if='{{fromScene}}'>
+  <view class='back-club' style='position:static'>
+    <view class='club-left'>
+      <image class='club-logo' src='{{clubId?clubLogo:"/images/logo.jpg"}}'></image>
+      <view>{{clubId?clubName:"俱乐部工具"}}</view>
+    </view>
+    <navigator wx:if='{{clubId}}' class='back-club-font' open-type='switchTab' url='/pages/index/index?clubId={{clubId}}'>返回该俱乐部首页</navigator>
+    <navigator wx:else class='back-club-font' open-type='switchTab' url='/pages/index/index'>返回小程序首页</navigator>
+  </view>
+</view> -->
+  <!-- 照片 -->
+  <scroll-view scroll-y class='equip-item' bindscroll='scrollHandle'>
+    <view class='equip-img-wrap'>
+      <image catchtap="previewImage" data-url='{{equipDetail.background}}' wx:if='{{equipDetail.background}}' class='equip-img' src='{{equipDetail.background}}' mode='aspectFill' show-menu-by-longpress></image>
+      <image wx:else class='equip-default' src='/images/equip-default.png'></image>
+      <view wx:if='{{editEquip}}' catchtap='uploadCarImg'  class='change-photo'>
+      <!-- wx:if='{{isFrom=="myDetail"&&equipDetail.userId==curUserId}}' -->
+        点击更换封面图片
+      </view>
+      <view class="check-mark">
+        <view class="name-one"></view><view class="name-one"></view>
+        <view class="name-two">封面</view>
+      </view>
+      <!-- <image class='equip-background-icon' src='/images/equip-background-icon.png'></image> -->
+    </view>
+    <view class='photo-wrap'>
+      <view wx:for='{{photos}}' wx:key='index' class='photo'>
+        <image data-index='{{index}}' catchtap='previewPhoto' data-url='{{item.url}}' class='photo-item' src='{{item.url}}' mode='aspectFill' show-menu-by-longpress></image>
+        <image wx:if='{{editEquip&&equipDetail.userId == curUserId}}' class='img-close' catchtap='deletePhoto' data-id='{{item.photoId}}' data-index='{{index}}' src='/images/icon-close.png'></image>
+      </view>
+      <view wx:if='{{photos.length<2&&curUserId==equipDetail.userId}}' class='equip-photos'>
+        <image class='icon-photo' src='/images/equip-photo-empty.png'></image>
+        <view>{{photos.length==1?"还需至少上传一张照片":"至少上传两张照片"}}</view>
+      </view>
+      <view wx:if='{{editEquip&&equipDetail.userId == curUserId}}' catchtap='addImages'>
+        <image class='add-photo' src='/images/equip-upload.png'> </image>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 详情内容 -->
+  <view id='detailCon' class='equip-con {{showPhoto?"shadow":""}}' animation='{{animationData}}'  bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd' style='{{showPhoto?"bottom:-"+(screenHeight-364)+"px;":"bottom:0;"}}'>
+    <view class='move-bar-wrap' catchtap='showPhoto' catchtouchend=''>
+      <view class='move-bar' ></view>
+    </view>
+    <view id='detailHead'>
+      <view class='user-header'>
+        <view class='user-info'>
+          <image class='equip-avatar' src='{{equipDetail.userLogo}}'></image>
+          <view class='equip-nickname'>{{equipDetail.userName}}</view>
+        </view>
+        <!-- <view wx:if='{{equipDetail.seriesCounter}}'>同系{{equipDetail.seriesCounter}}位车主</view> -->
+      </view>     
+      <view class='equip-name'>{{equipDetail.brandName?equipDetail.brandName:appealContent[0].value}} {{equipDetail.seriesName?equipDetail.seriesName:equipDetail.appealContent[1].value}}</view>
+      <view wx:if='{{showPhoto}}' class='move-text'>滑动查看详情</view>
+      <!-- 详情 -->
+      <!-- <view wx:for='{{equipDetail.appealContent}}' wx:key='index'>
+        <view class='equip-type'>
+          <view class='type-name'>{{item.name}}</view>
+          <view class='type-con'>{{item.value}}</view>
+        </view>
+      </view> -->
+      <view wx:for='{{appealContent}}' wx:key='index' class='equip-type'>
+        <block wx:if='{{!editEquip||item.prescribedType == "NOTUPDATE"}}'>
+          <view class='type-name'>{{item.name}}</view>
+          <view class='type-con'>{{item.value}}</view>
+        </block>
+        <block wx:elif='{{item.prescribedType == "NOTDELETE"}}'>
+          <view class='type-name'>{{item.name}}</view>
+          <input bindinput='changeContent' capture-catch:touchstart='' data-index='{{index}}' value='{{item.value}}' class='type-con' placeholder='请填写自定义内容'></input>
+        </block>
+        <block wx:else>
+          <input bindinput='changeName' catchtouchstart='' data-index='{{index}}' value='{{item.name}}' class='type-name' placeholder='自定义'></input>
+          <input bindinput='changeContent' catchtouchstart='' data-index='{{index}}' value='{{item.value}}' class='type-con' placeholder='请填写自定义内容'></input>
+          <image wx:if='{{editEquip}}' data-index='{{index}}' class='icon-ride' src='/images/jian@3x.png' catchtap='delRideType'></image>
+        </block>
+      </view>
+      <view wx:if='{{editEquip}}'>
+        <view class='slot'></view>
+        <view class='add-ride-type' capture-catch:touchstart='addRideType'>
+          <view>点击添加一个描述</view> 
+          <image class='icon-ride' src='/images/jia@3x.png'></image>
+        </view>
+      </view>
+    </view>
+    <!-- 认证 -->
+    <scroll-view scroll-y style='height:{{detailConHeight-detailHeight-70}}px' class='clubs-view' bindscroll='scrollEvent'  wx:if='{{!editEquip&&clubs.length>0}}'>
+      <view class='head-title'>认证</view>
+      <view class='equip-club'>
+        <view wx:for='{{clubs}}' wx:key='index' class='club-item'>
+          <image class='club-logo' src='{{item.clubLogo}}'></image>
+          <view class='club-name'>{{item.clubName}}</view>
+        </view>
+      </view>
+      <view wx:if='{{clubs.length==0}}' class='empty-wrap'>
+        <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+        <view>暂无信息</view>
+      </view>
+    </scroll-view>
+  </view> 
+  <!-- footer -->
+  <view wx:if='{{equipDetail}}' class='footer'>
+    <button wx:if='{{editEquip}}' class='button' catchtap='submit'>保存</button>
+    <block wx:else>
+      <view class='operation-group'>
+        <button class='operation-view' data-type='COLLECTION' data-id='{{equipDetail.equipId}}' open-type='getUserInfo' bindgetuserinfo='likeEvent'>
+          <image class='icon-share' src='/images/{{equipDetail.likeNumberVO.collectionState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+          <view class="operation-num">{{equipDetail.collectionNumberK>0?equipDetail.collectionNumberK:""}}</view>
+        </button>
+        <view class='operation-view' data-type='equip' data-id='{{equipDetail.equipId}}' catchtap='showEquipShare'>
+          <image class='icon-share' src='/images/icon-share-profile.png'></image>
+          <view class="operation-num">{{equipDetail.shareNumberK>0?equipDetail.shareNumberK:""}}</view>
+        </view>
+      </view>
+      
+      <view wx:if='{{equipDetail.userId == curUserId}}' class='btn-group'>
+        <button catchtap="goCommentList" class="btn btn-small">评论</button>
+        <button catchtap='editEquip' class='btn btn-join'>
+          编辑
+        </button>
+      </view>
+      <view wx:else class='btn-group'>
+        <button catchtap="goCommentList" class="btn btn-small">评论</button>
+        <button open-type="getUserInfo" bindgetuserinfo="goChatDetail" class='btn btn-join'>
+          联系玩家
+        </button>
+      </view>
+    </block>
+  </view>
+</view>
+<view class='del-detail-con' wx:if='{{delState}}'>
+  <image class='del-detail-img' src='/images/post-del.png'></image>
+  <view>内容已被删除</view>
+</view>
+<view wx:if='{{showSwiper}}' class='swiper-wrap' catchtap='hideSwiper'>
+  <swiper 
+    current='{{curSwiperIndex}}'
+    bindchange='swiperChange'
+    class='swiper'>
+    <swiper-item wx:for='{{photos}}' wx:key='index' class='swiper-item'>
+      <view class='img-wrap'>
+        <image data-url='{{item.url}}' class='swiper-img' mode='widthFix' src='{{item.url}}' mode='aspectFit'  show-menu-by-longpress></image>
+      </view>
+      
+    </swiper-item>
+  </swiper>
+  <view class='photo-info'>
+    <view class='photo-user'>
+      <view class='photo-left'>
+        <image class='photo-avatar' src='{{equipDetail.userLogo}}'></image>
+        <view>{{equipDetail.userName}}</view>
+      </view>
+      <view class='page'>{{curSwiperIndex+1}}/{{photos.length}}</view>
+    </view>
+    <view class='equip-name'>{{equipDetail.brandName?equipDetail.brandName:appealContent[0].value}} {{equipDetail.seriesName?equipDetail.seriesName:equipDetail.appealContent[1].value}}</view>
+  </view> 
+</view>
+<Share id='share' shareparams='{{equipDetail}}' sharetype='equip' />
+<canvas canvas-id="myCanvas" style="position:absolute;left:-200%;width:100%;height:420rpx;"></canvas>

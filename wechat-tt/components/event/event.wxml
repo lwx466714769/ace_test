@@ -1,0 +1,37 @@
+<!--club/event/event.wxml-->
+<view class='event'>
+  <!-- <view class='type-bar'>
+    <image class='icon-filter' src='/images/equip-filter.png'></image>
+    <view catchtap='typeChange' data-type='classify' class='event-type {{curType=="classify"?"active":""}}'>分类</view>
+    <view catchtap='typeChange' data-type='time' class='event-type {{curType=="time"?"active":""}}'>时间</view>
+  </view> -->
+  <view class='event-list' wx:for='{{eventList}}' wx:key='index'>
+    <view catchtap='goEventDetail' data-id='{{item.eventId}}' class='event-item'>
+      <view class='event-img-wrap'>
+        <image class='event-img' mode='aspectFill' src='{{item.cover}}'></image>
+        <!-- <view wx:if='{{item.state=="SIGNUP"}}' class='event-state state-start'>火热报名中</view> -->
+        <view wx:if='{{item.state=="END"}}' class='event-state'>已结束</view>
+        <view class='event-date'>
+          <view class='date-month'>{{item.month}}月</view>
+          <view class='date-day'>{{item.day}}</view>
+        </view>
+      </view>
+      <view class='event-title'>{{item.name}}</view>
+      <view class='event-address'>{{item.address.address}}</view>
+    </view>
+  </view>
+  <!-- 发布攒局 -->
+  <!-- <button open-type='getUserInfo' bindgetuserinfo='goParty'>
+    <image class='icon-join' src='/images/icon-party.png'></image>
+  </button> -->
+  <view wx:if='{{showAll==true&&eventList.length>3}}' class='show-all'>已到最后</view>
+  <view wx:elif='{{showAll=="加载中..."}}' class='show-all'>加载中...</view>
+  <view wx:elif='{{eventList.length==0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+    <view>暂无信息</view>
+  </view>
+</view>
+  <!-- <button open-type='getUserInfo' bindgetuserinfo='uploadEvent'  class='icon-join'>
+    <image src='/images/icon-upload-post.png'></image>
+  </button> -->
+

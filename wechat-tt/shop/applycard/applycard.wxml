@@ -1,0 +1,77 @@
+<scroll-view style='padding-bottom: 100rpx;'>
+  <!-- 福利卡片申请 -->
+  <view>
+  <!--收货信息-->
+    <view class='address-block' wx:if='{{card.productType==2}}'>
+      <view class='address-choose'>
+        <view class='address-label'>选择收货方式</view>
+        <view class='address-btn-group'>
+          <text  class='{{mailingMethod == 2 ? "btn-submit":"btn-draft"}}' catchtap="showMail">邮寄</text>
+          <text  class='{{mailingMethod == 1 ? "btn-submit":"btn-draft"}}' catchtap="showPick">自提</text>
+        </view>
+      </view>
+      <view class='phone-block' wx:if='{{mailingMethod == 1}}'>
+        <view class="user_name">联系电话</view>
+        <input bindinput='modifyPhone' placeholder='请输入联系电话' type='number' class="phoneinput"/>
+      </view>
+      <view wx:else class='address-wrap'>
+          <view wx:if='{{!address}}' class="address-arrow" catchtap="getAddress">
+            <view class="user_name">填写收货信息</view>
+            <view class="arrow"></view>
+          </view>
+          <view wx:else>
+            <view class="user">
+              <view class="address-arrow">
+                <view class="user_message">
+                  <view class="user_name">{{address.userName}}</view>
+                  <view class="user_tel">{{address.telNumber}}</view>
+                </view>
+                <view class="user_name" catchtap="getAddress">更换</view>
+              </view>
+              <view class="user_tel" style="color: #666666">{{address.provinceName+address.cityName+address.countyName+address.detailInfo}}</view>
+            </view>
+          </view>
+      </view>
+    </view>
+    <!-- stard -->
+    <view class='card-big-wrap'>
+      <view class='{{card.productType == 3 ? "card-min" : "card-big" }}'>
+        <image class='cardBig' mode='aspectFill' src='{{card.productImg[0]?card.productImg[0]:cardbag}}'></image>
+      </view>
+      <view class='card-info'>
+        <view class="card-name">{{card.productName}}</view>
+        <view wx:if='{{card.productType==1}}' class="spec-name">{{card.chooseItem.name}}</view>
+        <view class='card-count'>
+          <view wx:if='{{card.finalPrice != card.chooseItem.currentPrice}}'><text class="size24">￥ </text>{{card.chooseItem.originalInt}}<text class="size24">{{card.chooseItem.originalDecimal}} x </text><text class="size28">{{card.cur_count}}</text></view>
+          <view wx:else><text class="size24">￥ </text>{{card.chooseItem.priceInt}}<text class="size24">{{card.chooseItem.priceDecimal}} x </text><text class="size28">{{card.cur_count}}</text></view>
+          <view class="stock">剩余库存：{{card.chooseItem.stock}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- end -->
+    <view class='appleMessage' wx:if='{{card.checkMsgs.length>0}}'>
+      <view class='applytitle'>申请信息</view>
+      <view class='end'>
+        <block wx:for='{{card.checkMsgs}}' wx:key='index'>
+          <view wx:if='{{item.type==="TEXT"}}' class='userName'>
+            <view>{{item.name}}</view>
+            <input bindinput='modifyCardName' data-name='{{item.name}}' placeholder='请填写{{item.name}}' type='text' value='{{item.value}}' />
+          </view>
+          <view wx:elif='{{item.type==="NUMBER"}}' class='userName'>
+            <view>{{item.name}}</view>
+            <input bindinput='modifyCardId' data-name='{{item.name}}' placeholder='请填写{{item.name}}' type='number' value='{{item.value}}' />
+          </view>
+          <view wx:else='{{item.type==="IMAGE"}}' data-name='{{item.name}}' class='carPicture' bindtap='uploadCardImg'>
+            <view>{{item.name}}</view>
+            <image class='end-picture' mode='aspectFit' src='{{item.value?item.value:"/images/icon-add-bg.png"}}'></image>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class='getCard-wrap'>
+  <!-- <view class='final-price' wx:if='{{card.finalPrice ==0}}'>免费</view> -->
+  <view class='final-price'><text class="total-text">合计 </text><text class="size24">¥ </text><text class="size36">{{card.finalPriceInt}}</text><text class="size24">{{card.finalPriceDecimal}}</text></view>
+  <view class='getCard' catchtap='submit'>{{card.finalPrice ==0?"立即领取":"立即支付"}}</view>
+</view>

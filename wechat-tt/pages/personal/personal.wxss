@@ -1,0 +1,165 @@
+/* pages/profile/profile.wxss */
+.profile{
+  border-top: solid 2rpx rgb(242, 242, 242);
+}
+.header{
+  padding: 60rpx 0 40rpx;
+  text-align: center;
+}
+.head{
+  position: relative;
+  align-items: center;
+}
+.avatar{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.info{
+  width: 416rpx;
+}
+.name{
+  font-size: 48rpx;
+  margin:16rpx;
+}
+.name-edit{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+.icon-edit{
+  width: 28rpx;
+  height: 28rpx;
+  padding: 32rpx 20rpx 20rpx 0;
+}
+.address{
+  font-size: 24rpx;
+  color: rgb(153,153,153);
+}
+.des{
+  width: 80%;
+  margin: 12rpx auto 0;
+  font-size: 24rpx;
+  color: rgb(102,102,102);
+  letter-spacing: 2rpx;
+  overflow: hidden;
+  height:  40rpx;
+  line-height: 40rpx;
+  text-align: center;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.edit{
+  position: absolute;
+  top:44rpx;
+  right: 38rpx;
+  color: rgb(59, 148, 253);
+}
+.count{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  margin-top: 40rpx;
+  padding: 0 40rpx;
+}
+.nav{
+  flex: 1;
+}
+.num{
+  font-size: 20rpx;
+  /* font-family: 'bebas neue'; */
+  color: #999;
+}
+.num-name{
+  font-size: 26rpx;
+  color: rgb(123,123,123);
+  margin-bottom: 12rpx;
+}
+/* 模块 */
+.block{
+  padding: 30rpx 0;
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 2rpx rgb(242, 242, 242);
+  align-items: center;
+}
+.block-text{
+  flex: 1;
+}
+.block-texts{
+  flex: 1;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: rgb(51,51,51);
+}
+.block-tab{
+  /*display: inline-block;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.panel{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 44rpx;
+}
+.icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 24rpx;
+  vertical-align: middle;
+}
+.icon-modify{
+  width: 28rpx;
+  height: 30rpx;
+}
+.icon-equip{
+  width: 28rpx;
+  height: 30rpx;
+}
+.icon-order{
+  width: 30rpx;
+  height: 30rpx;
+}
+.icon-ticket{
+  width: 48rpx;
+  height: 40rpx;
+  padding-left: 60rpx;
+  padding-right: 60rpx;
+}
+.arrow{
+  width:10rpx;
+  height: 10rpx;
+  border-top: solid 2rpx #999;
+  border-right: solid 2rpx #999;
+  transform: rotate(45deg);
+  margin-right: 6rpx;
+}
+.all{
+  color: rgb(59, 148, 253);
+  margin-right: 6rpx;
+}
+.member-wrap{
+  position: relative;
+  margin: 30rpx auto;
+  border-top: solid 1rpx rgb(242, 242, 242);
+  width: 586rpx;
+  padding-top: 30rpx;
+}
+.member-img{
+  width: 586rpx;
+  height: 322rpx;
+  border-radius: 8rpx;
+}
+.member-name{
+  font-size: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+.apply{
+  color: rgb(49,140,247);
+}

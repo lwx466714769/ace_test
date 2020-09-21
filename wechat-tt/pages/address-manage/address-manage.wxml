@@ -1,0 +1,19 @@
+<view class='top'>
+  <view class='top-left'>设置地址</view>
+  <button class='top-right' bindtap='getAddress'>新增收货地址</button>
+</view>
+<view class='address-item' wx:for='{{addressList}}' wx:key='card_list'>
+  <view class="post-isDelete" catchtap='selectAddress' data-id='{{item.id}}'>
+    <image wx:if='{{item.pitchOn==true}}' class='checked-img' src='/images/icon-success.png'></image>
+    <view wx:else class='check-img'></view>
+  </view>
+  <view class='address-block' catchtap='selectAddress' data-id='{{item.id}}'>
+    <text class="name">{{item.userName}}</text>
+    <text>{{item.telNumber}}</text>
+    <view>{{item.provinceName+item.cityName+item.countyName+item.detailInfo}}</view>
+  </view>
+  <image class='del-address' src='/images/icon-del.png' catchtap='delAddress' data-id='{{item.id}}'></image>
+</view>
+<view class='footer'>
+<view class="btn-group btn-submit btn_center" catchtap="sure">确定</view>
+</view>

@@ -1,0 +1,6 @@
+<!--pages/card-list/card-list.wxml-->
+<!-- <image class="store-head" mode="widthFix" src="https://img.acegear.com/iacro-store-head.png"></image> -->
+<view  class='data_con_wrap' >
+   <import src='/template/template_more/template_more.wxml' />
+   <template is='moreCard' data='{{cardsAll}}' />
+</view>

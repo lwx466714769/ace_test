@@ -1,0 +1,103 @@
+<!--club/order-list/order-list.wxml-->
+<view class='order'>
+  <!-- 类型选择 -->
+  <Tab tablist='{{types}}' blue='{{true}}' bindchangeTab='typeChange' id='tab' class='tab-class'/>
+  <scroll-view scroll-x class='con-list' scroll-left='{{scrollLeft}}'>
+    <view wx:for='{{curTypeCon.list}}' wx:key='index' class='con-item {{item.state==curOrderState?"on":""}}' data-state='{{item.state}}' data-title='{{item.title}}' catchtap='changeOrderState'>{{item.title}}</view>
+</scroll-view>
+  <!-- 实物订单列表 -->
+  <view wx:for='{{orderList}}' wx:key='index' class='welfare' wx:if='{{curProductType == 3}}'>
+    <navigator url="/shop/goodsdetails/goodsdetails?orderId={{item.orderId}}" data-id='{{item.orderId}}' class='order-list'>
+      <!-- <view class='card-img-wrap'>
+      <image mode="aspectFill" class='card-img' src='{{item.info.productImg?item.info.productImg:"/images/default.png"}}'></image>
+      </view> -->
+      <view class='order-item'>
+        <image class='order-img' src='{{item.info.productImg?item.info.productImg:"/images/default.png"}}'></image>
+        <view class='order-info'>
+          <view class='order-name'>{{item.productName}}</view>
+          <view class='object-list'>
+            <view class='total'>
+              <view>合计：<text class="size24">￥ </text>{{item.orderAmount}}<text class="size24">{{item.decimal}}</text></view>
+              <view>订单状态：<text wx:for='{{orderState2}}'  wx:if='{{item.orderState == state.state}}' wx:for-item='state' wx:key='index' class='state'>{{state.title}}</text></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='order-footer size24'>
+        订单ID：{{item.orderId}}
+      </view>
+    </navigator>
+    <view class='slot'></view>
+  </view>
+  <!-- 卡券订单列表 -->
+  <view wx:for='{{orderList}}' wx:key='card' class='welfare' wx:if='{{curProductType == 2}}'>
+    <view catchtap='goCardDetail' data-id='{{item.orderId}}' class='order-list'>
+      <view class='order-item'>
+        <image class='welfare-img' mode="" src='{{item.info.productImg?item.info.productImg:"/images/default.png"}}'></image>
+        <view class='order-info'>
+          <view class='order-name'>{{item.productName}}</view>
+          <view class='object-list'>
+            <view class='total'>
+              <view class="welfare-num">
+                <view>数量：{{item.items[0].itemCount}}</view>
+                <view>合计：<text class="size24">￥ </text>{{item.orderAmount}}<text class="size24">{{item.decimal}}</text></view>
+              </view>
+              <view></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class='order-footer'>
+        <view wx:for='{{orderState3}}'  wx:if='{{item.orderState == state.state}}' wx:for-item='state' wx:key='index' class='state'>{{state.title}}</view>
+        <view wx:if='{{item.orderState==5&&item.qrCode}}' data-id='{{item.orderId}}' data-status='{{item.giftCardStatus}}' class='btn-order' catchtap='showTicket'>消费码</view>
+      </view>
+    </view>
+    <view class='slot'></view>
+  </view>
+  <!-- 活动订单列表 -->
+  <view class='event'  wx:if='{{curProductType == 1}}'>
+    <navigator wx:for='{{orderList}}' wx:key='event' url='/club-order/order-detail-event/order-detail-event?orderId={{item.orderId}}' >
+      <view class='order-list'>
+        <view class='order-item'>
+          <image mode='aspectFill' class='logo-img' src='{{item.info.clubLogo}}'></image>
+          <view class='order-info'>
+            <view class='order-name'>{{item.productName}}</view>
+            <view class='object-list'>
+              <view wx:for='{{item.items}}' wx:for-item='list' wx:key='list' class='object-item'>
+                <view class='object-name'>{{list.itemTitle}}</view>
+                <view class='object-num'><text class="size24">x </text>{{list.itemCount}}</view>
+                <view wx:if='{{list.itemAmount==0}}'  class='object-price'>免费</view>
+                <view wx:else class='object-price'>
+                  <text class="size24">￥ </text>{{list.amountInt}}<text class="size24">{{list.decimal}}</text>
+                </view>
+              </view>
+              <view class='total'>
+                <view>
+                <!-- 项目：{{item.orderItems.length}}件 -->
+                </view>
+                <view>合计：<text class="size24">￥</text>{{item.orderAmount}}<text class="size24">{{item.decimal}}</text></view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='order-footer'>
+          <view wx:for='{{orderState}}'  wx:if='{{item.orderState == state.state}}' wx:for-item='state' wx:key='index' class='state'>{{state.title}}</view>
+          <view wx:if='{{item.orderState==5&&item.qrCode}}' data-id='{{item.orderId}}' class='btn-order' catchtap='showTicket'>电子门票</view>
+        </view>
+      </view>
+      <view class='slot'></view>
+    </navigator> 
+  </view>
+  <view wx:if='{{orderList.length==0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+    <view>暂无内容</view>
+  </view>
+  <view wx:else class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+</view>
+<view wx:if='{{showTicket}}' catchtap="showTicket" class='ticket-wrap'>
+  <view class='ticket-content'>
+    <image class='ticket-qrcode' mode='aspectFit' src='{{curOrder.qrCode}}'></image>
+    <view>电子码</view>
+    <view catchtap='showTicket' class='ticket-close'>×</view>
+  </view>
+</view>

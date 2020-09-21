@@ -1,0 +1,14 @@
+.grid_content{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  color: #f00;
+  font-size: 24rpx;
+  font-weight: bold;
+}
+.gird-image{
+  width: 160rpx;
+  height: 160rpx;
+  background: #d7d8d9;
+}

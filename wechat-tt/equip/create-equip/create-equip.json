@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText":"新增装备",
+  "usingComponents": {
+    "Tab": "/components/tab/tab",
+    "Share": "/components/share/share"
+  }
+}

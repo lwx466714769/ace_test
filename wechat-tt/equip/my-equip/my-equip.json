@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "BackendModal": "/components/backend-modal/backend-modal"
+  },
+  "navigationBarTitleText": "添加装备"
+}

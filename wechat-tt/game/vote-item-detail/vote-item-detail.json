@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "BackendModal": "/components/backend-modal/backend-modal",
+    "Share": "/components/share/share"
+  }
+}

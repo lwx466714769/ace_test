@@ -1,0 +1,32 @@
+.index-title-event{
+  border-bottom: 2rpx solid #FA7F2C; 
+} 
+.index-name-event{
+  background: #FA7F2C;
+}
+.event_row{
+  margin-top: 20rpx; 
+  display: flex;
+  justify-content: space-between;
+}
+
+.event_block{
+  width: 330rpx; 
+}
+.event_block .img{
+  width: 330rpx;
+  height: 186rpx;
+  background: #d7d8d9;
+}
+.event_block .description{
+  height: auto;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  font-size: 26rpx;
+  color: #666;
+}

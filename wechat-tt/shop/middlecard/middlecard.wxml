@@ -1,0 +1,110 @@
+<scroll-view>
+  <!-- 卡片详情 -->
+  <view class='wrap'>
+      <view class='card-wrap'>
+        <view class='swiper_wrap'>
+          <swiper class='swiper' indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" indicator-active-color="#2a2a2a" interval="{{interval}}" circular='false' duration="{{duration}}" previous-margin="50rpx" next-margin="50rpx" current="{{currentSwiper}}"
+            bindchange="swiperChange">
+            <swiper-item class="slide-item" wx:for='{{val_list}}' wx:key='val_list'>
+              <text class="card_id">ID: {{item.createAt}}{{item.id}}</text>
+              <view class='card_slide'>
+                <image src='{{item.info.productImg ? item.info.productImg : "/images/image2018-9-16_20-23-33.png"}}' lazy-load='{{true}}' class='middle' mode='aspectFill' />
+              </view>
+            </swiper-item>
+          </swiper>
+          <view class="dots_wrap" wx:if='{{true}}'>
+            {{currentSwiper+1 + "/" + val_list.length }}
+          </view>
+        </view>
+      </view>
+      <!--  -->
+      <view class='middledescription'>
+        <view class='descriptionName'>{{card.productName}}</view>
+        <view class='validName'>
+          <text style='font-weight:lighter;display:block;font-size:24rpx;'>{{card.info.specificationName}}</text>
+        </view>
+        <text class='descriptionText'>{{card.info.productBrief}}</text>
+        <text class='valid' wx:if='{{card.expireShow}}'>{{card.expireShow}}</text>
+        <!--<view class='validcard' wx:if='{{term}}'>{{term}}</view>-->
+      </view>
+      <view class='slot'></view>
+    <view class='head_title'>卡片额度</view>
+      <!-- 进度条 -->
+      <view wx:if='{{val_list[currentSwiper].amount!=-1}}' class='progress-wrap'>
+        <view class='progress' wx:if='{{true}}'>
+          <!--<progress percent='{{val_list[currentSwiper].balance/val_list[currentSwiper].amount*100}}' color='#94EC04' />-->
+          <progress percent='{{card.balance/card.totalAmount*100}}' color='#3B94FD' backgroundColor='#000'/>
+        </view>
+        <view class='progressnum'>
+          <view class='progress-left'>
+            <view class='allNumName textligter'>
+              卡片余额:
+              <view class='overplus textFont' wx:if='{{card.specificationType == 1}}'>无限卡</view>
+              <view class='overplus textFont' wx:else>{{card.specificationType==3?"￥"+card.balance/100+"元":card.balance+"次"}}</view>
+            </view>
+            <!-- <view class='allNum'>
+            ¥ {{val_list[currentSwiper].count}}
+          </view> -->
+          </view>
+          <view class='progress-right'>
+            <view class='overplusname textligter'>
+              卡片额度:
+            </view>
+            <view class='overplus textFont' wx:if='{{card.specificationType == 1}}'>无限卡</view>
+            <view class='overplus textFont' wx:else>
+              {{card.specificationType==3?"￥"+card.totalAmount/100+"元":card.totalAmount+"次"}}
+            </view>
+          </view>
+        </view>
+      </view>
+    <view class='slot'></view>
+    <navigator open-type='switchTab' url='/pages/index/index?clubId={{club.clubId}}' class='card-club'>
+      <image class='club-img' src='{{club.clubLogo}}' mode='aspectFill'></image>
+      <view>
+        <view class='club-name'>{{club.clubName}}</view>
+      </view>
+    </navigator>
+    <view class='slot'></view>
+    <view class='head_title'>支付二维码</view>
+    <!-- --是否是礼品卡------gift 值  true 为是礼品卡  false  为不是礼品卡-- -->
+
+      <view class='erweima-wrap'>
+        <view class='erweimawrap'>
+          <image class='erweima' src='{{card.qrCode ? card.qrCode : "/images/default.png"}}'></image>
+          <view wx:if='{{val_list[currentSwiper].isExpire===true||val_list[currentSwiper].balance===0}}' class='fail-wrap'>
+            <view class='fail'>已失效</view>
+          </view>
+        </view>
+        <!-- <text class='erweimaText'>
+          验证码：{{consumerCard.createAt}}
+        </text> -->
+      </view>
+    <view class='slot'></view>
+      <view class='consume'>
+        <view class='Record'>消费记录:</view>
+        <text class='RecordNum'>{{card.expensesRecord.length+"条"}}</text>
+      </view>
+      <view class='line'></view>
+      <view class='Record-wrap' wx:if='{{card.expensesRecord.length>0}}'>
+        <view wx:for='{{card.expensesRecord}}' wx:key='index' wx:for-item='record' class='{{index % 2 == 0?"Recordwrap":"RecordwrapBg"}}'>
+          <view wx:if='{{card.specificationType==2}}' class='RecordTime-num'>
+            消费{{record.balance}}次  {{"余额"+(record.totalAmount-record.balance)+"次"}}</view>
+          <view wx:elif='{{card.specificationType==1}}' class='RecordTime-num'>
+            消费1次</view>
+          <view wx:else class='RecordTime-num'>
+            消费{{record.balance/100}}元  {{"余额"+(record.totalAmount-record.balance)/100+"元"}}</view>
+          <view class='RecordTime'>{{record.consumptionTime}}</view>
+          <!--<view class='line'></view>-->
+        </view>
+      </view>
+  </view>
+
+  <view class='flexedBtn'>
+    <view class='del-card' wx:if='{{val_list[currentSwiper].balance===-1||val_list[currentSwiper].fail===true||val_list[currentSwiper].balance===0}}' catchtap='delCard' data-consumerCardId='{{val_list[currentSwiper].id}}'>
+      删除
+    </view>
+  </view>
+  
+  <redelete id='checkAtteste' deleteItems='{{deleteItems}}' bind:reApply='attestate' />
+
+</scroll-view>

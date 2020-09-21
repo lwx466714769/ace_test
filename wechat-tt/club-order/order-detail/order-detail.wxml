@@ -1,0 +1,74 @@
+<!--club-order/order-detail/order-detail.wxml-->
+<view class='order-detail'>
+  <view class='order-head'>
+    <view class='card-wrap'>
+      <view class='card-bg card-bg1'></view>
+      <view class='card-bg card-bg2'></view>
+      <image class='card-img' mode="aspectFill" src='{{order.info.productImg}}'></image>
+    </view>
+    <view class='card-info'>
+      <view class='card-center'>
+        <view class='card-name'>{{order.productName}}</view>
+        <view class='card-price' wx:if='{{order.orderAmount==0}}'>免费</view>
+        <view wx:else class='card-price'><text class="size24">¥ </text>{{order.items[0].amountInt}}<text class="size24">{{order.items[0].decimal}}</text></view>
+      </view>
+      <view class='card-num'><text class="size24">x </text>{{order.items[0].itemCount}}</view>
+    </view>
+    <view class='total'>共{{order.items[0].itemCount}}件 合计：<text class='total-price'><text class="size24">￥ </text>{{order.amountInt}}</text><text class="size24">{{order.decimal}}</text></view>
+  </view>
+  <!-- <view class='slot' ></view>
+  <navigator open-type='switchTab' url='/pages/index/index?clubId={{order.clubId}}' class='card-club'>
+    <image class='club-img' src='{{order.clubLogo}}'></image>
+    <view class='club-name'>{{order.clubName}}</view>
+  </navigator> -->
+  <view class='slot'></view>
+  <!-- 订单状态  -->
+  <view wx:for='{{orderState}}' wx:if='{{item.state == order.orderState}}' wx:key='index' class='order-state'>
+    <view class='order-title'>{{item.title}}</view>
+    <view class='order-state-con'>{{item.content}}</view>
+  </view>
+  <view wx:if='{{order.signItems.length>0}}' class='slot'></view>
+  <!-- 申请信息 -->
+  <view wx:if='{{order.verifyMessages.length>0}}' class='order-person'>
+    <view class='order-title'>申请信息</view>
+    <view wx:for='{{order.verifyMessages}}' wx:key='index' wx:for-item='sign'>
+      <view catchtap='preview' data-url='{{sign.value}}' wx:if='{{sign.type=="IMAGE"}}'>
+        <view class='upload-title'>{{sign.name}}</view>
+        <image class='block-img' src='{{sign.value}}' mode='aspectFill'></image>
+      </view>
+      <view wx:else class='order-block'>
+        <view class='block-info'>{{sign.name}}</view>
+        <view class='block-place'>{{sign.value}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 操作按钮 -->
+  <view class='footer'>
+    <view wx:if='{{order.orderState == 6}}' class='btn-group'>
+      <view catchtap='cancelOrder' class='btn-big'>取消订单</view>
+    </view>
+    <view wx:elif='{{order.orderState == 8}}' class='btn-group'>
+      <view catchtap='delCard' class='btn-small'>删除订单</view>
+      <navigator url='/shop/carddetails/carddetails?cardId={{order.productId}}' class='btn-big'>重新下单</navigator>
+    </view>
+    <view wx:elif='{{order.orderState == 1}}' class='btn-group'>
+      <view catchtap='cancelOrder' class='btn-small'>取消订单</view>
+      <view catchtap='applyCard' class='btn-big' data-id='{{order.orderId}}'>支付</view>
+    </view>
+    <view wx:elif='{{order.orderState == 2}}' class='btn-group'>
+      <view catchtap='delCard' class='btn-small'>删除订单</view>
+      <navigator url='/shop/carddetails/carddetails?cardId={{order.productId}}' class='btn-big'>重新下单</navigator>
+    </view>
+    <view wx:elif='{{order.orderState == 4}}' class='btn-group'>
+      <view catchtap='delCard' class='btn-big'>删除订单</view>
+    </view>
+    <view wx:elif='{{order.orderState == 5}}' class='btn-group'>
+      <navigator url='/personal/personal-mycard/personal-mycard' class='btn-small'>查看卡包</navigator>
+      <view catchtap='delCard' class='{{order.goodsType==0?"btn-small":"btn-big"}}'>删除订单</view>
+      <!--<view wx:if='{{order.goodsType==0}}' catchtap='goMycardDetail' data-id='{{order.orderId}}' data-status='{{order.giftCardStatus}}' class='btn-big'>查看</view>-->
+    </view>
+    <view wx:elif='{{order.orderState == 9}}' class='btn-group'>
+      <view class='btn-big'>已领取</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,52 @@
+<!--event/apply-event/apply-event.wxml-->
+<view class='apply-event'>
+  <view class='program-list'>
+    <block wx:for='{{finalStage}}' wx:for-item='stage' wx:key='index'>
+      <view class='program-item'>
+        <view class='program-block program-head'>
+          <view class='program-title'>活动项目:</view>
+          <view class='program-con'>{{stage.stageName}}</view>
+        </view>
+        <!-- 阶段列表开始 -->
+        <view wx:for='{{stage.activityGroupVOS}}' wx:for-item='group' wx:key='group' class='stage-list'>
+          <view class='program-block'>
+            <view class='program-title'>具体内容:</view>
+            <view class='program-con'> {{group.groupName}}</view>
+          </view>
+          <!-- 分组列表开始 -->
+          <view class='group-list'>
+            <view wx:for='{{group.activityGoodVOS}}' wx:for-item='item' wx:key='item' class='group-item'>
+              <view class='group-name'>{{item.goodName}}</view>
+              <view class='group-number'>
+                <view class='group-price'>{{item.price==0?"免费":'￥'+item.price/100}}</view>
+                <view class='nums'>×{{item.count}}</view>
+              </view>
+            </view>
+          </view>
+          <!-- 分组列表结束 -->
+        </view>
+        <!-- 阶段列表结束 -->
+      </view>
+      <view class='slot'></view>
+    </block>
+    <!-- 项目列表结束 -->
+  </view>
+  <block wx:if='{{event.signupItems.length>0}}'>
+    <view class='apply-info'>
+      <view class='block-title'>申请信息</view>
+      <view>至少添加一个报名人</view>
+    </view>
+    <view class='members'>
+      <block wx:for='{{members}}' wx:key='index'>
+        <view catchtap='addMember' data-item='{{item}}' data-index='{{index}}' data-type='UPDATE' class='member'>
+         {{memberName[index]}}
+        </view>
+      </block>
+      <view catchtap='addMember' data-type='CREATE' class='member {{memberError?"member-red":""}}'>+</view>
+    </view>
+  </block>
+</view>
+<view class='footer'>
+  <view class='total'>合计：<text class='red'>￥{{finalPrice/100}}</text></view>
+  <button class='button btn-pay' catchtap='submit'>确认支付</button>
+</view>

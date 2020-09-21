@@ -1,0 +1,24 @@
+<!--personal/chat-detail/chat-detail.wxml-->
+<view class="chat">
+  <scroll-view id="scrollView" scroll-y scroll-top='{{scrollTop}}' class="chat-scroll" bindscroll='scrollEvent'>
+    <view id='scroll{{index+1}}' wx:for='{{chat}}' wx:key='chat' class="chat-content">
+      <view wx:if='{{item.privateChatUserId == userId}}' class="item item-me">
+        <text class="content">{{item.content}}</text>
+        <image src="{{item.privateChatUserLogo}}" class="head"></image>
+      </view>
+      <view wx:else class="item item-other">
+        <image src="{{item.privateChatUserLogo}}" class="head"></image>
+        <text class="content">{{item.content}}</text>
+      </view>
+    </view>
+    <view class="end-scroll" id="endScroll"></view>
+  </scroll-view> 
+  <view class="footer">
+    <view class="footer-content">
+      <view class="area">
+        <textarea auto-height='true' bindinput="changeInput" class="input" value="{{content}}" placeholder="我也来聊聊..."  cursor-spacing='20' adjust-position='false' placeholder-class="placeholder"></textarea>
+      </view>
+      <view catchtap="submit" class="submit">发表</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<template name='Event'>
+  <view class='index_wrap'>
+    <view class='index-title' catchtap='goEventList'>
+      <view>
+        <text class="index-name">活动</text>
+        <text class="index-english">Event</text>
+      </view>
+      <text class="index_more" >全部</text>
+    </view>
+    <view class='event_row'>
+      <block wx:for="{{eventData}}" wx:key='eventData'>
+        <navigator url='/event/event-detail/event-detail?activityId={{item.relateId}}' class='clickHref'>
+            <view class='event_block'>
+              <image class="img" src="{{item.cover}}" mode='aspectFill' />
+              <rich-text class='description'>{{item.title}}</rich-text>
+            </view>
+          
+        </navigator>
+      </block>
+      <view wx:for='{{2-eventData.length}}' wx:key='space' class="img"></view>
+    </view>
+  </view>
+</template>

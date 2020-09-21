@@ -1,0 +1,20 @@
+<!--club/event/event.wxml-->
+<view class='event'>
+  <!-- <view class='type-bar'>
+    <image class='icon-filter' src='/images/equip-filter.png'></image>
+    <view catchtap='typeChange' data-type='classify' class='event-type {{curType=="classify"?"active":""}}'>分类</view>
+    <view catchtap='typeChange' data-type='time' class='event-type {{curType=="time"?"active":""}}'>时间</view>
+  </view> -->
+    <!-- event模板 -->
+    <import src='/template/post.wxml' />
+    <template is='event' data='{{eventList}}' />
+  <view wx:if='{{showAll==true&&mediaList.length>3}}' class='show-all'>已到最后</view>
+  <view wx:elif='{{showAll=="加载中..."}}' class='show-all'>加载中...</view>
+  <view wx:elif='{{mediaList.length==0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+    <view>暂无信息</view>
+  </view>
+</view>
+  <button wx:if='{{admin}}' open-type='getUserInfo' bindgetuserinfo='uploadEvent'  class='icon-join'>
+    <image src='/images/icon-upload-post.png'></image>
+  </button>

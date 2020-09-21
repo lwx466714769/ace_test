@@ -1,0 +1,102 @@
+<!--event/upload-event/upload-event.wxml-->
+<view class="upload-event">
+  <view class='title'>选择活动类型</view>
+  <view class="set party-set">
+    <view wx:for='{{eventType}}' catchtap="changeEventType" data-id='{{item.id}}' class="type-item {{data.activityTypeId==item.id?'active':''}}" wx:key='index'>{{item.name}}</view>
+  </view>
+  <view class='title'>报名设置</view>
+  <view class="set">
+    <view>
+      <view style="font-weight:500">选择活动时间</view>
+      <picker mode='multiSelector' value='{{dateTime}}' class='date' bindchange='changeStart' bindcolumnchange="bindColumnChange" range='{{dateTimeArray}}'>
+        <view class='left'>开始时间</view>
+        <view class='right'>
+          <text wx:if='{{data.startTime}}'>{{data.startTime}}</text>
+          <text class="place-gray" wx:else>请选择</text>
+          <view class='arrow'></view>
+        </view>
+      </picker>
+      <picker mode='multiSelector' value='{{dateTime}}' class='date' bindchange='changeEnd' bindcolumnchange="bindColumnChange" range='{{dateTimeArray}}'>
+        <view class='left'>结束时间</view>
+        <view class='right'>
+          <text wx:if='{{data.endTime}}'>{{data.endTime}}</text>
+          <text class="place-gray" wx:else>请选择</text>
+          <view class='arrow'></view>
+        </view>
+      </picker>
+    </view>
+    <picker mode='multiSelector' value='{{dateTime}}' class="set-block" bindchange='changeExpire' bindcolumnchange="bindColumnChange" range='{{dateTimeArray}}'>
+      <view class='left'>报名截止时间</view>
+      <view class='right'>
+        <text wx:if='{{data.signEndTime}}'>{{data.signEndTime}}</text>
+        <text class="place-gray" wx:else>请选择</text>
+        <view class='arrow'></view>
+      </view>
+    </picker>
+    <view catchtap="chooseLocation" class="set-block">
+      <view class="left">设置地理位置</view>
+      <view class="right">
+        <text class="right-more" wx:if='{{data.location.address}}'>{{data.location.address}}</text>
+        <text class="place-gray" wx:else>请选择</text>
+        <view class='arrow'></view>
+      </view>
+    </view>
+    <view class="set-input set-block-address">
+      <view class="set-block">
+        <view class="left">填写地址名称</view>
+        <view class="right">
+          <input class='input' data-name='address' placeholder-class="placeholder" value='{{data.address.address}}' bindinput='changeAddress' placeholder='选填'></input>
+          <view class='arrow'></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="title">支付设置</view>
+  <view class="set set-input">
+    <view style="height:60rpx;line-height:60rpx;" wx:if='{{club.payLevel>1}}'>
+      <view class="left">活动价格(元)</view>
+      <view class="right">
+        <input class='input' data-name='price' placeholder-class="placeholder" value='{{data.price}}' type='digit' placeholder='0.00' bindblur="priceBlur"></input>
+        <view class='arrow'></view>
+      </view>
+    </view>
+    <view class="set-block">
+      <view class="left">活动库存</view>
+      <view class="right">
+        <input class='input' data-name='inventory' placeholder-class="placeholder" value='{{data.inventory}}' type='number' placeholder='请输入大于0的整数' bindblur="changeNumberBlur"></input>
+        <view class='arrow'></view>
+      </view>
+    </view>
+    <view class="set-block">
+      <view class="left">每人限购</view>
+      <view class="right">
+        <input class='input' data-name='restriction' placeholder-class="placeholder" value='{{data.restriction}}' type='number' placeholder='请输入大于0的整数' bindblur="changeNumberBlur"></input>
+        <view class='arrow'></view>
+      </view>
+    </view>
+  </view>
+  <view class="event-info">
+    <view>更多设置可在俱乐部后台进行设置</view>
+    <view>http://club.acegear.com</view>
+  </view>
+</view>
+<view class='footer'>
+  <view class="btn-group">
+    <view class="btn-draft" catchtap="saveDraft">保存草稿</view>
+    <view class='btn-submit' catchtap='validate'>发布</view>
+  </view>
+</view>
+<view wx:if='{{showWrap}}' class="show-wrap">
+  <view class="show-content">
+    <view class="show-img">
+      <image mode="aspectFill" src="https://img.acegear.com/00534122a89a78a62f7680db2bad6f5d22e27430/w700_1"></image>
+    </view>
+    <!-- <view class="btn-show-group">
+      <view catchtap="showWrap" class="btn-show">返回</view>
+      <view catchtap="exitWrap" class="btn-show">退出</view>
+    </view> -->
+    <view class="btn-show-group">
+      <view class="btn-show" catchtap="exitWrap">知道了</view>
+    </view>
+  </view>
+</view>

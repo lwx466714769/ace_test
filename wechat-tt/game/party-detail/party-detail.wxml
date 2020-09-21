@@ -1,0 +1,135 @@
+<!--game/party-detail/party-detail.wxml-->
+<view wx:if='{{party}}' class='party-detail'>
+  <view wx:if='{{party.defineTime}}' class='end-time'>日期已确定：{{party.defineStartTime}} - {{party.defineEndTime}}</view>
+  <image wx:if='{{party.background}}' class='party-img' mode='aspectFill' src='{{party.background}}'></image>
+  <view class='user-info'>
+    <image class='user-head' src='{{party.userLogo}}'></image>
+    <view>
+      <view>{{party.userName}}</view>
+      <!-- <view class='fans'>粉丝 222</view> -->
+    </view>
+  </view>
+  <!-- 主题 -->
+  <view class='party-info'>
+    <view class='release-time'>
+      <view>发布于{{party.createAt}}</view>
+      <view wx:if='{{userId == party.userId}}' catchtap='delParty'>删除</view>
+      <view wx:else catchtap='toReport'>举报</view>
+    </view>
+    <view wx:if='{{party.partyType=="JOIN"}}' class='party-time'>
+      活动时间：{{party.startTime}} 至 {{party.endTime}}
+    </view>
+    <view class='content'>{{party.name}}</view>
+    <!-- <view class='expire'>有效期至{{party.joinEndTime}}</view> -->
+  </view>
+  <!-- 可选日期 -->
+  <view wx:if='{{party.partyType=="DISCUSS"}}' class='party-info'>
+    <view class='expire-date'>可选日期</view>
+    <view class='time-item' wx:for='{{timeList}}' wx:key='index'>
+      {{item.startTime}} - {{item.endTime}}
+    </view>
+  </view>
+  <!-- 日期 -->
+
+  <view wx:if='{{countList&&party.partyType=="DISCUSS"}}' class='party-date'>
+    <view class='expire-date'>点击下方日期查看已报名情况</view>
+    <Datepicker countList='{{countList}}' bind:onClickDay='onClickDay' editDate='{{false}}' limited='{{true}}' timeList='{{party.timeList}}'/>
+    <!-- <view wx:if='{{party.userId==userId&&!party.defineTime}}' class='final-date'>
+      点击选择确定最终日期
+      <navigator url='/game/final-date/final-date?id={{party.partyId}}' class='button btn-choose'>选择</navigator>
+    </view> -->
+    <view class='expire'>有效期至{{party.joinEndTime}}</view>
+  </view>  
+  <!-- 日期显示成员 -->
+  <view wx:if='{{clickDay&&party.partyType=="DISCUSS"&&memberList.length>0}}' class='members'>
+    <view class='member-date'>{{curDate}}有空成员</view>
+    <view class='member'>
+      <view wx:for='{{memberList}}' wx:key='index' class='member-item'>
+        <image class='member-head' src='{{item.avatar}}'></image>
+        <view>{{item.nickname}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 立即报名显示人员 -->
+  <view wx:if='{{party.partyType=="JOIN"}}'>
+    <view catchtap='goMemberList' class='join-title'>
+      <view>参与成员
+        <text wx:if='{{party.maxJoinLimitNum}}'>（{{joinMember.length}}/{{party.maxJoinLimitNum}}）</text>
+      </view>
+      <view class='arrow'></view>
+    </view>
+    <view class='join-member'>
+      <button open-type='getUserInfo' bindgetuserinfo='joinParty' wx:if='{{party.maxJoinLimitNum&&joinMember.length!=party.maxJoinLimitNum&&!isJoin&&todayDate<party.joinEndTime}}' class='join-member-add'></button>
+      <image wx:if='{{index<6}}' wx:for='{{joinMember}}' wx:key='index' class='join-member-head' mode='aspectFill' src='{{item.avatar}}'></image>
+    </view>
+  </view>
+   <!-- 评论 -->
+  <view class='comment'>
+    <view class='comment-title'>评论</view>
+    <view class='comment_list' wx:for='{{comments}}' wx:key='index'>
+      <view>
+        <image src='{{item.userLogo}}' class='comment_head'></image>
+      </view>
+      <view class='comment_con'>
+        <view class='name'>{{item.userName}}</view>
+        <view class='con'>
+          <text>{{item.contents}}</text>
+          <view class='comment-img-list'>
+            <image wx:for='{{item.images}}' wx:for-item='list' wx:key='list_{{index}}' class='comment-img' data-url='{{list}}' data-imgs='{{item.images}}' catchtap='preview' src='{{list}}' mode='aspectFill'/>
+          </view>
+        </view>
+        <view class='center'>
+          <view class='time'>{{item.createAt}}</view>
+          <view wx:if='{{item.userId==userId}}' catchtap='delComment' data-id='{{item.replyId}}' class='del-comment'>
+            <image class='del-post' src='/images/icon-del.png' ></image>
+            <view class='del'>删除</view>
+          </view>
+        </view>
+      </view>
+    </view> 
+    <view class='show_all' wx:if='{{comments.length>0}}'>{{showAll?'已到最后':""}}</view>
+  </view>
+  <view wx:if='{{comments.length==0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-comment.png'></image>
+    <view>暂无评论</view>
+  </view>
+  <!-- footer -->
+  <view class='footer'>
+    <view class='opration-group'>
+      <view class='equip-opration' data-type='party' data-id='{{party.partyId}}' catchtap='showShare'>
+        <image class='icon-share' src='/images/icon-share-profile.png'></image>
+        <view></view>
+      </view>
+      <button class='equip-opration' data-type='COLLECTION' data-id='{{party.partyId}}' open-type='getUserInfo' bindgetuserinfo='likeEvent'>
+        <image class='icon-share' src='/images/{{party.likeNumberVO.collectionState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+        <view></view>
+      </button>
+    </view>
+    <view wx:if='{{party}}' class='btn-group'>
+      <button open-type='getUserInfo' bindgetuserinfo='goComment' class='btn'>评论</button>
+      <button wx:if='{{todayDate>joinEndTime&&party.partyType=="JOIN"}}' class='btn btn-join btn-gray'>已结束</button>
+
+      <block wx:elif='{{party.partyType=="DISCUSS"}}'>
+        <button wx:if='{{party.defineTime}}' class='btn btn-join btn-gray'>日期已确定</button>
+        <button wx:elif='{{todayDate>joinEndTime&&party.userId!=userId}}' class='btn btn-join btn-gray'>已结束</button>
+        <navigator wx:elif='{{party.userId==userId}}' url='/game/final-date/final-date?id={{party.partyId}}' class='btn btn-join'>确认日期</navigator> 
+        <button wx:else open-type='getUserInfo' bindgetuserinfo='editDate' class='btn btn-join'>报名</button>
+      </block>
+      <block wx:else>
+        <button wx:if='{{!isJoin}}' open-type='getUserInfo' bindgetuserinfo='joinParty' class='btn btn-join'>立即参与</button>
+        <button wx:else class='btn btn-join btn-gray'>已参与</button>
+      </block>
+    </view>
+  </view>
+</view>
+
+<view wx:if='{{fromScene}}' class='{{showBackClub?"animation":"animation1"}}'>
+  <view class='back-club'>
+    <view class='club-left'>
+      <image class='club-logo' src='{{party.clubLogo}}'></image>
+      <view>{{party.clubName}}</view>
+    </view>
+    <navigator class='back-club-font' open-type='switchTab' url='/pages/index/index'>返回该俱乐部首页</navigator>
+  </view>
+</view>
+<Share id='share' shareparams='{{party}}' sharetype='party'/>

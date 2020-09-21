@@ -1,0 +1,113 @@
+/* event/event-program/event-program.wxss */
+.event-program{
+  padding-bottom: 120rpx;
+}
+.program-list{
+  font-size: 32rpx;
+}
+.program-item{
+  padding: 0 30rpx;
+}
+.program-block{
+  display: flex;
+  height: 104rpx;
+  line-height: 104rpx;
+}
+.program-head{
+  border-bottom: solid 2rpx #eee;
+}
+.program-title{
+  font-weight: bold;
+}
+.program-con{
+  flex: 1;
+  overflow: hidden;
+}
+.group-item{
+  padding: 0 30rpx 40rpx;
+}
+.group-name{
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+  color: rgb(102, 102, 102);
+}
+/* 加减 */
+.group-number{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.init-price{
+  color: rgb(153,153,153);
+  font-size: 20rpx;
+  margin-left: 10rpx;
+}
+.init-price text{
+  text-decoration: line-through;
+}
+.inventory{
+  font-size: 20rpx;
+  color: rgb(153,153,153);
+}
+.red{
+  color: #f00;
+}
+.nums{
+  color: #000;
+  display: flex;
+  align-items: center;
+}
+.btn-num{
+  width: 40rpx;
+  height: 40rpx;
+  text-align: center;
+  border-radius: 50%;
+  margin-left: 24rpx;
+  border: solid 2rpx #000;
+}
+.btn-gray{
+  color: #ccc;
+  border:solid 2rpx #ccc;
+}
+.minus{
+  font-size: 50rpx;
+  line-height: 34rpx;
+}
+.add{
+  font-size: 36rpx;
+  line-height: 36rpx;
+}
+.number{
+  width: 40rpx;
+  line-height: 40rpx;
+  margin-left: 24rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  border-top: solid 2rpx rgb(246,246,246);
+  font-size: 32rpx;
+  padding-bottom: 20rpx;
+}
+.total{
+  margin-top: 30rpx;
+}
+.red{
+  color: #f00;
+}
+.btn-pay{
+  width: 360rpx;
+  margin-right: 0;
+}

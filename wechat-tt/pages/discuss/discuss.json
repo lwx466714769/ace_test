@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "Tab":"/components/tab/tab",
+    "Trends": "/components/trends/trends",
+    "Share": "/components/share/share"
+  }
+}

@@ -1,0 +1,87 @@
+<!--club/introduce/introduce.wxml-->
+<import src="/utils/wxParse/wxParse.wxml"/>
+<view class='introduce'>
+  <view wx:if='{{club.announcement||qrcode&&club.member}}' class='section'>
+    <block wx:if='{{club.announcement}}'>
+      <view class='title'>公告</view>
+      <view  class='notice'>{{club.announcement}}</view>
+    </block>
+    <view wx:else class='notice-padding'></view>
+    <view wx:if='{{qrcode&&club.member}}' class='qrcode'>
+      <image catchtap='previewQrcode' data-url='{{qrcode}}' class='qrcode-img' src='{{qrcode}}'></image>
+      <view>点击放大保存后用微信扫一扫</view>
+      <view>通过俱乐部平台紫豆助手快速入群</view>
+    </view>
+  </view>
+  <view class='section'>
+    <view class='managers'>
+      <view class='master'>
+        <image class='master-img' src='{{manager.avatar}}'></image>
+        <view class='master-mark'>主理人</view>
+      </view>
+      <view class='master-right'>
+        <view class='master-name'>{{manager.nickname}}</view>
+        <view wx:if='{{manager.title}}' class='master-info'>{{manager.title}}</view>
+      </view>
+      
+    </view>
+    <!-- 管理员 -->
+    <!-- <view class='manager-list'> 
+      <navigator url='/profile/homepage/homepage?userId={{item.userId}}' wx:for='{{manager}}' wx:if='{{item.rank=="ADMIN"}}' wx:key='index' class='manager-item'>
+        <image class='manager-img' src='{{item.avatar}}'></image>
+        <view class='manager-name'>{{item.nickname}}</view>
+      </navigator>
+    </view> -->
+  </view>
+  <view class='section'>
+    <view class='title'>简介</view>
+    <view class='notice'>{{club.info}}</view>
+    <view class='tags'>
+      <text wx:for='{{club.tags}}' wx:key='index' class='tag'>#{{item}}#</text>
+    </view>
+  </view>
+  <view class='section'>
+    <view class='title'>入会方式</view>
+    <view class='join-ways'>
+    <view class='join-way'>
+        <image class='icon-join' src='/images/{{club.signupItems1.length==0?"icon-club":"icon-club-gray"}}.png'></image>
+        <view class='{{club.signupItems1.length==0?"active-way":""}}'>开放式入会</view>
+      </view>
+      <view class='join-way'>
+        <image class='icon-join' src='/images/{{club.signupItems1.length>0?"icon-pass":"icon-pass-gray"}}.png'></image>
+        <view class='{{club.signupItems1.length>0?"active-way":""}}'>需主理人审核</view>
+      </view>
+    </view> 
+  </view>
+  <view class='section'>
+    <view class='title'>会员福利</view>
+    <view wx:for='{{club.newBenefit}}' wx:key='index' wx:if='{{item!=""}}' class='member-item'>
+      <image mode='aspectFill' class='icon-member' src='/images/Member.png'></image>
+      <text>{{item}}</text>
+    </view>
+  </view>
+  <view class='section'>
+    <view class='title'>入会要求</view>
+    <view class='require'>
+      <view wx:for='{{club.newTerm}}' wx:key='index' class='req-item'>
+        <view wx:if='{{club.newTerm.length>1}}' class='req-num'>{{index+1}}.</view> 
+        <view class='item-con'>{{item}}</view>
+      </view>
+    </view>
+  </view>
+  <view class='section'>
+    <view class='title'>详细介绍</view>
+    <view class='detail-con'>
+      <!--<block wx:for='{{introduction}}' wx:key="index">-->
+          <!--<view wx:if='{{item.type === "TEXT"||item.type === "SUMMARY"}}' class='post-text'>-->
+          <!--{{item.content}}-->
+          <!--</view>-->
+          <!--<block wx:elif='{{item.type === "IMAGE"||item.type === "COVER"}}'>-->
+          <!--<image class='post-img' src='{{item.content}}' mode='widthFix' catchtap='preview' data-url='{{item.content}}' data-imgs='{{club.introduction}}}'/>-->
+          <!--<view class='post-text' wx:if='{{item.extra.desc}}'>{{item.extra.desc}}</view>-->
+          <!--</block>-->
+      <!--</block>-->
+      <template is='wxParse' data='{{wxParseData:article.nodes}}'/>
+    </view>
+  </view>
+</view>

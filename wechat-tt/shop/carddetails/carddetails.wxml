@@ -1,0 +1,167 @@
+<import src="/utils/wxParse/wxParse.wxml"/>
+<view wx:if='{{card&&!card.putaway||card.putaway == false}}' class='private-content'>
+  <image mode="aspectFit" class='private-img' src='/images/icon-store.png'></image>
+  <view class="private-text">该商品已下架</view>
+  <button class='btn-login' catchtap="backhome">返回首页</button>
+</view>
+<block wx:else>
+  <scroll-view>
+    <view wx:if='{{fromScene}}'>
+      <view class='back-club' style='position:static'>
+        <view class='club-left'>
+          <image class='club-logo' src='{{club.logo}}'></image>
+          <view>{{club.clubName}}</view>
+        </view>
+        <navigator class='back-club-font' open-type='switchTab' url='/pages/index/index?clubId={{club.clubId}}'>返回该俱乐部首页</navigator>
+      </view>
+    </view>
+    <!-- 福利卡片详情 -->
+    <view style='padding-bottom: 100rpx;'>
+      <!-- 轮播图 -->
+      <swiper catchtap='welfareCardDetail'  wx:if="{{card.productType}}" class='{{card.productType==2?"cardImg":"card-big"}}'  indicator-dots="{{indicatorDots}}" autoplay="{{true}}" circular='{{true}}' interval="4500" duration="200" current="{{currentSwiper}}" bindanimationfinish="swiperChange" >
+        <swiper-item wx:for='{{card.productImg}}' wx:key='index' >
+            <image data-url='{{item.url}}' class='{{card.productType==2?"swiper-images":"swiper-image"}}' mode='aspectFill' src='{{card.productImg[index]}}/w700_1'></image>
+        </swiper-item>
+      </swiper>
+      <!-- 价格 -->
+      <view class="cardTop">
+        <view>
+          <text wx:if='{{card.chooseItem.currentPrice/100 == 0}}' class='minPrize'>免费</text>
+          <text wx:else class='minPrize'>
+            <text class="size32">￥ </text>{{card.chooseItem.priceInt}}<text class="size32">{{card.chooseItem.priceDecimal}}</text>
+          </text>
+          <text class='mark' wx:if='{{card.purchaseGroup == 3}}'>高级会员专享</text>
+          <!-- 原价 -->
+        <view class='maxPrize' wx:if='{{card.originalPrice/100>card.chooseItem.currentPrice/100&&card.originalPrice/100 != 0}}'>原价 <text>￥ </text>{{card.chooseItem.originalInt}}<text class="size20">{{card.chooseItem.originalDecimal}}</text>
+          <view class='maxIcon'>
+            <image wx:if='{{card.typeStyle === "OWNER"}}' mode='' src='/images/Group9@3x.png'></image>
+          </view>
+        </view>
+        </view>
+        <!-- <view class="collect">
+          <image mode="aspectFit" class="icon-collect" src="/images/icon-collect-profile.png"></image>收藏</view> -->
+        
+        <!-- <text class='integ'>{{card.curName}}</text> -->
+      </view>
+      <view class='card-title'>
+        <text class='title'>{{card.productName}}</text>
+        <text class='descripte' wx:if="{{card.productBrief}}">{{card.productBrief?card.productBrief:""}}</text>
+        <text class='valid' wx:if='{{card.expireAt}}'>{{card.limitString}}</text>
+      </view>
+      <view class="slot"></view>
+      <!-- 库存，数量 -->
+      <view wx:if='{{card.commoditySpecifications.length>1}}' catchtap='changeSelectItem' class='shopping_num'>
+          <text>已选择：{{card.chooseItem.name}}</text>
+          <view class="num">
+            <text>x {{card.cur_count}}</text>
+            <view class="arrow"></view>
+          </view>
+        </view>
+      <view wx:else class='shopping_num'>
+        <view>剩余库存：{{card.commoditySpecifications[0].stock}}</view>
+        <view class='shop_num'>
+          <image class='reduce circle' data-id='{{card.curCardOrderId}}' data-type='reduce' catchtap='goods_num' src='/images/icon-minus.png'></image>
+          <view class='times' catchtap="showNumInput">{{card.cur_count}}</view>
+          <image class='plus circle' data-id='{{card.curCardOrderId}}' data-type='plus' catchtap='goods_num' src='/images/icon-plus.png'></image>
+        </view>
+      </view>
+      <view class='slot'></view>
+      <view class='head_title'>图文介绍</view>
+      <block wx:for='{{card.introduction}}' wx:key='index'>
+        <view class='itemText' wx:if='{{item.type === "TEXT"}}'>
+          <text decode='{{true}}'>{{item.content}}</text>
+        </view>
+        <view wx:elif='{{item.type === "IMAGE"}}' class='end' catchtap='previewImg' data-url='{{item.content}}' data-imgs='{{card.introduction}}'>
+          <image class='end-picture' mode='widthFix' src='{{item.content}}'></image>
+        </view>
+      </block>
+      <view class="richText">
+      <!--<rich-text  nodes='{{card.productDescription}}'>-->
+      <!--</rich-text>-->
+      <template is='wxParse' data='{{wxParseData:article.nodes}}'/>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- footer -->
+  <view wx:if='{{cardError == false}}' class='footer'>
+    <view class='operation-group'>
+      <view class='operation-view' data-type='vote' data-id='{{party.voteId}}' catchtap='showShare'>
+        <image class='icon-share' mode="aspectFit" src='/images/icon-share-profile.png'></image>
+        <view wx:if="{{party.shareNumberK>0}}" class="operation-num">{{party.shareNumberK>0?party.shareNumberK:""}}</view>
+        <!-- <image catchtap="showService" class='icon-share' mode="aspectFit" src='/images/icon-service.png'></image> -->
+      </view> 
+    </view>
+    <view class='btn-group' wx:if="{{card}}">
+      <button open-type="getUserInfo" type='button'class='btn btn-join' wx:if='{{!card.putaway||card.putaway == false}}'>商品已下架</button>
+      <button open-type="getUserInfo" type='button'class='btn btn-join' wx:elif='{{isExpire == true}}'>商品已过期</button>
+      <button open-type="getUserInfo" type='button'class='btn btn-join' wx:elif='{{card.curInventory < 1}}'>商品已无库存</button>
+      <button open-type="getUserInfo" type='button' bindgetuserinfo='applycard' class='btn btn-join' wx:else>立即购买</button>
+    </view>
+  </view>
+</block>
+<!-- 规格选项 -->
+<view class="filter-wrap" wx:if='{{onShown}}' catchtap="changeSelectItem">
+  <view class="filter-con">
+    <view class='filter-title'>获取条件</view>
+    <scroll-view class='seletItems'>
+      <view wx:for='{{card.commoditySpecifications}}' wx:key='index' catchtap='selectItem' data-id='{{item.id}}' data-stock='{{item.stock}}' data-type='{{item.discountGroup}}' class='seletItem {{curCardOrderId==item.id?"active":""}}'>
+        <view class='item-left'>
+          <text>{{item.name}}</text>
+          <view class='owner' wx:if='{{item.discountGroup == 4}}'>车主专享</view>
+          <view class='owner' wx:if='{{item.discountGroup == 3}}'>高级会员专享</view>
+        </view>
+        <view class='item-right'>
+          <!-- item.discount  折扣 -->
+          <text class='item-prize' wx:if='{{item.currentPrice<item.originalPrice}}'>{{item.originalPrice/100 == 0 ? "":"￥ "+item.originalPrice/100}}</text>
+          <text wx:if='{{item.currentPrice==0}}'>免费</text>
+          <text wx:else><text class="size24">￥ </text>{{item.priceInt}}<text class="size20">{{item.priceDecimal}}</text>
+          </text>
+        </view>
+      </view>
+    </scroll-view>
+    <view class='shopping_num'>
+      <view>剩余库存：{{stock}}</view>
+      <view class='shop_num'>
+        <image class='reduce circle' data-id='{{card.curCardOrderId}}' data-type='reduce' catchtap='goods_num' src='/images/icon-minus.png'></image>
+        <view class='times' catchtap="showNumInput">{{card.cur_count}}</view>
+        <image class='plus circle' data-id='{{curCardOrderId}}' data-type='plus' catchtap='goods_num' src='/images/icon-plus.png'></image>
+      </view>
+    </view>
+    <button catchtap="confirmFilter" class="btn">确定</button>
+  </view>
+</view>
+<!-- 联系客服 -->
+<view class="filter-wrap" wx:if='{{showService}}' catchtap="showService">
+  <view class="service">
+    <view class="service-con">
+      <view class="size32">微信二维码</view>
+      <image class="qrcode" src="/images/server-qrcode.png" show-menu-by-longpress></image>
+      <view class="size24 gray">长按保存二维码</view>
+      <view class="wx-num">微信号</view>
+      <view class="gray">iAcroOfficial</view>
+      <view class="copy" data-text='iAcroOfficial' catchtap='copyText'>复制微信号</view>
+    </view>
+    <view class='btn-modal-group'>
+      <button class='btn-modal' catchtap='showService'>取消</button>
+      <button data-phone='13439570534' class='btn-modal btn-success' catchtap='makePhone'>拨打电话</button> 
+    </view>
+  </view>
+</view>
+<!-- 选择数量 -->
+<view class="filter-wrap" wx:if='{{showNumInput}}'>
+  <view class="change-num">
+    <view class="num-title">请输入购买数量</view>
+    <view class='shop_num'>
+      <image class='reduce circle' data-id='{{card.curCardOrderId}}' data-type='reduce' data-input='numInput' catchtap='goods_num' src='/images/icon-minus.png'></image>
+      <input class='num-input' type="number" bindinput="changeInput" value="{{inputValue}}"></input>
+      <image class='plus circle' data-input='numInput' data-id='{{curCardOrderId}}' data-type='plus' catchtap='goods_num' src='/images/icon-plus.png'></image>
+    </view>
+    <view class='btn-modal-group'>
+      <button class='btn-modal' catchtap='showNumInput'>取消</button>
+      <button class='btn-modal btn-success' catchtap='confirmNum'>确认</button> 
+    </view>
+  </view>
+</view>
+<Share id='share' shareparams='{{card}}' sharetype='card' />
+<!-- 弹窗信息 -->
+<BackendModal id='backendModal' modal='{{modal}}'/>

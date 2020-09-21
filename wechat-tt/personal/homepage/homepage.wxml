@@ -1,0 +1,103 @@
+<!--profile/pages/homepage/homepage.wxml-->
+<import src='/template/post.wxml'/>
+<view class='homepage'>
+  <view id='header'>
+    <view class="background-view">
+      <!-- <image class="head-bg" src="/images/banner.png"></image> -->
+      <image class='home-avatar' src='{{profile.avatar}}' mode='aspectFill'></image>
+      <view class="icon-group">
+        <!-- 分享 -->
+        <view catchtap='showShare' class="icon-opera icon-share">
+          <image src="/images/icon-share-white.png" mode="aspectFit"></image>
+        </view>
+        <!-- 右边 -->
+        <view>
+          <!-- 上传照片 -->
+          <view wx:if='{{isSelf}}' class="icon-opera icon-follow">
+            <image src="/images/icon-photo-white.png" mode="aspectFit"></image>
+          </view>
+          <!-- 关注好友 -->
+          <view class="icon-right" wx:else>
+            <view class="icon-opera icon-follow">
+              <image src="/images/icon-photo-white.png" mode="aspectFit"></image>
+            </view>
+            <view class="icon-opera icon-follow">
+              <image wx:if='{{profile.follow}}' class='btn-follow' catchtap='followCancel' src="/images/icon-followed.png" mode="aspectFit"></image>
+              <button wx:else open-type='getUserInfo' bindgetuserinfo='followHandle'>
+                <image src="/images/icon-follow.png" mode="aspectFit"></image>
+              </button>
+            </view>
+          </view>
+        </view>
+      </view>
+      
+    </view>
+    <view class='home-head'>      
+      <view class='home-name'>{{profile.nickname}}</view>
+      <!-- <view class='home-address' wx:if='{{profile.province}}'>{{profile.province}}</view> -->
+      <view class='home-info'>
+        <text>{{profile.followerCount}} 粉丝</text>
+        <text class='home-fans'>|</text>
+        <text>{{profile.followeeCount}} 关注</text>
+      </view> 
+      <!-- tabs -->
+      <view class="tabs">
+        <view catchtap='changeTab' class="tab {{curIndex==0?'active':''}}" data-index='0'>
+          <view class="tab-title">发布</view>
+        </view>
+        <view catchtap='changeTab' class="tab {{curIndex==1?'active':''}}" data-index='1'>
+          <view class="tab-title">参与</view>
+        </view>
+        <view catchtap='changeTab' class="tab {{curIndex==2?'active':''}}" data-index='2'>
+          <view class="tab-title">装备</view>
+        </view>
+        <view catchtap='changeTab' class="tab {{curIndex==3?'active':''}}" data-index='3'>
+          <view class="tab-title">活动</view>
+        </view>
+      </view>
+      <!-- tabs结束 -->
+    </view>
+      <!-- <view class='btn-group'>
+        <block wx:if='{{!isSelf}}'>
+          <button open-type='getUserInfo' bindgetuserinfo='followHandle' wx:if='{{!profile.follow}}' class='btn-follow'>+关注</button>
+          <button wx:if='{{profile.follow}}' class='btn-follow' catchtap='followCancel'>已关注</button>
+        </block>
+        <view catchtap='showShare' class='share-wrap {{isSelf?"":"isOther"}}'>
+          <image class='icon-group-share' src='/images/icon-share.png'></image>
+        </view>
+      </view> -->
+  </view>
+  <view class="slot"></view>
+  <view class='container'>
+    <view hidden='{{curIndex !== 0}}' class='home'>
+      <block wx:for='{{posts}}' wx:key='index'>
+        <!-- 长文 -->
+        <template wx:if='{{item.postType == "LONGTEXT"}}'  is='longText1' data='{{...item,isFrom}}'/>
+        <!-- 短文 -->
+        <template wx:if='{{item.postType=="TEXT"}}' is='shortText1' data='{{...item,isFrom}}'/>
+        <!-- 视频 -->
+        <template wx:if='{{item.postType=="VIDEO"}}' is='video1' data='{{...item,isFrom}}'/>
+      </block>
+        <view wx:if='{{posts.length>0}}' class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+      <view wx:if='{{profile.postCount<1}}' class='empty-wrap'>
+        <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+        <view>暂无内容</view>
+      </view>
+    </view>
+    <view hidden='{{curIndex !== 1}}' class='clubs'>
+      参与 
+    </view>
+    <view hidden='{{curIndex !== 2}}' class='trends'>
+      装备
+      <block wx:for='{{equipList}}' wx:key='index'>
+        <template is='equip' data='{{...item,curUserId}}'/>
+      </block>
+    </view>
+    <view hidden='{{curIndex !== 3}}' class='fans'>
+      <!-- event模板 -->
+      <template is='event' data='{{eventList}}' />
+    </view>
+  </view>
+</view>
+<!-- 分享 -->
+<Share id='share' shareparams='{{profile}}' sharetype='profile'/>

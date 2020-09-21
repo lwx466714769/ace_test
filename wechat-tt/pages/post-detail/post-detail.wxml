@@ -1,0 +1,190 @@
+<import src="/utils/wxParse/wxParse.wxml"/>
+<view wx:if='{{post}}'>
+  <view class='del-detail-con' wx:if='{{post.deleted}}'>
+    <image class='del-detail-img' src='/images/post-del.png'></image>
+    <view>内容已被删除</view>
+  </view>
+  <view wx:else class='detail' id='detail'>
+    <view wx:if='{{fromScene&&detailHeight<=750&&post.clubs[0].clubId}}' style='position:static' class='back-club'>
+      <view class='club-left'>
+        <image class='club-logo' src='{{post.clubs[0].clubLogo}}'></image>
+        <view>{{post.clubs[0].clubName}}</view>
+      </view>
+      <navigator class='back-club-font' open-type='switchTab' url='/pages/index/index?clubId={{post.clubs[0].clubId}}'>返回该俱乐部首页</navigator>
+    </view>
+    <view wx:if='{{post.postType=="VIDEO"}}' class='img-video-wrapper'>
+      <video class='video' poster='{{post.videoOne.extra.cover}}' id='v_pos{{post.videoOne.pos}}' src='{{post.videoOne.content}}' bindplay='playVideo' direction='0' bindfullscreenchange='exitFullScreen' />
+    </view>
+    <block wx:if='{{post.postType=="LONGTEXT"}}'>
+      <image class='post-headimg' src='{{post.cover}}' mode='widthFix' catchtap='preview' data-url='{{post.cover}}' data-imgs='{{post.contents}}'/>
+    </block>
+    <view class='header'>
+      <view class='profile'>
+        <view class='head-left'>
+          <image src='{{post.userInfo.userLogo}}' class='head'></image>
+          <image wx:if='{{post.userInfo.userIdentity == "FOUNDER"}}' class='icon-identity' src='/images/icon-master.png'></image>
+          <image wx:elif='{{post.userInfo.userIdentity == "SUPER"}}' class='icon-identity' src='/images/icon-super.png'></image>
+          <image wx:elif='{{post.userInfo.userIdentity == "MEDIA"}}' class='icon-identity' src='/images/icon-media.png'></image>
+        </view>
+        <view class='profile-info'>
+          <text class='nickname'>{{post.userInfo.userName}}</text>
+          <!-- <view class='fans'><text>粉丝 {{profile.followerCount}}</text>
+          关注 {{profile.followeeCount}}
+          </view> -->
+        </view>
+        <!-- <block wx:if='{{profile.userId != userId}}'>
+          <button  wx:if='{{profile.follow}}' class='btn-follow' catchtap='followCancel'>已关注</button>
+          <button open-type='getUserInfo' bindgetuserinfo='followHandle' wx:else class='btn-follow'>关注</button>
+        </block> -->
+      </view>
+      <view class='content detail-content'>
+        <text selectable='true' wx:if='{{post.postType!="TEXT"}}' class='post-title'>{{post.title}}</text>
+        <block wx:for='{{post.contents}}' wx:key="index">
+          <view wx:if='{{item.type=="TIME"}}' class='from'>
+            <view class='from-date'>{{item.content}}
+              <!-- <block wx:if='{{clubId&&clubId!=0||post.clubInfo.clubId!="null"}}'><text>发布于</text><navigator class='post-club' open-type='switchTab' url='/pages/index/index?clubId={{clubId||post.clubInfo.clubId}}'>{{clubName||post.clubInfo.clubName}}</navigator>
+              </block> -->
+            </view>
+            <image class='del-post' wx:if='{{userId==post.userInfo.userId}}' src='/images/icon-del.png' catchtap='delPost' mode='aspectFit'></image>
+            <!-- <button open-type='getUserInfo' bindgetuserinfo='report' wx:else class='report' data-id='{{post.postId}}'>举报</button> -->
+          </view>
+          <block wx:elif='{{index!=0&&item.type === "TEXT"||item.type === "SUMMARY"}}'>
+            <text selectable='true' decode="true" class='post_summary'>{{item.content}}</text>
+          </block>
+          <text wx:if='{{index ==1&& post.postType =="TEXT"}}' class='post_text' decode="true">{{post.title}}</text>
+          <block wx:elif='{{item.type === "IMAGE"&&post.postType!="LONGTEXT"}}' >
+            <image class='post_img' src='{{item.content}}' mode='widthFix' catchtap='preview' data-url='{{item.content}}' data-imgs='{{post.contents}}'/>
+            <text class='post_text' decode="true" wx:if='{{item.extra.desc}}'>{{item.extra.desc}}</text>
+          </block>
+          <view wx:elif='{{item.type === "VIDEO"}}' class='img-video-wrapper'>
+            <block wx:if='{{post.postType=="VIDEO"&&item.post!=post.videoOne.pos}}'>
+              <view wx:for='{{post.videoOther}}' wx:key='index'>
+                <video hidden='{{imgVideoMap[index]}}' class='video' poster='{{item.extra.cover}}' id='v_pos{{item.pos}}' src='{{item.content}}' bindplay='playVideo' direction='0' bindfullscreenchange='exitFullScreen' />
+                <view hidden='{{!imgVideoMap[index]}}'>
+                  <image src='{{item.extra.cover}}' class='item video' mode='aspectFit' />
+                  <image src='/images/icon-play_white.png' class='icon-play' />
+                </view>
+              </view>
+            </block>
+            <block wx:else>
+              <video hidden='{{imgVideoMap[index]}}' class='video' poster='{{item.extra.cover}}' id='v_pos{{item.pos}}' src='{{item.content}}' bindplay='playVideo' direction='0' bindfullscreenchange='exitFullScreen' />
+              <view hidden='{{!imgVideoMap[index]}}'>
+                <image src='{{item.extra.cover}}' class='item video' mode='aspectFit' />
+                <image src='/images/icon-play_white.png' class='icon-play' />
+              </view>
+              <text class='post_text' decode="true" wx:if='{{item.extra.desc}}'>{{item.extra.desc}}</text>
+            </block>
+          </view>
+
+          </block>
+        <view wx:if='{{post.postType=="LONGTEXT"}}'>
+          <template is='wxParse' data='{{wxParseData:article.nodes}}'/>
+        </view>
+      </view>
+    </view>
+    <!--<view wx:if='{{post.postType=="LONGTEXT"}}'>-->
+      <!--<template is='wxParse' data='{{wxParseData:article.nodes}}'/>-->
+    <!--</view>-->
+    <view wx:if='{{reads.length>0}}' class='chunk'></view>
+    <!-- 推荐阅读 -->
+    <view class='read' wx:if='{{reads.length>0}}'>
+      <view class='head_title'>推荐阅读</view>
+      <block wx:if='{{reads.length>0}}'>
+        <view class='read_list' wx:for='{{reads}}' wx:key="index" data-id='{{item.postId}}' catchtap='goPostsDetail'>
+        <view class='list_con'>
+          <view class='list_top'>
+            {{item.title}}
+          </view>
+          <view class='list_bot'>
+            <view>{{item.date}}</view>
+            <view>{{item.time}}</view>
+          </view>
+        </view>
+        <image class='list_img' src='{{item.cover}}'/>
+      </view>
+      </block>
+      <view wx:else class='empty_comment'>暂无推荐</view>
+    </view>
+    <view class='chunk'></view>
+    <!-- 精彩评论 -->
+    <view class='head_title'>评论</view>
+    <view class='comment' wx:if='{{comments.length>0}}'>
+      <block wx:if='{{comments.length>0}}'>
+      <view class='comment_list' wx:for='{{comments}}' wx:key='index'>
+        <view>
+          <image src='{{item.userLogo}}' class='comment_head'></image>
+        </view>
+        <view class='comment_con'>
+          <view class='name'>{{item.userName}}</view>
+          <view class='con'>
+            <!--<block wx:for='{{item.contents}}' wx:for-item='list' wx:key='list_{{index}}'>-->
+              <!--<text wx:if='{{list.type === "TEXT"}}'>{{list.content}}</text>-->
+              <!--</block>-->
+              <!--<block wx:for='{{item.contents}}' wx:for-item='list' wx:key='list_{{index}}'>-->
+              <!--<image wx:if='{{list.type === "IMAGE"}}' data-url='{{list.content}}' data-imgs='{{item.contents}}' catchtap='preview' src='{{list.content}}' mode='aspectFill'/>-->
+            <!--</block>-->
+            <text>{{item.contents}}</text>
+            <view class='comment-img-list'>
+              <image wx:for='{{item.images}}' wx:for-item='list' wx:key='list_index' class='comment-img' data-url='{{list}}' data-imgs='{{item.images}}' catchtap='preview' src='{{list}}' mode='aspectFill'/>
+            </view>
+          </view>
+          <view class='center'>
+            <view class='time'>{{item.createAt}}</view>
+            <!-- <view class='operation'>
+              <view class='like'>
+                <image src='/images/icon-star.png'></image>222
+              </view>
+              <view class='msg'>
+                <image src='/images/icon-reply.png'></image>333
+              </view>
+            </view> -->
+            <view wx:if='{{item.userId==userId}}' catchtap='delComment' data-id='{{item.replyId}}' class='del-comment'>
+              <image class='del-post' src='/images/icon-del.png' ></image>
+              <view class='del'>删除</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      </block>
+      <view class='show_all' wx:if='{{comments.length>0}}'>{{showAll?'已到最后':'加载中...'}}</view>
+    </view>
+    <view wx:else class='empty-wrap'>
+      <image class='icon-empty-default' src='/images/icon-comment.png'></image>
+      <view>暂无评论</view>
+    </view>
+    <!-- <view class='footer'>
+      <view class='operation-group'>
+        <button class='operation-view' data-type='LIKE' open-type='getUserInfo' bindgetuserinfo='postLikeEvent'>
+          <image mode="aspectFit" class='icon-share' src='/images/{{post.like?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+          <view class="operation-num">{{post.likeCount>0?post.likeCount:''}}</view>
+        </button>
+        <view class='operation-view' data-type='post' catchtap='showShare'>
+          <image class='icon-share' mode="aspectFit" src='/images/icon-share-profile.png'></image>
+          <view class="operation-num">{{post.shareNumberK>0?post.shareNumberK:""}}</view>
+        </view>
+      </view>
+      <view class='btn-group'>
+        <button open-type='getUserInfo' bindgetuserinfo='goComment' class='btn btn-join'>评论</button>
+      </view>
+    </view> -->
+    <!-- footer -->
+    <view class='footer'>
+      <view class="btn-group">
+        <button data-type='LIKE' open-type='getUserInfo' bindgetuserinfo='postLikeEvent' class="btn-small">{{post.likeNumberVO.collectionState?"已收藏":"收藏"}}</button>
+        <button data-type='post' catchtap='showShare' class='btn-big'>分享</button>
+      </view>
+    </view>
+  </view>
+</view>
+<Share id='share' shareparams='{{post}}' sharetype='post' bindshareNum='shareNumTrigger'/>
+<view wx:if='{{fromScene}}' class='{{showBackClub?"animation":"animation1"}}'>
+  <view class='back-club'>
+    <view class='club-left'>
+      <image class='club-logo' src='{{post.clubs[0].clubLogo}}'></image>
+      <view>{{post.clubs[0].clubName}}</view>
+    </view>
+    <navigator class='back-club-font' open-type='switchTab' url='/pages/index/index?clubId={{post.clubs[0].clubId}}'>返回该俱乐部首页</navigator>
+  </view>
+</view>
+<canvas canvas-id="myCanvas" style="position:absolute;left:-200%;width:100%;height:420rpx;"></canvas>
+

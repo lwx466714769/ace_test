@@ -1,0 +1,27 @@
+<!--event/upload-event/upload-event.wxml-->
+<view class="upload-event">
+  <view class='equip-img-wrap'>
+    <image wx:if='{{data.coverImg.url}}' class='equip-img' src='{{data.coverImg.url}}' mode='aspectFill'></image>
+    <image wx:if='{{data.coverImg.url}}' class='img-close' catchtap='delBackground' src='/images/icon-close.png'></image>
+    <view catchtap='uploadBackground'  class='change-photo'>
+      {{data.coverImg.url?"":"点击上传封面图片"}}
+    </view>
+  </view>
+  <view class='title'>活动标题</view>
+  <input class='input' value="{{data.activityName}}" bindinput='changeName' placeholder='在这里输入活动标题'></input>
+  <view class='title'>活动介绍</view>
+  <textarea class='area' value="{{introduce}}" bindinput='changeIntro' placeholder='在这里输入活动介绍'></textarea>
+  <view class="event-img">
+    <!-- <view class="img-title">活动图片 <text class="img-title-text">限9张</text></view> -->
+    <view class='img-wrap'> 
+      <view wx:for='{{images}}' wx:key='index' class='wx-img-box'>
+        <image src='{{item}}' class='wx-img-item' mode='aspectFill'></image>
+        <image class='img-close' catchtap='delImages' data-index='{{index}}' src='/images/icon-close.png'></image>
+      </view>
+      <image wx:if='{{images.length<9}}' class='wx-img-bg' bindtap='addImages' src='/images/icon-add-bg.png'></image>
+    </view>   
+  </view>
+</view>
+<view class='footer'>
+  <view class='button' catchtap='submit'>下一步</view>
+</view>

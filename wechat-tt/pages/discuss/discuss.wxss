@@ -1,0 +1,526 @@
+/* pages/discuss/discuss.wxss */
+/* pages/club/club.wxss */
+@import '../../template/post.wxss';
+/* .posts{
+  position: relative;
+  top: 86rpx;
+} */
+button{
+  font-size: 28rpx;
+  background: none;
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+.empty-wrap{
+  margin-top: 150rpx;
+}
+.club{
+  padding-bottom: 120rpx;
+  width: 100%;
+  overflow-x: hidden;
+}
+.head{
+  position: relative;
+}
+.bg{
+  width: 100%;
+  height: 300rpx;
+  background: #000;
+}
+.info-wrap{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 130rpx;
+  position: relative;
+  margin:0 30rpx 20rpx 230rpx;
+}
+.logo{
+  width: 160rpx;
+  height: 160rpx;
+  border:solid 2rpx #fff;
+  border-radius: 50%;
+  margin-right: 40rpx;
+  position: absolute;
+  top: 258rpx;
+  left: 30rpx;
+}
+.name{
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+.address{
+  color: #666;
+}
+.info{
+  flex: 1;
+}
+/* 数量统计 */
+.count-list{
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 80rpx;
+  padding-left: 40rpx;
+  padding-bottom: 14rpx;
+  position: relative;
+}
+.count-list .count-item{
+  margin-right: 82rpx;
+  display:flex;
+  align-items:center;
+}
+.icon-count{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 10rpx;
+}
+.album{
+  padding: 10rpx 40rpx 10rpx 34rpx;
+  color: #fff;
+  border-radius: 25rpx;
+  background: #000;
+  position: absolute;
+  right: -20rpx;
+  top: 4rpx;
+  display: flex;
+  align-items: center;
+}
+.icon-album{
+  width: 33rpx;
+  height: 27rpx;
+  margin-right: 12rpx;
+}
+/* 导航 */
+.club-tab{
+  position: relative;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-search{
+  display: inline;
+}
+.tab-icon{
+  width: 32rpx;
+  height: 32rpx;
+  margin-left: 30rpx;
+}
+.scroll{
+  width: 600rpx;
+  white-space: nowrap;
+  overflow: hidden; 
+}
+/* .opacity{
+  position: absolute;
+  right: 0;
+  top: 14rpx;
+  width: 220rpx;
+  height: 48rpx;
+  background: linear-gradient(left,transparent,white);
+  background: -webkit-linear-gradient(left,transparent,white);
+} */
+.tab-item{
+  color: #aaa;
+  margin-right: 44rpx;
+  display: inline-block;
+  padding: 6rpx 0;
+  font-size: 32rpx;
+}
+.active{
+  font-size: 32rpx;
+  color: #000;
+  position: relative;
+  font-weight: bold;
+}
+.active:after{
+  content:'';
+  height: 4rpx;
+  width: 20rpx;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(49,140,247);
+}
+.introduction-wrap{
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.8);
+  z-index: 200;
+}
+.introduction{
+  width: 640rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #fff;
+  text-align: center;
+}
+.intro-logo{
+  width: 640rpx;
+  height: 360rpx;
+}
+.intro-name{
+  font-size: 44rpx;
+  margin-top: 28rpx;
+  position: relative;
+  display: inline-block;
+}
+.intro-name .left{
+  position: absolute;
+  left: -50rpx;
+  top: -20rpx;
+}
+.intro-name .right{
+  position: absolute;
+  right: -50rpx;
+  bottom: -20rpx;
+}
+.intro-btn{
+  color: rgb(126,211,33);
+  font-size: 32rpx;
+  margin-top: 64rpx;
+}
+.intro-close{
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 54rpx;
+  border-radius: 50%;
+  color: rgb(123,123,123);
+  border: solid 4rpx rgb(123,123,123);
+  position: absolute;
+  top: 680rpx;
+  left: 50%;
+  margin-left: -30rpx;
+  font-size: 54rpx;
+  text-align: center;
+}
+.block{
+  padding: 30rpx 0;
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 2rpx rgb(242, 242, 242);
+  align-items: center;
+  font-size: 32rpx;
+}
+.tab-con-wrap{
+  width: 100%;
+  overflow-x: hidden;
+}
+.information{
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+/* 卡券 */
+.all{
+  position: absolute;
+  top:44rpx;
+  right: 68rpx;
+  color: rgb(59, 148, 253);
+}
+.icon-upload{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  right: 60rpx;
+  font-size: 24rpx;
+}
+.upload-close{
+  bottom: 180rpx;
+  font-size: 36rpx;
+}
+.upload-pictext{
+  bottom: 580rpx;
+}
+.upload-video{
+  bottom: 480rpx;
+}
+.upload-party{
+  bottom: 380rpx;
+}
+.upload-vote{
+  bottom: 280rpx;
+}
+
+.icon-font{
+  width: 74rpx;
+  height: 74rpx;
+  line-height: 72rpx;
+  border: solid 2rpx #666;
+  border-radius: 50%;
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.icon-join{
+  width: 112rpx;
+  height: 112rpx;
+  position: fixed;
+  right: 40rpx;
+  bottom: 180rpx;
+  z-index: 2;
+}
+.icon-join image{
+  width: 112rpx;
+  height: 112rpx;
+}
+/* 筛选 */
+.filter-wrap{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 200;
+  width:100%;
+  background: rgba(0,0,0,.5);
+}
+.filter-type{
+  width: 100%;
+  height: 452rpx;
+  background: #fff;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+}
+.filter-title{
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.filter-list{
+  height: 350rpx;
+  overflow-y: scroll;
+}
+.filter-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40rpx;
+}
+.checked{
+  width: 40rpx;
+  height: 40rpx;
+}
+/* 推荐 */
+.recommend{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 38rpx;
+}
+.left-img{
+  width: 456rpx;
+  height: 258rpx;
+  border-radius: 8rpx;
+}
+.left-img image{
+  width: 456rpx;
+  height: 258rpx;
+  border-radius: 8rpx;
+  display: block;
+}
+.right-img{
+  width: 214rpx;
+  height: 118rpx;
+  border-radius: 8rpx;
+}
+.right-img image{
+  width: 214rpx;
+  height: 119rpx;
+  border-radius: 8rpx;
+  display: block;
+}
+.right-img image:first-child{
+  margin-bottom: 20rpx;
+}
+.welfare{
+  display: flex;
+  margin-top: 30rpx;
+  border-bottom: solid 2rpx rgb(242, 242, 242);
+  padding-bottom: 30rpx;
+}
+.welfare-img{
+  width: 256rpx;
+  height: 144rpx;
+  margin-right: 20rpx;
+}
+.welfare-info{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.welfare-title{
+  font-size: 32rpx;
+  max-height: 88rpx;
+  text-overflow: ellipsis;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  line-height: 44rpx;
+}
+.welfare-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24rpx;
+  color: #aaa;
+}
+.welfare-name{
+  flex: 1;  
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 40rpx;
+}
+.welfare-init{
+  color: #aaa;
+  text-decoration: line-through;
+}
+.welfare-price{
+  text-align: right;
+  font-size: 36rpx;
+  color: #f00;
+}
+.welfare-price text{
+  font-size: 28rpx;
+}
+.welfare-type{
+  color: #f00;
+  font-size: 24rpx;
+  border-radius: 24rpx;
+  width: 84rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  text-align: center;
+  border:solid 2rpx #f00;
+}
+/* 创建成功 */
+.create-wrap{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.7);
+  z-index: 999;
+}
+.share-circle{
+  width:140rpx;
+  height:140rpx;
+  top:420rpx;
+  left:280rpx;
+  background:#fff;
+  border-radius:50%;
+  position:absolute;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.share-arrow{
+  position: absolute;
+  top: 596rpx;
+  left: 176rpx;
+  color: #fff;
+  font-size: 32rpx;
+  text-align: center;
+}
+.success-text{
+  width: 416rpx;
+  margin: 90rpx auto;
+  font-size: 28rpx;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.icon-suc{
+  width: 96rpx;
+  height: 116rpx;
+  margin-right: 30rpx;
+}
+.suc{
+  font-size: 38rpx;
+}
+
+/* 攒局样式 */
+.party{
+  margin: 30rpx;
+  box-shadow: 0 2rpx 6rpx rgb(220,220,220);
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx;
+}
+.party-img{
+  width: 256rpx;
+  height: 144rpx;
+  border-radius: 8rpx;
+  margin-left: 20rpx;
+}
+.party-content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.party-title{
+  font-size: 32rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  max-height: 88rpx;
+  line-height: 44rpx;
+  margin-bottom: 24rpx;
+}
+.party-info{
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+}
+/* 高级会员卡 */
+.member-card{
+  width: 100%;
+  position: relative;
+  border-radius: 8rpx;
+  overflow: hidden;
+  border-bottom: solid 2rpx rgb(242, 242, 242);
+  margin-top: 30rpx;
+}
+.member-background{
+  width: 100%;
+  height: 144rpx;
+  border-radius: 8rpx;
+}
+.member-name{
+  width: 100%;
+  height: 144rpx;
+  position: absolute;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  font-size: 32rpx;
+  line-height: 144rpx;
+  text-align: center;
+  left: 0;
+  top: 0;
+  border-radius: 8rpx;
+}

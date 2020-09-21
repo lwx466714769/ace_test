@@ -1,0 +1,8 @@
+<!--shop/completecard/completecard.wxml-->
+<view class= 'wrap'>
+  <image src="/images/icon-success.png"></image>
+  <view class='text'>{{checked=="true"?"申请成功":"购买成功"}}</view>
+  <view wx:if='{{checked=="true"}}' class='sub'>等待主理人审核</view>
+  <view class='buttontop' catchtap="goCard">查看订单</view>
+  <view class='buttonbottom' catchtap="goClub">返回首页</view>
+</view>

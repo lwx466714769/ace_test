@@ -1,0 +1,28 @@
+<view class='member-wrap' wx:if='{{isShow}}'>
+  <view class='member'>
+    <view>报名信息</view>
+    <view class='memberline'></view>
+     <view class='member-con' wx:for='{{signItem}}' wx:key='index'>
+      <view class='itemPart' wx:if='{{item.type === "TEXT"}}'>
+        <input data-name='{{item.name}}' placeholder='请输入{{item.name}}' bindinput='applyUser' value='{{item.value}}'></input>
+      </view>
+      <view class='itemPart' wx:if='{{item.type === "NUMBER"}}'>
+        <input data-name='{{item.name}}' type='number' placeholder='请输入{{item.name}}' bindinput='applyUserPhone' value='{{item.value}}'></input>
+      </view>
+      <view class='itemParts' wx:if='{{item.type === "IMAGE"}}'>
+        <view class='carImg' data-name='{{item.name}}' catchtap='upLoadFront'>
+          <view class='pic-bg' wx:if='{{item.value == ""}}'>
+                <view class='bg-add'></view>
+                <view class='text'>点击上传{{item.name}}</view>
+          </view>
+          <image wx:else mode='aspectFill' src='{{item.value}}'></image>
+        </view>
+      </view>
+    </view>
+    <view class='member-btns'>
+      <button catchtap="toDelete" class='btn'>删除</button>
+      <view class='btnline'>|</view>
+      <button catchtap='identificationMsg' class='btn'>保存</button>
+    </view>
+  </view>
+</view>

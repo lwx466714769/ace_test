@@ -1,0 +1,90 @@
+<!--game/party/party.wxml-->
+<view class='party'>
+  <view class="header">
+    <view class="header-name">投票主题</view>
+    <image wx:if='{{!background}}' mode="aspectFit" catchtap='uploadImage' class="icon-background" src="/images/icon-photo-upload.png"></image>
+  </view> 
+  <view wx:if='{{background}}' class="background-view">
+    <image class='upload-img' src='{{background}}' mode='aspectFill'></image>
+    <image catchtap="delBackground" src="/images/icon-close.png" class="icon-close"></image>
+  </view>
+  <textarea class='area' bindinput='changeVoteName' placeholder='在这里输入投票主题'></textarea>
+  <!-- <view class='padding-border upload-background' catchtap='uploadImage'>
+    <view class='title'>上传封面</view>
+    <view class='upload-right'>
+      <image class='upload-img' src='{{background}}' mode='aspectFill'></image>
+      <view class='arrow'></view>
+    </view>
+  </view> -->
+  <!-- <view class='padding-border party-types'>
+    <view class='title'>投票选择类型</view>
+      <view class='text24'>如选择包含文字及图片，则每个选项需至少上传1张图片</view>
+    <view class='types'>
+      <view catchtap='changeVoteType' data-type='WORD' class='party-type {{voteItemType=="WORD"?"active":""}}'>
+        <image class='type-img' src='/images/icon-date.png'></image>
+        <view>仅文字</view>
+      </view>
+      <view catchtap='changeVoteType' data-type='WORDIMAGE' class='party-type {{voteItemType=="WORDIMAGE"?"active":""}}'>
+        <image class='type-img' src='/images/icon-date.png'></image>
+        <view>文字和图片</view>
+      </view>
+    </view>
+  </view> -->
+  <!-- 投票选项 -->
+  <view class='party-date'>
+    <view class='title'>投票选项</view>
+    <view catchtap='toVoteItem' data-index='{{index}}' wx:for='{{voteItemType=="WORDIMAGE"?wordImgList:wordList}}' wx:key='index' class='vote-type'>
+      <view class='vote-type-name'>
+        <view class="vote-index">{{index+1}}</view>
+        <image wx:if='{{item.voteItemImage[0]}}' class='vote-img' mode='aspectFill' src='{{item.voteItemImage[0]}}'></image>
+        <view class='type-name'>{{item.voteItemStr}}</view>
+      </view>
+      <image data-index='{{index}}' class='icon-change' src='/images/jian@3x.png' catchtap='delVoteItem'></image>
+    </view>
+    <!-- wx:if='{{voteItemType=="WORDIMAGE"?wordImgList.length<10:wordList.length<10}}' -->
+    <view class='add-item-type' catchtap='addVoteItem'>
+      <view>点击添加一个投票项</view> 
+      <image class='icon-change' src='/images/jia@3x.png'></image>
+    </view>
+  </view>
+  <view class="title">投票设置</view>
+  <view class="set">
+    <picker mode='multiSelector' value='{{dateTime}}' bindchange='changeExpire'  bindcolumnchange="bindColumnChange" range='{{dateTimeArray}}' class='set-block expire' start='2019-05-23'>
+      <view class='left'>投票有效期</view>
+      <view class='right'>
+          <text>{{joinEndTime?joinEndTime:"请选择"}}</text>  
+          <view class='arrow'></view>
+        </view>
+    </picker>
+    <view class="set-block">
+      <view class="left">可投选项数量</view>
+      <view class="right">
+        <input class='input' value='{{maxSelectItem}}' bindinput='changeMaxSelect' type='number' placeholder='请输入大于0的整数'></input>
+        <view class='arrow'></view>
+      </view>
+    </view>
+    <view class="set-block">
+      <view class="left">仅限会员投票</view>
+      <view class="right">
+        <switch class="switch" bindchange="switchMember"></switch>
+      </view>
+    </view>
+    <view class="set-block">
+      <view class="left">投票前查看投票结果</view>
+      <view class="right">
+        <switch class="switch" bindchange="switchResult"></switch>
+      </view>
+    </view>
+  </view>
+  
+  <!-- <view catchtap='goVoteSet' class='padding-border party-block'>
+    <view class='title'>高级设置</view>
+    <view class='change'>
+      <view></view>
+      <view class='arrow'></view>
+    </view>
+  </view> -->
+</view>
+<view class='footer'>
+  <view class='button' catchtap='submit'>发布</view>
+</view>

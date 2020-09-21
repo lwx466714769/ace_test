@@ -1,0 +1,52 @@
+<!--event/event-program/event-program.wxml-->
+<view class='event-program'>
+  <view class='program-list'>
+    <block wx:for='{{program}}' wx:for-item='stage' wx:key='index'>
+      <view class='program-item'>
+        <view class='program-block program-head'>
+          <view class='program-title'>活动项目:</view>
+          <view class='program-con'>{{stage.stageName}}</view>
+        </view>
+        <!-- 阶段列表开始 -->
+        <view wx:for='{{stage.activityGroupVOS}}' wx:for-item='group' wx:key='group' class='stage-list'>
+          <view class='program-block'>
+            <view class='program-title'>具体内容:</view>
+            <view class='program-con'> {{group.groupName}}</view>
+          </view>
+          <!-- 分组列表开始 -->
+          <view class='group-list'>
+            <view wx:for='{{group.activityGoodVOS}}' wx:for-item='item' wx:key='item' class='group-item'>
+              <view class='group-name'>{{item.goodName}}</view>
+              <view class='group-number'>
+                <view class='group-price'>{{item.price==0?"免费":'￥'+item.price/100}}<text class='init-price' wx:if='{{item.price!=item.initPrice}}'>原价 <text>{{item.initPrice}}</text></text></view>
+                <view class='nums'>
+                  <view class="inventory {{item.inventoryState?'red':''}}">剩余 {{item.inventory}}</view>
+                  <view wx:if='{{item.count==0}}' class='btn-num minus btn-gray'>-</view>
+                  <view wx:else class='btn-num minus' 
+                    data-stage-id='{{group.stageId}}' 
+                    data-group-id='{{group.groupId}}' 
+                    data-good-id='{{item.goodId}}' 
+                    catchtap='changeNumber' data-type='minus'>-</view>
+                  <view class='number'>{{item.count}}</view>
+                  <view class='btn-num add' 
+                    data-stage-id='{{group.stageId}}' 
+                    data-group-id='{{group.groupId}}' 
+                    data-good-id='{{item.goodId}}' 
+                    catchtap='changeNumber' data-type='add'>+</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <!-- 分组列表结束 -->
+        </view>
+        <!-- 阶段列表结束 -->
+      </view>
+      <view class='slot'></view>
+    </block>
+    <!-- 项目列表结束 -->
+  </view>
+</view>
+<view class='footer'>
+  <view class='total'>合计：<text class='red'>￥{{finalPrice/100}}</text></view>
+  <button class='button btn-pay' catchtap='submit'>立即支付</button>
+</view>

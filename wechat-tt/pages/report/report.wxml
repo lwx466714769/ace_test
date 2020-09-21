@@ -1,0 +1,21 @@
+<!--pages/report/report.wxml-->
+<view class='report-wrap'>
+  <view class='input-wrap'>
+    <view class='title'>问题说明</view>
+      <!-- <input class='input' bindinput='modifyInput' type='text' placeholder='举报原因'></input> -->
+      <textarea class='textarea' bindinput='modifyArea' placeholder='问题描述...'></textarea>
+  </view> 
+  <view class='title'>上传证据 （{{images.length}}/9）</view>
+  <view class='info'>提交截屏和聊天记录有助于小二帮您解决问题</view>
+  <view class='img-wrap'> 
+    <view wx:for="{{images}}" wx:key="preview_{{index}}" class='wx-img-box {{fail ? "fail" : ""}}'>
+      <image src='{{item}}' class='wx-img-item' mode='aspectFill'>
+      </image>
+      <image class='img-close' catchtap='delImages' data-index='{{index}}' src='/images/icon-close.png'></image> 
+    </view>
+    <image wx:if="{{images.length<9}}" class='wx-img-bg' catchtap='addImages' src='/images/icon-add-bg.png'></image>
+  </view>  
+</view>
+<view class='footer'>
+  <button class='button' catchtap="submit">提交</button>
+</view>

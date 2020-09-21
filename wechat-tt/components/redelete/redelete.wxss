@@ -1,0 +1,78 @@
+.member-wrap{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 750rpx;
+  background: rgba(255, 255, 255, .5);
+  display: flex;
+  align-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+.member{
+  width: 100%;
+  background: white;
+  box-sizing: border-box;
+  padding: 40rpx;
+  margin: 0 auto;
+  box-shadow: 2rpx 2rpx 8rpx rgba(59, 59, 59, .5);
+}
+.member>view{
+  text-align: left;
+  color: #2a2a2a;
+  font-size: 28rpx;
+}
+.memberline{
+  width: 40rpx;
+  height: 4rpx;
+  background: black;
+  margin-top: 24rpx; 
+}
+.member .member-con{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 60rpx 0 134rpx; 
+}
+.member-btns{
+  display: flex;
+  margin: 0 auto;
+  border-top: 3rpx solid #2a2a2a; 
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.btn,.btnline{
+  color: white;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  font-weight: lighter;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+.btnline{
+  background: #2a2a2a;
+  width: 3rpx;
+}
+.btn{
+  width: 49%;
+}
+button::after{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.line{
+  width: 50rpx;
+  height: 3rpx;
+  background: #2a2a2a;
+  margin-left: 30rpx;
+  margin-top: 20rpx;  
+}
+.button-hover{
+  background: #2a2a2a;
+} 

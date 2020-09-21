@@ -1,0 +1,19 @@
+<!--components/backend-modal/backend-modal.wxml-->
+<view class='show-login-wrap' wx:if='{{show}}' catchtap="hide">
+  <view class='show-login'>
+    <view class='modal-content'>
+    <!-- {{con}} -->
+    <view wx:for='{{modal.modalCon}}' wx:key='index'>
+      {{item}}
+    </view>
+    <!-- <view>请登录club.acegear.com</view>
+    <view>管理您的俱乐部</view> -->
+    </view>
+    <view class='btn-modal-group'>
+      <button hidden='{{modal.hideCancel}}' class='btn-modal' catchtap='cancelFn'>{{modal.cancelText||'取消'}}</button>
+      <!-- <button class='btn-modal btn-success' catchtap='copyText' data-text='clubadmin.acegear.com'>复制</button> -->
+      <button class='btn-modal btn-success' catchtap='confirmFn'>{{modal.confirmText||'确认'}}</button> 
+    </view>
+  </view>
+</view>
+

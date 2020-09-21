@@ -1,0 +1,14 @@
+<view class='member-wrap' catchtap='selectHIde' wx:if='{{!isShow}}'>
+  <view class='member'>
+    <view style=''>提示</view>
+    <view class='line'></view>
+    <view class='member-con'>
+      您确认要删除此卡券吗？
+    </view>
+    <view class='member-btns' style='background: #2a2a2a;'>
+      <button class='btn' hover-class='btn-hover' catchtap='reSubmit'>取消</button>
+      <view class='btnline'>|</view>
+      <button catchtap='deleteCard' hover-class='btn-hover' class='btn'>删除</button>
+    </view>
+  </view>
+</view>

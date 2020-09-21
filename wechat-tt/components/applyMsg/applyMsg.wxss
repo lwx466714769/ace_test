@@ -1,0 +1,124 @@
+.member-wrap{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 750rpx;
+  background: rgba(255, 255, 255, .5);
+  display: flex;
+  align-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+}
+.member{
+  width: 750rpx;
+  background: white;
+  box-sizing: border-box;
+  padding: 40rpx;
+  box-shadow: 2rpx 2rpx 8rpx rgba(59, 59, 59, .5);
+}
+.itemPart{
+  margin-top: 24rpx; 
+  background: rgba(59,59,59, 0.1);
+  height: 80rpx;
+}
+.itemPart input{
+  width: 100%;
+  height: 80rpx;
+  border: 0;
+  margin: 0;
+  padding-left: 20rpx; 
+  line-height: 80rpx;
+  font-weight: lighter;
+  text-align: left;
+  font-size: 28rpx;
+}
+.itemParts .carImg{
+  width: 100%;
+  height: 336rpx;
+  margin-top: 24rpx; 
+  background: rgba(59,59,59, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+.carImg image{
+  width: 100%;
+  height: 100%;
+}
+.member>view{
+  text-align: left;
+  color: #2a2a2a;
+  font-size: 28rpx;
+}
+.memberline{
+  width: 40rpx;
+  height: 4rpx;
+  background: black;
+  margin-top: 24rpx; 
+}
+.member .member-con{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 30rpx; 
+}
+.member-btns{
+  display: flex;
+  width: 100%;
+}
+.btn,.btnline{
+  color: white;
+  height: 84rpx;
+  line-height: 84rpx;
+  text-align: center;
+  background: #2a2a2a;
+  font-weight: lighter;
+}
+.btn{
+  flex: 1;
+  width: 330rpx;
+}
+/* - */
+.bg-add{
+  width:60rpx;
+  height: 60rpx;
+  position: relative;
+  margin-left: 60rpx;
+}
+.bg-add:before{
+  content: '';
+  width:60rpx;
+  height: 2rpx;
+  left:0;
+  top:30rpx;
+  background: rgb(153,153,153);
+  position: absolute;
+
+}
+.bg-add:after{
+  content: '';
+  width:2rpx;
+  height: 60rpx;
+  left:30rpx;
+  top:0;
+  background: rgb(153,153,153);
+  position: absolute;
+}
+.pic-bg{
+  width:180rpx;
+  color: rgb(153,153,153);
+  font-size: 24rpx;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+.pic-bg .text{
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  line-height: 40rpx;
+  margin-top: 12rpx; 
+}

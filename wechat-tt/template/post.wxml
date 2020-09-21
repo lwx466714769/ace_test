@@ -1,0 +1,369 @@
+<!-- 第三版，帖子加投票 -->
+<!-- 长文 -->
+<template name='longText2'>
+  <view catchtap='goPostDetail' data-id='{{relateId}}' class='long_card1'>
+    <image src='{{postLongTextInfo.cover.url}}' class='background' mode='aspectFill'></image>
+    <view class='card'>   
+      <view class='card_top'>
+      <image src='{{userInfo.userLogo}}' class='post-head' mode='aspectFill'></image>
+      <text>{{userInfo.userName}}</text>
+    </view>     
+      <view class='post-con'>
+        <view wx:if='{{likeNumberVO.likeNumber>0}}' class='zan-count'>{{likeNumberVO.likeNumber}}次收藏</view>
+        <text class='title'>{{postLongTextInfo.title}}</text>
+        <text wx:if='{{postLongTextInfo.summary}}' class="post-text">{{postLongTextInfo.summary}}</text>
+        <view wx:if='{{tags.length>0}}' class='tags'>
+          <text class='tag' wx:for='{{tags}}' wx:for-item='tag' wx:key='key_{{index}}'>#{{tag}}#</text>
+        </view>
+        <!-- 点赞图标列表 -->
+        <view class='icon-list'>
+          <view class='icon-list-item'>
+            <button open-type='getUserInfo' bindgetuserinfo='postLikeEvent' data-id='{{relateId}}' data-like='{{like}}' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/{{likeNumberVO.likeState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+            </button>
+            <!-- <button open-type='getUserInfo' bindgetuserinfo='goComment' data-type='POST' data-id='{{relateId}}' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/icon-reply.png'></image>
+            </button> -->
+            <image mode='aspectFit' catchtap='showShare' data-type='post' data-id='{{relateId}}' class='icon-post icon-little' src='/images/icon-share-profile.png'></image>
+          </view>
+          <!-- <view class='create-time'>{{createAt}}</view> -->
+        </view>
+        <view class='comment-list'>
+          <view wx:for='{{commentInfoList}}' wx:if='{{index<3}}' wx:key='index' class='comment-item'>
+            <text class='comment-name'>{{item.userName}}：</text>
+            <text class='comment-con'>{{item.content}}</text>  
+            <view wx:if='{{commentInfoList.length>2 && index==1}}'>...</view>
+          </view>
+          <view wx:if='{{commentCount>0}}' class='post-comment'>{{commentCount}}条评论</view>  
+        </view>
+      </view>
+    </view>
+  </view> 
+</template>
+<!-- 短文 -->
+<template name='shortText2'>
+  <view catchtap='goPostDetail' data-id='{{relateId}}' class='card1'>
+    <view class='card_con'>
+      <view class='card_top'>
+        <image src='{{userInfo.userLogo}}' class='post-head' mode='aspectFill'></image>
+        <text>{{userInfo.userName}}</text>
+      </view>
+      <view wx:if='{{postTextInfo.images.length>0}}' class='imgs'>
+        <image src='{{postTextInfo.images[0].url}}' class='img_1' mode='aspectFill'/>
+        <view class='imgs_2'>
+          <image wx:if='{{postTextInfo.images.length>1}}' src='{{postTextInfo.images[1].url}}' class='img_2 {{postTextInfo.images.length == 2?"onlyTwo":""}}' mode='aspectFill'/>
+          <image wx:if='{{postTextInfo.images.length>2}}' src='{{postTextInfo.images[2].url}}' class='img_3' mode='aspectFill'>
+            <view class='label'>共{{postTextInfo.images.length}}张</view>
+          </image>
+        </view>
+      </view>
+    </view>  
+      <view class='post-con'>
+        <view wx:if='{{likeNumberVO.likeNumber>0}}' class='zan-count'>{{likeNumberVO.likeNumber}}次收藏</view>
+        <text class='title'>{{postTextInfo.text}}</text>
+        <text wx:if='{{postLongTextInfo.summary}}' class="post-text">{{postLongTextInfo.summary}}</text>
+        <view wx:if='{{tags.length>0}}' class='tags'>
+          <text class='tag' wx:for='{{tags}}' wx:for-item='tag' wx:key='key_{{index}}'>#{{tag}}#</text>
+        </view>
+        <!-- 点赞图标列表 -->
+        <view class='icon-list'>
+          <view class='icon-list-item'>
+            <button open-type='getUserInfo' bindgetuserinfo='postLikeEvent' data-id='{{relateId}}' data-like='{{likeNumberVO.likeState}}' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/{{likeNumberVO.likeState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+            </button>
+            <!-- <button open-type='getUserInfo' bindgetuserinfo='goComment' data-type='POST' data-id='{{relateId}}' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/icon-reply.png'></image>
+            </button> -->
+            <image mode='aspectFit' catchtap='showShare' data-type='post' data-id='{{relateId}}' class='icon-post icon-little' src='/images/icon-share-profile.png'></image>
+          </view>
+          <!-- <view class='create-time'>{{createAt}}</view> -->
+        </view>
+        <view class='comment-list'>
+          <view wx:for='{{commentInfoList}}' wx:if='{{index<3}}' wx:key='index' class='comment-item'>
+            <text class='comment-name'>{{item.userName}}：</text>
+            <text class='comment-con'>{{item.content}}</text>  
+            <view wx:if='{{commentInfoList.length>2 && index==1}}'>...</view>
+          </view>
+          <view wx:if='{{commentCount>0}}' class='post-comment'>{{commentCount}}条评论</view>  
+        </view>
+      </view>
+  </view>
+</template>
+<!-- 视频 -->
+<template name='video2'>
+  <view catchtap='goPostDetail' data-id='{{relateId}}' class='long_card1 video_card'>
+    <view class='video-wrap'>
+      <image src='{{postVideoInfo.video.cover}}' class='background' mode='aspectFill'></image>
+      <image src='/images/play_video.png' class='video-play'></image>
+    </view>
+    <view class='card'>   
+      <view class='card_top'>
+        <image src='{{userInfo.userLogo}}' class='post-head' mode='aspectFill'></image>
+        <text>{{userInfo.userName}}</text>
+      </view>     
+      <view class='post-con'>
+        <view wx:if='{{likeNumberVO.likeNumber>0}}' class='zan-count'>{{likeNumberVO.likeNumber}}次收藏</view>
+        <text class='title'>{{postVideoInfo.text}}</text>
+        <text wx:if='{{postLongTextInfo.summary}}' class="post-text">{{postLongTextInfo.summary}}</text>
+        <view wx:if='{{tags.length>0}}' class='tags'>
+          <text class='tag' wx:for='{{tags}}' wx:for-item='tag' wx:key='key_{{index}}'>#{{tag}}#</text>
+        </view>
+        <!-- 点赞图标列表 -->
+        <view class='icon-list'>
+          <view class='icon-list-item'>
+            <button open-type='getUserInfo' bindgetuserinfo='postLikeEvent' data-id='{{relateId}}' data-like='{{likeNumberVO.likeState}}' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/{{likeNumberVO.likeState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+            </button>
+            <!-- <button open-type='getUserInfo' bindgetuserinfo='goComment' data-type='POST' data-id='{{relateId}}' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/icon-reply.png'></image>
+            </button> -->
+            <image mode='aspectFit' catchtap='showShare' data-type='post' data-id='{{relateId}}' class='icon-post icon-little' src='/images/icon-share-profile.png'></image>
+          </view>
+          <!-- <view class='create-time'>{{createAt}}</view> -->
+        </view>
+        <view class='comment-list'>
+          <view wx:for='{{commentInfoList}}' wx:if='{{index<3}}' wx:key='index' class='comment-item'>
+            <text class='comment-name'>{{item.userName}}：</text>
+            <text class='comment-con'>{{item.content}}</text>  
+            <view wx:if='{{commentInfoList.length>2 && index==1}}'>...</view>
+          </view>
+          <view wx:if='{{commentCount>0}}' class='post-comment'>{{commentCount}}条评论</view>  
+        </view>
+      </view>
+    </view>
+  </view> 
+</template>
+<!-- 投票 -->
+<template name='vote2'>
+  <view catchtap='goVoteDetail' data-id='{{relateId}}' class='long_card1'>
+    <view wx:if='{{voteInfo.background}}' class="background-wrap">
+      <image wx:if='{{voteInfo.background}}' src='{{voteInfo.background}}' class='background' mode='aspectFill'></image>
+      <view class="background-opacity"></view>
+      <!-- icon投票 -->
+      <view class="icon-name-wrap">
+        <view class="name-one"></view><view class="name-one"></view>
+        <view class="name-two">投票</view>
+      </view>
+      <!-- 投票展示时间 -->      
+      <view class="vote-item-list">
+        <view wx:if='{{index<4}}' wx:for='{{voteInfo.voteItem}}' wx:key='index' class="vote-item">
+          <view style="background:{{voteItemColor[index]}};margin-left:{{index*30}}rpx" class="vote-item-one"></view>
+          <view style="background:{{voteItemColor[index]}}" class="vote-item-two"></view>
+          <view class="vote-item-con">{{item.voteItemStr}}</view>
+        </view>
+      </view>
+    </view>
+    <view class='card {{voteInfo.background?"":"no-background"}}'> 
+      <view class='card_top'>
+        <image src='{{userInfo.userLogo}}' class='post-head' mode='aspectFill'></image>
+        <text>{{userInfo.userName}}</text>
+      </view>   
+      <view class='post-con'>
+        <text class='title'>{{voteInfo.name}}</text>
+        <view wx:if='{{tags.length>0}}' class='tags'>
+          <text class='tag' wx:for='{{tags}}' wx:for-item='tag' wx:key='key_{{index}}'>#{{tag}}#</text>
+        </view>
+        <!-- 点赞图标列表 -->
+        <view class='icon-list'>
+          <view class='icon-list-item'>
+            <button open-type='getUserInfo' bindgetuserinfo='partyLikeEvent' data-id='{{relateId}}' data-like='COLLECTION' data-type='VOTE' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/{{likeNumberVO.collectionState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+            </button>
+            <!-- <button open-type='getUserInfo' bindgetuserinfo='goComment' data-id='{{relateId}}' data-type='VOTE' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/icon-reply.png'></image>
+            </button> -->
+            <image mode='aspectFit' catchtap='showShare' data-type='vote' data-id='{{relateId}}' class='icon-post icon-little' src='/images/icon-share-profile.png'></image>
+          </view>
+          <view class='create-time'>{{createAt}}</view>
+        </view>
+        <!-- <view class='zan-count'><image class='icon-vote' src='/images/icon-vote.png'></image>投票</view> -->
+        
+        <!-- 评论 -->
+        <view class='comment-list'>
+          <view wx:for='{{commentInfoList}}' wx:if='{{index<3}}' wx:key='index' class='comment-item'>
+            <text class='comment-name'>{{item.userName}}：</text>
+            <text class='comment-con'>{{item.content}}</text>  
+            <view wx:if='{{commentInfoList.length>2 && index==1}}'>...</view>
+          </view>
+          <view wx:if='{{commentCount>0}}' class='post-comment'>{{commentCount}}条评论</view>  
+        </view>
+      </view>
+    </view>
+  </view> 
+</template>
+<!-- 攒局 -->
+<template name='party2'>
+  <view catchtap='goPartyDetail' data-id='{{relateId}}' class='long_card1'>
+    <view wx:if='{{partyInfo.background}}' class="background-wrap">
+      <image wx:if='{{partyInfo.background}}' src='{{partyInfo.background}}' class='background' mode='aspectFill'></image>
+      <view class="background-opacity"></view>
+      <view class="icon-name-wrap">
+        <view class="name-one post-mark-bg"></view><view class="name-one post-mark-bg"></view>
+        <view class="name-two post-mark-bg">攒局</view>
+      </view>
+      <!-- 投票展示时间 -->
+      <view wx:if='{{startTime}}' class="party-date">
+        <view class="party-start">
+          <view class="party-start-time">
+            <view class="start-color party-time-one"></view>
+            <view class="start-color party-time-two"></view>
+            <view class="party-time-con">{{startTime}}</view>
+          </view>
+          <view class="party-start-date">
+            <view class="start-color party-date-one"></view>
+            <view class="start-color party-date-two"></view>
+            <view class="party-date-con">{{startDate}}</view>
+          </view>
+        </view>
+        <view class="party-end">
+          <view class="party-start-time">
+            <view class="end-color party-time-one"></view>
+            <view class="end-color party-time-two"></view>
+            <view class="party-time-con">{{endTime}}</view>
+          </view>
+          <view class="party-start-date">
+            <view class="end-color party-date-one"></view>
+            <view class="end-color party-date-two"></view>
+            <view class="party-date-con">{{endDate}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='card {{partyInfo.background?"":"no-background"}}'>          <view class='card_top'>
+        <image src='{{userInfo.userLogo}}' class='post-head' mode='aspectFill'></image>
+        <text>{{userInfo.userName}}</text>
+      </view> 
+      <view class='post-con'>
+        <text class='title'>{{partyInfo.name}}</text>
+        <view wx:if='{{tags.length>0}}' class='tags'>
+          <text class='tag' wx:for='{{tags}}' wx:for-item='tag' wx:key='key_{{index}}'>#{{tag}}#</text>
+        </view>
+        <!-- 点赞图标列表 -->
+        <view class='icon-list'>
+          <view class='icon-list-item'>
+            <button open-type='getUserInfo' bindgetuserinfo='partyLikeEvent' data-id='{{relateId}}' data-like='COLLECTION' data-type='PARTY' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/{{likeNumberVO.collectionState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+            </button>
+            <!-- <button open-type='getUserInfo' bindgetuserinfo='goComment' data-id='{{relateId}}' data-type='PARTY' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/icon-reply.png'></image>
+            </button> -->
+            <image mode='aspectFit' catchtap='showShare' data-type='party' data-id='{{relateId}}' class='icon-post icon-little' src='/images/icon-share-profile.png'></image>
+          </view>
+          <view class='create-time'>{{createAt}}</view>
+        </view>
+        <!-- 评论 -->
+        <view class='comment-list'>
+          <view wx:for='{{commentInfoList}}' wx:if='{{index<3}}' wx:key='index' class='comment-item'>
+            <text class='comment-name'>{{item.userName}}：</text>
+            <text class='comment-con'>{{item.content}}</text>  
+            <view wx:if='{{commentInfoList.length>2 && index==1}}'>...</view>
+          </view>
+          <view wx:if='{{commentCount>0}}' class='post-comment'>{{commentCount}}条评论</view>  
+        </view>
+      </view>
+    </view>
+  </view> 
+</template>
+<!-- 日报 -->
+<template name='daily'>
+  <navigator url='/pages/post-detail/post-detail?postId={{postId}}&clubId={{clubId}}&logo={{logo?logo:clubs[0].clubLogo}}&clubName={{clubName?clubName:clubs[0].clubName}}' class='long_card'>
+    <image src='{{cover}}' class='background' mode='aspectFill'></image>
+    <view class='card'>        
+      <view  class='card_top'>
+        <image src='{{avatar}}' class='post-head' mode='aspectFill'></image>
+        <text>{{nickname}}</text>
+      </view>
+      <view class='card_con'>
+        <view class='title'>{{title}}</view>
+        <text wx:if='{{summary}}' class='post-text'>{{summary}}</text>
+      </view>
+      <!-- 点赞图标列表 -->
+      <view class='icon-list'>
+        <view class='icon-list-item'>
+          <button open-type='getUserInfo' bindgetuserinfo='postLikeEvent' data-id='{{postId}}' data-like='{{like}}' catchtap>
+            <image mode='aspectFit'  class='icon-post' src='/images/{{like?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+          </button>
+          <!-- <button open-type='getUserInfo' bindgetuserinfo='goComment' data-type='POST' data-id='{{postId}}' catchtap>
+            <image mode='aspectFit' class='icon-post' src='/images/icon-reply.png'></image>
+          </button> -->
+          <image mode='aspectFit' catchtap='showShare' data-type='post' data-id='{{postId}}' class='icon-post icon-little' src='/images/icon-share-profile.png'></image>
+        </view> 
+      </view>
+    </view>
+  </navigator> 
+</template>
+<!-- 装备 -->
+<template name='equip'>
+  <view class='equip-item'>
+    <!-- <image wx:if='{{equipAuditStatus=="AUDIT"}}' class='check-mark' src='/images/icon-equip-confirm.png'></image> -->
+    <!-- <view wx:if='{{equipAuditStatus=="AUDIT"}}' class="check-mark">
+      <view class="name-one"></view><view class="name-one"></view>
+      <view class="name-two">已认证</view>
+    </view> -->
+    <view class='equip-img-wrap'>
+      <image wx:if='{{background}}' class='equip-img' src='{{background}}' mode='aspectFill'></image>
+      <image wx:else class='equip-default' src='/images/equip-default.png'></image>
+      <view catchtap='uploadCarImg' wx:if='{{isFrom=="myDetail"&&userId==curUserId}}' class='change-photo'>
+        <view>点击更换图片</view>
+        <image class='equip-photo' src='/images/equip-photo.png'></image>
+      </view>
+    </view>
+    <view class='equip-con'>
+      <view class='user-info'>
+        <image class='equip-avatar' src='{{userLogo}}'></image>
+        <view class='equip-nickname'>{{userName}}</view>
+      </view>
+      <view class='equip-name'>{{brandName?brandName:appealContent[0].value}} {{seriesName?seriesName:appealContent[1].value}}</view>
+      <!-- <view class='car'>
+        <view>同系109位车主</view>
+        <view class='car-right'>
+          <view class='car-list'>
+            <image class='car-img' src='/images/card.png'></image>
+            <image class='car-img' src='/images/card.png'></image>
+            <image class='car-img' src='/images/card.png'></image>
+          </view>
+          <view class='arrow'></view>
+        </view>
+        
+      </view> -->
+      <view class='equip-icon-list'>
+        <view class='equip-like-list'>
+          <button open-type="getUserInfo" bindgetuserinfo='likeEvent' data-type='LIKE' data-id='{{equipId?equipId:id}}' class='icon-item' catchtap>
+            <image class='icon-img equip-collect' mode='aspectFit' src='/images/{{likeNumberVO.collectionState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+            <view>{{collectionNumberK||collectionNumberK>0?collectionNumberK:""}}</view>
+          </button>
+          <!-- <view catchtap='likeEvent' data-type='STEP' data-id='{{equipId?equipId:id}}' class='icon-item'>
+            <image class='icon-img' mode='aspectFit' src='/images/{{likeNumberVO.stepState?"icon-unlike-check-gray":"icon-unlike-gray"}}.png'></image>
+            <view>{{stepNumberK||stepNumberK>0?stepNumberK:""}}</view>
+          </view> -->
+          <view class='icon-item' catchtap='showShare' data-type='equip' data-id='{{equipId?equipId:id}}'>
+            <image class='icon-img' mode='aspectFit' src='/images/icon-share-profile.png'></image>
+            <view>{{shareNumberK||shareNumberK>0?shareNumberK:""}}</view>
+          </view>
+        </view>
+        
+        <view class='icon-item equip-del'>
+          <image wx:if='{{userId==curUserId&&isFrom=="myDetail"}}' catchtap='delEquip' data-id='{{equipId?equipId:id}}' class='icon-img' mode='aspectFit' src='/images/icon-del.png'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+<!-- 活动 -->
+<template name="event">
+  <view class='event-list' wx:for='{{eventList}}' wx:key='index'>
+    <view catchtap='goEventDetail' data-id='{{item.activityId}}' class='event-item'>
+      <view class='event-img-wrap'>
+        <image class='event-img' mode='aspectFill' src='{{item.coverImg.url}}'></image>
+        <!-- <view wx:if='{{item.state}}' class='event-state state-start'>火热报名中</view> -->
+        <view wx:if='{{item.state=="end"}}' class='event-state'>已结束</view>
+        <view class='event-date'>
+          <view class='date-month'>{{item.month}}月</view>
+          <view class='date-day'>{{item.day}}</view>
+        </view>
+      </view>
+      <view class='event-title'>{{item.activityName}}</view>
+      <view class='event-address'>{{item.addresses.address}}</view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,83 @@
+<!--club-order/order-detail/order-detail.wxml-->
+<view class='order-detail'>
+  <view class='order-head'>
+    <view class='event-wrap'>
+      <image class='event-img' mode='aspectFill' src='{{order.eventCover?order.eventCover:"/images/default.png"}}'></image>
+    </view>
+    <view class='event-title'>
+      <view class='event-name'>{{order.eventName}}</view>
+      <view class='event-date'>活动时间：{{order.startAt}} - {{order.endAt}}</view>
+    </view>
+    <view class='slot'></view>
+    <view wx:for='{{order.orderItems}}' wx:key='index' class='event-info'>
+      <view class='event-center'>
+        <view class='group-name'>{{item.itemName}}</view>
+        <view class='group-price'>{{item.itemPrice==0?"免费":'¥'+item.itemPrice/100}}</view>
+      </view>
+      <view class='event-num'>X{{item.count}}</view>
+    </view>
+    <view class='total'>
+      <!-- 订单状态  -->
+      <view wx:for='{{orderState}}' wx:if='{{item.state == order.state}}' wx:key='index' class='event-state'>
+        {{item.title}}
+      </view>
+      <view>
+      共{{order.orderItems.length}}件商品 合计：<text class='total-price'>￥{{order.totalPrice/100}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='slot'></view>
+  <!-- 订单状态  -->
+  <view wx:if='{{order.state == "AUDITFAIL"}}' class='order-state'>
+    <view class='order-title'>未通过理由</view>
+    <view class='order-state-con'>{{order.reason}}</view>
+  </view>
+  <view class='slot' wx:if='{{order.state == "AUDITFAIL"}}'></view>
+  <navigator open-type='switchTab' url='/pages/index/index?clubId={{order.clubId}}' class='event-club'>
+    <image class='club-img' src='{{order.clubLogo}}'></image>
+    <view class='club-name'>{{order.clubName}}</view>
+  </navigator>
+  <view wx:if='{{order.signItems.length>0}}' class='slot'></view>
+  <!-- 申请信息 -->
+  <view wx:if='{{order.signItems.length>0}}' class='order-person'>
+    <view class='order-title'>申请信息</view>
+    <view wx:for='{{order.signItems}}' wx:key='index' wx:for-item='sign'>
+      <view catchtap='preview' data-url='{{sign.value}}' wx:if='{{sign.type=="IMAGE"}}'>
+        <view class='upload-title'>{{sign.name}}</view>
+        <image class='block-img' src='{{sign.value}}' mode='aspectFill'></image>
+      </view>
+      <view wx:else class='order-block'>
+        <view class='block-info'>{{sign.value}}</view>
+        <view class='block-place'>{{sign.name}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 操作按钮 -->
+  <view class='footer'>
+    <view wx:if='{{order.state == "AUDIT"}}' class='btn-group'>
+      <view catchtap='cancelOrder' class='btn-big'>取消订单</view>
+    </view>
+    <view wx:elif='{{order.state == "AUDITFAIL"}}' class='btn-group'>
+      <view catchtap='delEvent' class='btn-small'>删除订单</view>
+      <navigator url='/event/event-detail/event-detail?eventId={{order.eventId}}&clubId={{order.clubId}}' class='btn-big'>重新下单</navigator>
+    </view>
+    <view wx:elif='{{order.state == "CREATED"}}' class='btn-group'>
+      <view catchtap='cancelOrder' class='btn-small'>取消订单</view>
+      <view class='btn-big' catchtap='paySubmit'>支付</view>
+    </view>
+    <view wx:elif='{{order.state == "TIMEOUT"}}' class='btn-group'>
+      <view catchtap='delEvent' class='btn-small'>删除订单</view>
+      <navigator url='/event/event-detail/event-detail?eventId={{order.eventId}}&clubId={{order.clubId}}' class='btn-big'>重新下单</navigator>
+    </view>
+    <view wx:elif='{{order.state == "CANCELED"}}' class='btn-group'>
+      <view catchtap='delEvent' class='btn-big'>删除订单</view>
+    </view>
+    <view wx:elif='{{order.state == "PAYED"}}' class='btn-group'>
+      <view catchtap='delEvent' class='{{order.goodsType==0?"btn-small":"btn-big"}}'>删除订单</view>
+      <view wx:if='{{order.goodsType==0}}' catchtap='goEventDetail' data-id='{{order.orderId}}' class='btn-big'>查看</view>
+    </view>
+    <view wx:elif='{{order.state == "CONSUMED"}}' class='btn-group'>
+      <view catchtap='delEvent' class='btn-big'>删除订单</view>
+    </view>
+  </view>
+</view>

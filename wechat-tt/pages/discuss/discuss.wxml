@@ -1,0 +1,51 @@
+<!--pages/discuss/discuss.wxml-->
+<import src='/template/post.wxml'/>
+<!-- <Tab tablist='{{tabList}}' bindchangeTab='changeTab' class='tab-class'/> -->
+<view class='posts' hidden="{{curIndex!=0}}">
+    <view wx:if='{{loadPostData&&showFixedPostData}}' class='card1' catchtap='goFixedDetail' data-type='post'>
+      <view class='card_con'>
+        <view class='imgs'>
+          <image src='https://img.acegear.com/400673476a7107f78a6912d108e3bef6997dc49e/w700_1' class='img_1' mode='aspectFill'/>
+        </view>
+        <text class='post-text'>欢迎加入俱乐部</text>
+      </view>
+    </view>
+    <block wx:for='{{posts}}' wx:key='index'>
+      <!-- 长文 -->
+        <template wx:if='{{item.postType == "LONGTEXT"}}'  is='longText2' data='{{...item,clubId,logo,clubName,isClubMember,isFrom}}'/>
+        <!-- 短文 -->
+        <template wx:if='{{item.postType=="TEXT"}}' is='shortText2' data='{{...item,clubId,logo,clubName,isClubMember,isFrom}}'/>
+        <!-- 视频 -->
+        <template wx:if='{{item.postType=="VIDEO"}}' is='video2' data='{{...item,clubId,logo,clubName,isClubMember,isFrom}}'/>
+        <!-- 投票 -->
+        <template wx:if='{{item.relateType=="VOTE"}}' is='vote2' data='{{...item,clubId,logo,clubName,isClubMember,isFrom,voteItemColor}}'/>
+        <!-- 攒局 -->
+        <template wx:if='{{item.relateType=="PARTY"}}' is='party2' data='{{...item,clubId,logo,clubName,isClubMember,isFrom}}'/>
+    </block>
+    <view wx:if='{{showAll==true&&posts.length>3}}' class='show-all'>已到最后</view>
+    <view wx:elif='{{showAll=="加载中..."}}' class='show-all'>加载中...</view>
+    <view wx:elif='{{!showFixedPostData&&posts.length==0}}' class='empty-wrap'>
+      <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+      <view>暂无信息</view>
+    </view>
+  
+<!-- <button open-type='getUserInfo' bindgetuserinfo='goJoin' wx:if='{{club&&!club.member}}'  class='icon-join'>
+    <image src='/images/icon-join.png'></image>
+  </button> -->
+  <button open-type='getUserInfo' bindgetuserinfo='showUpload' wx:if='{{false}}'>
+    <block wx:if='{{showUpload}}'>
+      <navigator url='/pages/upload-posts/upload-posts?clubId={{clubId}}&type=video' class='icon-upload upload-video'> <view class='icon-font'>视频</view></navigator>
+      <navigator url='/pages/upload-posts/upload-posts?clubId={{clubId}}' class='icon-upload upload-pictext'> <view class='icon-font'>图文</view></navigator>
+      <navigator url='/game/party/party?clubId={{clubId}}' class='icon-upload upload-party'> <view class='icon-font'>攒局</view></navigator>
+      <navigator url='/game/vote/vote?clubId={{clubId}}' class='icon-upload upload-vote'> <view class='icon-font'>投票</view></navigator>
+    </block>
+    <view wx:if='{{showUpload}}' class='icon-upload upload-close'><view class='icon-font'>✕</view></view>
+    <image wx:else class='icon-join' src='/images/icon-upload-post.png'></image>
+  </button>
+</view>
+<view class="posts" hidden="{{curIndex!=1}}">
+  <Trends id='trends'/>
+</view>
+<!-- 分享 -->
+<Share id='share' shareparams='{{shareparams}}' sharetype='{{shareType}}' painterStyle='width:790rpx;height:960rpx;'/>
+<canvas canvas-id="myCanvas" style="position:absolute;left:-200%;width:100%;height:420rpx;"></canvas>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "Tab":"/components/tab/tab",
+    "Share": "/components/share/share"
+  },
+  "navigationBarTitleText":"个人主页"
+}

@@ -1,0 +1,149 @@
+@import '/templates/template_banner/template_banner.wxss';
+@import '/templates/template_information/template_information.wxss';
+@import '/templates/template_more/template_more.wxss';
+@import '/templates/template_grid/template_grid.wxss';
+@import '/templates/template_event/template_event.wxss';
+/* 首页 */
+page{
+  background: rgb(245, 245, 245);
+}
+.index_logo {
+   padding: 28rpx 30rpx 16rpx;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;  
+   position: relative;
+}
+.logo{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+.logo-img{
+  width: 132rpx;
+  height: 98rpx;
+}
+.about{
+  display: flex;
+  align-items: center;
+}
+.Ace-instrument {
+   width: 750rpx;
+   height: 115rpx;
+   padding-top: 10rpx;
+   position: fixed;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: 100;
+   border-top: 3rpx solid rgb(213, 213, 213);
+   box-sizing: border-box;
+   background: rgb(245, 245, 245);
+   padding: 0 30rpx;
+}
+
+.Ace-Mini-btn, .but_side {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+}
+
+
+.Ace-ticket{
+  margin-right:50rpx; 
+  margin-top: 30rpx;
+}
+.icon-discuss{
+  margin-top: 34rpx;
+}
+.plogin{
+  margin-top: 16rpx;
+}
+.Ace-personal{
+  margin-top: 14rpx;
+  display: flex;
+}
+.icon-intro{
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 80rpx;
+  display: block;
+}
+.icon-share{
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  top: 60rpx;
+  right: 30rpx;
+
+}
+.card-icon-img.card-icon {
+   height: 70rpx;
+   width: 70rpx;
+   border-radius: 100%;
+   overflow: hidden;
+}
+
+.con-text {
+   width: 240rpx;
+   overflow: hidden;
+   text-align: right;
+   justify-content: center;
+   align-items: center;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   line-height: 70rpx;
+   height: 62rpx;
+   padding-right: 20rpx;
+}
+
+.card-icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.bg_mask_bottom {
+   height: 400rpx;
+   background: rgb(245, 245, 245);
+   border-radius: 50%;
+   top: 0rpx;
+}
+
+.bg_mask {
+   width: 750rpx;
+   position: absolute;
+   left: 0;
+}
+
+.bg_mask_top {
+   top: 0;
+   height: 200rpx;
+   background: rgb(245, 245, 245);
+}
+
+.index_mask {
+   width: 750rpx;
+   position: absolute;
+   top: 0;
+   left: 0;
+   z-index: 0;
+}
+
+.data_con_wrap {
+   background: transparent;
+}
+
+.data_con {
+   position: absolute;
+   z-index: 2;
+   top: 0;
+   left: 0;
+   width: 750rpx;
+   padding-bottom: 20rpx;
+}
+
+.tab_icon {
+  flex-grow:1;
+  height: 100rpx;
+}

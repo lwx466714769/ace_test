@@ -1,0 +1,79 @@
+<!--pages/profile/profile.wxml-->
+<view class='profile'>
+  <view class='header'>
+    <view class='head'>
+      <image class='avatar' src='{{avatar}}' mode='aspectFill'></image>
+      <navigator url='../personal-edit/personal-edit' class="name-edit">
+        <view class='name'>{{nickname}}</view>
+        <image class="icon-edit" src="/images/icon-edit.png" mode="aspectFit"></image>
+      </navigator>
+      <!-- <view wx:if='{{profile.userInfo.province}}' class='address'>{{profile.userInfo.province}}</view>
+      <view wx:if='{{profile.userInfo.title}}' class='des'>{{profile.userInfo.title}}</view> -->
+    </view>
+  </view>
+  <view class='slot'></view>
+  <view>
+    <!-- <navigator url='../homepage/homepage?userId={{userId}}' class='block'>
+        <image class='icon' src='/images/icon-home.png' mode='aspectFill'></image>
+        <text class='block-text'>我的主页</text>
+      <view class='arrow'></view>
+    </navigator> -->
+    <!-- 高级会员卡 -->
+    <navigator url='/personal/personal-advancecard/personal-advancecard' class='block' hover-class='none' data-name='mycard' wx:if='{{seniorCard.open&&applyInfo.result==3}}'>
+      <image src='/images/menu_card.png' mode='aspectFit' class='icon' />
+      <view class='block-text'>{{seniorCard.memberName}}</view>
+      <view class='arrow'></view>
+    </navigator>
+    <!-- <navigator url='../myposts/myposts' class='block'>
+        <image class='icon' src='/images/icon-release.png' mode='aspectFit'></image>
+        <text class='block-text'>我的发布</text>
+      <view class='arrow'></view>
+    </navigator> -->
+    <navigator url='/personal/collect/collect' class='block'>
+        <image class='icon' src='/images/icon-collect-profile.png' mode='aspectFit'></image>
+        <text class='block-text'>我的收藏</text>
+      <view class='arrow'></view>
+    </navigator>
+    <!-- <navigator url='/equip/my-equip/my-equip' class='block'>
+      <image class='icon icon-equip' src='/images/icon-equip-profile.png' mode='aspectFit'></image>
+      <text class='block-text'>我的装备</text>
+      <view class='arrow'></view>
+    </navigator>
+    <navigator url='../chat/chat' class='block'>
+        <image class='icon' src='/images/icon-chat.png' mode='aspectFill'></image>
+        <text class='block-text'>我的私信</text>
+      <view class='arrow'></view>
+    </navigator> -->
+    <navigator url='/club-order/order-list/order-list' class='block'>
+      <image class='icon icon-order' src='/images/icon-order.png' mode='aspectFit'></image>
+      <text class='block-text'>我的订单</text>
+      <view class='arrow'></view>
+    </navigator>
+    <view class='panel'>
+      <navigator url='/event/event-ticket-list/event-ticket-list' class='block-tab'>
+        <image class=' icon-ticket' src='/images/icon_ticket.png' mode='aspectFit'></image>
+        <text class='block-texts'>活动门票</text>
+      </navigator>
+      <navigator url='/personal/personal-welfare/personal-welfare' class='block-tab'>
+        <image class=' icon-ticket' src='/images/icon_giftcard.png' mode='aspectFit'></image>
+        <text class='block-texts'>实物商品</text>
+      </navigator>
+      <navigator url='/personal/personal-mycard/personal-mycard' class='block-tab'>
+        <image class='icon-ticket' src='/images/icon_card.png' mode='aspectFit'></image>
+        <text class='block-texts'>消费卡</text>
+      </navigator>
+      <navigator url='/personal/personal-mygift/personal-mygift' class='block-tab'>
+        <image class=' icon-ticket' src='/images/icon_commodity.png' mode='aspectFit'></image>
+        <text class='block-texts'>礼品卡</text>
+      </navigator>
+    </view>
+  </view>
+   <!--  -->
+  <navigator wx:if='{{seniorCard.open&&applyInfo.result!=3}}' url="/personal/personal-advancecard/personal-advancecard" class="member-wrap">
+    <image class="member-bg" src="{{seniorCard.cover}}" class="member-img"></image>
+    <view class="member-name">
+      <view>{{seniorCard.memberName}}</view>
+      <view class="apply">立即申请 >></view>
+    </view>
+  </navigator>
+</view>

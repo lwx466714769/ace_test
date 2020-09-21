@@ -1,0 +1,111 @@
+.getcard{
+  width: 100%;
+  height: auto;
+  position: relative;
+  padding: 0 0 50rpx 0;
+  border-top: 3rpx solid #2a2a2a;
+  float: right;
+}
+.getcard::after{
+  visibility: visible;
+  width: 0;
+  height: 0;
+  clear: both;
+  display: block;
+  content: '',
+}
+.cardwrap{
+  width: 750rpx;
+  height: 532rpx;
+  float: right;
+  margin: 80rpx 15rpx 0 0 ;
+  transform: rotate(10deg);
+  box-sizing: border-box;
+  /* box-shadow: 0 -4rpx 4rpx rgba(207,207,207,.5); */
+}
+.cardgot{
+  width:850rpx;
+  height: 470rpx;
+  position: absolute;
+  top: 0;
+  left: -35rpx;
+  right: 0;
+  bottom: 0;
+  transform-origin: center center;
+  border-radius: 50rpx;
+  margin: auto;
+}
+.logomini,.result,.result-btn{
+  float: right;
+  width: 710rpx;
+  margin-top:  40rpx;
+  margin-right: 20rpx; 
+}
+
+.logomini{
+  margin-top: 40rpx;
+  margin-left: 20rpx; 
+}
+.logomini image{
+  width: 360rpx;
+  height: 200rpx;
+}
+.result .text{
+  font-size: 36rpx;
+  color: #2a2a2a;
+  padding: 20rpx 50rpx 30rpx 0;
+  float: right;
+  margin-right: 30rpx;
+  display: block;
+}
+.btn{
+  float: left;
+  display: block;
+  text-align: center;
+  height: 80rpx;
+  width: 45%;
+  line-height: 80rpx;
+  font-size: 30rpx;
+  background: #2a2a2a;
+  color: white!important;
+  border-radius: 0; 
+  border: 0;
+}
+.result-btn{
+   background: #2a2a2a;
+   text-align: center;
+   height: 80rpx;
+   line-height: 80rpx;
+   font-size: 30rpx;
+   color: white;
+   
+}
+.result-btn .line{
+  width: 10%;
+}
+.result-btn-wrap{
+  height: 300rpx;
+  position: fixed;
+  right: 0;
+  bottom: 106rpx;
+}
+.bottom-line{
+  width: 260rpx;
+  height: 10rpx;
+  border-radius: 15rpx;
+  background-color: #2a2a2a;
+  position: fixed;
+  left: 0;right: 0;bottom: 12rpx;
+  margin: auto;
+}
+.btn-get{
+  width: 678rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  background: #2a2a2a;
+  border: 0;
+  border-radius: 0;
+  color: white;
+  display: block;
+}

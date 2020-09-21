@@ -1,0 +1,37 @@
+<view>
+   <view class="logisName" wx:if="{{logisticsName}}">{{logisticsName}}</view>
+    <view class="one">
+        <view class="logisNumber">快递单号:{{goods.expressage.trackingNumber?goods.expressage.trackingNumber:goods.expressage.info.lastResult.nu}}</view>
+        <view class="copy" catchtap="confirmFn">复制</view>
+    </view>
+    <view class="two">
+        <!--<view class="verticaly"></view>-->
+        <view class="circles">
+            <view class="verticaly"></view>
+            <view class="pointy">{{"•"}}</view>
+        </view>
+        <view class="itemAdres">收货地址：{{goods.userAddress.provinceName+goods.userAddress.cityName+goods.userAddress.countyName+goods.userAddress.detailInfo}}</view>
+    </view>
+   <view wx:for="{{list}}" wx:for-item="item" wx:key='index' >
+       <view class="item">
+           <view class="itemTime">
+               <view class="time"class='{{index == 0?"timeblack":"time"}}'>{{item.time}}</view>
+               <view class="ftime">{{item.ftime}}</view>
+           </view>
+           <view class="circles">
+               <view class="vertical"></view>
+               <view class='{{index == 0?"point":"points"}}'>{{index==0?"◉":"•"}}</view>
+           </view>
+           <view  class='{{index == 0?"itemAdressBlack":"itemAdress"}}'>{{item.context}}</view>
+       </view>
+
+   </view>
+    <view class="twos">
+        <view class="circles">
+            <view class="verticals"></view>
+            <view class="pointss">{{"•"}}</view>
+        </view>
+        <view class="itemAdres">已发货</view>
+    </view>
+
+</view>

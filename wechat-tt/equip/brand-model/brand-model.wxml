@@ -1,0 +1,59 @@
+<!--equip/brand-model/brand-model.wxml-->
+<view class='brand-model'>
+  <navigator url='/equip/add-ride/add-ride?carTypeId={{carTypeId}}&carTypeName={{carTypeName}}&brandId={{brandId}}&brandName={{brandName}}&type=noModel' class='add-type'>
+    <view>找不到车系</view>
+    <view class='answer'>?</view>
+  </navigator>
+  <scroll-view scroll-y class='model-list'>
+    <block wx:for='{{modelList}}' wx:key='index'>
+      <view class='model-item' data-id='{{item.id}}' catchtap='createEquip' data-background='{{item.logo}}' data-name='{{item.name}}'>
+        <view class='equip-img-wrap {{item.logo?"":"img-wrap-gray"}}'>
+          <image wx:if='{{item.logo}}' class='model-img' src='{{item.logo}}' mode='aspectFit'></image>
+        </view>
+        <view class='model-name'>{{item.name}}</view>
+      </view>
+      <!-- <navigator url='/equip/equip-detail/equip-detail' class='model-item'>
+        <image class='model-img' src='https://source.unsplash.com/collection/3569959' mode='aspectFill'></image>
+        <view class='model-name'>BMW 6系GT</view>
+      </navigator> -->
+    </block>
+  </scroll-view>
+</view>
+<!-- 创建装备 -->
+<view wx:if='{{showCreate}}' class='create-wrap'>
+  <view class='create-content'>
+    <view class='create-header'>
+      <view class='create-background'>
+        <image class='back-img' mode='aspectFill' src='{{background}}'></image>
+      </view>
+      <view class='create-con'>
+        <view class='move-bar'></view>
+        <view class='user-header'>
+          <view class='user-info'>
+            <image class='equip-avatar' src='{{avatar}}'></image>
+            <view class='equip-nickname'>{{nickname}}</view>
+          </view>
+          <!-- <view wx:if='{{seriesCounter}}'>同系{{seriesCounter}}位车主</view> -->
+        </view> 
+        <view class='create-name'>{{brandName}} {{seriesName}}</view>
+        <view wx:if='{{brandName}}' class='equip-type'>
+          <view class='type-name'>品牌</view>
+          <view class='type-con'>{{brandName}}</view>
+        </view>
+        <view wx:if='{{seriesName}}' class='equip-type'>
+          <view class='type-name'>车系</view>
+          <view class='type-con'>{{seriesName}}</view>
+        </view>
+      </view>
+      <!-- <view class='create-img-wrap'>
+        <image class='create-img' mode='aspectFit' src='/images/create-img.png'></image>
+      </view> -->
+      
+    </view>
+    <view class='create-font'>确认创建此装备？</view>
+    <view class='btn-modal-group'>
+      <button class='btn-modal' catchtap='showCreate'>取消</button>
+      <button class='btn-modal btn-success' catchtap='createEquip'>确认</button> 
+    </view>
+  </view>
+</view>

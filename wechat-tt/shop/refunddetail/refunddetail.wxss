@@ -1,0 +1,57 @@
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 140rpx;
+  background: #fff;
+  border-top: solid 2rpx rgb(246,246,246);
+  box-sizing: border-box;
+}
+.btn-group{
+  width: 692rpx;
+  border: solid 2rpx #000;
+  border-radius: 8rpx;
+  background: #000;
+  color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:14rpx auto 0; 
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.btn-small{
+  width: 212rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+  color: #000;
+  border-top-left-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+}
+.btn-big{
+  flex: 1;
+}
+.refund{
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.refund-item{
+  display: flex;
+  flex-direction: row;
+  margin-top: 60rpx;
+}
+.detail{
+  margin-top: 60rpx;
+  margin-left: 30rpx;
+}
+.card_cover {
+  width: 182rpx;
+  height: 182rpx;
+  border-radius: 16rpx;
+  margin-top: 30rpx;
+}

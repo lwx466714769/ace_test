@@ -1,0 +1,56 @@
+<!--equip/add-ride/add-ride.wxml-->
+<view class='add-ride'>
+  <!-- <view class='tab'>
+    <view wx:for='{{tabList}}' wx:key='index' data-index='{{item.index}}' class='{{curIndex===item.index?"active tab-item":"tab-item"}}' catchtap='changeTab' data-state='{{item.render}}'>{{item.name}}</view>
+  </view> -->
+  <!-- <view hidden='{{curIndex!=0}}' class='ride-list'>
+    <view class='ride-item'>
+      <view class='ride-img'>
+        <image class='img' src='https://source.unsplash.com/collection/3569959' mode='aspectFill'></image>
+        <image hidden='{{!item.like}}' class='icon-checked' src='/images/icon-checked.png'></image>
+      </view>
+      <view class='ride-name'>性能车</view>
+    </view>
+    <view class='ride-item'>
+      <view class='ride-img checked'>
+        <image class='img' src='https://source.unsplash.com/collection/3569959' mode='aspectFill'></image>
+        <image hidden='{{!item.like}}' class='icon-checked' src='/images/icon-checked.png'></image>
+      </view>
+      <view class='ride-name'>性能车</view>
+    </view>
+  </view> -->
+  <view class='ride-types'>
+    <view wx:for='{{appealContent}}' wx:key='index' class='ride-type'>
+      <block wx:if='{{item.prescribedType == "NOTUPDATE"}}'>
+        <view class='type-name'>{{item.name}}</view>
+        <view class='type-con'>{{item.value}}</view>
+      </block>
+      <block wx:elif='{{item.prescribedType == "NOTDELETE"}}'>
+        <view class='type-name'>{{item.name}}</view>
+        <input bindinput='changeContent' data-index='{{index}}' value='{{item.value}}' class='type-con' placeholder='请填写自定义内容'></input>
+      </block>
+      <block wx:else>
+        <input bindinput='changeName' data-index='{{index}}' value='{{item.name}}' class='type-name' placeholder='自定义'></input>
+        <input bindinput='changeContent' data-index='{{index}}' value='{{item.value}}' class='type-con' placeholder='请填写自定义内容'></input>
+        <image data-index='{{index}}' class='icon-ride' src='/images/jian@3x.png' catchtap='delRideType'></image>
+      </block>
+    </view>
+    <!--  <view class='ride-type'>
+      <view class='type-name'>改装</view>
+      <view class='type-con'>涡轮增压、发动机</view>
+    </view>
+    <view wx:for='{{rideTypes}}' wx:key='index' class='ride-type'>
+      <input bindinput='changeName' data-index='{{index}}' value='{{item.name}}' class='type-name' placeholder='描述名称'></input>
+      <input bindinput='changeContent' data-index='{{index}}' value='{{item.content}}' class='type-con' placeholder='请填写描述内容'></input>
+      <image data-index='{{index}}' class='icon-ride' src='/images/jian@3x.png' catchtap='delRideType'></image>
+    </view> -->
+    <view class='slot'></view>
+    <view class='add-ride-type' catchtap='addRideType'>
+      <view>点击添加一个自定义描述</view> 
+      <image class='icon-ride' src='/images/jia@3x.png'></image>
+    </view>
+  </view>
+</view>
+<view class='footer'>
+  <button catchtap='submit' class='button'>确认</button>
+</view>

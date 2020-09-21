@@ -1,0 +1,411 @@
+.mainData {
+  padding: 0 30rpx;
+}
+
+.cardPrize {
+  position: relative;
+}
+
+.little {
+  width: 16rpx;
+  height: 24rpx;
+  position: absolute;
+  right: 60rpx;
+  top: 10rpx;
+  overflow: hidden;
+  transform: rotate(90deg);
+}
+
+.little image {
+  width: 100%;
+  height: 100%;
+}
+
+.getCard {
+  height: 80rpx;
+  margin: 0 auto;
+  background-color: #2a2a2a;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  text-align: center;
+  color: white;
+  width: 226rpx;
+  border-radius: 8rpx;
+}
+
+.getCard-wrap {
+  position: fixed;
+  width: 710rpx;
+  height: 114rpx;
+  bottom: 0;
+  background: white;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  border-top: 3rpx solid #f2f2f2;
+  padding: 0 20rpx 0 20rpx;
+}
+
+.ticket::after {
+  width: 0;
+  height: 0;
+  visibility: visible;
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.ticket-item {
+  width: 70%;
+  height: 80rpx;
+  background-color: rgb(241, 241, 241);
+}
+
+.ticket-item {
+  float: left;
+}
+
+.addticket {
+  width: 30%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: white;
+  background: #2a2a2a;
+}
+
+view.type-selected {
+  border-bottom: solid 4rpx rgb(236, 148, 4);
+}
+
+.select-one {
+  padding: 16rpx 0 16rpx 0;
+  background-color: #2a2a2a;
+}
+
+.one {
+  margin-left: 20rpx;
+}
+
+.select-one .item, .select-five .item {
+  float: right;
+  margin-right: 20rpx;
+}
+
+.select-one text {
+  color: white;
+  font-size: 28rpx;
+}
+
+.select-two, .select-three, .add, .select-five {
+  box-shadow: 4rpx 4rpx 4rpx rgba(0, 0, 0, 0.3);
+  padding: 32rpx 0;
+  margin: 10rpx 0;
+  border: 2rpx solid #f1f1f1;
+  padding-left: 20rpx;
+  font-size: 26rpx;
+  box-sizing: border-box;
+}
+
+.select-price.active {
+  font-weight: bolder;
+}
+
+.two {
+  margin-right: 20rpx;
+}
+
+.get {
+  padding: 20rpx 0;
+}
+
+.select-four {
+  padding-bottom: 20rpx;
+  border-bottom: 3rpx solid rgb(241, 241, 241);
+}
+
+.end {
+  width: 100%;
+  overflow: hidden;
+  /* border: 1rpx solid #f8f8f8; */
+}
+
+.cardbag {
+  position: relative;
+  padding: 20rpx 30rpx 0 0;
+}
+
+.card-big {
+  width: 320rpx;
+  height: 180rpx;
+  overflow: hidden;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+.card-min {
+  width: 180rpx;
+  height: 180rpx;
+  overflow: hidden;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.cardBig {
+  width: 100%;
+  height: 100%;
+}
+
+.card-title {
+  width: 100%;
+  padding: 20rpx 0;
+}
+
+
+.appleMessage {
+  position: relative;
+  width: 100%;
+  padding: 40rpx 30rpx 0;
+  border-bottom: 3rpx solid #f2f2f2;
+  box-sizing: border-box;
+}
+
+.applytitle {
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+}
+
+.fivePrize {
+  color: rgb(236, 148, 4);
+}
+
+.userName{
+  width: 100%;
+  height: 80rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.userName input{
+  font-size: 24rpx;
+  color: #999;
+  font-weight: initial;
+  line-height: 80rpx;
+  text-align:right;
+  flex: 1;
+}
+
+.carPicture {
+  width: 100%;
+  height: 336rpx;
+  margin-bottom: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.end-picture {
+  width: 120rpx;
+  height: 80rpx;
+}
+.mainSides {
+  border-top: 3rpx solid #2a2a2a;
+  position: absolute;
+  height: 100%;
+  left: -74rpx;
+  top: -1rpx;
+}
+
+.mainSide {
+  border-top: 3rpx solid #2a2a2a;
+  position: absolute;
+  height: 100%;
+  width: 48rpx;
+  left: -38rpx;
+  top: -1rpx;
+}
+
+.pic-bg {
+  width: 180rpx;
+  color: rgb(153, 153, 153);
+  font-size: 24rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pic-bg .text {
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  line-height: 40rpx;
+  margin-top: 12rpx;
+}
+
+.bg-add {
+  width: 60rpx;
+  height: 60rpx;
+  position: relative;
+  margin-left: 60rpx;
+}
+
+.bg-add:before {
+  content: '';
+  width: 60rpx;
+  height: 2rpx;
+  left: 0;
+  top: 30rpx;
+  background: rgb(153, 153, 153);
+  position: absolute;
+}
+
+.bg-add:after {
+  content: '';
+  width: 2rpx;
+  height: 60rpx;
+  left: 30rpx;
+  top: 0;
+  background: rgb(153, 153, 153);
+  position: absolute;
+}
+
+.card-big-wrap {
+  padding: 40rpx 30rpx;
+  display: flex;
+  border-bottom: 3rpx solid #f2f2f2;
+}
+
+.line {
+  border-bottom: 3rpx solid #f2f2f2;
+  display: block;
+}
+.address-block{
+  padding: 40rpx 30rpx 0;
+  border-bottom: solid 3rpx #f2f2f2;
+}
+.address-choose{
+  display: flex;
+}
+.address-label{
+  flex:1;
+  font-size: 32rpx;
+}
+.address-btn-group{
+  text-align: center;
+  line-height: 48rpx;
+  display: flex;
+  border: solid 2rpx #000;
+  overflow: hidden;
+}
+.card-info{
+  height: 180rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+.card-name{
+  font-size: 28rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 80rpx;
+  word-wrap: break-word;
+}
+.spec-name{
+  font-size: 24rpx;
+  max-height: 68rpx;
+  color: #666666;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  word-break: break-all;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-wrap: break-word;
+}
+.card-count{
+  font-size: 32rpx;
+  color: #666666;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.stock{
+  color: rgb(153, 153, 153);
+  font-size: 24rpx;
+}
+.final-price{
+  flex:1;
+  text-align: right;
+  color: #f00;
+  margin-right: 60rpx;
+  font-weight: bold;
+}
+.total-text{
+  font-weight: normal;
+  color: #333;
+}
+.club-name{
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+.phone-block{
+  display: flex;
+  align-items: baseline;
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+.phoneinput{
+  flex:1;
+  color: #999999;
+  text-align: right;
+}
+.address-wrap{
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+.btn-draft{
+  width: 106rpx;
+  background: #fff;
+  color: #000;
+}
+.btn-submit{
+  background: #000;
+  color: #fff;
+  width: 106rpx;
+}
+.address-arrow{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 53rpx;
+}
+.user{
+  
+}
+.user_message{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.user_name{
+  font-size: 28rpx;
+  margin-right: 20rpx;
+}
+.user_tel{
+  color: #999999;
+}
+.arrow{
+  width:10rpx;
+  height: 10rpx;
+  border-top: solid 2rpx #333;
+  border-right: solid 2rpx #333;
+  transform: rotate(45deg);
+  margin-left: 6rpx;
+  margin-right: 10rpx;
+}

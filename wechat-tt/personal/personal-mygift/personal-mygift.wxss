@@ -1,0 +1,127 @@
+.part_item_wrap {
+  height: 200rpx;
+  padding-top: 24rpx;
+  padding-left: 100rpx;
+  padding-right: 10rpx;
+  overflow: hidden;
+}
+
+.part_item{
+  padding-bottom: 40rpx;
+  /* border-bottom: 3rpx solid #2a2a2a;  */
+}
+
+.card_cover {
+  width: 100%;
+  height: 100%;
+}
+
+.progress_num {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  margin-bottom: 44rpx;
+}
+
+.allNumName, .overplusname {
+  font-size: 24rpx;
+  font-weight: lighter;
+}
+
+.allNum, .overplus {
+  font-size: 24rpx;
+}
+
+.item_content_wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  margin-top: 20rpx;
+  align-items: center;
+}
+
+.item_content_name {
+  font-size: 28rpx;
+  flex-grow: 1;
+}
+
+.item_card_count {
+  font-size: 28rpx;
+  width: auto;
+  text-align: center;
+  line-height: 28rpx;
+  height: 28rpx;
+  margin-right: 10rpx;
+  color: #666666;
+  /* background: rgba(236, 148, 4, 0.5);
+  border: 2rpx solid #ec9404;
+  font-weight: bold;
+  white-space: nowrap;
+  box-sizing: border-box;
+  letter-spacing: 1rpx; */
+}
+
+.item_card_more {
+  text-align: right;
+  padding: 20rpx 0 ;
+}
+
+.more-icon {
+  width: 16rpx;
+  height: 14rpx;
+  margin-bottom: 3rpx;
+  margin-left: 14rpx;
+}
+
+.data_title{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding: 44rpx 0 24rpx;
+}
+
+.data_title view {
+  width: 50%;
+  font-weight: lighter;
+}
+
+view.bottom_line{
+  width: 50rpx;
+  height: 4rpx;
+  border-radius: 4rpx;
+  background-color: transparent;
+  margin: 10rpx auto;
+}
+
+.backHome{
+  width: 710rpx;
+  background: white;
+  position: fixed;
+  right: 20rpx;
+  bottom: 0;
+}
+
+.homeBtn{
+  padding: 20rpx;
+  text-align: center;
+  color: white;
+  font-weight: lighter;
+  background: #2a2a2a;
+  margin-bottom: 20rpx; 
+}
+
+.mainData{
+  padding-bottom: 20rpx; 
+}
+
+.club-logo{
+  border-radius: 50%;
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 30rpx;
+}
+
+.empty-wrap{
+  margin-top: 400rpx;
+}

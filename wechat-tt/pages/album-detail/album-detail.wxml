@@ -1,0 +1,50 @@
+<!--club/album-detail/album-detail.wxml-->
+<view class='album-detail'>
+  <view class='title'>
+    <view wx:if='{{totalPhotoCount}}'>{{type=='photo'?'全部照片':photoName+'('+totalPhotoCount+')'}}</view>
+    <view wx:if='{{type=="album"}}' class='order'>{{updateAt}}</view>
+  </view>
+  <view class='total'>
+    <image catchtap='previewPhoto' data-id='{{item.photoId}}' data-index='{{index}}' wx:for='{{photos}}' wx:key='index' class='total-item' src='{{item.url}}' mode='aspectFill' lazy-load></image>
+  </view>
+  <!-- footer -->
+  <view wx:if='{{type=="album"}}' class='footer'>
+    <view class="btn-group">
+      <button catchtap="showShare" class="btn-small">分享</button>
+      <button open-type="getUserInfo" bindgetuserinfo="addImages"  class='btn-big'>上传照片</button>
+    </view>
+    
+  </view>
+  <view wx:if='{{showAll==true&&photos.length==0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+    <view>暂无内容</view>
+  </view>
+  <view wx:elif='{{type=="photo"}}' class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+</view>
+<view wx:if='{{showSwiper}}' class='swiper-wrap' catchtap='hideSwiper'>
+  <swiper 
+    current='{{curSwiperIndex}}'
+    bindchange='swiperChange'
+    class='swiper'>
+    <swiper-item wx:for='{{curPhotos}}' wx:key='index' class='swiper-item'>
+      <view class='img-wrap'>
+        <image data-url='{{item.url}}' class='swiper-img' mode='widthFix' src='{{curPhoto.url}}' mode='aspectFit' show-menu-by-longpress></image>
+      </view>
+      
+    </swiper-item>
+  </swiper>
+  <view class='page'>
+    <view>{{curPage+1}}/{{totalPhotoCount}}</view>
+    <view wx:if='{{curPhoto.userId == userId}}' class='report' catchtap='delPhoto' data-id='{{curPhoto.photoId}}'>删除</view>
+    <view wx:else catchtap='report' data-id='{{curPhoto.photoId}}' class='report'>举报</view>
+  </view>
+  <view class='photo-info'>
+    <image class='photo-avatar' src='{{curPhoto.avatar}}'></image>
+    <view>
+      <view>{{curPhoto.nickname}}</view>
+      <view class='photo-time'>于{{curPhoto.createAt}}上传</view>
+    </view>
+  </view>
+</view>
+<!-- 分享 -->
+<Share id='share' shareparams='{{shareContent}}' sharetype='album'  painterStyle='width:790rpx;height:960rpx;'/>

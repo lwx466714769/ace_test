@@ -1,0 +1,6 @@
+<!--components/tab/tab.wxml-->
+<view class='{{blue?"tab-blue":"tab"}}'>
+  <view wx:for='{{tablist}}' wx:key='index' data-index='{{item.index}}' class='{{curIndex===item.index?"active tab-item":"tab-item"}}' catchtap='changeTab' data-type='{{item.type||item.productType}}'>
+    {{item.name}}
+  </view>
+</view>

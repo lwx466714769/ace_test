@@ -1,0 +1,70 @@
+<!-- 首页 -->
+<view class='data_con_wrap'>
+  <view class='data_con' style='height:{{windowHeight}};'>
+    <view class='index_logo mainLogo'>
+      <navigator class="logo" url="/pages/introduce/introduce">
+        <image class="logo-img" src='/images/logo.png' mode='aspectFit'></image>
+        <image class="icon-intro" src="/images/icon-about.png" mode="aspectFit"></image>
+      </navigator>
+      <image src='/images/icon-share-home.png' class='icon-share' catchtap='showShare' mode='aspectFit'></image>
+
+    </view>
+    <!-- banner -->
+    <import src='/templates/template_banner/template_banner.wxml' />
+    <template is='Banner' data='{{infoBanner,currentSwiper}}' />
+    <import src='/templates/template_grid/template_grid.wxml' />
+    <template is='Grid' data='{{cards}}' />
+    <import src='/templates/template_event/template_event.wxml' />
+    <template wx:if='{{eventData.length>0}}' is='Event' data='{{eventData}}'/>
+    <import src='/templates/template_information/template_information.wxml' />
+    <!-- 装备 -->
+    <!-- <view class='index_wrap'>
+      <navigator url="/equip/equip-list/equip-list" class='index_title'>
+        <view>
+          <text>Equipment</text>
+          <text class="index_name">Equipment 我的座驾</text>
+        </view>
+        <view class="index_more">...</view>
+      </navigator>
+      <view class='event_row'>
+        <block wx:for="{{equipData}}" wx:key='eventData'>
+          <navigator url='/equip/my-equip-new/my-equip-new?id={{item.equipId}}' class='clickHref'>
+              <view class='event_block'>
+                <image class="img" src="{{item.background}}" mode='aspectFill' />
+                <rich-text class='description'>{{item.brandName}} {{item.seriesName?item.seriesName:''}}</rich-text>
+              </view>
+          </navigator>
+        </block>
+        <view wx:for='{{2 - equipData.length}}' wx:key='space' class="img"></view>
+      </view>
+    </view> -->
+    <template is='Information' data='{{postsTop,showAll}}' />
+  </view>
+</view>
+<!-- 底部 Ace-instrument 点击工具栏部分 -->
+<!-- <view class='Ace-instrument'>
+  <view class='Ace-Mini-btn'>
+    <view class='but_side'>
+      <button data-i='0' catchtap='initPage' class='Ace-ticket'>
+        <image class='card-icon' mode='aspectFit' src='/images/aomai_home.png'></image>
+      </button>
+      <button class='Ace-ticket icon-discuss' data-i='1' catchtap='goDiscussList' hover-class="none" >
+        <image class='card-icon' mode='aspectFit' src='/images/icon-posts.png'></image>
+      </button>
+      <button class='Ace-ticket' open-type="getUserInfo" bindgetuserinfo='goAlbum' hover-class="none">
+        <image class='card-icon' mode='aspectFit' src='/images/icon-album.png'></image>
+      </button>
+    </view>
+    <button class='Ace-personal' catchtap='personalTap' wx:if='{{userId}}'>
+      <view class='con-text'>
+        {{nickname}}
+      </view>
+      <image src='{{avatar}}' mode='aspectFill' class='card-icon-img card-icon'></image>
+    </button>
+    <button wx:else open-type="getUserInfo" bindgetuserinfo="personalTap" class='Ace-personal plogin'>
+        请登录
+    </button>
+  </view>
+</view> -->
+<!-- 小程序 canvas 分享 -->
+<Share id='share' shareparams='{{clubParams}}' sharetype='club'  painterStyle='width:790rpx;height:960rpx;'/>

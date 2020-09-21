@@ -1,0 +1,19 @@
+<!--event/event-member/event-member.wxml-->
+<view class='event-member'>
+  <view wx:for='{{joinMember}}' wx:key='index' class='member member-list'>
+    <view class='head-left'>
+      <image src='{{item.avatar}}' class='member-head'></image> 
+      <image wx:if='{{item.identity == "FOUNDER"}}' class='icon-identity' src='/images/icon-master.png'></image>
+      <image wx:elif='{{item.identity == "SUPER"}}' class='icon-identity' src='/images/icon-super.png'></image>
+      <image wx:elif='{{item.identity == "MEDIA"}}' class='icon-identity' src='/images/icon-media.png'></image>
+    </view>
+    <view class='head-right'>
+      <view class='member-name'>{{item.nickname}}</view>
+    </view>
+  </view>
+  <view wx:if='{{joinMember.length==0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+    <view>暂无成员</view>
+  </view>
+  <view wx:elif='{{members.length>20}}' class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+</view>

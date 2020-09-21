@@ -1,0 +1,44 @@
+<template name='Information'>
+  <view class='index_wrap'>
+    <view class='index-title' catchtap='goDiscussList'>
+      <view>
+        <text class="index-name">推荐</text>
+        <text class="index-english">Recommend</text>
+      </view>
+      <text class="index_more" >全部</text>
+    </view>
+    <block wx:for='{{postsTop}}' wx:key='postsTop'>
+      <view class='information_content' data-id='{{item.relateId}}' data-type='{{item.relateType}}' catchtap='information_onTap'>
+        <view class='content'>
+          <view class='content_left'>
+            <text wx:if='{{item.relateType == "VOTE"}}' class="type-mark">投票</text><rich-text nodes='{{item.title}}' class='title'></rich-text>
+            <view class='author'>TripleT机车</view>
+            <!-- <view class='author' wx:if='{{item.relateType == "VOTE"}}'>投票</view>
+            <view class='author' wx:elif='{{item.relateType == "PARTY"}}'>攒局</view>
+            <view class='author' wx:elif='{{item.relateType == "POST"}}'>贴子</view>
+            <view class='author' wx:elif='{{item.relateType == "ACTIVITY"}}'>活动</view> -->
+          </view>
+          <view class='content_right'>
+            <image wx:if='{{item.relateType == "VOTE"&&!item.cover}}' src='https://img.acegear.com/382802b55176798524e03f9d0cea96dd4a6c2323/w700_1' lazy-load='{{true}}' mode='aspectFill'></image>
+            <image wx:if='{{item.relateType == "PARTY"&&!item.cover}}'  src='https://img.acegear.com/d20e16bb0095fef5753fc2a1087a1f3f9e72448d/w700_1' lazy-load='{{true}}' mode='aspectFill'></image>
+            <image wx:if='{{item.cover}}' src='{{item.cover}}' lazy-load='{{true}}' mode='aspectFill'></image>
+          </view>
+        </view>
+        <view class='bottom_line'></view>
+      </view>
+      <!-- <view class='information_content' data-id='{{item.postId}}' catchtap='information_onTap'>
+        <view class='content'>
+          <view class='content_left'>
+            <view class='title' style='height: 90rpx; line-height: 45rpx;'>{{item.title}}</view>
+            <view class='author'>{{item.nickname}}</view>
+          </view>
+          <view class='content_right'>
+            <image src='{{item.cover}}' lazy-load='{{true}}' mode='aspectFill'></image>
+          </view>
+        </view>
+        <view class='bottom_line'></view>
+      </view> -->
+    </block>
+    <view class='information_bottom' style='text-align: center; line-height: 80rxp;color: rgb(102,102,102);'>{{showAll ? '没有更多了' : ''}}</view>
+  </view>
+</template>

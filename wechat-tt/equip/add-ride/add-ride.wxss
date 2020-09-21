@@ -1,0 +1,129 @@
+/* equip/add-ride/add-ride.wxss */
+.add-ride{
+  padding-bottom: 120rpx;
+}
+.tab{
+  display:flex;
+  justify-content:space-around;
+  padding:20rpx 40rpx;
+}
+.tab-item{
+  color: #aaa;
+  margin-right: 30rpx;
+  display: inline-block;
+  padding: 12rpx 0;
+  font-size: 32rpx;
+}
+.active{
+  color: #000;
+  position: relative;
+}
+.active:after{
+  content:'';
+  height: 4rpx;
+  width: 30rpx;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(49,140,247);
+}
+/* 类型列表 */
+.ride-list{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40rpx 30rpx;
+}
+.ride-item{
+  margin-right: 6rpx;
+  text-align: center; 
+}
+.ride-item:nth-child(3n){
+  margin-right: 0;
+}
+.ride-img{
+  width: 222rpx;
+  height: 222rpx;
+  position: relative;
+  border:solid 2rpx transparent;
+}
+.img{
+  width: 100%;
+  height: 100%;
+}
+.checked{
+  border:solid 2rpx rgb(59,148,253);
+}
+.icon-checked{
+  position: absolute;
+  top: 14rpx;
+  right:14rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.ride-name{
+  font-size: 32rpx;
+  padding: 20rpx 0;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  border-top: solid 2rpx rgb(246,246,246);
+  font-size: 32rpx;
+  padding-bottom: 20rpx;
+}
+/* 车型 */
+.ride-types{
+  padding: 40rpx 30rpx;
+}
+.ride-type{
+  margin-bottom: 30rpx;
+  display: flex;
+}
+.type-name{
+  width: 220rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding-left: 14rpx;
+  box-sizing: border-box;
+  position: relative;
+}
+.type-name:after{
+  content: '';
+  width: 4rpx;
+  height: 12rpx;
+  background: rgb(59,148,253);
+  position: absolute;
+  left: 0;
+  top: 18rpx;
+}
+.type-con{
+  flex: 1;
+  color: #999;
+}
+.add-ride-type{
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 30rpx 0;
+  color: #999;
+}
+.icon-ride{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+}
+.button{
+  margin: 0;
+}

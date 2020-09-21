@@ -1,0 +1,81 @@
+<scroll-view>
+  <!-- 我的福利card储存页面 -->
+  <view>
+    <!-- title -->
+    <!-- <view class='data_title'>
+      <view class='data_false' data-num='0' catchtap='tabtap_gift'>
+        <text style='{{num == 0 ? "font-weight: bolder;" : ""}}'>商品</text>
+        <view style='{{num == 0 ? "background-color: #2a2a2a;" : ""}}' class='bottom_line'></view>
+      </view>
+      <view class='data_true' data-num='1' catchtap='tabtap_gift'>
+        <text style='{{num == 1 ? "font-weight: bolder;" : ""}}'>礼品卡</text>
+        <view style='{{num == 1 ? "background-color: #2a2a2a;" : ""}}' class='bottom_line'></view>
+      </view>
+    </view> -->
+    <!-- 非礼品卡 -->
+    <view class='part_items' wx:if='{{num == 0}}'>
+      <block wx:for='{{card_list}}' wx:key='card_list'>
+        <view catchtap='wefarelist' data-id='{{item.id}}' data-type='{{item.productType}}' data-order='{{item.orderId}}' data-length='{{item.consumerCards.length}}' data-gift='{{item.gift}}' data-is='false'>
+          <view class='item_content_wrap' style="margin-top: 30rpx">
+            <view class='item_content_clubname'>{{item.info.clubName}}</view>
+            <view class='item_card_order'>订单ID : {{item.orderId}}</view>
+          </view>
+          <view class='part_item_wrap'>
+            <image class='card_cover' mode='aspectFill' src='{{item.info.productImg?item.info.productImg:card}}'></image>
+            <view class='order-info'>
+              <view class='order-name'>{{item.productName}}</view>
+              <!-- <view class='object-list'>
+                <view class='total'>
+                  <view><text class="size24">￥ </text>{{item.orderAmount}}<text class="size24">{{item.decimal}}</text></view>
+                  <view><text class="size24">x </text>{{item.count}}</view>
+                </view>
+              </view> -->
+            </view>
+          </view>
+          <view class='item_content_wrap' style="margin-bottom: 30rpx">
+            <view class='item_content_name'>
+              <view style="color: black">订单状态 ：</view>
+              <view style='color: #D0021B' wx:if='{{item.reimbursePO&&(item.reimbursePO.status==0||item.reimbursePO.status==2)}}' class='state'>{{item.reimbursePO.status==0?"退款中":"退款成功"}}</view>
+              <view wx:else>
+                <view style='color: #D0021B' wx:for='{{orderState2}}' wx:if='{{item.status==state.state}}' wx:for-item='state' wx:key='index' class='state'>{{state.title}}</view>
+              </view>
+            </view>
+            <!--<view class='item_card_count ' wx:if='{{false}} '>{{item.cardTotal}}张卡</view>-->
+            <view class='item_card_count '>
+              <view style="color: black">合计 ：</view>
+              <view style='color: #D0021B '>￥{{item.orderAmount/100}}</view>
+            </view>
+          </view>
+        </view>
+        <view class='slot '></view>
+      </block>
+      <!-- <navigator url='/miniwelfare/pages/welfaretotal/welfaretotal?status=false ' class='item_card_more ' wx:if='{{false}} '>
+        <view class='card_more ' wx:if='{{card_list.length> 0}}'>
+          <text>MORE</text>
+          <image class='more-icon' src='/images/ent@3x.png'></image>
+        </view>
+      </navigator> -->
+    </view>
+    <view wx:if='{{card_list.length==0}}' class='empty-wrap'>
+      <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+      <view>您还没有购买商品</view>
+    </view>
+
+  </view>
+  <view class='nullMask' wx:if='{{(num == 0 && card_list.length == 0 && exitSome ===false) ||exitSome ===true  || (card_gift.length == 0 && num == 1 && exitSome ===false)}}'>
+    <view class='nullAvtar'>
+      <navigator class='clickHerf' open-type='switchTab' url='/pages/index/index?tab_index=1'>
+        <view class='nullImages'>
+          <image class='' src='/images/gift@3x.png'></image>
+        </view>
+        <view class='noGoods'>
+          <text></text>
+          <image class='enter' src='/images/ent@3x.png'></image>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class='backHome' wx:if='{{showHomeBtn}}'>
+    <view class='homeBtn' catchtap='goHome'>返回首页</view>
+  </view>
+</scroll-view>

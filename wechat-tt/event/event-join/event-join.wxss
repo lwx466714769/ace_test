@@ -1,0 +1,97 @@
+/* event/event-join/event-join.wxss */
+.item{
+  margin: 0 30rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: solid 2rpx rgb(242, 242, 242);
+}
+.placeholder{
+  color: #aaa;
+}
+.input{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.title{
+  height: 100rpx;
+  line-height: 100rpx;
+  padding: 0 30rpx;
+  color: #aaa;
+}
+.img-wrap{
+  padding:0 30rpx;
+}
+.wx-img-bg{
+  width: 200rpx;
+  height: 200rpx; 
+}
+.wx-img-box {
+  display: inline-block;
+  width: 200rpx;
+  height: 200rpx;
+  position: relative;
+  margin-right:16rpx;
+  margin-bottom: 16rpx;
+}
+.wx-img-box:last-child {
+  margin: 0;
+}
+.wx-img-item {
+  width: 100%;
+  height: 100%;
+}
+.wx-img-progress {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+.img-close {
+  position:absolute;
+  top:10rpx;
+  right:10rpx;
+  width:40rpx;
+  height:40rpx;
+  border-radius:50%;
+}
+.btn-confirm{
+  position: absolute;
+  bottom: 54rpx;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 140rpx;
+  background: #fff;
+  border-top: solid 2rpx rgb(246,246,246);
+  box-sizing: border-box;
+}
+.btn-group{
+  width: 692rpx;
+  border: solid 2rpx #000;
+  border-radius: 8rpx;
+  background: #000;
+  color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:14rpx auto 0; 
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.btn-small{
+  width: 212rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+  color: #000;
+  border-top-left-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+}
+.btn-big{
+  flex: 1;
+}

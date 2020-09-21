@@ -1,0 +1,62 @@
+<template name='moreCard'>
+   <block wx:for='{{cardsAll}}' wx:key='index'>
+      <!-- 高级卡 -->
+      <view wx:if='{{item.shelfType==1}}' class='cardbag'>
+         <view class='aomai_cardName'>
+            <view style='padding-right: 20rpx;'>
+               <view style='width:4rpx; height: 24rpx; background: rgb(255, 103, 0);'></view>
+            </view>{{item.shelfName}}
+         </view>
+         <view wx:for='{{item.commodities}}' wx:key='sub_{{index}}' wx:for-item='sub' data-id='{{sub.id}}' class='big' catchtap='welfareCardDetail'>
+            <view class='card-big'>
+               <image class='cardBig' mode='aspectFill' src='{{sub.productImg[0]?sub.productImg[0]:cardbag}}'></image>
+            </view>
+            <view class='card-title'>
+               <view class='line'></view>
+               <text>{{sub.productName}}</text>
+            </view>
+            <view class='largeBg'>
+
+            </view>
+         </view>
+      </view>
+      <!-- 中级卡 -->
+
+      <view wx:elif='{{item.shelfType==2}}' style='padding-bottom: 0;' class='cardbag'>
+         <view class='aomai_cardName'>
+            <view style='padding-right: 20rpx;'>
+               <view style='width:4rpx; height: 24rpx; background: rgb(255, 103, 0);'></view>
+            </view>{{item.shelfName}}
+         </view>
+         <view class='middle-wrap'>
+            <view wx:for='{{item.commodities}}' wx:key='sub_{{index}}' wx:for-item='sub' data-id='{{sub.id}}' class='middle' catchtap='welfareCardDetail'>
+               <view class='card-middle'>
+                  <image class='cardMiddle cardBig' mode='aspectFill' src='{{sub.productImg[1]?sub.productImg[1]:cardbag}}'></image>
+               </view>
+               <view class='lineM'></view>
+               <view class='middletext'>{{sub.productName}}</view>
+            </view>
+         </view>
+         <!-- ----- -->
+      </view>
+      <!-- 长条卡 -->
+      <view wx:if='{{item.shelfType===3}}' class='cardbag'>
+         <view class='aomai_cardName'>
+            <view style='padding-right: 20rpx;'>
+               <view style='width:4rpx; height: 24rpx; background: rgb(255, 103, 0);'></view>
+            </view>{{item.shelfName}}
+         </view>
+         <view wx:for='{{item.commodities}}' wx:key='sub_{{index}}' wx:for-item='sub' data-id='{{sub.id}}' catchtap='welfareCardDetail' class='length'>
+            <view class='card-length'>
+               <image class='cardBig' mode='aspectFill' src='{{sub.productImg[1]?sub.productImg[1]:cardbag}}'></image>
+            </view>
+            <view class='lineL'></view>
+            <view class='card-titleL'>
+               <text class='text'>{{sub.productName}}</text>
+            </view>
+         </view>
+      </view>
+      <!-- 结束 -->
+   </block>
+   <view class='show-all' wx:if='{{cardsAll.length==0}}'>{{cardsAll.length==0?"":"加载中"}}</view>
+</template>

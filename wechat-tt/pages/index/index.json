@@ -1,0 +1,7 @@
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "painter": "/components/painter/painter",
+    "Share": "/components/share/share"
+  }
+}

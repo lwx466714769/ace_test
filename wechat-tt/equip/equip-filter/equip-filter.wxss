@@ -1,0 +1,199 @@
+/* equip/equip-filter/equip-filter.wxss */
+.equip-filter{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+.list-left{
+  height: 100%;
+  width: 164rpx;
+  background: rgb(246,246,246);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.clear-filter{
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #999;
+}
+.list-right{
+  flex: 1;
+  position: relative;
+}
+.list-name{
+  width: 164rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #999;
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.active{
+  color: #000;
+  font-size: 32rpx;
+}
+.active:before{
+  content: '';
+  width: 4rpx;
+  height: 20rpx;
+  background: rgb(49,140,247);
+  position: absolute;
+  top: 40rpx;
+  left: 0;
+}
+.add-equip-con{
+  position: relative;
+  width:100%;
+  height:calc(100% - 208rpx);
+
+}
+.letters{
+  position: absolute;
+  right: 30rpx;
+  top:150px;
+}
+.letter-item{
+  font-size: 20rpx;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+}
+.letter-active{
+  color: #4196fa;
+}
+.letter{
+  height: 40rpx;
+  line-height: 40rpx;
+  background: rgb(246,246,246);
+  padding-left: 30rpx;
+  font-size: 24rpx;
+}
+
+.equip-con{
+  display: flex;
+  padding: 44rpx 84rpx 44rpx 44rpx;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.equip-item{
+  width: 132rpx;
+  margin-right: 20rpx;
+  margin-bottom: 30rpx;
+}
+.equip-item:nth-child(3n){
+  margin-right: 0;
+}
+.equip-img{
+  width: 100%;
+  height:100%;
+  display: block;
+}
+.equip-img-wrap{
+  position: relative;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 auto 10rpx;
+  overflow: hidden;
+}
+.equip-default{
+  width: 48rpx;
+  height: 36rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.equip-name{
+  text-align: center;
+  height: 80rpx;
+  line-height: 36rpx;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  word-break:break-all;
+}
+.all{
+  height: 208rpx;
+  box-sizing: border-box;
+  padding: 44rpx 0 44rpx 80rpx;
+  color: #666;
+}
+.all-img{
+  width: 54rpx;
+  height: 54rpx;
+  line-height: 54rpx;
+  border-radius: 50%;
+  border:solid 4rpx rgb(153,153,153);
+  text-align: center;
+  font-size: 36rpx;
+  margin-bottom: 18rpx;
+  color: #aaa;
+}
+.all-font{
+  padding-left: 6rpx;
+}
+
+/* 车型号 */
+.model-all{
+  padding: 44rpx 0 44rpx 110rpx;
+  color: #666;
+  display: flex;
+  align-items: center;
+}
+.model-all .all-img{
+  margin-right: 60rpx;
+  margin-bottom: 0;
+}
+.model-list-wrap{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,.5);
+}
+.model-list{
+  width: 580rpx;
+  min-height: 100%;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.model-item{
+  padding: 10rpx 30rpx 10rpx 60rpx;
+  display: flex;
+  align-items: center;
+}
+.model-img{
+  width: 100%;
+  height: 100%;
+}
+.model-img-wrap{
+  position: relative;
+  width: 160rpx;
+  height: 80rpx;
+  margin-right: 30rpx;
+}
+.img-wrap-gray{
+  background: #e6e6e6;
+}
+.model-equip-default{
+  width: 66rpx;
+  height: 50rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.model-name{
+  color: rgb(102,102,102);
+  flex: 1;
+}

@@ -1,0 +1,103 @@
+/* event/event-result/event-result.wxss */
+.success{
+  text-align: center;
+}
+.icon-success{
+  width: 100rpx;
+  height: 100rpx;
+  margin:180rpx auto 40rpx;
+  display: block;
+}
+.success-font{
+  font-size: 36rpx;
+  font-weight: bold;
+  margin: 10rpx 0;
+}
+.info{
+  font-size: 28rpx;
+}
+.btn-group2{
+  margin-top: 90rpx;
+}
+.btn{
+  width: 292rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  margin: 30rpx auto 0;
+  border-radius: 8rpx;
+}
+.btn-detail{
+  background: #fff;
+  color: #000;
+  border: solid 2rpx #000;
+}
+/* 二维码 */
+.qrcode{
+  text-align: center;
+}
+.qrcode-success{
+  margin-top: 100rpx;
+  color: rgb(102,102,102);
+}
+.qrcode-img{
+  width: 220rpx;
+  height: 220rpx;
+  margin:0 auto 30rpx;
+}
+.qrcode-fail{
+  margin-top: 260rpx;
+  font-size: 32rpx;
+}
+.get-qrcode{
+  color: rgb(102,102,102);
+  text-decoration: underline;
+  margin-top: 30rpx;
+}
+
+/* 电子门票 */
+.ticket-wrap{
+  position: fixed;
+  background: rgba(0,0,0,.5);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 201;
+}
+.ticket-content{
+  width: 656rpx;
+  height: 754rpx;
+  background: #fff;
+  position: absolute;
+  top: 180rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 68rpx;
+  box-sizing: border-box;
+}
+.ticket-qrcode{
+  width: 520rpx;
+  height: 520rpx;
+  margin-bottom: 60rpx;
+}
+.load{
+  position: absolute;
+  top: 290rpx;
+  left: 46%;
+}
+.ticket-close{
+  position: absolute;
+  bottom: -120rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 60rpx;
+  color: #fff;
+  border-radius: 50%;
+  border:solid 4rpx #fff;
+  font-size: 60rpx;
+  line-height: 46rpx;
+  text-align: center;
+}

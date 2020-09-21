@@ -1,0 +1,187 @@
+.part_item_card_img{
+  /* background: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, 0.5), transparent) 0 160rpx/100% 90rpx no-repeat;
+  padding: 40rpx 0 50rpx;
+  border-bottom: 3rpx solid #2a2a2a;  */
+  padding: 40rpx 0 10rpx;
+}
+
+.item_card_img{
+  margin: 0 auto;
+  width: 600rpx;
+  height: 340rpx;
+  overflow: hidden;
+  box-shadow: 2rpx 2rpx 12rpx #8c8c8c; 
+  border-radius: 8rpx; 
+}
+
+.card_img{
+  width: 100%;
+  height: 100%;
+}
+.card_back{
+  position: absolute;
+}
+
+.part_item_name,.part_item_description,.part_item_time{
+  padding-top: 30rpx; 
+}
+
+.item_name{
+  font-size: 32rpx;
+  color: #2a2a2a;
+  line-height: 40rpx;
+  letter-spacing: 2rpx;
+}
+
+.item_description{
+  font-size: 28rpx;
+  color: #5c5c5c;
+  line-height: 40rpx;
+  letter-spacing: 2rpx;
+  font-weight: lighter;
+}
+
+.item_time{
+  font-weight: lighter;
+}
+
+.part_item_time{
+  padding-bottom: 30rpx;
+}
+
+.item_cards_name{
+  background: #fff;
+  padding: 10rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+}
+
+.cards_name{
+  font-size: 28rpx;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+.cards_name:after{
+  position: absolute;
+  width:4rpx;
+  height: 20rpx;
+  content:'';
+  background: #000;
+  left:0;
+  top: 20rpx;
+}
+.img_icon{
+  width: 20rpx;
+  height: 40rpx;
+}
+
+.line{
+  width: 50rpx;
+  height: 3rpx;
+  background: #2a2a2a;
+}
+
+.item_cards{
+  padding: 80rpx 0 180rpx; 
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+
+.item_card_cover{
+  height: 184rpx;
+  overflow: hidden;
+  box-shadow: 1rpx 1rpx 3rpx #8c8c8c; 
+  border-radius: 8rpx; 
+  position: relative;
+}
+
+.card_name{
+  font-size: 24rpx;
+  font-weight: lighter;
+}
+
+.item_card{
+  width: 320rpx;
+  margin-bottom: 20rpx;
+}
+
+.card_tap_btn,.card_tap_done{
+  height: 56rpx;
+  background: rgba(255, 255, 255, 0.8);
+  color:#666666;
+  font-size: 24rpx;
+  text-align: center;
+  line-height: 56rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+}
+
+view.card_tap_done{
+  background: white;
+  text-align: left;
+  color: #2a2a2a;
+}
+
+.line,.card_name,.card_tap_btn{
+  margin-top: 20rpx; 
+}
+
+.card_tap_btn text{
+  color: white;
+}
+
+.card_all_delete{
+  position: fixed;
+  left: 20rpx;
+  bottom: 0;
+  width: 710rpx;
+  background: white;
+}
+
+.delete_btn{
+  padding: 20rpx;
+  color: white;
+  text-align: center;
+  margin-bottom: 20rpx; 
+  background: #2a2a2a;
+  font-weight: lighter;
+}
+.name{
+  font-size: 24rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  max-height: 80rpx;
+  line-height: 40rpx;
+}
+.slot{
+  width: 750rpx;
+  margin-left: -20rpx;
+}
+.club-img{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.club-name{
+  /*font-weight: bold;*/
+  margin-bottom: 10rpx;
+  color: black;
+}
+
+/* 俱乐部 */
+.card-club{
+  display: flex;
+  padding: 30rpx 0 30rpx 0;
+  align-items: center;
+}

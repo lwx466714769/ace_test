@@ -1,0 +1,50 @@
+<!--club/album/album.wxml-->
+<view class='album-wrap'>
+  <!-- 全部相册 -->
+  <view>
+    <view class='title'>
+      <view>全部照片({{totalPhotoCount}})</view>
+      <button catchtap="showShare" class="btn-share"><image class="icon-share" src="/images/icon-share-profile.png" mode="aspectFit"></image></button>
+    </view>
+    <navigator url='/pages/album-detail/album-detail?type=photo&clubId={{clubId}}' class='total'>
+      <image wx:for='{{photos}}' wx:if='{{index<8}}' wx:key='index' class='total-item' src='{{item.url}}' mode='aspectFill' lazy-load></image>
+    </navigator>
+  </view>
+  <!-- 会员相册 -->
+  <!-- <view class='album-title'>
+    <view>会员相册</view>
+    <view catchtap='showFilter' class='order'>
+      <view>按时间更新顺序</view>
+      <view class='arrow-down'></view>
+    </view>
+  </view> -->
+  <view wx:for='{{albums}}' wx:key='index'>
+    <view class='album-title'>
+      <view>{{item.name}}({{item.photoCount}})</view>
+      <view class='order'>{{item.updateAt}}</view>
+    </view>
+    <view class='total'>
+      <navigator style="display:inline" url='/pages/album-detail/album-detail?type=album&albumId={{item.albumId}}&clubId={{clubId}}&isMember={{isMember}}'>
+        <image wx:for='{{item.photos}}' wx:if='{{index<3}}' wx:key='index' class='total-item' src='{{item.url}}' mode='aspectFill' lazy-load></image>
+      </navigator>
+      <button data-id='{{item.albumId}}' class='item-add' open-type="getUserInfo" bindgetuserinfo="addImages">
+        <image src='/images/icon-add-bg.png' mode="aspectFill"></image>
+      </button>
+    </view>
+  </view>
+  <view class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+</view>
+<view wx:if='{{showFilter}}' class='filter-wrap' catchtap='showFilter'>
+  <view class='filter-type'>
+    <view class='filter-title'>筛选</view>
+    <view class='filter-list'>
+      <view wx:for='{{filterList}}' wx:key='index' data-index='{{item.index}}' catchtap='changeType' data-order='{{item.order}}' class='filter-item'>
+        <view>{{item.name}}</view>
+        <image wx:if='{{item.order == order}}' class='checked' src='/images/icon-success.png' mode='aspectFill' lazy-load></image>
+        <view wx:else class='checked'></view>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- 分享 -->
+<Share id='share' shareparams='{{shareContent}}' sharetype='album'  painterStyle='width:790rpx;height:960rpx;'/>

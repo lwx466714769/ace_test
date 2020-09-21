@@ -1,0 +1,107 @@
+<!--equip/equip-detail/equip-detail.wxml-->
+<!-- <import src='/template/post.wxml'/> -->
+<view id='detail' class='equip-wrap'>
+  <!-- 照片 -->
+  <scroll-view scroll-y class='equip-item'>
+    <view class='equip-img-wrap'>
+      <image wx:if='{{background}}' class='equip-img' src='{{background}}' mode='aspectFill'></image>
+      <image wx:else class='equip-default' src='https://img.acegear.com/equip-ph-cover.jpg'></image>
+      <view catchtap='uploadCarImg'  class='change-photo'>
+        {{background?"点击更换封面图片":"点击上传封面图片"}}
+      </view>
+      <view class="check-mark">
+        <view class="name-one"></view><view class="name-one"></view>
+        <view class="name-two">封面</view>
+      </view>
+    </view>
+    <view class='photo-wrap'>
+      <view wx:for='{{photos}}' wx:key='index' class='photo'>
+        <image data-index='{{index}}' catchtap='previewPhoto' data-url='{{item}}' class='photo-item' src='{{item}}' mode='aspectFill'></image>
+        <image class='img-close' catchtap='deletePhoto' data-index='{{index}}' src='/images/icon-close.png'></image>
+      </view>
+      <view wx:if='{{photos.length<2}}' catchtap='addImages' class='equip-photos'>
+        <image class='icon-photo' src='/images/equip-photo-empty.png'></image>
+        <view>{{photos.length==1?"还需至少上传一张照片":"至少上传两张照片"}}</view>
+      </view>
+      <view catchtap='addImages'>
+        <image style='top:{{windowHeight*0.5}}px' class='add-photo' src='/images/equip-upload.png'> </image>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 详情内容 -->
+  <view id='detailCon' class='equip-con {{showPhoto?"shadow":""}}' animation='{{animationData}}'  bindtouchstart='touchStart' bindtouchmove='touchMove' bindtouchend='touchEnd' style='{{showPhoto?"bottom:-"+(screenHeight-364)+"px;":"bottom:0;"}}'>
+    <view class='move-bar-wrap' catchtap='showPhoto' catchtouchend=''>
+      <view class='move-bar' ></view>
+    </view>
+    <view id='detailHead'>
+      <view class='user-header'>
+        <view class='user-info'>
+          <image class='equip-avatar' src='{{avatar}}'></image>
+          <view class='equip-nickname'>{{nickname}}</view>
+        </view>
+      </view>     
+      <view class='equip-name'>{{brandName?brandName:appealContent[0].value}} {{seriesName?seriesName:appealContent[1].value}}</view>
+      <view wx:if='{{showPhoto}}' class='move-text'>滑动查看详情</view>
+      <!-- 详情 -->
+      <!-- <view wx:if='{{brandName}}' class='equip-type'>
+        <view class='type-name'>品牌</view>
+        <view class='type-con'>{{brandName}}</view>
+      </view>
+      <view wx:if='{{seriesName}}' class='equip-type'>
+        <view class='type-name'>车系</view>
+        <view class='type-con'>{{seriesName}}</view>
+      </view> -->
+      <view wx:for='{{appealContent}}' wx:key='index' class='equip-type'>
+        <block wx:if='{{item.prescribedType == "NOTUPDATE"}}'>
+          <view class='type-name'>{{item.name}}</view>
+          <view class='type-con'>{{item.value}}</view>
+        </block>
+        <block wx:elif='{{item.prescribedType == "NOTDELETE"}}'>
+          <view class='type-name'>{{item.name}}</view>
+          <input bindinput='changeContent' capture-catch:touchstart='' data-index='{{index}}' value='{{item.value}}' class='type-con' placeholder='{{item.name=="车系"?"请填写车系":"请填写自定义内容"}}'></input>
+        </block>
+        <block wx:else>
+          <input bindinput='changeName' catchtouchstart='' data-index='{{index}}' value='{{item.name}}' class='type-name' placeholder='自定义'></input>
+          <input bindinput='changeContent' catchtouchstart='' data-index='{{index}}' value='{{item.value}}' class='type-con' placeholder='请填写自定义内容'></input>
+          <image data-index='{{index}}' class='icon-ride' src='/images/jian@3x.png' catchtap='delRideType'></image>
+        </block>
+      </view>
+      <view>
+        <view class='slot'></view>
+        <view class='add-ride-type' capture-catch:touchstart='addRideType'>
+          <view>点击添加一个自定义描述</view> 
+          <image class='icon-ride' src='/images/jia@3x.png'></image>
+        </view>
+      </view>
+    </view>
+  </view> 
+</view>
+<!-- footer -->
+<view class='footer'>
+  <view class='btn-group'>
+    <button class='btn-big' catchtap='submit'>保存</button>
+  </view>
+</view>
+<view wx:if='{{showSwiper}}' class='swiper-wrap' catchtap='hideSwiper'>
+  <swiper 
+    current='{{curSwiperIndex}}'
+    bindchange='swiperChange'
+    class='swiper'>
+    <swiper-item wx:for='{{photos}}' wx:key='index' class='swiper-item'>
+      <view class='img-wrap'>
+        <image data-url='{{item}}' class='swiper-img' mode='widthFix' src='{{item}}' mode='aspectFit'></image>
+      </view>
+      
+    </swiper-item>
+  </swiper>
+  <view class='photo-info'>
+    <view class='photo-user'>
+      <view class='photo-left'>
+        <image class='photo-avatar' src='{{avatar}}'></image>
+        <view>{{nickname}}</view>
+      </view>
+      <view class='page'>{{curSwiperIndex+1}}/{{photos.length}}</view>
+    </view>
+    <view class='equip-name'>{{brandName?brandName:""}} {{seriesName?seriesName:""}}</view>
+  </view> 
+</view>

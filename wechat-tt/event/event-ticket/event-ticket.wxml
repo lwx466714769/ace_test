@@ -1,0 +1,83 @@
+<!--club-order/order-detail/order-detail.wxml-->
+<view class='order-detail'>
+  <view class='order-head'>
+    <view class='event-wrap'>
+      <image class='event-img' mode='aspectFill' src='{{order.info.coverImg?order.info.coverImg:"/images/default.png"}}'></image>
+    </view>
+    <view class='event-title'>
+      <view class='event-name'>{{order.productName}}</view>
+      <view class='event-date'>活动时间：{{order.info.startTime}} - {{order.info.endTime}}</view>
+    </view>
+    <view class='slot'></view>
+    <view wx:for='{{order.items}}' wx:key='index' class='event-info'>
+      <view class='event-center'>
+        <view class='group-name'>{{item.itemTitle}}</view>
+        <view class='group-price' wx:if='{{order.orderAmount==0}}'>免费</view>
+        <view wx:else class='group-price'><text class="size24">¥ </text>{{item.amountInt}}<text class="size24">{{item.decimal}}</text></view>
+      </view>
+      <view class='event-num'>x {{item.itemCount}}</view>
+    </view>
+    <view class='total'>
+      <!-- 订单状态  -->
+      <view class='event-state'>{{item.state == 7 ?"已完成":"待消费"}}</view>
+      <view>
+      共{{order.items.length}}件 合计：<text class='total-price'><text class="size24">￥ </text>{{order.amountInt}}<text class="size24">{{order.decimal}}</text></text>
+      </view>
+    </view>
+  </view>
+  <view class='slot'></view>
+  <view class='padding'>
+    <view class='block-title'>电子票</view>
+    <view class='qrcode-wrap'>
+      <image class='qrcode-img' src='{{item.state == 7 ? "/images/event-use.png":order.qrCode  }}'></image>
+      <!-- <view wx:if='{{curCard.amount==0}}' class='qrcode-state'>
+        <view class='qrcode-state-wrap'></view>
+        <image class='icon-qrcode-state' src='/images/card-use.png' mode='aspectFill'></image>
+      </view>
+      <view wx:elif='{{curCard.fail}}' class='qrcode-state'>
+        <view class='qrcode-state-wrap'></view>
+        <image class='icon-qrcode-state' src='/images/card-fail.png' mode='aspectFill'></image>
+      </view> -->
+    </view>
+  </view>
+  <view class='slot'></view>
+  <!-- 申请信息 -->
+  <view wx:if='{{order.verifyMessages.length>0}}' class='order-person'>
+    <view class='order-title'>申请信息</view>
+    <view wx:for='{{order.verifyMessages}}' wx:key='index' wx:for-item='sign'>
+      <view catchtap='preview' data-url='{{sign.value}}' wx:if='{{sign.type=="IMAGE"}}'>
+        <view class='upload-title'>{{sign.name}}</view>
+        <image class='block-img' src='{{sign.value}}' mode='aspectFill'></image>
+      </view>
+      <view wx:else class='order-block'>
+        <view class='block-info'>{{sign.value}}</view>
+        <view class='block-place'>{{sign.name}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 操作按钮 -->
+  <!-- <view class='footer'>
+    <view wx:if='{{order.state == "AUDIT"}}' class='btn-group'>
+      <view catchtap='cancelOrder' class='btn-big'>取消订单</view>
+    </view>
+    <view wx:elif='{{order.state == "AUDITFAIL"}}' class='btn-group'>
+      <view catchtap='delevent' class='btn-small'>删除订单</view>
+      <navigator url='/club-event/event-detail/event-detail?eventId={{order.eventId}}' class='btn-big'>重新下单</navigator>
+    </view>
+    <view wx:elif='{{order.state == "CREATED"}}' class='btn-group'>
+      <view catchtap='cancelOrder' class='btn-small'>取消订单</view>
+      <view class='btn-big'>支付</view>
+    </view>
+    <view wx:elif='{{order.state == "TIMEOUT"}}' class='btn-group'>
+      <view catchtap='delevent' class='btn-small'>删除订单</view>
+      <navigator url='/club-event/event-detail/event-detail?eventId={{order.eventId}}' class='btn-big'>重新下单</navigator>
+    </view>
+    <view wx:elif='{{order.state == "CANCELED"}}' class='btn-group'>
+      <view catchtap='delevent' class='btn-big'>删除订单</view>
+    </view>
+    <view wx:elif='{{order.state == "PAYED"}}' class='btn-group'>
+      <view catchtap='delEvent' class='{{order.goodsType==0?"btn-small":"btn-big"}}'>删除订单</view>
+      <view wx:if='{{order.goodsType==0}}' catchtap='goEventDetail' data-id='{{order.orderId}}' class='btn-big'>查看</view>
+    </view>
+  </view> -->
+</view>

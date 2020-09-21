@@ -1,0 +1,26 @@
+<!--event/event-join/event-join.wxml-->
+<view>
+  <block wx:for='{{updateMember}}' wx:key='index'>
+    <view wx:if='{{item.type==="TEXT"}}' class='item'>
+      <input type='text' class='input' data-name='{{item.name}}' value='{{item.value}}' placeholder='{{item.name}}' placeholder-class='placeholder' bindinput='changeInput'></input>
+    </view>
+    <view wx:if='{{item.type=="NUMBER"}}' class='item'>
+      <input type='number' class='input' data-name='{{item.name}}' value='{{item.value}}' placeholder='{{item.name}}' placeholder-class='placeholder' bindinput='changeInput'></input>
+    </view>
+    <view wx:if='{{item.type=="IMAGE"}}' class='upload'>
+      <view class='title'>{{item.name}}</view>
+      <view class='img-wrap'> 
+        <view wx:if='{{item.value}}' class='wx-img-box'>
+          <image src='{{item.value}}' class='wx-img-item' mode='aspectFill'></image>
+        </view>
+        <image wx:else class='wx-img-bg' bindtap='addImages' src='/images/icon-add-bg.png' data-name='{{item.name}}'></image>
+      </view>   
+    </view>
+  </block>
+</view>
+<view class='footer'>
+  <view class='btn-group'>
+    <view wx:if='{{changeType == "UPDATE"}}' catchtap='delMember' class='btn-small"'>删除</view>
+    <view catchtap='saveMember' class='btn-big'>保存</view>
+  </view>
+</view>

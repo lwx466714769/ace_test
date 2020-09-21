@@ -1,0 +1,64 @@
+<!--game/vote-set/vote-set.wxml-->
+<view class='vote-set'>
+  <view class='padding-border'>
+    <view class='title'>投票权限</view>
+    <radio-group class='radio-group' bindchange='limitChange'>
+      <label class='radio-item {{voteAuth=="ALL"?"active":""}}'>
+        <view class='radio-name'>
+          <view>所有人</view>
+          <view>投票无需入会</view>
+        </view>
+        <radio value='ALL' color='#000' class='radio' checked='{{voteAuth=="ALL"}}'></radio>
+      </label>
+      <label class='radio-item {{voteAuth=="MEMBER"?"active":""}}'>
+        <view class='radio-name'>
+          <view>会员</view>
+          <view>投票前需要先入会</view>
+        </view>
+        <radio value='MEMBER' color='#000' class='radio' checked='{{voteAuth=="MEMBER"}}'></radio>
+      </label>
+      
+    </radio-group>
+  </view>
+  <!-- 查看结果 -->
+  <view class='padding-border'>
+    <view class='title'>投票查看结果</view>
+    <radio-group class='radio-group' bindchange='resultChange'>
+      <label class='radio-item {{voteResultOpen=="true"?"active":""}}'>
+        <view class='radio-name'>
+          <view>开放</view>
+          <view>投票前即可看到投票结果</view>
+        </view>
+        <radio value='open' color='#000' class='radio' checked='{{voteResultOpen=="true"}}'></radio>
+      </label>
+      <label class='radio-item {{voteResultOpen=="false"?"active":""}}'>
+        <view class='radio-name'>
+          <view>隐藏</view>
+          <view>投票后显示结果</view>
+        </view>
+        <radio value='hide' color='#000' class='radio' checked='{{voteResultOpen=="false"}}'></radio>
+      </label>
+    </radio-group>
+  </view>
+  <view class='padding-border party-block'>
+    <view class='title'>可选数量</view>
+    <input class='input' value='{{maxSelectItem}}' bindinput='changeMaxSelect' type='number' placeholder='请输入大于0的整数'></input>
+  </view>
+  <picker mode='selector' value='{{userAddValue}}' class='padding-border expire' range='{{userAdd}}' bindchange='changeUserAdd'>
+    <view class='title left'>是否允许用户添加选项</view>
+    <view class='change right'>
+        <view>{{userAdd[userAddValue]}}</view>  
+        <view class='arrow'></view>
+      </view>
+  </picker>
+  <picker wx:if='{{userAddAuth=="true"&&voteItemType=="WORDIMAGE"}}' mode='selector' value='{{imgCount}}' class='padding-border expire' range='{{count}}' bindchange='changeImgCount'>
+    <view class='title left'>用户上传图片限制</view>
+    <view class='change right'>
+        <view>{{count[imgCount]}}张</view>  
+        <view class='arrow'></view>
+      </view>
+  </picker>
+</view>
+<view class='footer'>
+  <button class='button' catchtap='submit'>完成</button>
+</view>

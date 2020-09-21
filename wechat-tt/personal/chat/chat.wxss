@@ -1,0 +1,49 @@
+/* personal/chat/chat.wxss */
+.empty-wrap{
+  margin-top: 50%;
+}
+.chat-list{
+  padding: 0 30rpx;
+}
+.chat-item{
+  width: 100%;
+  padding: 20rpx 0;
+  border-bottom: solid 1rpx rgb(242,242,242);
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.chat-left{
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.chat-img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.chat-info{
+  margin-right: 30rpx;
+  flex: 1;
+}
+.chat-name{
+  font-weight: bold;
+  margin-bottom: 2rpx;
+}
+.chat-con{
+  color: rgb(102,102,102);
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 36rpx;
+  word-break: break-all;
+  white-space: nowrap;
+  max-width: 420rpx;
+}
+.chat-time{
+  color: rgb(196,196,196);
+  font-size: 24rpx;
+  margin-top: 12rpx;
+}

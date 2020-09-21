@@ -1,0 +1,17 @@
+<!--personal/chat/chat.wxml-->
+<view class="chat-list">
+  <view wx:for='{{chatList}}' wx:key='chat' catchtap="goChatDetail"  data-id='{{item.privateChatedUserId}}' class="chat-item">
+    <view class="chat-left">
+      <image src="{{item.privateChatedUserLogo}}" class="chat-img" mode="aspectFill"></image>
+      <view class="chat-info">
+        <view class="chat-name">{{item.privateChatedUserName}}</view>
+        <view class="chat-con">{{item.content}}</view>
+      </view>
+    </view>
+    <view class="chat-time">{{item.createAt}}</view>
+  </view>
+  <view wx:if='{{chatList.length == 0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+    <view>暂无内容</view>
+  </view>
+</view>

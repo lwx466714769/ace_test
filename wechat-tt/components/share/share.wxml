@@ -1,0 +1,36 @@
+<!--components/share/share.wxml-->
+<!-- 画布大小 -->
+<view class='canvas'><Painter palette='{{template}}' bind:imgOK='imgOk'/>
+</view>
+ 
+<view wx:if='{{showImg}}' class="img-wrap" catchtap="hideImg">
+  <image src="{{imgUrl}}" class="img" mode="widthFix" show-menu-by-longpress/>
+  <view class="tap">长按保存至手机相册</view>
+</view>
+
+<cover-view class='share-wrap-bg' wx:if='{{showShare}}' catchtap='showShare'>
+  <!-- 图片预览区域 -->
+  <!-- <cover-view hidden='{{showCanvas}}' class='canvas-precover-view'>
+    <cover-image src='{{path}}' mode='widthFix' class='canvas-img'></cover-image>
+    <button hidden='{{saveImg}}' class='save-img'>图片已保存至本地</button>
+  </cover-view> -->
+  <!-- <cover-view class='canvas-preview' hidden='{{showCanvas}}'>
+    <image hidden='{{showImg}}' src='{{path}}' mode='widthFix' class='canvas-img'></image>
+  </cover-view> -->
+  
+  <cover-view class='share-wrap'>
+    <cover-view class='share-list'>
+      <cover-view>
+      <button open-type='share' data-type='{{sharetype}}' data-id='{{shareId}}' class='share-friend'>
+        <cover-image class='icon-share-img' src='/images/icon-weixin.png'></cover-image>
+        <cover-view class='share-text'>发送给朋友</cover-view>
+      </button>
+      </cover-view>
+      <cover-view catchtap='getShareImg' class='share-friend'>
+        <cover-image class='icon-share-img' src='/images/icon-share-pic.png'></cover-image>
+        <cover-view class='share-text'>生成分享图片</cover-view>
+      </cover-view>
+    </cover-view>
+    <cover-view catchtap='showShare' class='share-cancel'>取消</cover-view>
+  </cover-view>
+</cover-view>

@@ -1,0 +1,184 @@
+<!--game/party-detail/party-detail.wxml-->
+<view wx:if='{{fromScene&&isPrivate}}'>
+  <IsPrivateClub clubId='{{clubId}}' bindinitPage='initPage'/>
+</view>
+<view wx:elif='{{party}}' catchtap="hideVoteInfo" class='party-detail'>
+  <view wx:if='{{fromScene}}'>
+    <view class='back-club' style='position:static'>
+      <view class='club-left'>
+        <image class='club-logo' src='{{party.clubLogo}}'></image>
+        <view>{{party.clubName}}</view>
+      </view>
+      <navigator class='back-club-font' open-type='switchTab' url='/pages/index/index?clubId={{party.clubId}}'>返回该俱乐部首页</navigator>
+    </view>
+  </view>
+  <image wx:if='{{party.background}}' class='party-img' mode='aspectFill' src='{{party.background}}'></image>
+  <view class='user-info'>
+    <image class='user-head' src='{{party.userLogo}}'></image>
+    <view>
+      <view>{{party.userName}}</view>
+      <!-- <view class='fans'>粉丝 222</view> -->
+    </view>
+  </view>
+  <!-- 主题 -->
+  <view class='party-info'>
+    <view class='party-time'>
+      <view>发布于{{party.createAt}}</view>
+      <view wx:if='{{userId == party.userId}}' catchtap='delParty'>删除</view>
+      <view wx:else catchtap='toReport'>举报</view>
+    </view>
+    <text class='content'>{{party.name}}</text>
+    <view class='center-block'>
+      <view class='center-left'>
+        <image class='icon-block' mode='aspectFit' src='/images/icon-date.png'></image>
+        <view>投票将于 {{party.joinEndTime}} 结束</view>
+      </view>
+    </view>
+  </view>
+  <!-- 添加的选项 -->
+  <!-- <view class="add-item">
+    <view>您添加的选项</view>
+    <view class="add-item-con">
+      选项
+    </view>
+  </view> -->
+  <!-- 投票项 -->
+  <view wx:if='{{voteCount}}' class='vote-project'>
+    <view class='vote-title'>
+      <view class="vote-num">
+        <view class="vote-text">每人只能选{{party.maxSelectItem}}票</view> 
+        <view wx:if='{{party.userId==userId}}' catchtap="showVoteInfo" class="vote-about">
+          <image src="/images/icon-about-checked.png" class="icon-about-vote"></image>
+          <view wx:if='{{showVoteInfo}}' class="about-con">
+            <view>{{party.voteAuth=="MEMBER"?"仅限会员投票":"所有人都可投票"}}</view>
+            <view>{{party.voteResultOpen?"投票前可查看结果":"投票前不可查看结果"}}</view>
+            <!-- <view>{{party.userAddAuth?"可增加选项":"不可增加选项"}}</view> -->
+            <view class="about-angle"></view>
+          </view>
+        </view>
+      </view>
+      <!-- 是否可以增加投票项 -->
+      <view wx:if='{{party.userAddAuth&&todayDate<joinEndTime&&userId}}' catchtap='addVoteItem' class='vote-add-item'>增加投票选项</view>
+    </view>
+    <!-- 投票后 -->
+    <block class='radio-group' wx:if='{{voteCount.partyState||todayDate>joinEndTime}}'>
+      <view wx:for='{{voteItem}}' wx:key='index' class='vote-after'>
+        <view class='after-left'>
+          <view class='after-count'>
+          <view class="vote-index">{{item.index}}</view>
+            <view class='ticket-name'>{{item.voteItemStr}}<text wx:if='{{userId&&item.choose}}'>（已选）</text></view>
+            <view class='vote-ticket'>
+              <view class='ticket'>{{item.ticket||0}}票</view>
+              <view class='percent'>{{item.percent||0}}%</view>
+            </view>
+          </view>
+          <progress stroke-width='2' class='progress' percent='{{item.percent}}' activeColor='#3B94FD' backgroundColor='#eee'></progress>
+        </view>
+        <!-- 有图 -->
+        <image wx:if='{{item.voteItemImage[0]}}' data-id='{{item.voteItemId}}' catchtap='goItemDetail' class='after-img' src='{{item.voteItemImage[0]}}' mode='aspectFill'></image>
+      </view>
+    </block>
+    <!-- 投票前 -->
+    <view wx:else class='radio-group'>
+      <!-- 投票前可看投票数 -->
+      <block wx:if='{{party.voteResultOpen||party.userId == userId}}'>
+        <view wx:for='{{voteItem}}' wx:key='index' class='vote-after'>
+          <view catchtap='{{todayDate>joinEndTime?"":"checkboxChange"}}' data-id='{{item.voteItemId}}' class='after-left'>
+            <view class='after-count'>
+              <view class='vote-item'>
+                <image wx:if='{{item.checked}}' class='radio radio-img' src='/images/icon-success.png'></image>
+                <view wx:else class='radio'></view>
+                <view class="vote-index">{{index+1}}</view>
+                <view class="ticket-name">{{item.voteItemStr}}</view>
+              </view>
+              <!-- <view class='ticket-name'>{{item.voteItemStr}}</view> -->
+              <view class='vote-ticket'>
+                <view class='ticket'>{{item.ticket||0}}票</view>
+                <view class='percent'>{{item.percent||0}}%</view>
+              </view>
+            </view>
+            <progress stroke-width='2' class='progress' percent='{{item.percent}}' activeColor='#3B94FD' backgroundColor='#eee'></progress>
+          </view>
+          <!-- 有图 -->
+          <image data-id='{{item.voteItemId}}' catchtap='goItemDetail' wx:if='{{item.voteItemImage[0]}}' class='after-img' src='{{item.voteItemImage[0]}}' mode='aspectFill'></image>
+        </view>
+      </block>
+      <!-- 投票前不可看投票数 -->
+      <block class='radio-group' wx:else>
+        <view wx:for='{{voteItem}}' wx:key='index' class='vote-list'>
+          <view catchtap='{{todayDate>joinEndTime?"":"checkboxChange"}}' class='vote-item' data-id='{{item.voteItemId}}'>
+            <image wx:if='{{item.checked}}' class='radio radio-img' src='/images/icon-success.png'></image>
+            <view wx:else class='radio'></view>
+            <view class="vote-index">{{index+1}}</view>
+            <view class="ticket-name">{{item.voteItemStr}}</view>
+          </view>
+          <block wx:if='{{item.voteItemImage.length>0}}'>
+            <view data-id='{{item.voteItemId}}' catchtap='goItemDetail' class='item-imgs'>
+              <image class='item-img' src='{{item.voteItemImage[0]}}' mode='aspectFill'></image>
+              <view wx:if='{{item.voteItemImage.length>=2}}' class='item-img-wrap'>
+                <image class='item-img' src='{{item.voteItemImage[1]}}' mode='aspectFill'></image>
+                <view class='img-count'>共{{item.voteItemImage.length}}张</view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+  </view>
+   <!-- 评论 -->
+  <view class='comment'>
+    <view class='comment-title'>评论</view>
+    <view class='comment_list' wx:for='{{comments}}' wx:key='index'>
+      <view>
+        <image src='{{item.userLogo}}' class='comment_head'></image>
+      </view>
+      <view class='comment_con'>
+        <view class='name'>{{item.userName}}</view>
+        <view class='con'>
+          <text>{{item.contents}}</text>
+          <view class='comment-img-list'>
+            <image wx:for='{{item.images}}' wx:for-item='list' wx:key='list_index' class='comment-img' data-url='{{list}}' data-imgs='{{item.images}}' catchtap='preview' src='{{list}}' mode='aspectFill'/>
+          </view>
+        </view>
+        <view class='center'>
+          <view class='time'>{{item.createAt}}</view>
+          <view wx:if='{{item.userId==userId}}' catchtap='delComment' data-id='{{item.replyId}}' class='del-comment'>
+            <image class='del-post' src='/images/icon-del.png' ></image>
+            <view class='del'>删除</view>
+          </view>
+        </view>
+      </view>
+    </view> 
+    <view wx:if='{{comments.length>0}}' class='show_all'>{{showAll?'已到最后':""}}</view>
+  </view>
+  <view wx:if='{{comments.length==0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-comment.png'></image>
+    <view>暂无评论</view>
+  </view>
+  <!-- footer -->
+  <view wx:if='{{voteCount}}' class='footer'>
+    <view class='operation-group'>
+      <button class='operation-view' data-type='LIKE' data-id='{{party.voteId}}' open-type='getUserInfo' bindgetuserinfo='likeEvent'>
+        <image mode="aspectFit" class='icon-share' src='/images/{{party.likeNumberVO.collectionState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+        <view class="operation-num">{{party.collectionNumberK>0?party.collectionNumberK:""}}</view>
+      </button>
+      <view class='operation-view' data-type='vote' data-id='{{party.voteId}}' catchtap='showPartyShare'>
+        <image class='icon-share' mode="aspectFit" src='/images/icon-share-profile.png'></image>
+        <view class="operation-num">{{party.shareNumberK>0?party.shareNumberK:""}}</view>
+      </view> 
+    </view>
+    <view class='btn-group'>
+      <button open-type='getUserInfo' bindgetuserinfo='goComment' class='btn'>评论</button>
+      <button wx:if='{{todayDate>joinEndTime}}' class='btn btn-join btn-gray'>已结束</button>
+      <button wx:elif='{{userId&&voteCount.partyState}}' class='btn btn-join btn-gray'>
+        您已投票
+      </button>
+      <button wx:else open-type='getUserInfo' bindgetuserinfo='toVote' class='btn btn-join'>
+        投票
+      </button>
+    </view>
+  </view>
+</view>
+<BackendModal id='backendModal' modal='{{modal}}'/>
+<Share id='share' shareparams='{{party}}' sharetype='vote' />
+<canvas canvas-id="myCanvas" style="position:absolute;left:-200%;width:100%;height:420rpx;"></canvas>

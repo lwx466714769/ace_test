@@ -1,0 +1,77 @@
+/* pages/report/report.wxss */
+.report-wrap{
+  padding: 0 30rpx 120rpx;
+}
+.input-wrap{
+  padding: 10rpx 0 20rpx;
+}
+.title{
+  padding: 30rpx 0;
+  font-size: 32rpx;
+}
+.input{
+  padding: 20rpx 40rpx;
+  background: rgb(244, 244, 244);
+  margin-bottom: 30rpx;
+}
+.textarea{
+  width:100%;
+  height: 200rpx;
+  color:#666;
+  background: rgb(244, 244, 244);
+  box-sizing: border-box;
+  padding:30rpx; 
+}
+.info{
+  color: #aaa;
+}
+.img-wrap{
+  padding:20rpx;
+}
+.wx-img-bg{
+  width: 200rpx;
+  height: 200rpx; 
+}
+
+.wx-img-box {
+  display: inline-block;
+  width: 210rpx;
+  height: 210rpx;
+  position: relative;
+  margin-right:30rpx;
+  margin-bottom: 20rpx;
+}
+
+.wx-img-box:nth-child(3n){
+  margin-right: 0;
+}
+
+.wx-img-item {
+  width: 100%;
+  height: 100%;
+}
+
+.wx-img-progress {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.img-close {
+  position:absolute;
+  top:10rpx;
+  right:10rpx;
+  width:40rpx;
+  height:40rpx;
+  border-radius:50%;
+}
+.footer{
+  width: 100%;
+  height: 120rpx;
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  border-top: solid 2rpx rgb(216,216,216);
+  padding-top: 10rpx;
+  box-sizing: border-box;
+}

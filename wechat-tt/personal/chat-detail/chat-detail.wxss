@@ -1,0 +1,84 @@
+/* personal/chat-detail/chat-detail.wxss */
+.chat{
+  width: 100%;
+  background: #eee;
+  box-sizing: border-box;
+  padding-bottom: 140rpx;
+}
+.chat-scroll{
+  background: #eee;
+  padding: 30rpx 30rpx 0;
+  box-sizing: border-box;
+  height: calc(100vh - 140rpx);
+}
+.item{
+  margin-bottom: 30rpx;
+  display: flex;
+}
+.head{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.content{
+  padding: 20rpx;
+  border-radius: 8rpx;
+  background: #fff;
+  max-width: 420rpx;
+  word-break: break-all;
+}
+.item-other{
+  margin-right: 130rpx;
+  justify-content: flex-start;
+}
+.item-me{
+  margin-left: 130rpx;
+  justify-content: flex-end;
+}
+.item-other .head{
+  margin-right: 20rpx;
+}
+.item-me .head{
+  margin-left: 20rpx;
+}
+.item-me .content{
+  background: rgb(191,233,214)
+}
+
+.footer-content{
+  display: flex;
+  align-items: center;
+  padding: 0 24rpx;
+}
+.area{
+  width: 610rpx;
+  border:solid 1rpx #999;
+  border-radius: 40rpx;
+  box-sizing: border-box;
+  padding:16rpx 30rpx;
+}
+.input{
+  
+}
+.padding{
+  padding:16rpx 30rpx;
+}
+textarea{
+  height: auto;
+  min-height: 36rpx;
+  box-sizing: border-box;
+  line-height: 46rpx;
+  width: 100%;
+}
+.submit{
+  font-size: 32rpx;
+  margin-left: 24rpx;
+}
+.footer{
+  height: auto;
+  min-height: 140rpx;
+  padding-bottom: 56rpx;
+}
+.end-scroll{
+  height: 30rpx;
+}

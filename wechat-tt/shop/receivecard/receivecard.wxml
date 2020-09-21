@@ -1,0 +1,41 @@
+<scroll-view>
+  <view>
+    <navigator open-type='switchTab' url='/pages/index/index?clubId={{card.info.clubId}}' class='card-club'>
+      <image class='club-img' src='{{card.info.clubLogo}}' mode='aspectFill'></image>
+      <view>
+        <view class='club-name'>{{card.info.clubName}}</view>
+      </view>
+    </navigator>
+    <view class='part_item'>
+      <view class='part_item_card_img'>
+        <view class='item_card_img'>
+          <image src='{{card.info.productImg ? card.info.productImg : "/images/default.png"}}' lazy-load='{{true}}' class='card_img' mode='aspectFill' />
+        </view>
+      </view>
+    </view>
+    <view class='part_item'>
+      <view class='part_item_card_content'>
+        <view class='part_item_name'>
+          <text class='item_name' decode='{{true}}'>{{card.productName}}</text>
+        </view>
+        <view class='part_item_description'>
+          <text class='item_description' decode='{{true}}'>{{card.info.specificationName}}</text>
+        </view>
+        <view class='part_item_time'>
+          <text class='item_time' decode='{{true}}'>{{card.info.productBrief}}</text>
+        </view>
+
+      </view>
+    </view>
+
+  </view>
+  <view class='bottom_info'>{{card.presentState==2?'你的朋友赠送给你一张卡券':'已被领取'}}</view>
+  <view class='card_all_delete'>
+    <navigator open-type='switchTab' url='/pages/index/index'>
+      <view class='back_btn' >返回首页</view>
+    </navigator>
+    <button open-type="getUserInfo" bindgetuserinfo="checkCard" class='delete_btn'>
+      {{card.presentState==2?'立即领取':'查看卡券'}}
+    </button>
+  </view>
+</scroll-view>

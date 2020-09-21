@@ -1,0 +1,64 @@
+<!--equip/add-equip/add-equip.wxml-->
+<view class='add-equip'>
+  <view catchtap='goNoBrand' class='add-type'>
+    <view>找不到品牌</view>
+    <view class='answer'>?</view>
+  </view>
+  <scroll-view scroll-y scroll-into-view='{{currentId}}' class='add-equip-con'>
+    <block wx:for='{{brandList}}' wx:key='index'>
+      <view>
+        <view class='letter' id='id{{index}}'>{{item.letter}}</view>
+        <view class='equip-con'>
+          <view catchtap='createEquip' data-id='{{list.id}}' data-name='{{list.name}}' data-background='{{list.background}}' wx:for='{{item.brand}}' wx:key='index' wx:for-item='list' class='equip-item'>
+            <view class='equip-img-wrap  {{list.logo?"":"img-wrap-gray"}}'>
+              <image wx:if='{{list.logo}}' class='equip-img' src='{{list.logo}}' mode='aspectFit'></image>
+              <image wx:else class='equip-default' src='/images/equip-default.png'></image>
+            </view>
+            <view class='equip-name'>{{list.name}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view catchtouchstart='slideStart' catchtouchmove='slideMove' catchtouchend='slideEnd' class='letters'>
+    <view wx:for='{{brandList}}' wx:key='index' class='{{currentIndex == index?"letter-active":""}} letter-item'>{{item.letter}}</view>
+  </view>
+</view>
+<!-- 创建装备 -->
+<view wx:if='{{showCreate}}' class='create-wrap'>
+  <view class='create-content'>
+    <view class='create-header'>
+      <view class='create-background'>
+        <image class='back-img' mode='aspectFill' src='{{background}}'></image>
+      </view>
+      <view class='create-con'>
+        <view class='move-bar'></view>
+        <view class='user-header'>
+          <view class='user-info'>
+            <image class='equip-avatar' src='{{avatar}}'></image>
+            <view class='equip-nickname'>{{nickname}}</view>
+          </view>
+          <!-- <view wx:if='{{seriesCounter}}'>同系{{seriesCounter}}位车主</view> -->
+        </view> 
+        <view class='create-name'>{{brandName}} {{seriesName}}</view>
+        <view wx:if='{{brandName}}' class='equip-type'>
+          <view class='type-name'>品牌</view>
+          <view class='type-con'>{{brandName}}</view>
+        </view>
+        <view wx:if='{{seriesName}}' class='equip-type'>
+          <view class='type-name'>车系</view>
+          <view class='type-con'>{{seriesName}}</view>
+        </view>
+      </view>
+      <!-- <view class='create-img-wrap'>
+        <image class='create-img' mode='aspectFit' src='/images/create-img.png'></image>
+      </view> -->
+      
+    </view>
+    <view class='create-font'>确认创建此装备？</view>
+    <view class='btn-modal-group'>
+      <button class='btn-modal' catchtap='showCreate'>取消</button>
+      <button class='btn-modal btn-success' catchtap='createEquip'>确认</button> 
+    </view>
+  </view>
+</view>

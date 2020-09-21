@@ -1,0 +1,31 @@
+<!--personal/personal-mygift/personal-mygift.wxml-->
+<scroll-view>
+  <!-- 我的福利card储存页面 -->
+  <view class='mainData_aomai'>
+    <!-- 礼品卡 -->
+    <view class='part_items limit_height'>
+      <block wx:for='{{packages}}' wx:key='gift' wx:for-index="idx">
+        <view class='part_item' catchtap='go_gift' data-index='{{idx}}'>
+          <view class='item_content_wrap'>
+            <image class='club-logo' mode='aspectFill' src='{{item.info.clubLogo}}'></image>
+            <view class='item_content_name'>{{item.consumerCards[0].productName}}</view>
+            <view class='item_card_count'>x{{item.cardTotal}}</view>
+          </view>
+          <view class='part_item_wrap'>
+            <image class='card_cover' mode='aspectFill' src='{{item.info.productImg}}'></image>
+          </view>
+          <!-- <view style='width:50rpx;height:3rpx;background:#2a2a2a;margin:20rpx 0;'></view> -->
+
+        </view>
+        <view style='height:3rpx;background:#efefef;margin:0 10rpx 0 100rpx;'></view>
+      </block>
+    </view>
+    <view wx:if='{{packages.length==0}}' class='empty-wrap'>
+      <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+      <view>您还没有礼品卡哦</view>
+    </view>
+  </view>
+  <view class='backHome' wx:if='{{showHomeBtn}}'>
+    <view class='homeBtn' catchtap='goHome'>返回首页</view>
+  </view>
+</scroll-view>

@@ -1,0 +1,125 @@
+@import '../../template/post.wxss';
+.posts{
+  padding-top: 40rpx;
+}
+/* 数据为空 */
+.empty-wrap{
+  color: rgb(153, 153, 153);
+  text-align: center;
+  margin: 200rpx auto 0;
+  font-size: 28rpx;
+}
+.icon-empty-default{
+  width: 112rpx;
+  height: 112rpx;
+  margin-bottom: 20rpx;
+}
+/* 是否显示全部 */
+.show-all{
+  text-align: center;
+  color: rgb(153, 153, 153);
+  padding: 30rpx;
+}
+/* 第二版显示 */
+.welfare-wrap{
+  padding: 0 30rpx;
+}
+.welfare{
+  padding:30rpx;
+  border-bottom: solid 2rpx rgb(242, 242, 242);
+}
+.welfare-img{
+  width: 256rpx;
+  height: 144rpx;
+  margin-right: 20rpx;
+}
+.welfare-info{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.welfare-title{
+  font-size: 32rpx;
+  max-height: 96rpx;
+  text-overflow: ellipsis;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+.welfare-bottom{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24rpx;
+}
+.welfare-name{
+  flex: 1;
+  color: #aaa;
+}
+
+.user-info{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  font-weight: bold;
+}
+.post-left{
+  display: flex;
+  flex-direction: column;
+  height: 140rpx;
+  justify-content: space-between;
+}
+.post-head{
+  width:60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  border: solid 2rpx #eee;
+}
+.post-title{
+  font-size: 28rpx;
+  max-height: 78rpx;
+  text-overflow: ellipsis;
+  -webkit-line-clamp:2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  word-break:break-all;
+  line-height: 38rpx;
+  letter-spacing: 2rpx;
+}
+.nickname{
+  color: #999;
+}
+.imgs{
+  display: flex;
+}
+.img{
+  width: 226rpx;
+  height: 146rpx;
+  margin-left: 9rpx;
+  border-radius: 8rpx;
+}
+.img:first-child{
+  margin-left:0;
+}
+
+.short-content{
+  display: flex;
+  justify-content: space-between;
+}
+.short-content .post-title{
+  flex: 1;
+  margin-right: 30rpx;
+}
+.post-right{
+  width: 250rpx;
+  height: 140rpx;
+  border: solid 2rpx #f9f9f9;
+}
+.short-content .img{
+  width: 250rpx;
+  height: 140rpx;
+}

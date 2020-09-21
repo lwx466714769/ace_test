@@ -1,0 +1,9 @@
+{
+  
+  "navigationBarTitleText": "商品详情",
+  "backgroundColor": "#f8f8f8",
+  "usingComponents": {
+    "Share": "/components/share/share",
+    "BackendModal":"/components/backend-modal/backend-modal"
+  }
+}

@@ -1,0 +1,109 @@
+<!--game/party/party.wxml-->
+<view class='party'>
+  <view class="header">
+    <view class="header-name">攒局主题</view>
+    <image wx:if='{{!background}}' mode="aspectFit" catchtap='uploadImage' class="icon-background" src="/images/icon-photo-upload.png"></image>
+  </view> 
+  <view wx:if='{{background}}' class="background-view">
+    <image class='upload-img' src='{{background}}' mode='aspectFill'></image>
+    <image catchtap="delBackground" src="/images/icon-close.png" class="icon-close"></image>
+  </view>
+  <textarea class='area' bindinput='changePartyName' placeholder='在这里输入攒局主题'></textarea>
+  <!-- <textarea class='padding-border area' bindinput='changePartyName' placeholder='在这里填写活动内容'></textarea>
+  <view class='padding-border upload-background' catchtap='uploadImage'>
+    <view class='title'>上传图片<text class='text24'>（限1张）</text></view>
+    <view class='upload-right'>
+      <image class='upload-img' src='{{background}}' mode='aspectFill'></image>
+      <view class='arrow'></view>
+    </view>
+  </view>
+  <view class='padding-border party-types'>
+    <view class='title'>请选择您期望的攒局方式</view>
+    <view class='types'>
+      <view catchtap='changePartyType' data-type='DISCUSS' class='party-type {{partyType=="DISCUSS"?"active":""}}'>
+        <image class='type-img' src='/images/icon-date.png'></image>
+        <view>选择时间</view>
+      </view>
+      <view catchtap='changePartyType' data-type='JOIN' class='party-type {{partyType=="JOIN"?"active":""}}'>
+        <image class='type-img' src='/images/icon-date.png'></image>
+        <view>立即报名</view>
+      </view>
+    </view>
+  </view> -->
+  <!-- 日期选择 -->
+  <view class="title">攒局设置</view>
+  <view class="party-set">
+  
+    <view class='padding-border party-date'>
+      <view>选择活动时间</view>
+        <!-- 立即报名时间 -->
+        <view>
+          <picker mode='multiSelector' value='{{dateTime}}' class='date' bindchange='changeStart' bindcolumnchange="bindColumnChange" range='{{dateTimeArray}}'>
+              <view class='left'>开始时间</view>
+              <view class='right'>
+                <text>{{startTime?startTime:"请选择"}}</text>  
+                <view class='arrow'></view>
+              </view>
+            </picker>
+            <picker mode='multiSelector' value='{{dateTime}}' class='date' bindcolumnchange="bindColumnChange"  bindchange='changeEnd' range='{{dateTimeArray}}'>
+              <view class='left'>结束时间</view>
+              <view class='right'>
+                <text>{{endTime?endTime:"请选择"}}</text>  
+                <view class='arrow'></view>
+              </view>
+            </picker>
+          </view>
+        <!-- 选择时间 -->
+        <!-- <view wx:else class='date-list'>
+          <view wx:for='{{timeList}}' wx:key='index' class='date-item'>
+            <view class='date-title'>
+              <view>{{index==0?"默认时间段":"第"+(index+1)+"时间段"}}</view>
+              <view wx:if='{{index!=0}}' data-index='{{index}}' class='del-date' catchtap='delDate'>删除</view>
+            </view>
+            <picker mode='multiSelector' data-index='{{index}}' value='{{dateTime}}' class='date' bindchange='changeStart' bindcolumnchange="bindColumnChange" range='{{dateTimeArray}}'>
+              <view class='left'>开始时间</view>
+              <view class='right'>
+                <text>{{item.startTime?item.startTime:"请选择"}}</text>  
+                <view class='arrow'></view>
+              </view>
+            </picker>
+            <picker mode='multiSelector' data-index='{{index}}' value='{{dateTime}}' class='date' bindchange='changeEnd' bindcolumnchange="bindColumnChange" range='{{dateTimeArray}}'>
+              <view class='left'>结束时间</view>
+              <view class='right'>
+                <text>{{item.endTime?item.endTime:"请选择"}}</text>  
+                <view class='arrow'></view>
+              </view>
+            </picker>
+          </view>
+          <view class='add-item-type' catchtap='addDate'>
+            <view>点击添加一个时间段</view> 
+            <image class='icon-change' src='/images/jia@3x.png'></image>
+          </view>
+        </view>    -->
+        <!-- 选择时间结束   -->  
+    </view>
+    <view class='padding-border party-block'>
+      <view>人数限制</view>
+      <input type='number' bindinput='memberLimit' class='input' placeholder='请填写数字，不选择为无限制'></input>
+    </view>
+    <!-- <picker mode='multiSelector' value='{{dateTime}}' class='date' bindchange='changeExpire' bindcolumnchange="bindColumnChange" range='{{dateTimeArray}}' class='padding-border expire'>
+      <view class='left'>攒局有效期</view>
+      <view class='right'>
+          <text>{{joinEndTime?joinEndTime:"请选择"}}</text>  
+          <view class='arrow'></view>
+        </view>
+    </picker> -->
+
+  </view>
+  <!-- 老版上传封面 -->
+  <!-- <view catchtap='uploadImage' class='background'>
+    <image wx:if='{{background}}' class='back-img' src='{{background}}' mode='aspectFill'></image>
+    <view wx:else class='upload'>
+      <image class='icon-photo' src='/images/shangchuanxiao@3x.png'></image>
+      <view>上传封面图片</view>
+    </view>   
+  </view> -->
+</view>
+<view class='footer'>
+  <view class='button' catchtap='submit'>发布</view>
+</view>

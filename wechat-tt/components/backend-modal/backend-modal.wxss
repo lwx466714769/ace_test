@@ -1,0 +1,45 @@
+/* 管理员提示 */
+.show-login-wrap{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 999;
+}
+.show-login{
+  width: 80%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background: #fff;
+  border-radius: 8rpx;
+}
+.modal-content{
+  padding: 60rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+}
+.btn-modal-group{
+  display: flex;
+  border-top: solid 2rpx rgb(242,242,242);
+  height: 90rpx;
+  line-height: 90rpx;
+  align-items: center;
+  text-align: center;
+}
+.btn-modal{
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  font-size: 34rpx;
+  color: #aaa;
+}
+.btn-success{
+  color:rgb(59, 148, 253);
+  border-left: solid 2rpx rgb(242,242,242);
+}

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "Datepicker":"/components/Datepicker/Datepicker"
+  }
+}

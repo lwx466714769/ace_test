@@ -1,0 +1,14 @@
+/* pages/card-list/card-list.wxss */
+@import '/template/template_more/template_more.wxss';
+page{
+  background: rgb(246,246,246);
+}
+.data_con_wrap {
+   background: transparent;
+   padding-top: 30rpx;
+   margin: 0 30rpx;
+   background: rgb(246,246,246);
+}
+.store-head{
+  width: 100%;
+}

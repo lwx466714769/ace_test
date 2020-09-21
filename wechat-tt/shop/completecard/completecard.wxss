@@ -1,0 +1,42 @@
+/* miniwelfare/completecard/completecard.wxss */
+.wrap{
+  text-align:center;
+}
+.buttontop{
+  text-align: center;
+  margin-top: 92rpx;
+  background: #000;
+  color: #fff;
+  margin-left: 229rpx;
+  margin-right: 229rpx;
+  border-radius: 8rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.buttonbottom{
+  text-align: center;
+  margin-top: 30rpx;
+  margin-left: 229rpx;
+  margin-right: 229rpx;
+  border-radius: 8rpx;
+  border-width: 3rpx;
+  border-color: #000;
+  border-style: solid;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.text{
+  text-align: center;
+  margin-top: 40rpx;
+  font-size: 40rpx;
+}
+.sub{
+  text-align: center;
+  margin-top: 10rpx;
+  font-size: 28rpx;
+}
+image{
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 262rpx;
+}

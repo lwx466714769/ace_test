@@ -1,0 +1,162 @@
+<!--profile/collect/collect.wxml-->
+<import src='../../template/post.wxml'/>
+<view class='collect'>
+  <Tab tablist='{{tabList}}' blue='{{true}}' bindchangeTab='changeTab' id='tab' class='tab-class'/>
+  <!-- 热议 -->
+  <view hidden='{{curIndex!=0}}' class='post-list'>
+    <!-- <navigator url='/pages/post-detail/post-detail?postId={{item.postId}}' wx:for='{{list}}' wx:key='index' class='post-item'>
+      <view class='head'>
+        <image class='avatar' src='{{item.avatar}}'></image>
+        <view class='nickname'>{{item.nickname}}</view>
+        <navigator wx:if='{{clubId&&clubId!=0}}' open-type='switchTab' url='/?clubId={{item.clubId}}' class='post-club'>{{item.clubName}}</navigator>
+      </view>
+      <view class='foot'>
+        <view class='title'>{{item.title}}</view>
+        <image class='post-img' src='{{item.cover}}'></image>
+      </view>
+    </navigator> -->
+    <view wx:for='{{list}}' wx:key='index'>
+      <navigator wx:if='{{item.feedEnum=="POST"}}' url='/pages/post-detail/post-detail?postId={{item.relateId}}' class='welfare'>
+        <view wx:if='{{item.body.postType=="TEXT"}}' class='short-content'>
+          <view class='post-left'>
+            <text class='post-title'>{{item.body.deleted?"内容已被删除":item.body.postTextInfo.text||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+            <text class='nickname'>{{item.body.userInfo.userName}}</text>
+          </view>
+          <view class='post-right'>
+            <image src='{{item.body.deleted?"/images/post-del-img.png":item.body.postTextInfo.images[0].url}}' class='img' mode='aspectFill'/>
+          </view>
+        </view>
+        <view wx:if='{{item.body.postType=="LONGTEXT"}}' class='short-content'>
+          <view class='post-left'>
+            <text class='post-title'>{{item.body.deleted?"内容已被删除":item.body.postLongTextInfo.title||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+            <text class='nickname'>{{item.body.userInfo.userName}}</text>
+          </view>
+          <view class='post-right'>
+            <image src='{{item.body.deleted?"/images/post-del-img.png":item.body.postLongTextInfo.cover.url}}' class='img' mode='aspectFill'/>
+          </view>
+        </view>
+        <view wx:if='{{item.body.postType=="VIDEO"}}' class='short-content'>
+          <view class='post-left'>
+            <text class='post-title'>{{item.body.deleted?"内容已被删除":item.body.postVideoInfo.text||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+            <text class='nickname'>{{item.body.userInfo.userName}}</text>
+          </view>
+          <view class='post-right'>
+            <image src='{{item.body.deleted?"/images/post-del-img.png":item.body.postVideoInfo.video.cover}}' class='img' mode='aspectFill'/>
+          </view>
+        </view>
+      </navigator>
+      <navigator wx:if='{{item.feedEnum=="PARTY"}}' url='/game/party-detail-join/party-detail-join?partyId={{item.relateId}}' class='welfare'>
+        <view class='short-content'>
+          <view class='post-left'>
+            <text class='post-title'>{{item.body.deleted?"内容已被删除":item.body.partyInfo.name||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+            <text class='nickname'>{{item.body.userInfo.userName}}</text>
+          </view>
+          <view wx:if='{{item.body.partyInfo.background}}' class='post-right'>
+            <image src='{{item.body.deleted?"/images/post-del-img.png":item.body.partyInfo.background}}' class='img' mode='aspectFill'/>
+          </view>
+        </view>
+      </navigator>
+      <navigator wx:if='{{item.feedEnum=="VOTE"}}' url='/game/vote-detail/vote-detail?voteId={{item.relateId}}' class='welfare'>
+        <view class='short-content'>
+          <view class='post-left'>
+            <text class='post-title'>{{item.body.deleted?"内容已被删除":item.body.voteInfo.name||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+            <text class='nickname'>{{item.body.userInfo.userName}}</text>
+          </view>
+          <view wx:if='{{item.body.voteInfo.background}}' class='post-right'>
+            <image src='{{item.body.deleted?"/images/post-del-img.png":item.body.voteInfo.background}}' class='img' mode='aspectFill'/>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view wx:if='{{showAll==true&&list.length==0}}' class='empty-wrap'>
+      <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+      <view>您还没有收藏的{{curIndex==3?"资讯":"帖子"}}</view>
+    </view>
+    <view wx:else class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+  </view>
+  <!-- 活动 -->
+  <view hidden='{{curIndex!=1}}'>
+    <view class='event-list' wx:for='{{list}}' wx:key='index'>
+      <navigator url='/event/event-detail/event-detail?activityId={{item.activityId}}' data-id='{{item.activityId}}' class='event-item'>
+        <view class='event-img-wrap'>
+          <image class='event-img' mode='aspectFill' src='{{item.coverImg.url}}'></image>
+          <view wx:if='{{item.state=="SIGNUP"}}' class='event-state state-start'>火热报名中</view>
+          <view wx:elif='{{item.state=="END"}}' class='event-state'>已结束</view>
+          <view class='event-date'>
+            <view class='date-month'>{{item.month}}月</view>
+            <view class='date-day'>{{item.day}}</view>
+          </view>
+        </view>
+        <view class='event-title'>{{item.activityName}}</view>
+        <view class='event-address'>{{item.address.address}}</view>
+      </navigator>
+    </view>
+    <view wx:if='{{showAll==true&&list.length==0}}' class='empty-wrap'>
+      <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+      <view>您还没有收藏的活动</view>
+    </view>
+    <view wx:else class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+  </view>
+  <!-- 装备 -->
+  <view hidden='{{curIndex!=2}}' class='equip'>
+    <block wx:for='{{list}}' wx:key='index'>
+      <navigator url='/equip/my-equip-new/my-equip-new?id={{item.id}}' class='myequip-item'>
+        <view class='myequip-img-wrap'>
+          <image wx:if='{{item.background}}' class='myequip-img' src='{{item.background}}' mode='aspectFill'></image>
+          <!-- <image wx:else class='equip-default' src='/images/equip-default.png'></image> -->
+          <view wx:if='{{item.equipAuditStatus=="AUDIT"}}' class='check-mark'>已认证</view>
+        </view>
+        <view class='myequip-right'>
+          <view class='myequip-name'>{{item.brandName?item.brandName:item.appealContent[0].value}} {{item.seriesName?item.seriesName:item.appealContent[1].value}}</view>
+        </view>
+      </navigator>
+      <!-- <navigator url='/equip/equip-detail/equip-detail?id={{item.id}}'>
+        <template is='equip' data='{{...item,curUserId}}'/>
+      </navigator> -->
+    </block>
+    <view wx:if='{{showAll==true&&list.length==0}}' class='empty-wrap'>
+      <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+      <view>您还没有收藏的装备</view>
+    </view>
+    <view wx:else class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+  </view>
+  <!-- 资讯 -->
+  <view hidden='{{curIndex!=3}}' class='post-list'>
+    <view wx:for='{{list}}' wx:key='index'>
+      <navigator url='/pages/post-detail/post-detail?postId={{item.postId}}' class='welfare'>
+        <view wx:if='{{item.postType=="TEXT"}}' class='short-content'>
+          <view class='post-left'>
+            <text class='post-title'>{{item.deleted?"内容已被删除":item.postTextInfo.text||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+            <text class='nickname'>{{item.userInfo.userName}}</text>
+          </view>
+          <view class='post-right'>
+            <image src='{{item.deleted?"/images/post-del-img.png":item.postTextInfo.images[0].url}}' class='img' mode='aspectFill'/>
+          </view>
+        </view>
+        <view wx:if='{{item.postType=="LONGTEXT"}}' class='short-content'>
+          <view class='post-left'>
+            <text class='post-title'>{{item.deleted?"内容已被删除":item.postLongTextInfo.title||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+            <text class='nickname'>{{item.userInfo.userName}}</text>
+          </view>
+          <view class='post-right'>
+            <image src='{{item.deleted?"/images/post-del-img.png":item.postLongTextInfo.cover.url}}' class='img' mode='aspectFill'/>
+          </view>
+        </view>
+        <view wx:if='{{item.postType=="VIDEO"}}' class='short-content'>
+          <view class='post-left'>
+            <text class='post-title'>{{item.deleted?"内容已被删除":item.postVideoInfo.text||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+            <text class='nickname'>{{item.userInfo.userName}}</text>
+          </view>
+          <view class='post-right'>
+            <image src='{{item.deleted?"/images/post-del-img.png":item.postVideoInfo.video.cover}}' class='img' mode='aspectFill'/>
+          </view>
+        </view>
+      </navigator>
+    </view>
+    <view wx:if='{{showAll==true&&list.length==0}}' class='empty-wrap'>
+      <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+      <view>您还没有收藏的{{curIndex==3?"资讯":"帖子"}}</view>
+    </view>
+    <view wx:else class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+  </view>
+</view>

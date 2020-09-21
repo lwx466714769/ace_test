@@ -1,0 +1,66 @@
+<scroll-view class='scrollview' style="background: white;">
+  <view class='wrap'>
+    <view class="container">
+    <view wx:if='{{applyInfo.result==2}}' class='reject_reson'>
+      <text>审核未通过 原因：{{applyInfo.reason}}</text>
+    </view>
+    <view class='personal_top'>
+      <view class='top_picture'>
+        <image src='{{seniorCard.cover}}'></image>
+      </view>
+      <view class='user_name'>{{seniorCard.memberName}}</view>
+      <view class="user-number">No.{{userCard.cardNumber}}</view>
+    </view>
+
+    <view class='user_line'>
+      <view class="user-info">
+        <image class="card_avatar" mode='aspectFill' src='{{user.avatar}}'></image>
+        <view class="user_no">
+          <text class='nickname'>{{user.nickname}}</text>
+          <!-- <text wx:if='{{userCard}}' class="card_no">No.{{userCard.cardNumber}}</text> -->
+        </view>
+      </view>
+      
+      <view class='qr_code' wx:if='{{userCard}}'>
+        <image mode='aspectFit' src='{{userCard.qrCode}}' />
+      </view>
+      <!-- <view wx:else class='apply_status' bindtap='submitForm' >
+        <image class="card_vip" mode='aspectFit' src='/images/card_vip.png'></image>
+        <text >{{applyInfo.result==1?'审核中':'立即申请'}}</text>
+      </view> -->
+    </view>
+    <view class="slot"></view>
+    <view class='adv_form' wx:if='{{!showForm}}'>
+      <view wx:for='{{advantages}}' wx:key='name' class='adv_item'>
+        <image class='icon_img' mode='aspectFit' src='/images/Member.png' />
+        <text>{{item}}</text>
+      </view>
+    </view>   
+  </view>
+  <view class='sign_form' wx:if='{{showForm}}'>
+    <text class='sign_title'>审核信息</text>
+
+    <view wx:for='{{signItems}}' wx:key='name'>
+      <view wx:if='{{item.type=="TEXT"||item.type=="NUMBER"}}' class='input-external'>
+        <text class="input-label">{{item.name}}</text>
+        <input wx:if='{{item.type=="TEXT"}}' class="input-content" placeholder-class="phcolor" value='{{item.value}}' bindinput="getInput" data-name="{{item.name}}" placeholder="{{'请输入'+item.name}}" />
+        <input wx:if='{{item.type=="NUMBER"}}' class="input-content" placeholder-class="phcolor" value='{{item.value}}' bindinput="getInput" data-name="{{item.name}}" placeholder="{{'请输入'+item.name}}" />
+        <!-- <input wx:if='{{item.type=="IMAGE"}}' class="input-content" placeholder-class="phcolor" value='{{item.value}}' bindinput="getInput" data-name="{{item.name}}" placeholder="{{'请输入'+item.name}}" /> -->
+      </view>
+      <view wx:if='{{item.type=="IMAGE"}}' class='input-external' bindtap='uploadImg' data-name="{{item.name}}">
+        <view>{{item.name}}</view>
+        <view class='input-content input-right'>
+          <image class='club-logo' src='{{data[item.name]?data[item.name]:item.value}}' mode='aspectFill'></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  </view>
+  
+    <view wx:if='{{showForm}}' class='footer' >
+      <view class='btn-group' bindtap='submitForm'>{{bottomLabel[bottomState]}}</view>
+    </view>
+    <view wx:elif='{{loadApplyInfo&&applyInfo.result!=3||loadApplyInfo&&!applyInfo}}' catchtap="submitForm" class="footer">
+      <view class="btn-group">{{applyInfo.result==1?'审核中':'申请'}}</view>
+    </view>
+</scroll-view>

@@ -1,0 +1,20 @@
+<template name='Grid'>
+  <view class='index_wrap'>
+    <view class='index-title' catchtap='goCardList'>
+      <view>
+        <text class="index-name">商城</text>
+        <text class="index-english">Mall</text>
+      </view>
+      <text class="index_more">全部</text>
+    </view>
+    <view class='grid_content'>
+      <navigator url='/shop/carddetails/carddetails?cardId={{item.id}}' wx:for="{{cards}}" wx:key='cards' wx:for-index="idx">       
+        <view>
+          <image src="{{item.productImg[0]}}" class="gird-image" mode='aspectFill' />
+          <view>￥{{item.commoditySpecifications[0].currentPrice}}<text>{{item.commoditySpecifications[0].decimal}}</text></view>
+        </view>
+      </navigator>
+      <view wx:for='{{4-cards.length}}' wx:key='space' class="gird-image"></view>
+    </view>
+  </view>
+</template>

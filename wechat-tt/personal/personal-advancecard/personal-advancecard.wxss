@@ -1,0 +1,621 @@
+.wrap {
+  width: 100%;
+  background: #fff;
+}
+.slot{
+  height: 8rpx;
+}
+.btn-group{
+  background: #000;
+  display: inherit;
+  margin-top: 10rpx;
+}
+.personal {
+  text-align: right;
+}
+
+.my-btn {
+  box-sizing: content-box;
+  margin: unset;
+  background: unset;
+  padding: 0;
+  font-size: 28rpx;
+}
+
+.wrap::after,.my-Mini::after{
+  display: block;
+  visibility: visible;
+  height: 0;
+  width: 0;
+  clear: both;
+  content: '';
+}
+.my-btn::after,.sign::after {
+  display: none;
+}
+
+.personal {
+  width: 750rpx;
+  height: 194rpx;
+  float: right;
+  box-sizing: border-box;
+}
+
+.personal__wrapper {
+  display: inline-flex;
+}
+
+.img {
+  width: 64rpx;
+  height: 64rpx;
+}
+.user-info{
+  display: flex;
+  align-items: center;
+}
+.avatar {
+  display: block;
+  width: 64rpx;
+  height: 64rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #fafafa;
+  border-radius: 50%;
+  overflow: hidden;
+  float: right;
+}
+
+.login {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding-left: 28rpx;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: right;
+  height: 194rpx;
+}
+
+.name {
+  display: flex;
+  text-align: right;
+  flex-direction: row-reverse;
+  padding-bottom: 12rpx;
+  align-items: center;
+  margin-top: 20rpx; 
+}
+
+.text {
+  font-size: 28rpx;
+  width: 580rpx;
+  height: 40rpx;
+  line-height: 60rpx;
+  text-align: right;
+}
+
+.text text {
+  display: block;
+  text-align: right;
+  width: 500rpx;
+  padding-right: 20rpx;
+}
+
+.btn image{
+  width: 32rpx;
+  height: 32rpx;
+  margin: 6rpx auto;
+
+}
+
+.sign{
+  display: block;
+  text-align: right;
+  line-height: 40rpx;
+  font-size: 28rpx;
+  margin-right: 58rpx;
+}
+.nickname{
+  width:214rpx;
+  text-align: right;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.sign .signName{
+  text-align: right;
+  color: rgb(51, 51, 51);
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.name-wrap{
+  margin: 20rpx 0 0;
+}
+
+
+.newHand {
+  padding: 30rpx 0 15rpx;
+  margin-bottom: 20rpx;
+  width: 100%;
+  background: white;
+  position: relative;
+}
+.newcar{
+  width: 100%;
+}
+.cars-wrap{
+  width: 750rpx;
+  height: auto;
+  background: white;
+  overflow: hidden;
+}
+.cars-wrap::active{
+  visibility: visible;
+  width: 0;
+  height: 0;
+  display: block;
+  clear: both;
+  content: '';
+}
+
+.gift-picture {
+  width: 750rpx;
+  height: 360rpx;
+}
+
+.btnAndDescription {
+  width: 750rpx;
+  height: 80rpx;
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  bottom: 0rpx;
+  right: 0;
+}
+
+btnAndDescription::after {
+  display: block;
+  content: '';
+  clear: both;
+  visibility: visible;
+  width: 0;
+  height: 0;
+}
+
+.descriptionGift {
+  width: 750rpx;
+  height: 80rpx;
+  overflow: hidden;
+  line-height: 80rpx;
+  text-overflow: ellipsis;
+  display: block;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  box-sizing: border-box;
+  padding-left: 30rpx;
+  font-size: 28rpx;
+  font-weight: initial;
+}
+
+.descriptionGift, .getGift {
+  float: left;
+}
+
+.getGift {
+  width: 140rpx;
+  height: 80rpx;
+  color: rgb(236, 148, 4);
+  font-size: 32rpx;
+  border-radius: 0;
+  display: block;
+  line-height: 80rpx;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+button::after {
+  border: 0 none;
+}
+
+.giftPicture {
+  width: 100%;
+  height: 100%;
+}
+
+.my-Mini {
+  width: 750rpx;
+  float: right;
+  font-size: 26rpx;
+  padding-bottom: 70rpx; 
+  color: #2a2a2a;
+}
+.goAceCarFirst{
+  background: #2a2a2a;
+  margin: 30rpx 0rpx 10rpx;
+  color: white;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  text-align: center;
+}
+.goAceCar {
+  width: 750rpx;
+  float: right;
+  background: #2a2a2a;
+  color: white;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+  text-align: center;
+}
+
+.under {
+  padding: 10rpx 0;
+  font-weight: 500;
+}
+
+.mini-description, .mini-title {
+  padding: 30rpx 0 10rpx 40rpx;
+}
+.mini-description text{
+  font-size: 28rpx;
+}
+.mini-title {
+  font-size: 32rpx;
+}
+.list {
+  position: relative;
+  background-color: #fff;
+  color: #2a2a2a;
+  margin-top: 194rpx;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
+
+.list-item {
+  width: 375rpx;
+}
+
+.list-title {
+  padding: 0 0 30rpx 0;
+}
+
+.list-title .title{
+   letter-spacing: 2rpx;
+   line-height: 40rpx;
+   margin-top: 20rpx; 
+}
+
+.list-flex{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.image {
+  width: 30rpx;
+  height: 25rpx;
+  overflow: hidden;
+  position: relative;
+  top: 4rpx;
+}
+
+.notice-right {
+  display: flex;
+  align-items: center;
+}
+
+.item-num {
+  position: absolute;
+  top: 25rpx;
+  right: 80rpx;
+}
+
+.list-icon-right {
+  width: 58rpx;
+  height: 64rpx;
+}
+
+.notice-tip {
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  background-color: #ee4848;
+  color: #fff;
+  font-size: 24rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nameInfoBefore {
+  width: 100%;
+  height: 120rpx;
+  text-align: right;
+}
+
+.nameInfoBefore .text {
+  margin: 70rpx 50rpx;
+  font-size: 30rpx;
+}
+
+.MINIuserID {
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-top: 50rpx;
+  display: block; 
+}
+
+.mainSides {
+  left: -10rpx;
+  top: 0rpx;
+}
+
+.seletModes {
+  width: 750rpx;
+  overflow: hidden;
+  float: right;
+  height: auto;
+  margin-bottom: 20rpx; 
+}
+
+.selet-item {
+  height: 200rpx;
+  background: white;
+  box-shadow: 2rpx 2rpx 6rpx rgba(175, 175, 175 ,0.5);
+  margin-top: 10rpx;
+  border: 3rpx solid rgba(175, 175, 175, 0.5);
+  overflow: hidden;
+  margin-bottom: 10rpx;
+  box-sizing: border-box;
+}
+
+.modeImg {
+  width: 300rpx;
+  height: 100rpx;
+  overflow: hidden;
+  margin: 50rpx 20rpx;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 100rpx;
+}
+
+.carmodelImg {
+  width: 100%;
+  height: 100%;
+}
+
+.selet-item view {
+  float: left;
+}
+
+.carline {
+  height: 64rpx;
+  width: 3rpx;
+  background-color: rgb(216, 216, 216);
+  margin: 68rpx 0;
+}
+
+
+.miniLine{
+  width: 50rpx;
+  height: 3rpx;
+  margin-left: 40rpx; 
+  background: #2a2a2a;
+}
+
+.modeNameitem {
+  width: 290rpx;
+  overflow: hidden;
+  height: 60px;
+  margin: 40rpx 20rpx 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modeNameitem view{
+  width: 290rpx;
+  height: 30rpx;
+  text-align: center;
+  align-items: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.mainLogo{
+  margin-left:24rpx; 
+}
+
+.personal_bottom{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx; 
+  padding-left: 20rpx; 
+}
+
+.top_picture image{
+  width: 690rpx;
+  height: 388rpx;
+  margin-left: 30rpx;
+  margin-top: 38rpx;
+  border-radius: 16rpx 16rpx 16rpx 16rpx;
+  display: block;
+}
+
+.personal_top{
+   position: relative;
+   color: #fff;
+}
+
+.user_name{
+   position: absolute;
+   top:20rpx;
+   left: 50rpx;
+}
+.user-number{
+  position: absolute;
+  right:50rpx;
+  bottom: 20rpx;
+}
+.content_right{
+   width: 180rpx;
+   height: 180rpx;
+   border: 4rpx solid #fff;
+   border-radius: 50%;
+   background: #2a2a2a; 
+   overflow: hidden;
+}
+
+.content_right image{
+   width: 100%;
+   height: 100%;
+}
+
+.content_left{
+   margin-bottom: 20rpx; 
+   text-align: right;
+}
+
+.content_left view{
+   color: white;
+}
+
+.bottom {
+  line-height: 68rpx;
+  /* position: fixed;
+  bottom:0rpx;
+  background: #fff;
+  display: flex;
+  width: 710rpx;
+  border-bottom: 20rpx solid #fff;
+  border-radius: 8rpx 8rpx 8rpx 8rpx;  
+  left: 20rpx;
+  right: 20rpx; */
+}
+
+.bottom .btn {
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  
+}
+
+.bottom .back {
+  background: #fff;
+}
+
+.bottom .save {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+.input-external{
+  border-bottom: 2rpx solid #E0E0E0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-content{
+  margin-left: 20rpx;
+  flex: 1;
+  text-align: right;
+  padding: 30rpx 0; 
+}
+.input-right{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.phcolor {
+  color: rgb(224,224,224);
+  font-size: 14px;
+}
+.sign_form {
+  padding: 30rpx;
+}
+.club-logo{
+  width: 100rpx;
+  height: 100rpx;
+  border: solid 2rpx #eee;
+}
+
+.reject_reson{
+  padding:15rpx 30rpx 15rpx 30rpx;
+  background: white;
+  border-top: 1rpx solid #eaeaea
+}
+.qr_code{
+  width:130rpx;
+  height:130rpx;
+  text-align: center;
+}
+.qr_code image{
+  width:148rpx;
+  height:148rpx;
+  margin: -18rpx -18rpx -18rpx -18rpx;
+}
+.icon_img{
+  width:30rpx;
+  height:24rpx;
+  /* margin-right: 30rpx; */
+  margin: auto 30rpx auto 0rpx;
+}
+.adv_item{
+  padding: 60rpx 50rpx;
+  display: flex;
+}
+.adv_item text{
+  font-size: 28rpx;
+  color: #666666;
+  flex: 1;
+  
+} 
+.sign_title{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #000000;
+}
+.user_line{
+  display: flex;
+  background: white;
+  margin: 30rpx 50rpx;
+  justify-content: space-between;
+}
+.user_line .card_avatar{
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.user_line .nickname{
+  
+  text-align: left;
+  
+  display: block;
+}
+.user_line .card_vip{
+  width: 56rpx;
+  height: 42rpx;
+  display: block;
+  margin: 16rpx auto;
+}
+.user_no{
+  flex:1;
+}
+.card_no{
+  font-size: 20rpx;
+  color: #666666;
+}
+.apply_status {
+  padding-left: 30rpx;
+  border-left: solid 2rpx #eee;
+}
+.input-label{
+  flex:1;
+}

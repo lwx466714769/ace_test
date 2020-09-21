@@ -1,0 +1,4 @@
+<view class='canvas_cont' style='left: {{leftRxp}};'>
+<!-- catchtap='component_body'  外围隐藏 -->
+  <canvas class="my-canvas" canvas-id="k-canvas" style="{{painterStyle}}{{customStyle}}" />
+</view>

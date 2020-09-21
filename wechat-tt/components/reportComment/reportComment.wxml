@@ -1,0 +1,26 @@
+<view class='member-wrap' catchtap='selectHIde' wx:if='{{!isShow}}'>
+  <view class='member' wx:if='{{report}}'>
+    <view>提示</view>
+    <view class='line'></view>
+    <view class='member-con'>
+      举报成功
+      <view style='margin-top:30rpx;'>我们将尽快处理你的举报信息</view>
+    </view>
+    <view class='member-btns'>
+      <button class='btn' hover-class='btn-hover' catchtap='confirm'>确认</button>
+    </view>
+  </view>
+  <view class='member' wx:else>
+    <view style='margin-left:30rpx;margin-top:20rpx;'>提示</view>
+    <view class='line'></view>
+    <view class='member-con'>
+      您是否举报该评论？
+      <view catchtap='reportNotice' style='color:blue;margin-top:30rpx;'>举报须知</view>
+    </view>
+    <view class='member-btns'>
+      <button class='btn' hover-class='btn-hover' catchtap='reSubmit'>取消</button>
+      <view class='btnline'>|</view>
+      <button catchtap='deleteCard' hover-class='btn-hover' class='btn'>确认</button>
+    </view>
+  </view>
+</view>

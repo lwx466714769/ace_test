@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Share": "/components/share/share"
+  },
+  "navigationBarTitleText": "分享"
+}

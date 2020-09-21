@@ -1,0 +1,7 @@
+{
+    "navigationBarTitleText": "个人中心",
+    "backgroundColor": "#f8f8f8",
+    "usingComponents": {
+      "chackLogin": "/components/chackLogin/chackLogin"
+    }
+}

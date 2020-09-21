@@ -1,0 +1,268 @@
+/* miniwelfare/goodsdetails/goodsdetails.wxss */
+.part_item_wrap {
+  height: 200rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  overflow: hidden;
+  margin: 0 30rpx;
+  display: flex;
+
+}
+.empty-wrap{
+  margin-top: 400rpx;
+}
+.part_item{
+  border-bottom: 3rpx solid #2a2a2a;
+}
+
+.card_cover {
+  width: 182rpx;
+  height: 182rpx;
+  border-radius: 16rpx;
+}
+
+.progress_num {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  margin-bottom: 44rpx;
+}
+
+.allNumName, .overplusname {
+  font-size: 24rpx;
+  font-weight: lighter;
+}
+
+.allNum, .overplus {
+  font-size: 24rpx;
+}
+
+.item_content_wrap {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30rpx;
+  padding-top: 30rpx;
+}
+
+.item_content_name {
+  display: flex;
+  font-size: 28rpx;
+}
+.state{
+  color: #f00;
+}
+.item_content_clubname{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.item_card_order{
+  font-size: 24rpx;
+  color: rgb(153,153,153);
+}
+
+.item_card_count {
+  display: flex;
+}
+.total-price{
+  color: #f00;
+}
+.item_card_more {
+  text-align: right;
+  padding: 20rpx 0 ;
+}
+
+.more-icon {
+  width: 16rpx;
+  height: 14rpx;
+  margin-bottom: 3rpx;
+  margin-left: 14rpx;
+}
+
+.data_title{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding: 44rpx 0 24rpx;
+}
+
+.data_title view {
+  width: 50%;
+  font-weight: lighter;
+}
+
+view.bottom_line{
+  width: 50rpx;
+  height: 4rpx;
+  border-radius: 4rpx;
+  background-color: transparent;
+  margin: 10rpx auto;
+}
+
+.backHome{
+  width: 710rpx;
+  background: white;
+  position: fixed;
+  right: 20rpx;
+  bottom: 0;
+}
+
+.homeBtn{
+  padding: 20rpx;
+  text-align: center;
+  color: white;
+  font-weight: lighter;
+  background: #2a2a2a;
+  margin-bottom: 20rpx; 
+}
+
+.mainData{
+  padding-bottom: 20rpx; 
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 140rpx;
+  background: #fff;
+  border-top: solid 2rpx rgb(246,246,246);
+  box-sizing: border-box;
+}
+.btn-group{
+  width: 692rpx;
+  border: solid 2rpx #000;
+  border-radius: 8rpx;
+  background: #000;
+  color: #fff;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:14rpx auto 0; 
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+}
+.btn-small{
+  width: 212rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+  color: #000;
+  border-top-left-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+}
+.btn-big{
+  flex: 1;
+}
+.arrow{
+  width:10rpx;
+  height: 10rpx;
+  border-top: solid 2rpx #333;
+  border-right: solid 2rpx #333;
+  transform: rotate(45deg);
+  margin-left: 6rpx;
+  margin-right: 10rpx;
+}
+.level{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+margin-left: 30rpx;
+margin-right: 30rpx;
+}
+.logistics{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.text_message{
+font-size: 28rpx;
+margin-left: 40rpx;
+width: 530rpx;
+
+}
+.user_message{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.user{
+margin-left: 40rpx;
+width: 530rpx;
+
+}
+.address{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 30rpx;
+margin-top: 30rpx;
+
+}
+.user_name{
+font-size: 28rpx;
+margin-right: 20rpx;
+
+}
+.user_tel{
+color: #666;
+
+}
+.line {
+  margin: 20rpx 0;
+  width: 100%;
+  height: 3rpx;
+  background: #F2F2F2;
+  margin-left: 30rpx;
+
+}
+.item{
+  flex: 1;
+  margin-left:30rpx;
+
+}
+.specification{
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.itemAmount{
+margin-top: 16rpx;
+color: red;
+}
+.itemName{
+color: #999999;
+background: #F2F2F2;
+padding: 5rpx 10rpx;
+border-radius: 5rpx;
+width: 404rpx;
+}
+.itemTitle{
+  height: 80rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.itemCount{
+  color: #999999;
+}
+.qrCode{
+padding-bottom: 60px;
+display: flex;
+justify-content: center;
+
+}
+.refund-text{
+  padding: 0 30rpx 30rpx 30rpx;
+  font-size: 24rpx;
+  color: #999999;
+}

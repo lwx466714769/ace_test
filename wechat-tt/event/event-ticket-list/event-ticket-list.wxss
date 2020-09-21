@@ -1,0 +1,130 @@
+/* club/order-list/order-list.wxss */
+.empty-wrap{
+  margin-top: 400rpx;
+}
+.order{
+  position: relative;
+}
+/* 订单列表 */
+.card-img-wrap{
+  padding: 30rpx;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.card-img{
+  width: 600rpx;
+  height: 340rpx;
+  border-radius: 32rpx;
+  position: relative;
+  margin: 10rpx auto 0;
+  display: block;
+  z-index: 100;
+  box-shadow: 0 0 20rpx rgba(0,0,0,.3);
+}
+.order-list{
+  padding: 0 30rpx; 
+}
+.order-item{
+  display: flex;
+  padding-top: 30rpx;
+}
+.order-img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.order-info{
+  flex: 1;
+}
+.order-name{
+  margin-top: 30rpx;
+  font-size: 28rpx;
+}
+.object-list{
+  margin-top: 30rpx;
+}
+.object-item{
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #999;
+  border-bottom: solid 2rpx rgb(246,246,246);
+  display: flex;
+  justify-content: space-between;
+}
+.object-item view{
+  flex: 1;
+  text-align: right;
+}
+.object-item .object-name{
+  flex: 2;
+  text-align: left;
+}
+.total{
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.order-footer{
+  display: flex;
+  justify-content: space-between;
+  height: 124rpx;
+  align-items: center;
+}
+.btn-order{
+  width: 184rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 24rpx;
+  background: #000;
+  color: #fff;
+  text-align: center;
+  border-radius: 8rpx;
+}
+/* 电子门票 */
+.ticket-wrap{
+  position: fixed;
+  background: rgba(0,0,0,.5);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 201;
+}
+.ticket-content{
+  width: 656rpx;
+  height: 754rpx;
+  background: #fff;
+  position: absolute;
+  top: 180rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 68rpx;
+  box-sizing: border-box;
+}
+.ticket-qrcode{
+  width: 520rpx;
+  height: 520rpx;
+  margin-bottom: 60rpx;
+}
+.load{
+  position: absolute;
+  top: 290rpx;
+  left: 46%;
+}
+.ticket-close{
+  position: absolute;
+  bottom: -120rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60rpx;
+  height: 60rpx;
+  color: #fff;
+  border-radius: 50%;
+  border:solid 4rpx #fff;
+  font-size: 60rpx;
+  line-height: 46rpx;
+  text-align: center;
+}

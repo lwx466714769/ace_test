@@ -1,0 +1,22 @@
+<view class='member-wrap' wx:if='{{!isShow}}'>
+  <view class='member'>
+    <view style=''>提示</view>
+    <view class='line'></view>
+    <view style='text-align: center;'>认证要求</view>
+    <view class='main' style='margin:30rpx;'>
+      <text decode='{{true}}' class='member-con'>* 上传行驶证信息页或购车发票页
+      * 行驶本车辆型号、发动机号码信息清晰可见
+      * 购车发票厂牌型号、发动机号码信息清晰可见
+      * 以上要求的信息不清晰将导致审核无法通过。
+      </text>
+    </view>
+    <view style='margin: 0 30rpx 30rpx;'>
+      声明：<text>该信息用于MINI街角咖啡店认证车主和车主权益信息登记，您在本产品中的个人隐私信息不会透露给任何第三方。</text>
+    </view>
+    <view class='member-btns' style='margin:0rpx;background: #2a2a2a;'>
+      <button class='btn' hover-class='btn-hover' catchtap='reSubmit'>取消</button>
+      <view class='btnline'>|</view>
+      <button catchtap='uploadCardImg' hover-class='btn-hover' class='btn'>我已知晓</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,54 @@
+<!--equip/equip-filter/equip-filter.wxml-->
+
+<view class='equip-filter'>
+  <view class='list-left'>
+    <view>   
+      <view catchtap='changeType' data-index='{{index}}' data-item='{{item.name}}' data-id='{{item.id}}' wx:for='{{equipTypeList}}' wx:key='index' class='{{curTypeIndex == index?"active":""}} list-name'>{{item.name}}</view>
+    </view>
+    <view class='clear-filter' catchtap='clearFilter'>清空条件</view>
+  </view>
+  <view class='list-right'>
+    <view catchtap='allBrand' class='all'>
+      <view class='all-img'>All</view>
+      <view class='all-font'>全部</view>
+    </view>
+    <scroll-view scroll-y scroll-into-view='{{currentId}}' class='add-equip-con'>
+      <block wx:for='{{brandList}}' wx:key='index'>
+        <view>
+          <view class='letter' id='id{{index}}'>{{item.letter}}</view>
+          <view class='equip-con'>
+            <view catchtap='showCarType' data-item='{{list.name}}' data-id='{{list.id}}' wx:for='{{item.brand}}' wx:key='index' wx:for-item='list' class='equip-item'>
+              <view class='equip-img-wrap {{list.logo?"":"img-wrap-gray"}}'>
+                <image wx:if='{{list.logo}}' class='equip-img' src='{{list.logo}}' mode='aspectFit'></image>
+                <image wx:else class='equip-default' src='/images/equip-default.png'></image>
+              </view>
+              <view class='equip-name'>{{list.name}}</view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+    <view catchtouchstart='slideStart' class='letters'>
+      <view wx:for='{{brandList}}' wx:key='index' class='{{currentIndex == index?"letter-active":""}} letter-item'>{{item.letter}}</view>
+    </view>
+  </view>
+  <!-- <view catchtouchstart='slideStart' catchtouchmove='slideMove' catchtouchend='slideEnd' class='letters'>
+    <view wx:for='{{letters}}' wx:key='index' class='{{currentIndex == index?"letter-active":""}} letter-item'>{{item}}</view>
+  </view> -->
+  <view wx:if='{{showCarType}}' catchtap='showCarType' class='model-list-wrap'>
+    <scroll-view scroll-y style='height:100%' class='model-list'>
+      <view catchtap='allModel' class='model-all'>
+        <view class='all-img'>All</view>
+        <view class='all-font'>全部</view>
+      </view>
+      <view wx:for='{{modelList}}' data-item='{{item.name}}' wx:key='index' class='model-item' data-id='{{item.id}}' catchtap='filter'>
+        <view class='model-img-wrap {{item.logo?"":"img-wrap-gray"}}'>
+          <image wx:if='{{item.logo}}' class='model-img' src='{{item.logo}}' mode='aspectFit'></image>
+          <image wx:else class='model-equip-default' src='/images/equip-default.png'></image>
+        </view>
+        <view class='model-name'>{{item.name}}</view>
+      </view>
+    </scroll-view>
+  </view>
+  
+</view>

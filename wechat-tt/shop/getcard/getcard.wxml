@@ -1,0 +1,47 @@
+<scroll-view style='overflow:hidden;'>
+  <!-- 卡片审核结果显示 -->
+  <view class='getcard'>
+    <!-- 开始 -->
+
+    <view class='cardwrap'>
+      <image class='cardgot' mode='aspectFill' src='{{cardImg}}'></image>
+    </view>
+    <!--  -->
+    <view class='logomini'>
+      <!-- <text class='pic'>{{cardName}}</text> -->
+      <image class='pic' mode='aspectFit' src='{{cardlogo}}'></image>
+    </view>
+    <!--  -->
+    <view class='result' wx:if='{{cardType}}'>
+      <view class='text'>你的朋友赠送你一张福利卡</view>
+      <button open-type="getUserInfo" bindgetuserinfo="ImmediatelyReceive" class='result-btn'>
+        立即领取
+      </button>
+    </view>
+    <!--  -->
+    <view wx:else class='result-btn-wrap'>
+      <!--  -->
+      <view class='result'>
+        <view>
+          <view class='text'>{{auditingStatus== "true" ? "请耐心等待,您的订单正在审核…" : "购买成功"}}</view>
+        </view>
+      </view>
+      <view class='btn-wrap result-btn' wx:if='{{isVerified}}'>
+        <button open-type='share' class='btn' data-id='{{cardId}}'>
+        分享链接
+        </button>
+        <text class='line btn'>|</text>
+        <button class='btn' catchtap='initCheck'>立即查看</button>
+      </view>
+      <view class='btn-wrap result-btn' wx:else>
+        <button open-type='share' class='btn' data-id='{{cardId}}'>
+        分享链接
+        </button>
+        <text class='line btn'>|</text>
+        <button class='btn' catchtap='back_check'>立即查看</button>
+      </view>
+    </view>
+    <!-- 结束 -->
+  </view>
+  <Login id="binder" bind:login="loginSubmit" />
+</scroll-view>

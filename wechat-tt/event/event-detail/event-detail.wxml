@@ -1,0 +1,199 @@
+<!--event/event-detail/event-detail.wxml-->
+<import src="/utils/wxParse/wxParse.wxml"/>
+<view class='del-detail-con' wx:if='{{delState}}'>
+  <image class='del-detail-img' src='/images/post-del.png'></image>
+  <view>内容已被删除</view>
+</view>
+<block wx:else>
+  <view if='{{eventDetail}}'>
+    <view id='detail' class='event-detail'>
+      <!-- 分享页面一屏时，显示返回俱乐部 -->
+      <view wx:if='{{fromScene&&detailHeight<=750}}' style='position:static' class='back-club'>
+        <view class='club-left'>
+          <image class='club-logo' src='{{eventDetail.clubInfo.clubLogo}}'></image>
+          <view>{{eventDetail.clubInfo.clubName}}</view>
+        </view>
+        <navigator class='back-club-font' open-type='switchTab' url='/pages/index/index?clubId={{eventDetail.clubInfo.clubId}}'>返回该俱乐部首页</navigator>
+      </view>
+      <view catchtap='goTicket' wx:if='{{orderList.length>0}}' class='ticket'>
+        <image class='icon-ticket' src='/images/icon-ticket.png'></image>
+        <view class='ticket-name'>您已经拥有该活动门票</view>
+        <view class='arrow'></view>
+      </view>
+      <image class='event-img' mode='aspectFill' src='{{eventDetail.coverImg.url}}'></image>
+      <view class='event-head'>
+        <view class='event-title'>{{eventDetail.activityName}}</view>
+        <view wx:if='{{eventDetail.tags&&eventDetail.tags.length>0}}' class='tags'>
+          <text class='tag' wx:for='{{eventDetail.tags}}' wx:for-item='tag' wx:key='tag'>#{{tag}}#</text>
+        </view>
+      </view>
+      <view class='slot'></view>
+      <view class='event-center'>
+        <view class='center-block'>
+          <view class='center-left'>
+            <image class='icon-block' mode='aspectFit' src='/images/icon-time.png'></image>
+            <view>{{eventDetail.startTime}} - {{eventDetail.endTime}}</view>
+          </view>
+          <view></view>
+        </view>
+        <navigator url='/event/event-map/event-map?latitude={{eventDetail.location.latitude}}&longitude={{eventDetail.location.longitude}}' class='center-block'>
+          <view class='center-left'>
+            <image class='icon-block' mode='aspectFit' src='/images/icon-address.png'></image>
+            <view class='event-address'>{{eventDetail.addresses.address?eventDetail.addresses.address:eventDetail.location.address}}</view>
+          </view>
+          <view class='arrow'></view>
+        </navigator>
+        <view wx:if='{{eventDetail.signEndTime}}' class='center-block'>
+          <view class='center-left'>
+            <image class='icon-block' mode='aspectFit' src='/images/icon-date.png'></image>
+            <view>报名将于 {{eventDetail.signEndTime}} 结束</view>
+          </view>
+        </view>
+        <!-- 参与人 -->
+        <navigator wx:if='{{eventDetail.peopleNumber>0&&eventDetail.signNumberState=="DISPLAY"}}'  url='/event/event-member/event-member?activityId={{eventDetail.activityId}}' class='center-block'>
+          <view class='center-left'>
+            <image class='icon-block' mode='aspectFit' src='/images/icon-people.png'></image>
+            <view>{{eventDetail.peopleNumber}}人参与</view>
+          </view>
+          <view class="center-right">
+            <image wx:for='{{eventDetail.userInfos}}' wx:key='userInfos' class="people-img" src="{{item.avatar}}"></image>
+            <view class='arrow'></view>
+          </view>
+        </navigator>
+        <!-- 价格 -->
+        <view wx:if='{{!eventDetail.empty}}' class='center-block'>
+          <view class='center-left'>
+            <image class='icon-block' mode='aspectFit' src='/images/icon-money.png'></image>
+            <view class='price'>
+              <view wx:if='{{eventDetail.discount>0&&eventDetail.minPrice!=0||eventDetail.discount>0&&eventDetail.maxPrice!=0}}' class='price-discount'>{{eventDetail.discount/10}}折</view>
+              <view wx:if='{{eventDetail.minPrice==0}}' class='price-new'>免费</view>
+              <view wx:else class='price-new'><text class="size24">￥ </text>{{eventDetail.minPriceInt}}<text class="size24">{{eventDetail.minPriceDecimal}}</text></view>
+              <view wx:if='{{eventDetail.maxPrice&&eventDetail.minPrice!=eventDetail.maxPrice}}' class='price-new'> - <text class="size24">￥ </text>{{eventDetail.maxPriceInt}}<text class="size24">{{eventDetail.maxPriceDecimal}}</text></view>
+            </view>
+          </view>
+        </view>
+        <view wx:if='{{eventDetail.discount>0}}'>
+          <view wx:if='{{eventDetail.minPrice!=eventDetail.initMinPrice||eventDetail.initMinPrice!=eventDetail.initMaxPrice}}' class='price-old'>原价 <text>￥{{eventDetail.initMinPrice}}</text>
+          <text wx:if='{{eventDetail.maxPrice&&eventDetail.initMinPrice!=eventDetail.initMaxPrice}}'> - ￥{{eventDetail.initMaxPrice}}</text></view>
+        </view>
+      </view>
+      <view class='slot'></view>
+      <!-- <navigator open-type='switchTab' url='/pages/index/index?clubId={{eventDetail.clubInfo.clubId}}' class='card-club'>
+        <image class='club-img' src='{{eventDetail.clubInfo.clubLogo}}' mode='aspectFill'></image>
+        <view>
+          <view class='club-name'>{{eventDetail.clubInfo.clubName}}</view>
+        </view>
+      </navigator> -->
+      <view class='slot'></view>
+      <view class='tab'>
+        <view wx:for='{{tabList}}' wx:key='index' data-index='{{item.index}}' class='{{curIndex===item.index?"active tab-item":"tab-item"}}' catchtap='changeTab' data-state='{{item.render}}'>{{item.name}}</view>
+      </view>
+      <view hidden='{{curIndex!=0}}'>
+        <!-- <rich-text nodes='{{item.content}}'></rich-text> -->
+        <!-- <view class='post-text' wx:if='{{item.type=="TEXT"}}'>{{item.content}}</view>
+        <image class='post-img' wx:if='{{item.type=="IMAGE"}}' src='{{item.content}}' mode='widthFix'></image>
+        <view class='post-text' wx:if='{{item.extra.desc}}'>{{item.extra.desc}}</view>
+        <view wx:if='{{item.type=="VIDEO"}}'>
+          <video class='post-video' src='{{item.content}}'></video>
+          <view class='post-text' wx:if='{{item.extra.desc}}'>{{item.extra.desc}}</view>
+        </view> -->
+          <view class='detail detail-content'>
+            <template is='wxParse' data='{{wxParseData:article.nodes}}'/>
+          </view>
+      </view>
+      <view hidden='{{curIndex!=1}}' class='photos'>
+        <view wx:if='{{photos.length>0}}'>
+          <block wx:for='{{photos}}' wx:key='index'>
+          <image catchtap='previewImage' data-url='{{item.url}}' class='photo' mode='aspectFill' src='{{item.url}}'></image>
+          </block>
+        </view>
+        <view wx:else class='empty-wrap'>
+          <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+          <view>暂无照片</view>
+        </view>
+      </view>
+      <view hidden='{{curIndex!=2}}' class='comment'>
+        <view wx:if='{{comments.length>0}}'>
+          <view class='comment_list' wx:for='{{comments}}' wx:key='index'>
+            <view>
+              <image src='{{item.userLogo}}' class='comment_head'></image>
+            </view>
+            <view class='comment_con'>
+              <view class='name'>{{item.userName}}</view>
+              <view class='con'>
+                <text class='comment-text'>{{item.contents}}</text>
+                <image wx:for='{{item.images}}' wx:key='index' wx:for-item='list' data-url='{{list}}' data-imgs='{{item.images}}' catchtap='previewImage' src='{{list}}' mode='aspectFill' class='comment-image' data-type='comment'/>
+              </view>
+              <view class='center'>
+                <view class='time'>{{item.createAt}}</view>
+                <view wx:if='{{item.userId==userId}}' catchtap='delComment' data-id='{{item.replyId}}' class='del-comment'>
+                  <image class='del-post' src='/images/icon-del.png' ></image>
+                  <!-- <view class='del'>删除</view> -->
+                </view>
+              </view>
+            </view>
+          </view> 
+          <view class='show-all' wx:if='{{comments.length>0}}'>{{showAll==true?'已到最后':'加载中...'}}</view>
+        </view>
+        <view wx:else class='empty-wrap'>
+          <image class='icon-empty-default' src='/images/icon-comment.png'></image>
+          <view>暂无评论</view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class=''>
+      <image wx:if='{{eventDetail.canCheckIn}}' class='icon-checkin' src='/images/icon-join.png'></image>
+      <image class='icon-checkin' src='/images/icon-equip.png'></image>
+    </view> -->
+    <view wx:if='{{eventDetail&&eventDetail.empty}}' class='footer'>
+      <view class="btn-group">
+        <button data-type='LIKE' open-type='getUserInfo' bindgetuserinfo='toCollect' class="btn-small">{{eventDetail.likeNumberVO.collectionState?"已收藏":"收藏"}}</button>
+        <button data-type='post' catchtap='showShare' class='btn-big'>分享</button>
+      </view>
+    </view>
+    <view wx:elif='{{eventDetail}}' class='footer'>
+      <view class='btn-group btn-group-more'>
+        <button open-type='getUserInfo' bindgetuserinfo='toCollect'>
+          <image class='icon-share' src='/images/{{eventDetail.likeNumberVO.collectionState?"icon-collect-checked-profile":"icon-collect-profile"}}.png'></image>
+        </button>
+        <image class='icon-share' catchtap='showShare' src='/images/icon-share-profile.png'></image>
+        <view class='btn-big'>
+        <!-- {{eventDetail.state!="SIGNUP"||eventDetail.empty?"btn-join":""}} -->
+          <!-- <button open-type='getUserInfo' bindgetuserinfo='goComment' class='btn {{eventDetail.empty?"btn-join":""}}'>
+            评论
+          </button> -->
+          <block>
+            <button wx:if='{{eventDetail.activityState=="SIGN_UP"}}' open-type='getUserInfo' bindgetuserinfo='joinEvent' class='btn btn-join'>立即报名</button>
+            <button wx:elif='{{eventDetail.activityState=="SIGN_UP_END"}}' class='btn btn-join btn-gray'>报名已结束</button>
+            <button wx:elif='{{eventDetail.activityState=="ACTIVITYEND"}}' class='btn btn-join btn-gray'>活动已结束</button>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<Share id='share' shareparams='{{eventDetail}}' sharetype='event' />
+<!-- 
+canCheckIn==0  无签到
+canCheckIn==1   checkIn==1 所有人都可签到
+canCheckIn==1   checkIn==2 只有报名人可签到
+canCheckIn==1   checkIn==3 只有会员可签到
+ -->
+<!-- <button open-type='getUserInfo' bindgetuserinfo='toCheckIn' wx:if='{{eventDetail.canCheckIn==1}}' class='icon-join'>
+  <image src='/images/icon-check.png'></image>
+</button>
+<navigator url='/event/event-member/event-member?type=checkIn&eventId={{eventDetail.eventId}}' wx:elif='{{eventDetail.canCheckIn==2}}' class='icon-join'>
+  <image src='/images/icon-checkIn.png'></image>
+</navigator> -->
+<!-- 分享返回俱乐部 -->
+<view wx:if='{{fromScene}}' class='{{showBackClub?"animation":"animation1"}}'>
+  <view class='back-club'>
+    <view class='club-left'>
+      <image class='club-logo' src='{{eventDetail.clubLogo}}'></image>
+      <view>{{eventDetail.clubName}}</view>
+    </view>
+    <navigator class='back-club-font' open-type='switchTab' url='/pages/index/index?clubId={{eventDetail.clubId}}'>返回该俱乐部首页</navigator>
+  </view>
+</view>
+<canvas canvas-id="myCanvas" style="position:absolute;left:-200%;width:100%;height:420rpx;"></canvas>
+

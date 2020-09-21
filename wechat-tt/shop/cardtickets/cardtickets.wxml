@@ -1,0 +1,69 @@
+<scroll-view scroll-y>
+   <view class='mainData_aomai'>
+
+      <view class='part_item'>
+         <view class='part_item_card_img'>
+            <view class='item_card_img'>
+               <image src='{{currentPackage.info.productImg ? currentPackage.info.productImg : "/images/default.png"}}' lazy-load='{{true}}' class='card_img' mode='aspectFill' />
+            </view>
+         </view>
+      </view>
+      <view class='part_item'>
+         <view class='part_item_card_content'>
+            <view class='part_item_name'>
+               <text class='item_name' decode='{{true}}'>{{currentPackage[0].productName}}</text>
+            </view>
+            <view class='part_item_description'>
+               <text class='item_description' decode='{{true}}'>{{currentPackage.info.productBrief}}</text>
+            </view>
+            <view class='part_item_time'>
+               <text class='item_time' decode='{{true}}'>{{term}}</text>
+            </view>
+                      <view class='slot'></view>
+          <navigator open-type='switchTab' url='/pages/index/index?clubId={{currentPackage.info.clubId}}' class='card-club'>
+             <image class='club-img' src='{{currentPackage.info.clubLogo}}' mode='aspectFill'></image>
+             <view>
+                  <view class='club-name'>{{currentPackage.info.clubName}}</view>
+             </view>
+          </navigator>
+          
+            <view class="slot"></view>
+            <view class='part_item_cards'>
+               <view class='item_cards_name'>
+                  <view class='cards_name'>共{{currentPackage.cardTotal}}张卡券 </view>
+               </view>
+               <view class='item_cards'>
+                  <block wx:for='{{gift}}' wx:key='card_item' wx:for-index='idx'>
+                     <view class='item_card' >
+                        <view class='item_card_cover' data-quotaid='{{item.quotaId}}' data-id='{{item.id}}'>
+                           <image src='{{currentPackage.info.productImg ? currentPackage.info.productImg : "/images/default.png"}}' lazy-load='{{true}}' class='card_img card_back' mode='aspectFill' />
+                           <button wx:if='{{item.presentState!=3&&item.isExpire==true}}' data-index='{{index}}' class='card_tap_btn'>卡片已过期</button>
+                        <button open-type='share' wx:elif='{{item.presentState==1}}'  data-type='giftCard' data-id='{{item.id}}' data-orderid='{{item.orderId}}'  class='card_tap_btn' data-index='{{idx}}'>赠送</button>
+                        <button open-type='share' wx:elif='{{item.presentState==2}}'  data-type='giftCard' data-id='{{item.id}}' data-orderid='{{item.orderId}}'  class='card_tap_btn' data-index='{{idx}}'>再次赠送</button>
+                        <view wx:elif='{{item.presentState==3}}'   class='card_tap_btn'>已领取</view>
+                        <!-- <button open-type='share' wx:elif='{{item.gift===true&&item.presentation==="PENDING"}}' data-index='{{index}}' data-type='giftCard' data-presentation='{{item.presentation}}' data-id='{{item.id}}' data-orderid='{{item.orderId}}' class='card_tap_btn'>再次赠送</button>
+                        <view wx:elif='{{item.gift===true&&item.presentation==="RECEIVED"}}' class='card_tap_done'>已领取</view> -->
+                        <button wx:elif='{{card.gift===false}}' class='card_tap_btn'>其他</button>
+                        </view>
+                        <!-- <view class='line'></view> -->
+                        <view class='card_name'>
+                           <text class='name' decode='{{true}}'>{{item.info.specificationName}}</text>
+                        </view>
+                        <!-- 一下三个字段是小程序第二期 -->
+                        <!-- presentation = "NOTGIVEN" 未赠送 -->
+                        <!-- presentation = "PENDING"  待领取 -->
+                        <!-- presentation = "RECEIVED" 已赠送 -->
+                        
+                     </view>
+                  </block>
+               </view>
+            </view>
+         </view>
+      </view>
+
+   </view>
+   <view class='card_all_delete' wx:if='{{false}}' data-quotaid='{{item.quotaId}}' catchtap='delCard'>
+      <view class='delete_btn'>删除卡券</view>
+   </view>
+   <redelete id='checkAtteste' deleteItems='{{deleteItems}}' bind:reApply='attestate' />
+</scroll-view>

@@ -1,0 +1,139 @@
+.logisName{
+font-size: 30rpx;
+margin-left: 30rpx;
+margin-top: 30rpx;
+}
+.one{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-left: 30rpx;
+margin-right: 30rpx;
+margin-top: 40rpx;
+align-items: center;
+}
+.two{
+display: flex;
+flex-direction: row;
+margin-left: 166rpx;
+width: 544rpx;
+margin-top: 32rpx;
+}
+.itemTime{
+display: flex;
+flex-direction: column;
+width: 130rpx;
+padding-left: 36rpx;
+margin-top: 46rpx;
+
+
+}
+.item{
+display: flex;
+flex-direction: row;
+}
+.vertical{
+width: 3rpx;
+background: #999999;
+margin-right: 30rpx;
+height: 100%;
+}
+.logisNumber{
+font-size: 24rpx;
+color: #999999;
+
+}
+.copy{
+font-size: 24rpx;
+background: #F2F2F2;
+padding: 5rpx 10rpx;
+border-radius: 5rpx;
+}
+.itemAdress{
+ width: 530rpx;
+font-size: 24rpx;
+color: #999999;
+margin-top: 46rpx;
+
+}
+.itemAdressBlack{
+width: 530rpx;
+font-size: 24rpx;
+color: black;
+margin-top: 46rpx;
+}
+.itemAdres{
+width: 544rpx;
+font-size: 24rpx;
+color: #999999;
+}
+.time{
+font-size: 28rpx;
+color: #999999;
+}
+.timeblack{
+font-size: 28rpx;
+color: black;
+}
+.ftime{
+font-size: 24rpx;
+padding-left: 10rpx;
+margin-top: 4rpx;
+color: #999999;
+}
+.verticals{
+/* margin: 20rpx 0; */
+width: 3rpx;
+/* height: 10rpx; */
+background: #999999;
+/* margin-left: 30rpx; */
+margin-right: 30rpx;
+height: 20rpx;
+
+}
+.twos{
+display: flex;
+flex-direction: row;
+margin-left: 166rpx;
+width: 544rpx;
+margin-bottom: 40rpx;
+}
+.twos{
+
+}
+.verticaly{
+/* margin: 20rpx 0; */
+width: 3rpx;
+/* height: 10rpx; */
+background: #999999;
+/* margin-left: 30rpx; */
+margin-right: 30rpx;
+margin-top: 16rpx;
+height: 20rpx;
+}
+.circles{
+position: relative;
+}
+.point{
+position: absolute;
+top: 47rpx;
+left: -13rpx;
+}
+.points{
+position: absolute;
+top: 49rpx;
+left: -4rpx;
+color: #999999;
+}
+.pointy{
+position: absolute;
+top: 4rpx;
+left: -4rpx;
+color: #999999;
+}
+.pointss{
+position: absolute;
+top: 0rpx;
+left: -4rpx;
+color: #999999;
+}

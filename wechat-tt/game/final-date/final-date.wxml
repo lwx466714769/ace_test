@@ -1,0 +1,24 @@
+<!--game/final-date/final-date.wxml-->
+<view class='final-date'>
+  <view class='title'>选择日期区间</view>
+  <view class='picker'>
+    <picker mode='multiSelector' value='{{dateTime}}' class='date' bindchange='changeStart' range='{{dateTimeArray}}'>
+      <view class='left'>开始时间</view>
+      <view class='change right'>
+        <view>{{startTime?startTime:"请选择"}}</view>  
+        <view class='arrow'></view>
+      </view>
+    </picker>
+    <picker mode='multiSelector' value='{{dateTime}}' class='date' bindchange='changeEnd' range='{{dateTimeArray}}'>
+      <view class='left'>结束时间</view>
+      <view class='change right'>
+        <view>{{endTime?endTime:"请选择"}}</view>  
+        <view class='arrow'></view>
+      </view>
+    </picker>
+  </view>
+  
+</view>
+<view class='footer'>
+  <button class='button' catchtap='submit'>完成</button>
+</view>

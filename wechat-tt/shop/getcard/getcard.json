@@ -1,0 +1,9 @@
+{
+  
+  "navigationBarTitleText": "TripleT机车",
+  "backgroundColor": "#f8f8f8",
+
+  "usingComponents": {
+    "Login": "/components/Login/Login"
+  }
+}

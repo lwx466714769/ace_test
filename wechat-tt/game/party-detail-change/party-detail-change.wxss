@@ -1,0 +1,143 @@
+/* game/party-detail/party-detail.wxss */
+.party-detail{
+  padding-bottom: 120rpx;
+}
+.arrow{
+  width:10rpx;
+  height: 10rpx;
+  border-top: solid 2rpx #999;
+  border-right: solid 2rpx #999;
+  transform: rotate(45deg);
+  margin-right: 6rpx;
+}
+.party-img{
+  width: 100%;
+  height: 420rpx;
+}
+.user-info{
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.user-head{
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.fans{
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.party-info{
+  padding: 30rpx 60rpx;
+  font-size: 24prx;
+  color: rgb(153,153,153);
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.party-time{
+  font-size: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 26rpx;  
+}
+.content{
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+  color: rgb(102,102,102);
+}
+.expire{
+  text-align: right;
+}
+.party-date{
+  padding: 30rpx 60rpx;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+/* 参与成员 */
+.join-title{
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.join-member{
+  display: flex;
+  padding: 0 30rpx;
+}
+.join-member-head{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+/* 成员 */
+.members{
+  padding: 30rpx 60rpx;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.member-date{
+  margin-bottom: 30rpx;
+}
+.member{
+  display: flex;
+}
+.member-item{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.member-head{
+  width: 70rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+}
+/* footer */
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  border-top: solid 2rpx rgb(246,246,246);
+  font-size: 32rpx;
+  padding-bottom: 20rpx;
+}
+.opration-group{
+  display: flex;
+  justify-content: space-around;
+  flex: 1;
+}
+.equip-opration{
+  display: flex;
+  align-items: center;
+}
+.icon-share{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+}
+.btn-group{
+  width: 446rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  display: flex;
+}
+.btn{
+  flex: 1;
+  background: #000;
+  color: #fff;
+  font-size: 32rpx;
+}

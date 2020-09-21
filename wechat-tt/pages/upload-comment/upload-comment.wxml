@@ -1,0 +1,13 @@
+<view class='wx-img-list'>
+<textarea bindinput='modifyInput' class='textarea' placeholder='说点什么吧...' ></textarea>
+<view wx:if='{{isFrom!="EQUIP"}}' class='img-wrap'> 
+  <view wx:for="{{images}}" wx:key="preview" class='wx-img-box {{fail ? "fail" : ""}}'>
+    <image src='{{item.src}}' class='wx-img-item' mode='aspectFill'>
+      <!-- <progress wx:if='{{item.uploading}}' active="false" class="wx-img-progress" percent="100" stroke-width="2" /> -->
+    </image>
+    <image class='img-close' catchtap='delImages' data-id='{{item.id}}' data-index='{{index}}' src='/images/icon-close.png'></image> 
+  </view>
+  <image wx:if="{{images.length<8}}" class='wx-img-bg' catchtap='addImages' src='/images/icon-add-bg.png'></image>
+  </view>
+</view>
+<button class='button btn-confirm' catchtap="submit">提交</button>

@@ -1,0 +1,293 @@
+/* profile/pages/homepage/homepage.wxss */
+@import '../../template/post.wxss';
+.homepage{
+  position: relative;
+  overflow: hidden;
+}
+.tab{
+  border-bottom: none;
+}
+.background-view{
+  width: 100%;
+  height: 300rpx;
+  position: relative;
+}
+.head-bg{
+  width: 100%;
+  height: 300rpx;
+} 
+.same-club{
+  padding: 12rpx 24rpx;
+  background: #000;
+  color: #fff;
+  border-top-left-radius: 34rpx;
+  border-bottom-left-radius: 34rpx;
+  position: absolute;
+  right: 0;
+  bottom: 34rpx;
+  font-size: 24rpx;
+}
+.icon-group{
+  position: relative;
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.icon-right{
+  display: flex;
+}
+.icon-opera{
+  width: 60rpx;
+  height: 60rpx;
+  background: #000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.icon-follow{
+  margin-left: 40rpx;
+}
+.icon-follow image{
+  width: 30rpx;
+  height: 32rpx;
+  display: block;
+}
+.icon-share image{
+  width: 27rpx;
+  height: 27rpx;
+  display: block;
+}
+/* 导航固定 */
+.a-class{
+  width: 100%;
+  z-index: 999;
+  position: sticky;
+  position: -webkit-sticky;
+  top:100;
+  background: #fff;
+}
+
+.home-avatar{
+  width: 156rpx;
+  height: 156rpx;
+  border-radius: 50%;
+  border:solid 4rpx #fff;
+  position: absolute;
+  top: 188rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.home-head{
+  padding: 70rpx 30rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.home-name{
+  font-size: 48rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+.home-address{
+  margin: 6rpx 0;
+}
+.home-info{
+  font-size: 24rpx;
+  text-align: center;
+  color: rgb(120,120,120);
+  margin-bottom: 40rpx;
+}
+.home-fans{
+  margin-left: 60rpx;
+  margin-right: 60rpx;
+}
+.tabs{
+  display: flex;
+  justify-content: space-around;
+  color: rgb(123,123,123);
+}
+.tab{
+  text-align: center;
+}
+.active{
+  color: #000;
+  font-weight: bold;
+}
+.tab-title{
+  font-size: 26rpx; 
+  margin-bottom: 12rpx;
+}
+.tab-num{
+  font-size: 20rpx;
+}
+.home-des{
+  width: 100%;
+  color: rgb(51,51,51);
+  letter-spacing: 2rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  max-height:  156rpx;
+  box-sizing: border-box;
+  padding: 30rpx 50rpx;
+  background: rgb(249, 249, 249);
+}
+.btn-group{
+  height: 60rpx;
+  display: flex;
+  border-radius: 8rpx;
+  position: relative;
+  align-items: center;
+}
+.btn-follow{
+  width: 174rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #fff;
+  background: #000;
+  font-size: 28rpx;  
+  border-radius: 0;
+  border-top-left-radius: 8rpx;
+  border-bottom-left-radius: 8rpx;
+}
+.share-wrap{
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border: solid 2rpx #000;
+  border-radius: 8rpx;
+  box-sizing: border-box;
+}
+.isOther{
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.icon-group-share{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 14rpx;
+  margin-top: 14rpx;
+}
+.share-con{
+  position: absolute;
+  top: 82rpx;
+  right: 0;
+  width: 300rpx;
+  box-shadow: 0 2rpx 6rpx rgb(220,220,220);
+  padding: 0 30rpx;
+  background: #fff;
+  z-index: 100;
+  box-sizing: border-box;
+}
+.btn-share{
+  text-align: left;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+}
+.btn-share:first-child{
+  border-bottom: solid 2rpx rgb(220,220,220);
+}
+.container{
+  padding-top: 10rpx;
+}
+.block{
+  padding: 20rpx 0;
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom:none;
+}
+.arrow{
+  position: relative;
+  padding-right: 40rpx;
+}
+.arrow:after{
+  content:'';
+  width:10rpx;
+  height: 10rpx;
+  border-top: solid 2rpx #333;
+  border-right: solid 2rpx #333;
+  transform: rotate(45deg);
+  top: 14rpx;
+  right: 6rpx;
+  position: absolute;
+}
+.club-list{
+  padding: 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  height: 230rpx;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+.club-list .clubs-item{
+  margin: 0 12rpx 30rpx 0;
+  width: 160rpx;
+  text-align: center;
+}
+.club-list .clubs-logo{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-bottom: 10rpx;
+  border: solid 2rpx #eee;
+}
+.club-list .clubs-name{
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  max-height: 76rpx;
+  overflow: hidden;
+  letter-spacing: 2prx;
+  word-break: break-all;
+}
+
+/* 我的热议 */
+.post-list{
+  margin: 30rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  box-shadow: 0 2rpx 4rpx rgba(0,0,0,.4);
+}
+.post-head{
+  display:flex;
+  align-items:center;
+  margin-bottom:20rpx;
+}
+.post-avatar{
+  width:60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  border: solid 2rpx #eee;
+}
+.post-intro{
+  color: rgb(51,51,51);
+  letter-spacing: 2rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -webkit-line-clamp:3;
+  overflow: hidden;
+  max-height:  120rpx;
+}
+.post-imgs{
+  margin-top: 20rpx;
+}
+.post-img{
+  width:150rpx;
+  height: 150rpx;
+  margin-bottom: 10rpx;
+  margin-right: 10rpx;
+}
+.post-img:nth-child(4n){
+  margin-right: 0;
+}

@@ -1,0 +1,138 @@
+<template name='moreCard'>
+   <block wx:for='{{cardsAll}}' wx:key='index'>
+      <!-- 高级卡 -->
+      <view wx:if='{{item.shelfType==7}}' class='cardbag'>
+         <view wx:if='{{item.shelfName&&item.shelfName!=" "}}' class='aomai_cardName'>
+            <view style='padding-right: 20rpx;'>
+               <view style='width:4rpx; height: 24rpx; background: rgb(255, 103, 0);'></view>
+            </view>{{item.shelfName}}
+         </view>
+         <view wx:for='{{item.commodities}}' wx:key='sub_{{index}}' wx:for-item='sub' data-id='{{sub.id}}' class='big' catchtap='welfareCardDetail'>
+            <view class='card-big'>
+               <image class='cardBig' mode='aspectFill' src='{{sub.productImg[0]?sub.productImg[0]:cardbag}}/w700_1'></image>
+            </view>
+            <view class='card-title'>
+               <view class='line'></view>
+               <text>{{sub.productName}}</text>
+            </view>
+            <view class='largeBg'>
+
+            </view>
+         </view>
+      </view>
+      <!-- 长条卡 -->
+      <view wx:if='{{item.shelfType===3}}' class='cardbag'>
+         <view wx:if='{{item.shelfName&&item.shelfName!=" "}}' class='aomai_cardName'>
+            <view style='padding-right: 20rpx;'>
+               <view style='width:4rpx; height: 24rpx; background: rgb(255, 103, 0);'></view>
+            </view>{{item.shelfName}}
+         </view>
+         <view wx:for='{{item.commodities}}' wx:key='sub_{{index}}' wx:for-item='sub' data-id='{{sub.id}}' catchtap='welfareCardDetail' class='length'>
+            <view class='card-length'>
+               <image class='cardBig' mode='aspectFill' src='{{sub.productImg[1]?sub.productImg[1]:cardbag}}/w700_1'></image>
+            </view>
+            <view class='lineL'></view>
+            <view class='card-titleL'>
+               <text class='text'>{{sub.productName}}</text>
+            </view>
+         </view>
+      </view>
+      <!--大BANNER-->
+      <view wx:if='{{item.shelfType==1}}'>
+         <view wx:if='{{item.shelfName&&item.shelfName!=" "}}' class='aomai_cardName'>
+            <view >{{item.shelfName}}</view>
+         </view>
+          <navigator url="/shop/carddetails/carddetails?cardId={{item.commodities[0].id}}">
+              <image class='bigBanner' mode='aspectFill' src='{{item.shelvesImg[0]?item.shelvesImg[0]:item.commodities[0].productImg[0]}}/w700_1'></image>
+          </navigator>
+      </view>
+      <!--BANNER 3x-->
+      <view wx:if='{{item.shelfType==4}}'>
+         <view wx:if='{{item.shelfName&&item.shelfName!=" "}}' class='aomai_cardName'>
+            <view >{{item.shelfName}}</view>
+         </view>
+         <view wx:if='{{item.commodities.length>0}}' class='recommend'>
+            <navigator url="/shop/carddetails/carddetails?cardId={{item.commodities[0].id}}">
+               <image class='left-img'  data-id='{{item.commodities[0].id}}' src='{{item.shelvesImg[0]?item.shelvesImg[0]:item.commodities[0].productImg[0]}}/w700_1'  mode='aspectFill'></image>
+            </navigator>
+            <view class="img">
+                <navigator  url="/shop/carddetails/carddetails?cardId={{item.commodities[1].id}}">
+                    <image class='right-imgOne' data-id='{{item.commodities[1].id}}' src='{{item.shelvesImg[1]?item.shelvesImg[1]:item.commodities[1].productImg[0]}}/w700_1'  mode='aspectFill'></image>
+                </navigator>
+                <navigator url="/shop/carddetails/carddetails?cardId={{item.commodities[2].id}}">
+               <image class='right-imgTwo'  data-id='{{item.commodities[2].id}}' src='{{item.shelvesImg[2]?item.shelvesImg[2]:item.commodities[2].productImg[0]}}/w700_1' mode='aspectFill'></image>
+                </navigator>
+            </view>
+         </view>
+      </view>
+
+      <!--BANNER 4x-->
+      <view wx:if='{{item.shelfType==5}}'>
+         <view wx:if='{{item.shelfName&&item.shelfName!=" "}}' class='aomai_cardName'>
+            <view >{{item.shelfName}}</view>
+         </view>
+         <view wx:if='{{item.commodities.length>0}}' class='recommendFive'>
+             <navigator url='/shop/carddetails/carddetails?cardId={{item.commodities[0].id}}'>
+               <image class='left-img_'  data-id='{{item.shelvesImg[0].id}}' src='{{item.shelvesImg[0]?item.shelvesImg[0]:item.commodities[0].productImg[0]}}/w700_1'  mode='aspectFill'></image>
+             </navigator>
+             <navigator url='/shop/carddetails/carddetails?cardId={{item.commodities[1].id}}'>
+               <image class='img_' data-id='{{item.shelvesImg[1].id}}' src='{{item.shelvesImg[1]?item.shelvesImg[1]:item.commodities[1].productImg[0]}}/w700_1'  mode='aspectFill'></image>
+             </navigator>
+             <navigator url='/shop/carddetails/carddetails?cardId={{item.commodities[2].id}}'>
+                 <image class='img_'  data-id='{{item.shelvesImg[2].id}}' src='{{item.shelvesImg[2]?item.shelvesImg[2]:item.commodities[2].productImg[0]}}/w700_1' mode='aspectFill'></image>
+             </navigator>
+             <navigator url='/shop/carddetails/carddetails?cardId={{item.commodities[3].id}}'>
+               <image class='right-img_' data-id='{{item.shelvesImg[3].id}}' src='{{item.shelvesImg[3]?item.shelvesImg[3]:item.commodities[3].productImg[0]}}/w700_1' mode='aspectFill'></image>
+             </navigator>
+         </view>
+      </view>
+
+      <!-- 中级卡 BANNER 2x-->
+      <view wx:elif='{{item.shelfType==2}}'>
+         <view wx:if='{{item.shelfName&&item.shelfName!=" "}}' class='aomai_cardName'>
+            <view >{{item.shelfName}}</view>
+         </view>
+         <view class='middle-wrap'>
+            <!--wx:for='{{item.commodities}}'-->
+            <view class='middle'>
+               <view wx:if="{{item.commodities.length>0}}" class='recommendFive'>
+                   <navigator url='/shop/carddetails/carddetails?cardId={{item.commodities[0].id}}' >
+                  <image class='cardLeft' mode='aspectFill'  data-id="{{item.commodities[0].id}}" src='{{item.shelvesImg[0]?item.shelvesImg[0]:item.commodities[0].productImg[0]}}/w700_1'></image>
+                   </navigator>
+                   <navigator url='/shop/carddetails/carddetails?cardId={{item.commodities[1].id}}'>
+                  <image class='cardRight' mode='aspectFill'  data-id="{{item.commodities[1].id}}"  src='{{item.shelvesImg[1]?item.shelvesImg[1]:item.commodities[1].productImg[0]}}/w700_1'></image>
+                   </navigator>
+               </view>
+               <!--<view class='lineM'></view>-->
+               <!--<view class='middletext'>{{sub.productName}}</view>-->
+            </view>
+         </view>
+      </view>
+
+      <!--商品陈列类型-->
+      <view wx:if='{{item.shelfType==0}}' >
+         <view wx:if='{{item.shelfName&&item.shelfName!=" "}}' class='aomai_cardName'>
+            <view>{{item.shelfName}}</view>
+         </view>
+         <view class='small-list'>
+            <block wx:for='{{item.commodities}}' wx:for-item='list' wx:key='index'>
+         <navigator class="small-content"  url='/shop/carddetails/carddetails?cardId={{list.id}}'  >
+            <image class='small-img' src='{{list.productImg[0]}}/w700_1' mode='aspectFill'></image>
+            <view class='small-name'>{{list.productName}}</view>
+            <view class='price-line'>
+              <text class='price-text' wx:if='{{list.commoditySpecifications[0].currentPrice==0}}'>免费</text>
+              <text wx:else class='price-text'><text class="size24">￥ </text>{{list.commoditySpecifications[0].priceInt}}<text class="size24">{{list.commoditySpecifications[0].priceDecimal}}</text></text>
+              <text wx:if='{{list.commoditySpecifications[0].originalPrice==0||!list.commoditySpecifications[0].originalPrice||list.commoditySpecifications[0].originalPrice<=list.commoditySpecifications[0].currentPrice}}' class='oriprice-text'>
+              </text>
+              <text wx:else class='oriprice-text'>
+              <text class="size24">￥ </text>{{list.commoditySpecifications[0].originalInt}}<text class="size24">{{list.commoditySpecifications[0].originalDecimal}}</text></text>
+            </view>
+         </navigator>
+            </block>
+         </view>
+      </view>
+
+      <!-- 结束 -->
+   </block>
+   <view class='show-all' wx:if='{{cardsAll.length==0}}'>{{cardsAll.length==0?"":"加载中"}}</view>
+</template>

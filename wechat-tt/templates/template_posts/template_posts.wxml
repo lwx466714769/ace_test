@@ -1,0 +1,90 @@
+<template name='Posts'>
+  <block wx:for='{{posts}}' wx:key='index'>
+    <!-- 长文 贴 -->
+    <view wx:if='{{item.postType == "LONGTEXT"}}' class='news-item'>
+      <image class='news-picture' src='{{item.cover?item.cover:"/images/default.png"}}' mode='aspectFill' catchtap='newsdetails' data-id='{{item.postId}}'></image>
+      <text class='news-title'>{{item.title}}</text>
+      <view class='news-time'>
+        <text style='padding:10rpx 0;'>{{item.createAt}}</text>
+        <view class='news_tips' style='padding:10rpx 0;' wx:if='{{false}}'>
+          <button open-type="getUserInfo" bindgetuserinfo="news_love" class='news_like' wx:if='{{!userId}}' data-id='{{item.postId}}'>
+            <image mode='aspectFit' src='/images/news_like.png'></image>
+          </button>
+          <button wx:else class='news_like' data-like='{{item.like}}' data-id='{{item.postId}}' catchtap='news_loved'>
+            <image wx:if='{{item.like == false}}' mode='aspectFit' src='/images/news_like.png'></image>
+            <image wx:else mode='aspectFit' class='news_loved' src='/images/news_loved.png'></image>
+          </button>
+          <button open-type="getUserInfo" bindgetuserinfo="news_comment" data-id='{{item.postId}}' class='news_like'>
+            <image mode='aspectFit' class='news_comment' src='/images/news_comment.png'></image>
+          </button>
+          <button open-type='share' class='news_like' data-id='{{item.postId}}' data-images='{{item.cover}}' data-title='{{item.title}}'>
+            <image mode='aspectFit' class='news_share' src='/images/news_share.png'></image>
+          </button>
+        </view>
+      </view>
+      <!-- <view>
+              <image style='width:38rpx;height:40rpx;margin: 20rpx 30rpx;' src='/images/cc-delete.png'></image>
+            </view>
+          </button> -->
+    </view>
+    <!-- 短文 贴 -->
+    <view wx:if='{{item.postType == "TEXT"}}' class='short-text'>
+      <view class='short-item' catchtap='newsdetails' data-id='{{item.postId}}'>
+        <block wx:for='{{item.images}}' wx:key='short_{{index}}' wx:for-item='img' wx:if='{{index<6}}'>
+          <image src='{{img?img:"/images/default.png"}}' mode='aspectFill' />
+        </block>
+      </view>
+      <text decode='{{true}}' class='news-title'>{{item.title}}</text>
+      <view class='news-time'>
+        <text style='padding:10rpx 0;'>{{item.createAt}}</text>
+        <view class='news_tips' style='padding:10rpx 0;'  wx:if='{{false}}'>
+          <button open-type="getUserInfo" bindgetuserinfo="news_love" class='news_like' wx:if='{{!userId}}' data-id='{{item.postId}}'>
+            <image mode='aspectFit' src='/images/news_like.png'></image>
+          </button>
+          <button wx:else class='news_like' data-like='{{item.like}}' data-id='{{item.postId}}' catchtap='news_loved'>
+            <image wx:if='{{item.like == false}}' mode='aspectFit' src='/images/news_like.png'></image>
+            <image wx:else mode='aspectFit' class='news_loved' src='/images/news_loved.png'></image>
+          </button>
+          <button open-type="getUserInfo" bindgetuserinfo="news_comment" data-id='{{item.postId}}' class='news_like'>
+            <image mode='aspectFit' class='news_comment' src='/images/news_comment.png'></image>
+          </button>
+          <button open-type='share' class='news_like' data-id='{{item.postId}}' data-images='{{item.cover}}' data-title='{{item.title}}'>
+            <image mode='aspectFit' class='news_share' src='/images/news_share.png'></image>
+          </button>
+        </view>
+      </view>
+    </view>
+    <!-- 视频 贴 -->
+    <view class='short-video short-text' wx:if='{{item.postType == "VIDEO"}}'>
+      <view class='short-item' data-id='{{item.postId}}' catchtap='newsdetails'>
+        <block wx:if='{{item.type =="VIDEO" }}' wx:for='{{item.contents}}' wx:key='VIDEO'>
+          <view class='short-item-img'>
+            <image class='news-picture' src='{{item.extra?item.extra:cardbag}}'></image>
+            <view class='mask'>
+              <image class='play_video' src='/images/play_video.png'></image>
+            </view>
+          </view>
+        </block>
+      </view>
+      <text class='news-title'>{{item.title}}</text>
+      <view class='news-time' data-id='{{item.postId}}'  wx:if='{{false}}'>
+        <text style='padding:10rpx 0;'>{{item.createAt}}</text>
+        <view class='news_tips' style='padding:10rpx 0;'>
+          <button open-type="getUserInfo" bindgetuserinfo="news_love" class='news_like' wx:if='{{!userId}}'>
+            <image mode='aspectFit' src='/images/news_like.png'></image>
+          </button>
+          <button wx:else class='news_like' data-like='{{item.like}}' data-id='{{item.postId}}' catchtap='news_loved'>
+            <image wx:if='{{item.like == false}}' mode='aspectFit' src='/images/news_like.png'></image>
+            <image wx:else mode='aspectFit' class='news_loved' src='/images/news_loved.png'></image>
+          </button>
+          <button open-type="getUserInfo" bindgetuserinfo="news_comment" data-id='{{item.postId}}' class='news_like'>
+            <image mode='aspectFit' class='news_comment' src='/images/news_comment.png'></image>
+          </button>
+          <button open-type='share' class='news_like' data-id='{{item.postId}}' data-images='{{item.cover}}' data-title='{{item.title}}'>
+            <image mode='aspectFit' class='news_share' src='/images/news_share.png'></image>
+          </button>
+        </view>
+      </view>
+    </view>
+  </block>
+</template>

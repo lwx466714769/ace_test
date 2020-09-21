@@ -1,0 +1,21 @@
+<view class='wx-img-list'>
+  <textarea bindinput='modifyInput' class='textarea' placeholder='说点什么吧...' ></textarea>
+  <!-- 上传视频 -->
+  <view wx:if='{{uploadType=="video"}}' class='img-wrap' data-type='video'> 
+    <view wx:if='{{videoSrc}}' class='wx-img-box {{fail ? "fail" : ""}}'>
+      <video src='{{videoSrc}}' class='wx-img-item'>
+      </video>
+      <image class='img-close' catchtap='delVideo' src='/images/icon-close.png'></image> 
+    </view>
+    <image wx:if="{{!videoSrc}}" class='wx-img-bg' catchtap='uploadVideo' src='/images/icon-add-bg.png'></image>
+  </view>
+  <view wx:else class='img-wrap'> 
+    <view wx:for="{{images}}" wx:key="preview_{{index}}" class='wx-img-box {{fail ? "fail" : ""}}'>
+      <image src='{{item.src}}' class='wx-img-item' mode='aspectFill'>
+      </image>
+      <image class='img-close' catchtap='delImages' data-id='{{item.id}}' data-index='{{index}}' src='/images/icon-close.png'></image> 
+    </view>
+    <image wx:if="{{images.length<9}}" class='wx-img-bg' catchtap='addImages' src='/images/icon-add-bg.png'></image>
+  </view>
+</view>
+<button class='button btn-confirm' catchtap="submit">提交</button>

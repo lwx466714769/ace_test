@@ -1,0 +1,50 @@
+<!--equip/my-equip.wxml-->
+<view class='my-equip'>
+  <block wx:for='{{myEquipList}}' wx:key='index'>
+    <navigator url='/equip/my-equip-new/my-equip-new?id={{item.id}}' class='myequip-item'>
+      <view class='myequip-img-wrap'>
+        <image wx:if='{{item.background}}' class='myequip-img' src='{{item.background}}' mode='aspectFill'></image>
+        <image wx:else class='equip-default' src='/images/equip-default.png'></image>
+        <view wx:if='{{item.equipAuditStatus=="AUDIT"}}' class='check-mark'>已认证</view>
+      </view>
+      <view class='myequip-right'>
+        <view class='myequip-name'>{{item.brandName?item.brandName:item.appealContent[0].value}} {{item.seriesName?item.seriesName:item.appealContent[1].value}}</view>
+        <view class='btn-wrap'>   
+          <button wx:if='{{item.equipAuditStatus=="UNAUDIT"}}' data-id='{{item.id}}' catchtap='cancelShareClub' class='equip-btn btn-gray'>已添加</button>      
+          <button wx:elif='{{!item.equipAuditStatus}}' catchtap='shareClub' data-id='{{item.id}}' data-replace-background='{{item.replaceBackground}}' class='equip-btn'>添加至俱乐部</button>
+          
+        </view>
+      </view>
+    </navigator>
+  </block>
+  <view wx:if='{{!isLoad}}' class='show-all'>加载中...</view>
+  <view wx:if='{{myEquipList.length == 0&&isLoad||!myEquipList&&isLoad}}' class='equip-empty'>
+    <image class='empty-img' src='/images/icon-empty-default.png'></image>
+    <view>您还没有装备，请添加一个装备</view>
+  </view>
+  <!-- <navigator url='/equip/equip-detail/equip-detail' class='myequip-item'>
+    <view class='myequip-img-wrap'>
+      <image class='myequip-img' src='https://source.unsplash.com/collection/3569959' mode='aspectFill'></image>
+      </view>
+    <view class='myequip-right'>
+      <view class='myequip-name'>MINI COOPER COUNTRYMAN 特别版MINI COOPER COUNTRYMAN 特别版</view>
+      <view class='btn-wrap'>
+        <button catchtap='shareClub' class='equip-btn'>分享至俱乐部</button>
+      </view>
+    </view>
+  </navigator>
+  <navigator url='/equip/equip-detail/equip-detail' class='myequip-item'>
+    <view class='myequip-img-wrap'>
+      <image class='myequip-img' src='https://source.unsplash.com/collection/3569959' mode='aspectFill'></image>
+    </view>
+    <view class='myequip-right'>
+      <view class='myequip-name'>MINI COOPER COUNTRYMAN 特别版</view>
+      <view class='btn-wrap'>
+        <button catchtap='cancelShareClub' class='equip-btn btn-gray'>已分享</button>
+      </view>
+    </view>
+  </navigator> -->
+</view>
+<navigator url='/equip/equip-type/equip-type' class='footer'>
+  <button class='button'>新增装备</button>
+</navigator>

@@ -1,0 +1,13 @@
+<!--equip/equip-type/equip-type.wxml-->
+<view class='equip-type'>
+  <view class='type-list'>
+    <!-- <navigator class='type-item' url='/equip/brand-list/brand-list?id=2' wx:key='index'>
+      <image class='type-bg' src='https://source.unsplash.com/collection/3569959'></image>
+      <view class='type-name'>汽车</view>
+    </navigator> -->
+    <view catchtap="goBrand" data-id='{{item.id}}' data-name='{{item.name}}' class='type-item' wx:for='{{equipTypeList}}' wx:key='index'>
+      <image class='type-bg' src='{{item.logo}}' mode='aspectFill'></image>
+      <view class='type-name'>{{item.name}}</view>
+    </view>
+  </view> 
+</view>

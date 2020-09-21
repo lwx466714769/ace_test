@@ -1,0 +1,21 @@
+<!--profile/pages/modify/modify.wxml-->
+<view class='modify'>
+  <view class='head'>
+    <image class='avatar' bindtap='uploadAvatar' src='{{avatar}}' mode='aspectFill'></image>
+    <view class='btn-modify' bindtap='uploadAvatar'>点击更换</view>
+  </view>
+  <view class='block'>
+    <text>昵称</text>
+    <input class='input' type='text' value='{{nickname}}' bindinput='saveName'></input>
+  </view>
+  <!-- <view class='block'>
+    <view>城市</view>
+    <input class='input' type='text' value='{{province}}' bindinput='saveAddress'></input>
+  </view>
+  <view class='block'>
+  个人描述 
+  </view>
+  <textarea class='area' bindinput='saveDes' placeholder='请输入个人描述' value='{{title?title:""}}'></textarea> -->
+  <button class='button btn-confirm' bindtap='saveModify'>保存修改</button>
+  <view class='footer-tag'></view>
+</view>

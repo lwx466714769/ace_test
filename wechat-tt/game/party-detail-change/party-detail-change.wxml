@@ -1,0 +1,32 @@
+<!--game/party-detail/party-detail.wxml-->
+<view wx:if='{{party}}' class='party-detail'>
+  <image wx:if='{{party.background}}' class='party-img' mode='aspectFill' src='{{party.background}}'></image>
+  <view class='user-info'>
+    <image class='user-head' src='{{party.userLogo}}'></image>
+    <view>
+      <view>{{party.userName}}</view>
+      <view class='fans'>粉丝 222</view>
+    </view>
+  </view>
+  <!-- 主题 -->
+  <view class='party-info'>
+    <view class='party-time'>
+      <view>发布于{{party.createAt}}</view>
+      <!-- <view>举报</view> -->
+    </view>
+    <view wx:if='{{party.partyActivityType=="JOIN"}}' class='party-time'>
+      活动时间：{{party.startTime}} 至 {{party.endTime}}
+    </view>
+    <view class='content'>{{party.name}}</view>
+    <view class='expire'>有效期至{{party.joinEndTime}}</view>
+  </view>
+  <!-- 日期 -->
+  <view wx:if='{{countList}}' class='party-date'>
+    <view class='expire-date'>选择您的时间</view>
+    <Datepicker countList='{{countList}}' bind:onClickDay='onClickDay' editDate='{{true}}' bind:onSaveDate='onSaveDate' limited='{{true}}' timeList='{{party.timeList}}'/>
+  </view>  
+</view>
+<!-- footer -->
+<!-- <view class='footer'>
+  <button class='button' catchtap='saveDate'>保存</button>
+</view> -->

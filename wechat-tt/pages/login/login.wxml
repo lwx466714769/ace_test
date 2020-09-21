@@ -1,0 +1,5 @@
+<!--pages/login/login.wxml-->
+<view class="wrap">
+  <image class="img" src="/images/logo.png" mode="aspectFill"></image>
+  <button class="btn" open-type="getUserInfo" bindgetuserinfo="login">登录</button>
+</view>

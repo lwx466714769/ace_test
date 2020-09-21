@@ -1,0 +1,130 @@
+/* club-order/order-detail/order-detail.wxss */
+.order-detail{
+  padding-bottom: 140rpx;
+}
+.card-wrap{
+  width: 100%;
+  position: relative;
+}
+.card-bg{
+  width: 50%;
+  height: 300rpx;
+  background: rgb(244, 244, 244);
+  position: absolute;
+  z-index: -1;
+  top: -150rpx;
+}
+.card-bg1{
+  left: 0;
+  transform: skew(0,-20deg);
+}
+.card-bg2{
+  right: 0;
+  transform: skew(0,20deg);
+}
+.card-img{
+  width: 600rpx;
+  height: 340rpx;
+  border-radius: 32rpx;
+  margin: 74rpx auto;
+  display: block;
+  box-shadow: 0 0 20rpx rgba(0,0,0,.3);
+  background:#999;
+}
+.card-info{
+  border-bottom: solid 2rpx rgb(246,246,246);
+  padding: 0 30rpx 30rpx;
+}
+.card-center{
+  display: flex;
+  justify-content: space-between;
+}
+.card-name{
+  font-size: 32rpx;
+  width: 556rpx;
+  height: 42rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.card-num{
+  color: #999;
+  text-align: right;
+}
+.total{
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: right;
+  padding: 0 30rpx;
+  color: #f00;
+}
+/* 俱乐部 */
+.card-club{
+  display: flex;
+  padding: 40rpx 30rpx;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+.club-img{
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  margin-right: 40rpx;
+}
+.club-name{
+  font-size: 36rpx;
+  font-weight: bold;
+}
+/* 订单状态 */
+.order-state{
+  padding: 0 30rpx;
+}
+.order-title{
+  font-weight: bold;
+  position: relative;
+  padding-left: 16rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.order-title:after{
+  position: absolute;
+  width:4rpx;
+  height: 20rpx;
+  content:'';
+  background: #000;
+  left:0;
+  top: 30rpx;
+}
+.order-state-con{
+  color: #999;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.order-person{
+  padding: 0 30rpx;
+}
+.order-block{
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.block-info{
+  width: 556rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.block-place{
+  color: #999;
+  text-align: right;
+}
+.upload-title{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+.block-img{
+  width: 200rpx;
+  height: 200rpx; 
+}

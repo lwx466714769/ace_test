@@ -1,0 +1,64 @@
+<import src='../../template/post.wxml'/>
+
+<view wx:for='{{posts}}' wx:key='index'>
+  <navigator url='/pages/post-detail/post-detail?postId={{item.relationId}}&isFrom=trends&feedEnum=MEDIA_POST' class='welfare'>
+    <!-- <navigator url='/profile/homepage/homepage?userId={{item.userId}}' class='user-info'>
+      <image src='{{item.avatar}}' class='post-head' mode='aspectFill'></image>
+      <text>{{item.nickname}}</text>
+    </navigator> -->
+    <view class='short-content'>
+      <view class='post-left'>
+        <text class='post-title'>{{item.title||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+        <text class='nickname'>{{item.userInfo.userName}}</text>
+      </view>
+      <view class='post-right'>
+        <image src='{{item.image?item.image:item.images[0]}}' class='img' mode='aspectFill'/>
+      </view>
+      
+    </view>
+    
+  </navigator>
+<!-- 长文 -->
+  <!-- <navigator wx:if='{{item.postType=="LONGTEXT"}}' url='/pages/post-detail/post-detail?postId={{item.postId}}' class='welfare'>
+    <navigator url='/profile/homepage/homepage?userId={{item.userId}}' class='user-info'>
+      <image src='{{item.avatar}}' class='post-head' mode='aspectFill'></image>
+      <text>{{item.nickname}}</text>
+    </navigator>
+    <view class='post-title'>{{item.title||'改装不求人系列之欧系车专供哈不好意活动'}}</view>
+    <view wx:if='{{item.images.length>0}}' class='imgs'>
+      <image src='{{item.images[0]}}' class='img' mode='aspectFill'/>
+      <image wx:if='{{item.images.length>1}}' src='{{item.images[1]}}' class='img' mode='aspectFill'/>
+      <image wx:if='{{item.images.length>2}}' src='{{item.images[2]}}' class='img' mode='aspectFill'>
+      </image>
+    </view>
+  </navigator> -->
+  <!-- 短文 -->
+  <!-- <navigator wx:if='{{item.postType=="TEXT"}}' url='/pages/post-detail/post-detail?postId={{item.postId}}' class='welfare'>
+    <navigator url='/profile/homepage/homepage?userId={{item.userId}}' class='user-info'>
+      <image src='{{item.avatar}}' class='post-head' mode='aspectFill'></image>
+      <text>{{item.nickname}}</text>
+    </navigator>
+    <view class='short-content'>
+      <text class='post-title'>{{item.title||'改装不求人系列之欧系车专供哈不好意活动'}}</text>
+      <image src='{{item.images[0]}}' class='img' mode='aspectFill'/>
+    </view>
+    
+  </navigator> -->
+  <!-- 视频 -->
+  <!-- <navigator wx:if='{{item.postType=="VIDEO"}}' url='/pages/post-detail/post-detail?postId={{item.postId}}' class='welfare'>
+    <navigator url='/profile/homepage/homepage?userId={{item.userId}}' class='user-info'>
+      <image src='{{item.avatar}}' class='post-head' mode='aspectFill'></image>
+      <text>{{item.nickname}}</text>
+    </navigator>
+    <view class='short-content'>
+      <view class='post-title'>{{item.title||'改装不求人系列之欧系车专供哈不好意活动'}}</view>
+      <image src='{{item.images[0]}}' class='img' mode='aspectFill'/>
+    </view>
+  </navigator> -->
+</view>
+
+<view wx:if='{{showAll}}' class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+<view wx:else='{{posts.length==0}}' class='empty-wrap'>
+  <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+  <view>暂无内容</view>
+</view>

@@ -1,0 +1,153 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/bind-phone/bind-phone",
+    "pages/protocol/protocol",
+    "pages/discuss/discuss",
+    "pages/post-detail/post-detail",
+    "pages/address-manage/address-manage",
+    "pages/album/album",
+    "pages/album-detail/album-detail",
+    "pages/introduce/introduce",
+    "pages/login/login",
+    "pages/personal/personal",
+    "pages/event-list/event-list"
+  ],
+  "window": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "Triple-T",
+    "backgroundColor": "#f8f8f8",
+    "navigationBarBackgroundColor": "#000",
+    "onReachBottomDistance": 50
+  },
+  "subPackages": [
+    {
+      "root": "personal",
+      "pages": [
+        "personal/personal",
+        "personal-edit/personal-edit",
+        "personal-advancecard/personal-advancecard",
+        "personal-welfare/personal-welfare",
+        "personal-mygift/personal-mygift",
+        "personal-mycard/personal-mycard",
+        "collect/collect",
+        "homepage/homepage",
+        "chat/chat",
+        "chat-detail/chat-detail"
+      ]
+    },
+    {
+      "root": "shop",
+      "pages": [
+        "applycard/applycard",
+        "carddetails/carddetails",
+        "getcard/getcard",
+        "middlecard/middlecard",
+        "cardtickets/cardtickets",
+        "completecard/completecard",
+        "receivecard/receivecard",
+        "card-list/card-list",
+        "goodsdetails/goodsdetails"
+      ]
+    },
+    {
+      "root": "event",
+      "pages": [
+        "event-detail/event-detail",
+        "event-program/event-program",
+        "event-map/event-map",
+        "event-member/event-member",
+        "event-join/event-join",
+        "apply-event/apply-event",
+        "event-result/event-result",
+        "event-ticket/event-ticket",
+        "event-ticket-list/event-ticket-list",
+        "order-detail-event/order-detail-event"
+      ]
+    },
+    {
+      "root": "game",
+      "pages": [
+        "vote/vote",
+        "party/party",
+        "add-voteItem/add-voteItem",
+        "party-detail/party-detail",
+        "party-detail-join/party-detail-join",
+        "party-detail-change/party-detail-change",
+        "vote-detail/vote-detail",
+        "vote-item-detail/vote-item-detail",
+        "final-date/final-date",
+        "member-list/member-list",
+        "vote-set/vote-set"
+      ]
+    },
+    {
+      "root": "club-order",
+      "pages": [
+        "order-list/order-list",
+        "order-detail/order-detail",
+        "order-detail-event/order-detail-event"
+      ]
+    },
+    {
+      "root": "equip",
+      "pages": [
+        "equip-list/equip-list",
+        "create-equip/create-equip",
+        "my-equip/my-equip",
+        "brand-list/brand-list",
+        "add-ride/add-ride",
+        "equip-type/equip-type",
+        "brand-model/brand-model",
+        "equip-filter/equip-filter",
+        "brand-other/brand-other",
+        "my-equip-new/my-equip-new",
+        "my-equip-detail/my-equip-detail",
+        "equip-comment/equip-comment"
+      ]
+    }
+  ],
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#377513",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "/images/icon-home.png",
+        "selectedIconPath": "/images/icon-home-selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/event-list/event-list",
+        "iconPath": "/images/icon-home-event.png",
+        "selectedIconPath": "/images/icon-home-event-selected.png",
+        "text": "活动"
+      },
+      {
+        "pagePath": "pages/discuss/discuss",
+        "iconPath": "/images/icon-home-post.png",
+        "selectedIconPath": "/images/icon-home-post-selected.png",
+        "text": "热议"
+      },
+      {
+        "pagePath": "pages/album/album",
+        "iconPath": "/images/icon-home-photo.png",
+        "selectedIconPath": "/images/icon-home-photo-selected.png",
+        "text": "相册"
+      },
+      
+      {
+        "pagePath": "pages/personal/personal",
+        "iconPath": "/images/icon-home-personal.png",
+        "selectedIconPath": "/images/icon-home-personal-selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "TripleT机车小程序需要获得您的位置信息"
+    }
+  },
+  "sitemapLocation": "sitemap.json"
+}

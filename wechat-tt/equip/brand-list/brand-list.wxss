@@ -1,0 +1,250 @@
+/* equip/add-equip/add-equip.wxss */
+.add-equip{
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.add-type{
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  height: 80rpx;
+  align-items: center;
+  padding: 0 30rpx;
+}
+.answer{
+  width: 34rpx;
+  height: 34rpx;
+  text-align: center;
+  line-height: 34rpx;
+  margin-left: 20rpx;
+  border: solid 2rpx #000;
+  border-radius: 50%;
+}
+.add-equip-con{
+  position: relative;
+  width:100%;
+  height:calc(100% - 80rpx);
+  display:flex;
+  flex-direction:column;
+
+}
+.letters{
+  position: absolute;
+  right: 30rpx;
+  top: 120px;
+  /* top: 50%;
+  transform: translateY(-50%); */
+}
+.letter-item{
+  font-size: 20rpx;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+}
+.letter-active{
+  color: #4196fa;
+}
+.letter{
+  height: 40rpx;
+  line-height: 40rpx;
+  background: rgb(246,246,246);
+  padding-left: 30rpx;
+  font-size: 24rpx;
+}
+
+.equip-con{
+  display: flex;
+  padding: 40rpx 84rpx 40rpx 60rpx;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.equip-item{
+  width: 120rpx;
+  margin-right: 34rpx;
+  margin-bottom: 40rpx;
+}
+.equip-item:nth-child(4n){
+  margin-right: 0;
+}
+.equip-img{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.equip-img-wrap{
+  position: relative;
+  width: 80rpx;
+  height: 80rpx;
+  margin: 0 auto 10rpx;
+}
+.img-wrap-gray{
+  background: #e6e6e6;
+}
+.equip-default{
+  width: 48rpx;
+  height: 36rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.equip-name{
+  height: 80rpx;
+  line-height: 40rpx;
+  text-align: center;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  word-break:break-all;
+}
+
+/* 创建装备 */
+.create-wrap{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 999;
+}
+.create-content{
+  width: 530rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  background: rgb(237,237,237);
+  border-radius: 8rpx;
+}
+.create-font{
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  top: -66rpx;
+  font-size: 32rpx;
+  color: #fff;
+}
+.create-header{
+  width: 530rpx;
+  box-sizing: border-box;
+  padding: 20rpx 20rpx 10rpx;
+  position: relative;
+}
+.create-background{
+  width: 100%;
+  height: 260rpx;
+  background:-webkit-linear-gradient(top,#fff,#ccc);
+}
+.back-img{
+  width: 100%;
+  height: 260rpx;
+}
+/* .create-name{
+  width: 100%;
+  padding: 40rpx 32rpx 10rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  transform:translateY(-5rpx);
+} */
+.create-img-wrap{
+  width: 100%;
+  height: 212rpx;
+  overflow: hidden;
+  transform: translateY(-10rpx);
+  background: #fff;
+}
+.create-img{
+  width: 100%;
+  height: 212rpx;
+}
+.btn-modal-group{
+  display: flex;
+  border-top: solid 2rpx rgb(242,242,242);
+  height: 90rpx;
+  line-height: 90rpx;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+}
+.btn-modal{
+  width: 100%;
+  height: 100%;
+  flex: 1;
+  font-size: 34rpx;
+  color: #aaa;
+}
+.btn-success{
+  color:rgb(59, 148, 253);
+  border-left: solid 2rpx rgb(242,242,242);
+}
+.create-con{
+  padding: 20rpx;
+  background: #fff;
+  border-top-left-radius: 12rpx;
+  border-top-right-radius: 12rpx;
+  transform: translateY(-10rpx);
+  box-shadow: 0 0 5rpx 1rpx rgba(0,0,0,.1);
+}
+.move-bar{
+  width: 52rpx;
+  height: 6rpx;
+  border-radius: 5rpx;
+  margin: 0 auto 20rpx;
+  background: rgba(51,51,51,.2);
+}
+.user-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+  color: rgb(153,153,153);
+}
+.user-info{
+  display: flex;
+  align-items: center;
+  font-size: 20rpx;
+  color: #999;
+}
+.equip-avatar{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+.create-name{
+  margin-bottom: 20rpx;
+  font-size: 20rpx;
+}
+.equip-type{
+  margin-bottom: 20rpx;
+  display: flex;
+  font-size: 20rpx;
+}
+.type-name{
+  width: 150rpx;
+  padding-left: 14rpx;
+  box-sizing: border-box;
+  position: relative;
+  color: rgb(153,153,153);
+}
+.type-name:after{
+  content: '';
+  width: 4rpx;
+  height: 12rpx;
+  background: rgb(59,148,253);
+  position: absolute;
+  left: 0;
+  top: 10rpx;
+}
+.type-con{
+  flex: 1;
+}
+

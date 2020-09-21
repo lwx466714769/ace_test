@@ -1,0 +1,21 @@
+<view class='part_item_wrap'>
+  <image class='card_cover' mode='aspectFill' src='{{order.info.productImg?order.info.productImg:card}}'></image>
+  <view class="item">
+    <view class="itemTitle">{{order.items[0].itemTitle}}</view>
+    <view class="specification">
+      <view class="itemName">{{order.info.specificationName}}</view>
+    </view>
+  </view>
+</view>
+<view class="refund-item">
+  <view class="refund">退款原因:</view>
+  <textarea bindinput='modifyInput' class='textarea' auto-height="true" placeholder='请输入退款原因'></textarea>
+</view>
+<view class="refund" style="margin-bottom: 30rpx">上传凭证:</view>
+<view wx:for="{{images}}" wx:key="preview" class='wx-img-box {{fail ? "fail" : ""}}' style="margin-left: 30rpx">
+  <image src='{{item.src}}' class='wx-img-item' mode='aspectFill'>
+  </image>
+  <image class='img-close' catchtap='delImages' data-id='{{item.id}}' data-index='{{index}}' src='/images/icon-close.png'></image>
+</view>
+<image wx:if="{{images.length<9}}" class='wx-img-bg' catchtap='addImages' src='/images/icon-add-bg.png'></image>
+<button class='button btn-confirm' catchtap="submit">提交</button>

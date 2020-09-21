@@ -1,0 +1,152 @@
+.part_item_wrap {
+  height: 182rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  overflow: hidden;
+  margin: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.order-info{
+  flex: 1;
+}
+.order-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.order-name{
+  font-size: 28rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-height: 80rpx;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.total{
+  display: flex;
+  justify-content: space-between; 
+}
+.empty-wrap{
+  margin-top: 400rpx;
+}
+.part_item{
+  border-bottom: 3rpx solid #2a2a2a;
+}
+
+.card_cover {
+  width: 182rpx;
+  height: 182rpx;
+  border-radius: 16rpx;
+  margin-right: 30rpx;
+}
+
+.progress_num {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  margin-bottom: 44rpx;
+}
+
+.allNumName, .overplusname {
+  font-size: 24rpx;
+  font-weight: lighter;
+}
+
+.allNum, .overplus {
+  font-size: 24rpx;
+}
+
+.item_content_wrap {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30rpx;
+}
+
+.item_content_name {
+  display: flex;
+  font-size: 28rpx;
+}
+.state{
+  color: rgb(298,2,27);
+}
+.item_content_clubname{
+  font-size: 32rpx;
+  font-weight: bold;
+}
+.item_card_order{
+  font-size: 24rpx;
+  color: rgb(153,153,153);
+}
+
+.item_card_count {
+  /*width: 80rpx;*/
+  /*text-align: center;*/
+  /*line-height: 28rpx;*/
+  /*height: 28rpx;*/
+  /*margin-right: 20rpx;*/
+  /*background: rgba(236, 148, 4, 0.5);*/
+  /*border: 2rpx solid #ec9404;*/
+  /*font-size: 16rpx;*/
+  /*font-weight: bold;*/
+  /*white-space: nowrap;*/
+  /*box-sizing: border-box;*/
+  /*letter-spacing: 1rpx;*/
+  display: flex;
+  font-size: 24rpx;
+}
+
+.item_card_more {
+  text-align: right;
+  padding: 20rpx 0 ;
+}
+
+.more-icon {
+  width: 16rpx;
+  height: 14rpx;
+  margin-bottom: 3rpx;
+  margin-left: 14rpx;
+}
+
+.data_title{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+  padding: 44rpx 0 24rpx;
+}
+
+.data_title view {
+  width: 50%;
+  font-weight: lighter;
+}
+
+view.bottom_line{
+  width: 50rpx;
+  height: 4rpx;
+  border-radius: 4rpx;
+  background-color: transparent;
+  margin: 10rpx auto;
+}
+
+.backHome{
+  width: 710rpx;
+  background: white;
+  position: fixed;
+  right: 20rpx;
+  bottom: 0;
+}
+
+.homeBtn{
+  padding: 20rpx;
+  text-align: center;
+  color: white;
+  font-weight: lighter;
+  background: #2a2a2a;
+  margin-bottom: 20rpx; 
+}
+
+.mainData{
+  padding-bottom: 20rpx; 
+}

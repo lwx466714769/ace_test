@@ -1,0 +1,178 @@
+
+.introduce{
+  padding: 0 30rpx;
+}
+.section{
+  padding-bottom: 30rpx;
+  border-bottom: solid 2rpx rgb(242,242,242);
+}
+.title{
+  font-size: 32rpx;
+  padding: 30rpx 0;
+}
+.notice{
+  line-height: 50rpx;
+  letter-spacing: 1rpx;
+}
+.notice-padding{
+  padding: 30rpx;
+}
+.qrcode{
+  padding-top: 30rpx;
+  text-align: center;
+}
+.qrcode-img{
+  width: 220rpx;
+  height: 220rpx;
+  border:solid 2rpx rgba(242,242,242);
+}
+.managers{
+  text-align: center;
+}
+.master{
+  position: relative;
+  width: 100rpx;
+  margin:40rpx auto 0;
+}
+.master-img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+  margin-bottom: 30rpx;
+}
+.master-mark{
+  position: absolute;
+  top: 90rpx;
+  width: 90rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  color: #fff;
+  background: rgb(143,186,236);
+  font-size: 16rpx;
+  left: 5rpx;
+}
+.master-right{
+  flex: 1;
+  font-size: 24rpx;
+}
+.master-name{
+  margin-bottom: 10rpx;
+}
+.manager-list{
+  margin-top: 30rpx;
+  display: flex;
+  margin-left:130rpx;
+  flex-wrap: wrap;
+}
+.manager-item{
+  width: 76rpx;
+  margin-right: 40rpx;
+  text-align: center;
+  margin-bottom: 10rpx;
+}
+.manager-item:nth-child(5n){
+  margin-right: 0;
+}
+.manager-img{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.manager-name{
+  max-height: 74rpx;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  color: #aaa;
+  word-break: break-all;
+}
+.tags{
+  color: #aaa;
+  margin-top: 20rpx;
+}
+.tag{
+  margin-right: 20rpx;
+}
+/* 入会方式 */
+.join-ways{
+  display: flex;
+  justify-content: space-around;
+  padding: 30rpx 0;
+}
+.active-way{
+  color: #333;
+}
+.join-way{
+  text-align: center;
+  color: #aaa;
+  display: flex;
+  align-items: center;
+}
+.icon-join{
+  width: 80rpx;
+  height: 70rpx;
+  margin-right: 20rpx;
+}
+.member-item{
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  color: rgb(102, 102, 102);
+  line-height: 50rpx;
+  letter-spacing: 1rpx;
+}
+.member-item text{
+  flex:1;
+}
+.icon-member{
+  width: 30rpx;
+  height: 24rpx;
+  margin-right: 30rpx;
+}
+.req-item{
+  margin-bottom: 30rpx;
+  color: rgb(102, 102, 102);
+  display: flex;
+}
+.req-num{
+  width: 50rpx;
+  margin-top: 6rpx;
+}
+.item-con{
+  flex: 1;
+  line-height: 50rpx;
+  letter-spacing: 1rpx;
+}
+.detail-con{
+  width:100%;
+  box-sizing: border-box;
+  line-height: 50rpx;
+  letter-spacing: 1rpx;
+}
+.post-text{
+  font-size: 28rpx;
+  line-height: 48rpx;
+  letter-spacing: 2rpx;
+  color: #666;
+  margin:10rpx 0;
+  text-indent: 58rpx;
+  word-break: break-all;
+  text-align:justify;
+}
+.post-img{
+  width: 100%;
+  margin: 10rpx 0;
+}
+/* 卡片详情 */
+.wxParse-p{
+  color: rgb(102, 102, 102);
+  letter-spacing: 1rpx;
+  word-break: break-all;
+  text-align:justify;
+  margin-bottom: 20rpx;
+}

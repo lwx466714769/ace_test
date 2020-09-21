@@ -1,0 +1,453 @@
+/* game/party-detail/party-detail.wxss */
+button{
+  font-size: 28rpx;
+  background: none;
+  padding: 0;
+  margin: 0;
+  line-height: inherit;
+  -webkit-tap-highlight-color:transparent;
+}
+.party-detail{
+  padding-bottom: 120rpx;
+}
+.party-img{
+  width: 100%;
+  height: 420rpx;
+}
+.user-info{
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.user-head{
+  width: 92rpx;
+  height: 92rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.fans{
+  font-size: 24rpx;
+  margin-top: 10rpx;
+}
+.party-info{
+  padding: 30rpx;
+  font-size: 24prx;
+  color: rgb(153,153,153);
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.party-time{
+  font-size: 24rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 26rpx;  
+}
+/* 中间时间部分 */
+.party-center{
+  padding: 40rpx 30rpx;
+  color: rgb(51,51,51);
+}
+.center-block{
+  margin-bottom:30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.center-block:last-child{
+  margin-bottom: 0;
+}
+.center-left{
+  display: flex;
+  align-items: center;
+}
+.center-right{
+  display: flex;
+  align-items: center;
+}
+.icon-block{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+.content{
+  font-size: 28rpx;
+  margin-bottom: 30rpx;
+  color: rgb(102,102,102);
+}
+.expire{
+  text-align: right;
+}
+.party-date{
+  padding: 30rpx 60rpx;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+/* 投票选项 */
+.vote-project{
+  padding: 0 30rpx 30rpx;
+  color: rgb(102,102,102);
+}
+.vote-title{
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  align-items: center;
+}
+.vote-num{
+  display: flex;
+  align-items: center;
+}
+.vote-text{
+  padding:30rpx 0;
+}
+.vote-about{
+  position: relative;
+  display: inline-block;
+  width: 24rpx;
+  height: 24rpx;
+  padding: 30rpx;
+}
+.about-con{
+  width: 364rpx;
+  border-radius: 16rpx;
+  background: rgba(0,0,0,.7);
+  position: absolute;
+  left: -40rpx;
+  bottom: 68rpx;
+  color: #fff;
+  padding: 30rpx 48rpx;
+  box-sizing: border-box;
+}
+.about-angle{
+  position: absolute;
+  bottom: -16rpx;
+  left: 50rpx;
+  transform: rotate(45deg);
+  border: solid 16rpx transparent;
+  border-bottom: solid 16rpx rgba(0,0,0,.7);
+  border-right: solid 16rpx rgba(0,0,0,.7);
+}
+.icon-about-vote{
+  width: 24rpx;
+  height: 24rpx;
+}
+.vote-add-item{
+  color: #3B94FD;
+  text-decoration: underline;
+  font-weight: normal;
+}
+.radio-group{
+  margin-top: 30rpx;
+}
+.vote-list{
+  margin-bottom: 30rpx;
+  padding-bottom: 30rpx;
+  border-bottom: solid 2rpx rgb(246,246,246);
+}
+.vote-item{
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+.item-border{
+  border: solid 2rpx rgb(246,246,246);
+}
+.radio{
+  width: 32rpx;
+  height: 32rpx;
+  border-radius: 50%;
+  border: solid 2rpx #999;
+  margin:0 26rpx 0 16rpx;
+  box-sizing: border-box;
+}
+.radio-img{
+  border: none;
+}
+.item-imgs{
+  display: flex;
+  padding-left: 74rpx;
+  margin-top: 20rpx;
+  margin-bottom: 10rpx;
+}
+.item-img-wrap{
+  position: relative;
+  width: 254rpx;
+  height: 142rpx;
+}
+.item-img{
+  width: 254rpx;
+  height: 142rpx;
+  margin-right: 30rpx;
+}
+.img-count{
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background: rgba(0,0,0,.5);
+  text-align: center;
+  line-height: 142rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+/* 投票后 */
+.vote-after{
+  display: flex;
+  margin-bottom: 50rpx;
+  align-items: center;
+}
+.vote-index{
+  margin-right: 14rpx;
+  width: 28rpx;
+}
+.after-left{
+  flex: 1;
+}
+.after-img{
+  width: 114rpx;
+  height: 64rpx;
+  margin-left: 50rpx;
+}
+.progress{
+  width: 530rpx;
+}
+.after-count{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  align-items: center;
+}
+.ticket-name{
+  font-size: 28rpx;
+  flex: 1;
+  margin-right: 10rpx;
+  word-break: break-all;
+}
+.vote-ticket{
+  display: flex;
+  align-items: center;
+}
+.ticket{
+  margin-right: 14rpx;
+}
+.percent{
+  width: 70rpx;
+  text-align: right;
+  margin-top: 5rpx;
+}
+/* footer */
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  border-top: solid 2rpx rgb(246,246,246);
+  font-size: 32rpx;
+  padding-bottom: 20rpx;
+}
+.operation-group{
+  display: flex;
+  flex: 1;
+}
+.operation-view{
+  display: flex;
+  align-items: center;
+}
+.icon-share{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 14rpx;
+  opacity: .4;
+}
+.operation-view:first-child{
+  margin-right: 20rpx;
+}
+.operation-num{
+  width: 80rpx;
+  font-size: 24rpx;
+  text-align: left;
+  color: #666;
+}
+.btn-group{
+  width: 400rpx;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+  display: flex;
+  border:solid 2rpx #000;
+  
+}
+.btn{
+  flex: 1;
+  font-size: 32rpx;
+  border-radius: 0;
+}
+.btn-join{
+  background: #000;
+  color: #fff;
+  font-size: 32rpx;
+  border-top-right-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+}
+.btn-gray{
+  color: #999;
+}
+
+/* 评论 */
+.comment-title{
+  padding: 30rpx 0 30rpx 12rpx;
+  position: relative;
+  margin:0 30rpx;
+  font-weight: bold;
+}
+.comment-title:before{
+  position: absolute;
+  left:0;
+  top:40rpx;
+  content:'';
+  width:4rpx;
+  height: 20rpx;
+  background: #000;
+}
+.comment_list{
+  width:100%;
+  display: flex;
+  padding: 30rpx;
+  border-bottom: solid 2rpx #d8d8d8;
+  box-sizing: border-box;
+}
+.comment_list .comment_head{
+  width:70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  display: block;
+  border: solid 2rpx #eee;
+}
+.comment_con{
+  flex: 1;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+}
+.comment_con .name{
+  font-size: 28rpx;
+}
+.comment_con .center{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  align-items: center;
+}
+.comment_con .center .time{
+  color: #999;
+  font-size: 24rpx;
+}
+.comment_con .con{
+  margin-top: 10rpx;
+  
+}
+.comment-img-list{
+  display: flex;
+  margin-top: 10rpx;
+}
+.comment-img{
+  width:132rpx;
+  height: 132rpx;
+  margin-right: 24rpx;
+  margin-bottom: 12rpx;
+}
+.comment-img:nth-child(4n){
+  margin-right: 0;
+}
+.del-comment{
+  color: #999;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+.del-post{
+  width:30rpx;
+  height: 36rpx;
+}
+.del{
+  margin-left: 10rpx;
+}
+.show_all{
+  color: #999;
+  text-align: center;
+  padding: 20rpx 0;
+}
+/* 分享时显示，返回俱乐部 */
+.back-club{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(153, 153, 153);
+  border-bottom: solid 2rpx rgb(153, 153, 153);
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.club-left{
+  display: flex;
+  align-items: center;
+}
+.club-logo{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.back-club-font{
+  text-decoration: underline;
+  font-size: 24rpx;
+}
+.animation{
+  animation: show 1s linear;
+}
+@keyframes show{
+  0%{
+    opacity: 0
+  }
+  100%{
+    opacity: 1
+  }
+}
+.animation1{
+  display: none;
+  animation: show1 1s linear;
+}
+@keyframes show1{
+  0%{
+    opacity: 1
+  }
+  100%{
+    opacity: 0
+  }
+}
+
+/* 您添加的选项 */
+.add-item{
+  padding: 30rpx;
+}
+.add-item-con{
+  padding: 20rpx;
+  box-shadow: 0 2rpx 6rpx rgb(220,220,220);
+  margin-top: 30rpx;
+}

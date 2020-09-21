@@ -1,0 +1,19 @@
+<!--game/add-voteItem/add-voteItem.wxml-->
+<view>
+  <textarea class='area' value='{{itemName}}' bindinput='voteItemName' placeholder='在这里输入投票主题'></textarea>
+  <view wx:if='{{type=="WORDIMAGE"}}' class='img-wrap'> 
+    <view wx:for='{{images}}' wx:key='index' class='wx-img-box'>
+      <image src='{{item}}' class='wx-img-item' mode='aspectFill'></image>
+      <image class='img-close' catchtap='delImages' data-index='{{index}}' src='/images/icon-close.png'></image>
+    </view>
+    <block wx:if="{{voteItemImgLimitNum}}">
+      <image wx:if='{{images.length<voteItemImgLimitNum}}' class='wx-img-bg' bindtap='addImages' src='/images/icon-add-bg.png'></image>
+    </block>
+    <block wx:else>
+      <image wx:if='{{images.length<9}}' class='wx-img-bg' bindtap='addImages' src='/images/icon-add-bg.png'></image>
+    </block>
+  </view>   
+</view>
+<view class='footer'>
+  <view class='button' catchtap='submit'>确定</view>
+</view>

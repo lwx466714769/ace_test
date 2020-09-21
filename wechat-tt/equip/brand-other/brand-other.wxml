@@ -1,0 +1,16 @@
+<!--equip/equip-type/equip-type.wxml-->
+<view class='equip-type'>
+  <view class='type-list'>
+    <!-- <navigator class='type-item' url='/equip/brand-list/brand-list?id=2' wx:key='index'>
+      <image class='type-bg' src='https://source.unsplash.com/collection/3569959'></image>
+      <view class='type-name'>汽车</view>
+    </navigator> -->
+    <navigator class='type-item' url='/equip/add-ride/add-ride?classId={{item.id}}&type=noBrand&carTypeId={{carTypeId}}' wx:for='{{brandOtherList}}' wx:key='index'>
+      <view class='type-name'>{{item.name}}</view>
+      <view class='equip-img-wrap'>
+        <image wx:if='{{item.logo}}' class='brand-img' src='{{item.logo}}' mode='aspectFill'></image>
+        <image wx:else class='equip-default' src='/images/equip-default.png'></image>
+      </view>
+    </navigator>
+  </view> 
+</view>

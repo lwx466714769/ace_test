@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Datepicker":"/components/Datepicker/Datepicker",
+    "Share": "/components/share/share"
+  }
+}

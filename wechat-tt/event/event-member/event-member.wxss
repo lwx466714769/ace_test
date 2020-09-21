@@ -1,0 +1,31 @@
+/* event/event-member/event-member.wxss */
+.member{
+  padding:30rpx;
+  display: flex;
+  align-items: center;
+  border: solid 2rpx #eee;
+}
+.head-left{
+  position: relative;
+}
+.member-head{
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.icon-identity{
+  width: 28rpx;
+  height: 28rpx;
+  border-radius: 50%;
+  position: absolute;
+  right:20rpx;
+  top: 0;
+  z-index: 10;
+}
+.head-right{
+  flex: 1;
+}
+.empty-wrap{
+  margin-top: 400rpx;
+}

@@ -1,0 +1,46 @@
+<!--club/order-list/order-list.wxml-->
+<view class='order'>
+  <view class='event'>
+    <navigator wx:for='{{orderList}}' wx:key='index' url='/event/event-ticket/event-ticket?orderId={{item.orderId}}'>
+      <view class='order-list'>
+        <view class='order-item'>
+          <image class='order-img' mode="aspectFill" src='{{item.info.clubLogo}}'></image>
+          <view class='order-info'>
+            <view class='order-name'>{{item.productName}}</view>
+            <view class='object-list'>
+              <view wx:for='{{item.orderItems}}' wx:for-item='list' wx:key='list' class='object-item'>
+                <view class='object-name'>{{list.itemTitle}}</view>
+                <view class='object-num'>X{{list.itemCount}}</view>
+                <view class='object-price'>{{list.itemAmount>0?'￥'+list.itemAmount/100:"免费"}}</view>
+              </view>
+              <view class='total'>
+                <view>
+                <!-- 项目：{{item.orderItems.length}}件 -->
+                </view>
+                <!--<view>合计：￥{{item.orderAmount/100}}</view>-->
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='order-footer'>
+          <view class='state'>{{item.ticketStatus == 2?"已完成":"待消费"}}</view>
+          <view wx:if='{{item.ticketStatus == 1}}' data-id='{{item.orderId}}' class='btn-order' catchtap='showTicket'>电子门票</view>
+        </view>
+      </view>
+      <view class='slot'></view>
+    </navigator> 
+  </view>
+  <view wx:if='{{orderList.length==0}}' class='empty-wrap'>
+    <image class='icon-empty-default' src='/images/icon-empty-default.png'></image>
+    <view>您还没有门票</view>
+  </view>
+  <view wx:else class='show-all'>{{showAll==true?"已到最后":showAll}}</view>
+</view>
+<view wx:if='{{showTicket}}' class='ticket-wrap'>
+  <view class='ticket-content'>
+    <!-- <view wx:if='{{!curOrder.qrcode}}' class='load'>加载中...</view> -->
+    <image class='ticket-qrcode' mode='aspectFit' src='{{curOrder.qrCode}}'></image>
+    <view>电子门票</view>
+    <view catchtap='showTicket' class='ticket-close'>×</view>
+  </view>
+</view>

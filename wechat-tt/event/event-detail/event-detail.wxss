@@ -1,0 +1,359 @@
+/* event/event-detail/event-detail.wxss */
+.event-detail{
+  padding-bottom: 120rpx;
+}
+.event-img{
+  width: 100%;
+  height: 420rpx;
+}
+.event-head{
+  padding: 30rpx;
+}
+.event-title{
+  font-size: 32rpx;
+  margin: 10rpx 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  max-height: 100rpx;
+  line-height: 50rpx;
+}
+.tags{
+  padding-top: 10rpx;
+  word-break:break-all;
+}
+.tags .tag{
+  color: rgb(153,153,153);
+  margin-right: 16rpx;
+
+}
+/* 中间部分 */
+.event-center{
+  padding: 12rpx 30rpx 30rpx;
+}
+.center-block{
+  margin-top: 18rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.center-left{
+  display: flex;
+  align-items: center;
+}
+.event-address{
+  flex: 1;
+}
+.people-img{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: -10rpx;
+  border-radius: 50%;
+}
+.center-right{
+  display: flex;
+  align-items: center;
+}
+.icon-block{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 20rpx;
+}
+.arrow{
+  width:10rpx;
+  height: 10rpx;
+  border-top: solid 2rpx #333;
+  border-right: solid 2rpx #333;
+  transform: rotate(45deg);
+  margin-left: 6rpx;
+}
+.small{
+  font-size: 20rpx;
+}
+.price{
+  display: flex;
+  align-items: center;
+  color: #f00;
+  height: 44rpx;
+}
+.price-new{
+  margin-right: 10rpx;
+  font-size: 32rpx;
+}
+.price-discount{
+  font-size: 16rpx;
+  padding: 0 4rpx;
+  margin-right: 10rpx;
+  border: solid 2rpx rgb(234,40,17);
+  border-radius: 4rpx;
+}
+.price-old{
+  color: #999;
+  font-size: 20rpx;
+  padding-left: 50rpx;
+  margin-top: 10rpx;
+}
+.price-old text{
+  text-decoration: line-through;
+}
+/* 俱乐部 */
+.card-club{
+  display: flex;
+  padding: 30rpx;
+  align-items: center;
+}
+.club-img{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  margin-right: 30rpx;
+}
+.club-name{
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+.tab{
+  display:flex;
+  justify-content: space-around;
+  padding:30rpx 40rpx 6rpx;
+  border-bottom: solid 2rpx #ccc;
+}
+.tab-item{
+  color: #aaa;
+  display: inline-block;
+  padding-bottom:12rpx;
+  font-size: 32rpx;
+}
+.active{
+  color: #000;
+  position: relative;
+}
+.active:after{
+  content:'';
+  height: 4rpx;
+  width: 30rpx;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgb(49,140,247);
+}
+/* 卡片详情 */
+.wxParse-p{
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.wxParse-img{
+  width: 100%;
+  margin:6rpx 0;
+}
+.wxParse-video{
+  width: 100%;
+}
+.video{
+  width: 100%;
+}
+/* 相册 */
+.photos{
+  padding: 30rpx;
+}
+.photo{
+  width: 164rpx;
+  height: 164rpx;
+  border-radius: 8rpx;
+  margin-right: 11rpx;
+  margin-bottom: 12rpx;
+}
+.photo:nth-child(4n){
+  margin-right: 0;
+}
+/* 评论 */
+.comment{
+  padding: 0 30rpx;
+}
+.comment_list{
+  width:100%;
+  display: flex;
+  padding: 30rpx 0;
+  border-bottom: solid 2rpx #d8d8d8;
+}
+.comment_list .comment_head{
+  width:70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+  display: block;
+  border: solid 2rpx #eee;
+}
+.comment_con{
+  flex: 1;
+  display: flex;
+  flex-direction:column;
+  justify-content: space-between;
+}
+.comment_con .name{
+  font-size: 28rpx;
+}
+.comment_con .center{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  align-items: center;
+}
+.comment_con .center .time{
+  color: #999;
+  font-size: 24rpx;
+}
+.del-comment{
+  color: #999;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+.del-post{
+  width:26rpx;
+  height: 30rpx;
+}
+.del{
+  margin-left: 10rpx;
+}
+.comment-text{
+  font-size: 28rpx;
+  display: block; 
+  margin-top:20rpx;
+}
+.comment-image{
+  width:132rpx;
+  height: 132rpx;
+  margin: 20rpx 16rpx 0 0;
+}
+/* footer */
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width:100%;
+  height: 120rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  background: #fff;
+  border-top: solid 2rpx rgb(246,246,246);
+  font-size: 32rpx;
+  padding-bottom: 20rpx;
+}
+.operation-group{
+  display: flex;
+  flex: 1;
+}
+.operation-view{
+  display: flex;
+  align-items: center;
+}
+.icon-share{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 14rpx;
+  opacity: .4;
+}
+.operation-view:first-child{
+  margin-right: 20rpx;
+}
+.operation-num{
+  width: 80rpx;
+  font-size: 24rpx;
+  text-align: left;
+  color: #666;
+}
+.btn{
+  flex: 1;
+  font-size: 32rpx;
+  border-radius: 0;
+}
+.btn-join{
+  background: #000;
+  color: #fff;
+  font-size: 32rpx;
+  border-top-right-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+}
+.btn-gray{
+  color: #999;
+}
+/* 签到按钮 */
+.icon-join{
+  width: 112rpx;
+  height: 112rpx;
+  position: fixed;
+  right: 46rpx;
+  bottom: 188rpx;
+  z-index: 2;
+}
+.icon-join image{
+  width: 112rpx;
+  height: 112rpx;
+}
+/* 分享时显示，返回俱乐部 */
+.back-club{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100rpx;
+  padding: 0 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: rgb(153, 153, 153);
+  border-bottom: solid 2rpx rgb(153, 153, 153);
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.club-left{
+  display: flex;
+  align-items: center;
+}
+.club-logo{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.back-club-font{
+  text-decoration: underline;
+  font-size: 24rpx;
+}
+.animation{
+  animation: show 1s linear;
+}
+@keyframes show{
+  0%{
+    opacity: 0
+  }
+  100%{
+    opacity: 1
+  }
+}
+.animation1{
+  display: none;
+}
+/* 已有票 */
+.ticket{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40rpx 30rpx;
+}
+.icon-ticket{
+  width: 46rpx;
+  height: 32rpx;
+  margin-right: 30rpx;
+}
+.ticket-name{
+  flex:1;
+}
