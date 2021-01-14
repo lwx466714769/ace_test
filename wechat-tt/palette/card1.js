@@ -589,6 +589,9 @@ export default class LastMayday {
   shareAlbum(params) {
     console.log(params);
     let total = params.total + (params.type=="album"?" 个相册":' 张照片');
+    if(params.cover.indexOf('/w700_1') == -1){
+      params.cover = params.cover+'/w700_1'
+    }
     return ({
       width, height, background,
       views: [
