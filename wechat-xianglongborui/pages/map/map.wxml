@@ -1,0 +1,11 @@
+<!--event/event-map/event-map.wxml-->
+<view class='event-map'>
+  <map
+    id='map'
+    longitude='{{lng}}'
+    latitude='{{lat}}'
+    style='width:100%;height:100%'
+    show-location
+    markers="{{markers}}"
+  ></map>
+</view>

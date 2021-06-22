@@ -1,0 +1,52 @@
+<!--index.wxml-->
+<view class="index">
+  <!-- 活动 -->
+  <view class='index_wrap'>
+    <view class='index_title'>
+      <view>
+        <text>Event</text>
+        <text class="index_name">活动</text>
+      </view>
+      <text class="index_more" >...</text>
+    </view>
+    <view class='event_row'>
+      <block wx:for="{{eventData}}" wx:key='eventData'>
+        <navigator url='/event/event-detail/event-detail?activityId={{item.relateId}}' class='clickHref'>
+            <view class='event_block'>
+              <image class="img" src="{{item.cover}}" mode='aspectFill' />
+              <rich-text class='description'>{{item.title}}</rich-text>
+            </view>
+          
+        </navigator>
+      </block>
+      <view wx:for='{{2-eventData.length}}' wx:key='space' class="img"></view>
+    </view>
+  </view>
+  <!-- 推荐 -->
+  <view class='index_wrap'>
+    <view class='index_title'>
+      <view>
+        <text>Recommend</text>
+        <text class="index_name">推荐</text>
+      </view>
+      <text class="index_more" >...</text>
+    </view>
+    <block wx:for='{{postsTop}}' wx:key='postsTop'>
+      <view class='information_content' data-id='{{item.relateId}}' data-type='{{item.relateType}}'>
+        <view class='content'>
+          <view class='content_left'>
+            <text wx:if='{{item.relateType == "VOTE"}}' class="type-mark">投票</text><rich-text nodes='{{item.title}}' class='title'></rich-text>
+            <view class='author'>祥龙博瑞</view>
+          </view>
+          <view class='content_right'>
+            <image wx:if='{{item.relateType == "VOTE"&&!item.cover}}' src='https://img.acegear.com/382802b55176798524e03f9d0cea96dd4a6c2323/w700_1' lazy-load='{{true}}' mode='aspectFill'></image>
+            <image wx:if='{{item.relateType == "PARTY"&&!item.cover}}'  src='https://img.acegear.com/d20e16bb0095fef5753fc2a1087a1f3f9e72448d/w700_1' lazy-load='{{true}}' mode='aspectFill'></image>
+            <image wx:if='{{item.cover}}' src='{{item.cover}}' lazy-load='{{true}}' mode='aspectFill'></image>
+          </view>
+        </view>
+        <view class='bottom_line'></view>
+      </view>
+    </block>
+    <view class='information_bottom' style='text-align: center; line-height: 80rxp;color: rgb(102,102,102);'>{{showAll ? '没有更多数据了' : ''}}</view>
+  </view>
+</view>

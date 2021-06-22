@@ -1,0 +1,12 @@
+<!--pages/brand-list/brand-list.wxml-->
+<view class="brand-list">
+  <view class="block">
+    <view catchtap="goMap">
+      <view class="title">上汽大人瑞德4s店</view>
+      <view class="rule">简介</view>
+      <view class="rule">电话</view>
+      <image src="/images/default.png" mode="aspectFill"></image>
+    </view>
+    
+  </view>
+</view>

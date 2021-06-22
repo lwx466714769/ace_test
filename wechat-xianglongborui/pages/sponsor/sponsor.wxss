@@ -1,0 +1,31 @@
+/* pages/sponsor/sponsor.wxss */
+page{
+  background: #efefef;
+}
+.sponsor{
+  background: #efefef;
+  padding: 20rpx;
+}
+.block{
+  background: #fff;
+  border-radius: 8rpx;
+  padding: 30rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+.title{
+  font-size: 32rpx;
+  margin-bottom: 30rpx;
+}
+.img{
+  width: 650rpx;
+  height: 650rpx;
+}
+.price{
+  margin-top: 30rpx;
+}
+.rule{
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+}

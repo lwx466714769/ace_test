@@ -1,0 +1,14 @@
+<!--pages/sponsor/sponsor.wxml-->
+<view class="sponsor">
+  <view class="block">
+    <view class="title">蛋糕礼券卡</view>
+    <image class="img" mode="aspectFill" src="/images/default.png"></image>
+    <view class="price">价值<text class="red">200元</text>提货卡 现价<text class="red">100元</text></view>
+  </view>
+  <view class="block">
+    <view class="title">使用规则</view>
+    <view class="rule">有效期：2020.5.30-2020.5.29 </view>
+    <view class="rule">有效期：2020.5.30-2020.5.29 </view>
+  </view>
+</view>
+
