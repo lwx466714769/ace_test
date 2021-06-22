@@ -1,0 +1,19 @@
+<navigation navdata='{{navdata}}'/>
+<view class='benefits'>
+
+  <view class='card'>
+    <image src='/images/card.png'></image>
+  </view> 
+  <view class='content'>
+    <view class='name'>
+      <view>MINI</view>
+      <view>CORNER</view>
+    </view>
+    <view class='order-state'>您的订单正在审核...</view>
+    <view class='footer'>
+      <view>发送朋友</view>
+      <view catchtap='look'>立即查看</view>
+    </view>
+  </view>
+  <view class='footer-bar'></view>
+</view>

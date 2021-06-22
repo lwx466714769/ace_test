@@ -1,3 +1,9 @@
 {
-  "navigationBarTitleText": "DGR2018"
+  "navigationBarTitleText": "DGR2018",
+  "usingComponents": {
+    "Tab": "/components/tab/tab",
+    "navigation":"/components/navigation/navigation",
+    "datepicker":"/components/Datepicker/Datepicker"
+  },
+  "enablePullDownRefresh": true
 }

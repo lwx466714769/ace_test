@@ -1,0 +1,5 @@
+<!--pages/photo/photo.wxml-->
+<view>
+<view>预览</view>
+  <comp list="{{photos}}" bindlike="like" bindclose="finish" likeTitle="收藏"></comp>
+</view>

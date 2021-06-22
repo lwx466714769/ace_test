@@ -1,0 +1,77 @@
+<!--components/form/form.wxml-->
+<view class="form">
+  <form bindsubmit='formSubmit'>
+    <view wx:for="{{list}}" wx:key='list'>
+      <!-- input -->
+      <view class="item" wx:if="{{item.label == 'input'}}">
+        <view class="item-name">{{item.sort+item.title}}</view>
+        <input name='{{item.name}}' name= bindinput="bindInput" type="{{item.type}}" placeholder="{{item.placeholder}}" data-name='{{item.name}}' data-require="{{item.required}}" data-requireMsg="{{item.requiredMessage}}" data-rule="{{data.rule}}" data-ruleMsg='{{item.ruleMessage}}' class="item-input"/>
+      </view>
+      <!-- textarea -->
+      <view class="textarea-wrap" wx:if="{{item.label == 'textarea'}}">
+        <view class="item-name">{{item.sort+item.title}}</view>
+        <textarea bindinput="bindInput" type="{{item.type}}" placeholder="{{item.placeholder}}" data-name='{{item.name}}' data-require="{{item.required}}" data-requireMsg="{{item.requiredMessage}}" data-rule="{{data.rule}}" data-ruleMsg='{{item.ruleMessage}}' class="item-textarea"></textarea>
+      </view>
+      <!-- radio-->
+      <view wx:elif="{{item.label == 'radio'}}">
+        <view catchtap="showFilterWrap" data-name='{{item.name}}' data-options='{{item.options}}' data-require="{{item.required}}" data-requireMsg="{{item.requiredMessage}}" data-rule="{{data.rule}}" data-ruleMsg='{{item.ruleMessage}}' mode="{{item.mode}}">
+          <view class="item item-picker">
+            <view class="item-name">{{item.sort+item.title}}</view>
+            <view wx:if='{{submitData[item.name]}}' class="item-input">{{submitData[item.name]}}</view>
+            <view wx:else class="item-input placeholder">{{item.placeholder}}</view>
+            <view class="arrow"></view>
+          </view>
+        </view>
+      </view>
+      <view wx:elif="{{item.label == 'checkbox'}}">
+        <view class="item-name">{{item.sort+item.title}}</view>
+        <checkbox-group bindchange="bindCheckbox" data-name='{{item.name}}' data-options='{{item.options}}' data-require="{{item.required}}" data-requireMsg="{{item.requiredMessage}}" data-rule="{{data.rule}}" data-ruleMsg='{{item.ruleMessage}}' class="checkbox-list">
+          <label class="checkbox-item" wx:for="{{item.options}}" wx:key='checkbox'>
+            <checkbox class="checkbox" value="{{item.value}}" checked="{{item.checked}}"></checkbox>
+            <view>{{item.text}}</view>
+          </label>
+        </checkbox-group>
+      </view>
+      <!-- select -->
+      <view wx:elif="{{item.label == 'select'}}">
+        <picker bindchange="bindPickerChange" data-name='{{item.name}}' data-options='{{item.options}}' data-require="{{item.required}}" data-requireMsg="{{item.requiredMessage}}" data-rule="{{data.rule}}" data-ruleMsg='{{item.ruleMessage}}' range='{{item.options}}' mode="{{item.mode}}">
+          <view class="item item-picker">
+            <view class="item-name">{{item.sort+item.title}}</view>
+            <view wx:if='{{submitData[item.name]}}' class="item-input">{{submitData[item.name]}}</view>
+            <view wx:else class="item-input placeholder">{{item.placeholder}}</view>
+            <view class="arrow"></view>
+          </view>
+        </picker>
+      </view>
+      <!-- switch -->
+      <view class="item" wx:if="{{item.label == 'switch'}}">
+        <view class="item-name">{{item.sort+item.title}}</view>
+        <switch checked="{{item.checked}}"bindchange="bindSwitch" type="{{item.type}}" placeholder="{{item.placeholder}}" data-name='{{item.name}}' data-require="{{item.required}}" data-requireMsg="{{item.requiredMessage}}" data-rule="{{data.rule}}" data-ruleMsg='{{item.ruleMessage}}' class="item-input"></switch>
+      </view>
+      <!-- image -->
+      <view wx:elif="{{item.label=='image'}}" class='img-wrap'> 
+        <view class="item-title">{{item.sort+item.title}}</view>
+        <view wx:for="{{images}}" wx:key="preview" class='wx-img-box'>
+          <image src='{{item.src}}' class='wx-img-item' mode='aspectFill'>
+          </image>
+          <image class='img-close' catchtap='delImages' data-id='{{item.id}}' data-index='{{index}}' data-name='{{item.name}}' src='/images/icon-close.png'></image> 
+        </view>
+        <image wx:if="{{images.length<item.maxLength}}" class='wx-img-bg' catchtap='addImages' data-name='{{item.name}}' data-count='{{item.maxLength}}' src='/images/icon-add-bg.png'></image>
+      </view>
+    </view>
+    <view class="footer">
+      <button class="submit-btn" type="primary" formType="submit">提交</button>
+    </view>
+  </form>
+</view>
+<view wx:if='{{showFilter}}' class='filter-wrap' catchtap='showFilterWrap'>
+  <view class='filter-type'>
+    <view class='filter-list'>
+      <view wx:for='{{filterList}}' wx:key='filter' data-value='{{item.value}}' data-text='{{item.name}}' catchtap='changeType' class='filter-item'>
+        <view>{{item.value}}</view>
+        <image wx:if='{{item.value == submitData[tempName]}}' class='checked' src='/images/icon-success.png' mode='aspectFill'
+          lazy-load></image>
+      </view>
+    </view>
+  </view>
+</view>

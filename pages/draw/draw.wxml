@@ -1,0 +1,4 @@
+<!--pages/draw/draw.wxml-->
+<view catchtap='draw'>开始画</view>
+<canvas canvas-id='myCanvas' style='width:750rpx;height:420rpx'></canvas>
+<button open-type='share'>分享</button>

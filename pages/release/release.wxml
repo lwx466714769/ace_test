@@ -2,7 +2,7 @@
 <view class='wx-img-list'>
 <textarea bindinput='modifyInput' wx:if='{{images.length>0}}' class='comment' placeholder='说点什么吧...' ></textarea>
   
-  <view wx:for="{{images}}" wx:key="preview_{{index}}" class=' wx-img-box {{fail ? "fail" : ""}}'>
+  <view wx:for="{{images}}" wx:key="preview_index" class=' wx-img-box {{fail ? "fail" : ""}}'>
     <image src='{{item.src}}' class='wx-img-item' mode='aspectFill'>
       <progress wx:if='{{item.uploading}}' active="false" class="wx-img-progress" percent="98" stroke-width="2" />
     </image>

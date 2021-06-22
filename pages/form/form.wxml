@@ -1,0 +1,5 @@
+<!--pages/form/form.wxml-->
+<view>
+  <view bindtap="toPlay">开始播放</view>
+  <FormList list='{{formList}}'/>
+</view>

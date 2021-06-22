@@ -9,3 +9,4 @@
  <view slot="after">这里是插入到组件slot name="after"中的内容</view>
 
  </msg>
+ <view catchtap='goBack'>回首页</view>

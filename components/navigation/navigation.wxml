@@ -1,0 +1,9 @@
+<!--components/navigation/navigation.wxml-->
+<view class='navigation'>
+  <view style='height:{{height}}px'></view>
+  <view class='home-wrap'>
+    <view class='title'>{{navdata.title}}</view>
+    <image src='/images/back.png' class='back' wx:if='{{!navdata.showBack}}' catchtap='back'>返回</image>
+      <view class='home' catchtap='goHome' wx:if='{{!navdata.showHome}}'><image class="img" src='/images/home.png' mode='aspectFill'></image></view>
+  </view>  
+</view>

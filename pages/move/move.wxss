@@ -1,0 +1,22 @@
+/* pages/move.wxss */
+.wrap{
+  padding-top: 200rpx;
+}
+.wrap view{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  text-align: center;
+  border-bottom: solid 2rpx #ccc;
+}
+.move-area{
+  width: 400rpx;
+  height: 400rpx;
+  border: solid 2rpx #000;
+}
+.move-view{
+  width: 100rpx;
+  height: 100rpx;
+  border: solid 2rpx #f00;
+}

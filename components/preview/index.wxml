@@ -1,0 +1,73 @@
+<view style="height:100%">
+  <scroll-view class="scroll_view" scroll-y style="height: 100%" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="photo {{item.check && option === 'download' ? 'check' : ''}}" wx:for="{{data}}" wx:key="item" bindtap="preview" data-type="{{option}}" data-url="{{item.src}}">
+      <image class="img" src="{{item.listSrc}}" mode="aspectFill" />
+    </view>
+    <view class="bottom_msg" wx:if="{{data.length > 0}}">没有更多了</view>
+    <view class="empty_list" wx:if="{{data.length === 0}}">暂无照片</view>
+  </scroll-view>
+  <view class="list_option" wx:if="{{option === 'download'}}">
+    <view class="download" bindtap="download">下载</view>
+  </view>
+</view>
+
+<view class="swiper" bindtap="close" wx:if="{{previewShow}}">
+  <!-- <view class="tool" bindtap="clickSwiper">
+    <view class="close">
+      <image class="img" src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjEyIiB2aWV3Qm94PSIwIDAgMTIgMTIiIHdpZHRoPSIxMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtMS41IDEuNSA5IDltMC05LTkgOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjY2VjZWNlIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48L3N2Zz4=" />
+    </view>
+    <view class="count">{{itemIndex}}/{{data.length}}</view>
+  </view> -->
+
+  <view class="scroll_photos" animation="{{animationData}}"  bindtap="clickSwiper">
+    <block wx:for="{{previewData}}" wx:key="item">
+      <view class="swiper-item" style="transform: translate3d({{item.translateX}}px, 0px, 0px)" bindtouchstart="touchstart" bindtouchend="touchend" bindtouchmove="moveItem" data-index="{{index}}">
+        <movable-area class="movable_area">
+          <movable-view 
+            class="movable_view"
+            bindchange="onChange" 
+            bindscale="onScale" 
+            scale-value="{{initScale}}"
+            direction="all" 
+            scale  
+            scale-min="1" 
+            scale-max="4" 
+            inertia
+            animation="{{false}}"
+            data-index="{{index}}"
+            disabled="{{!initScale || disabled}}"
+          >
+            <image class="img" src="{{item.previewSrc}}" mode="aspectFit" data-url="{{item.src}}" data-index="{{index}}" bindtap="doubleClick" data-time="{{lastTapTime}}" show-menu-by-longpress/>
+          </movable-view>
+        </movable-area>
+      </view>
+    </block>
+  </view>
+  <view class='page'>
+    <view>{{itemIndex}}/{{data.length}}<view class="download" catchtap="tapDownloadImg">下载原图</view></view>
+    <view wx:if='{{data[itemIndex - 1].userId == userId}}' class='report' catchtap='delPhoto' data-id='{{previewData.photoId}}'>删除</view>
+    <view wx:else catchtap='report' data-id='{{data[itemIndex - 1].photoId}}' class='report'>举报</view>
+  </view>
+  <view class='photo-info'>
+    <image class='photo-avatar' src='{{data[itemIndex - 1].avatar}}'></image>
+    <view>
+      <view>{{data[itemIndex - 1].nickname}}</view>
+      <view class='photo-time'>于{{data[itemIndex - 1].createAt}}上传</view>
+    </view>
+  </view>
+  <!-- <view class="desc" wx:if="{{data[itemIndex - 1].desc}}">
+    <text>{{data[itemIndex - 1].desc}}</text>
+  </view> -->
+ 
+  <!-- <view wx:if="{{title}}" class="btn_group {{model}}">
+    <view class="btn_group_view" bindtap="like" data-title="{{title}}">{{title}}</view>
+    <view class="btn_group_view" bindtap="downloadCur">下载</view>
+  </view>
+
+  <view wx:if="{{!title}}" class="btn_group {{model}}">
+    <slot></slot>
+    <view bindtap="downloadCur">下载</view>
+  </view> -->
+
+  
+</view>

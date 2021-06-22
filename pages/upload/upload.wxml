@@ -1,0 +1,10 @@
+<!--pages/upload/upload.wxml-->
+<view bindtap='upEwm' data-which='1' >
+  <view>第一个图</view>
+   <image style='width:200rpx;height:200rpx;background-color:red' src='{{headImg}}'></image>
+</view>
+<view bindtap='upEwm'  data-which='2' >
+  <view>第二个图</view>
+   <image style='width:200rpx;height:200rpx;background-color:red' src='{{ewmImg}}'></image>
+</view>
+<Cropper imageFixed='{{imageFixed}}' imageSrc='{{imageSrc}}' imageNum='{{imageNum}}' id='cropper' bindsubmit='submit'/>

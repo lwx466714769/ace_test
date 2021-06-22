@@ -1,0 +1,9 @@
+<!--pages/swiper/swiper.wxml-->
+<swiper class='swiper' catchtap='catchImg'>
+  <swiper-item class='item'>
+    <image mode='widthFix' src='/images/acecafe.png'></image>
+  </swiper-item>
+  <swiper-item class='item'>
+    <image mode='widthFix' src='/images/bg-card.png'></image>
+  </swiper-item>
+</swiper>

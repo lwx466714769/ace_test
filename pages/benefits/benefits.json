@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "领取福利",
+  "usingComponents": {
+    "Tab": "/components/tab/tab",
+    "navigation": "/components/navigation/navigation"
+  },
+  "enablePullDownRefresh": true
+}

@@ -1,0 +1,17 @@
+<!--pages/move.wxml-->
+<view class='wrap'>
+  <view bind:touchstart='stratBtn' bind:touchmove='moveBtn' bind:touchend='endBtn' wx:for='{{busArr}}' wx:key='index' data-index='{{index}}'>{{item}}</view>
+</view>
+<navigator  url='/pages/detail/detail'>去detail</navigator>
+<view catchtap='goBack'>回首页</view>
+
+<view>
+  <movable-area class='move-area'>
+    <movable-view class="move-view" x="{{x}}" y="{{y}}" direction="all">11111</movable-view>
+    <!-- <movable-view class="move-view">2222</movable-view>
+    <movable-view class="move-view">333333</movable-view> -->
+  </movable-area>
+  <view class="btn-area">
+    <button size="mini" bindtap="tap">click me to move to (30px, 30px)</button>
+  </view>
+</view>

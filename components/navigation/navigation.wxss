@@ -1,0 +1,46 @@
+/* components/navigation/navigation.wxss */
+.navigation{
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  z-index: 9999;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  background: #fff;
+  color: #000;
+}
+.back{
+  width: 20rpx;
+  height: 36rpx;
+}
+.home-wrap{
+  display: flex;
+  align-items: center;
+  padding-left: 30rpx;
+  height: 88rpx;
+  position: relative;
+}
+.home{
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 40rpx;
+}
+.home .img{
+  width: 100%;
+  height: 100%;
+}
+.title{
+  position: absolute;
+  text-align: center;
+  max-width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  left:50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 36rpx;
+  color: #2c2b2b;
+  font-weight: 600;
+}

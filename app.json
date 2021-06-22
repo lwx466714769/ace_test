@@ -1,15 +1,51 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
-    "pages/init/init",  
+    "pages/test/test",
+    "pages/buy/buy",
+    "pages/benefits/benefits",
+    "pages/init/init",
     "pages/detail/detail",
-    "pages/release/release",  
-    "pages/logs/logs"
+    "pages/release/release",
+    "pages/logs/logs",
+    "pages/swiper/swiper",
+    "pages/move/move",
+    "pages/img/img",
+    "pages/avatarUpload/index/index",
+    "pages/avatarUpload/upload/upload",
+    "pages/upload/upload",
+    "pages/draw/draw",
+    "pages/map/map",
+    "pages/photo/photo",
+    "pages/form/form"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f8f8f8"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "text",
+        "iconPath": "/images/icon-checkin.png",
+        "selectedIconPath": "/images/default.png"
+      },
+      {
+        "pagePath": "pages/test/test",
+        "text": "text",
+        "iconPath": "/images/icon-checkin.png",
+        "selectedIconPath": "/images/default.png"
+      }
+    ]
   }
 }

@@ -1,0 +1,58 @@
+/* pages/benefits/benefits.wxss */
+.benefits .card{
+  width:100%;
+}
+.benefits .card image{
+  width:110%;
+  position: absolute;
+  left:-5%;
+  top:160rpx;
+  transform: rotate(15deg);
+}
+.benefits .content{
+  padding-left: 76rpx;
+  margin-top: 718rpx;
+}
+.benefits .name{
+  font-size: 100rpx;
+  line-height: 100rpx; 
+}
+.benefits .order-state{
+  text-align: right;
+  margin-right: 24rpx;
+  font-size: 36rpx;
+  color: rgb(51,51,51);
+  margin-top: 76rpx;
+  margin-bottom: 32rpx;
+}
+.footer{
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #000;
+  color: #fff;
+  display: flex;
+  position: relative;
+}
+.footer:before{
+  content:'';
+  width:2rpx;
+  height: 46rpx;
+  background: #fff;
+  position: absolute;
+  left:50%;
+  top:17rpx;
+}
+.footer view{
+  flex:1;
+  text-align: center;
+}
+.footer-bar{
+  width:268rpx;
+  height: 10rpx;
+  border-radius: 5rpx;
+  background: #000;
+  position: fixed;
+  bottom:16rpx;
+  left:50%;
+  transform: translate(-50%);
+}

@@ -1,6 +1,48 @@
-page{
+/* page{
+  height: 100%;
+} */
+@import '../../stylesheet.wxss';
+.view-page{
+  width: 100%;
+  /* height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden; */
+}
+/* .page-content{
+  position: relative;
+  overflow-y: auto;
+} */
+.ranger-p{
+  font-size: 18px;
+  line-height: 24px;
+  margin: 20rpx 0;
+}
+.ranger-img{
+  width: 100%;
+}
+/* 导航固定 */
+.tab-wrap{
+  width: 100%;
+  z-index: 999;
+  position: fixed;
+  left:0;
+}
+.wrap{
+  height: 1170rpx;
+  padding-top: 86rpx;
+  box-sizing: border-box;
+}
+.rich{
+  padding: 30rpx;
+}
+.swiper{
   height: 100%;
 }
+/* .swiper-item{
+  height: 100%;
+} */
 .index{
   width:100%;
   height: 100%;

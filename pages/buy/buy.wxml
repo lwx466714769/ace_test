@@ -1,0 +1,48 @@
+<scroll-view>
+<view class='buy-wrap'>
+  <view class='fixed-text'>GET MY FAVOURABLE</view>
+  <scroll-view scrol-y='true'>
+
+  <image class='card' src='/images/card.png' mode='aspectFill'></image>
+  <view class='title'>
+    MINI x ACE CAFE 大师手冲咖啡25次
+  </view>
+  <video src='https://img.acegear.com/lo18P1tdi6nqaYL_bxK40LYNUJlW' controls='true' bindplay='videoPlay' id='video_1'></video>
+    <video src='https://img.acegear.com/lo18P1tdi6nqaYL_bxK40LYNUJlW' controls='true' bindplay='videoPlay' id='video_2'></video>
+  <view class='pay-type'>
+    <view class='type-title'>
+      <view>付款方式</view>
+      <view>我的积分：16000</view>
+    </view>
+    <view class='chunk-type'>20000积分（积分不足）</view>
+    <view class='chunk'></view>
+    <view class='chunk-type'>16000积分+￥40.00元</view>
+    <view class='chunk'></view>
+    <view class='chunk-type'>￥200.00</view>
+  </view>
+  <view class='coupon-code'>
+    <input class='chunk-input' placeholder='请输入优惠码' placeholder-class='input'></input>
+    <button class='coupon-btn'>添加兑换</button>
+  </view>
+  <view class='coupon'>
+    <view class='coupon-title'>可使用</view>
+    <view class='chunk-type'>
+      ACE CAFE 活动现金立减券
+      <view class='coupon-text'>￥50.00元</view>
+    </view>
+  </view >
+  <view class='info'>
+    <view class='coupon-title'>添加信息</view>
+    <input class='chunk-input' placeholder-class='input' placeholder='请输入姓名'></input>
+    <input class='chunk-input' placeholder-class='input' placeholder='请输入身份证号'></input>
+    <view class='upload-card' bindtap='uploadCard'>
+      <view class='text'>
+        <view class='add'></view>
+        点击上传身份证正面照</view>
+    </view>
+    <button class='submit-btn'>立即获取</button>
+  </view>
+    
+  </scroll-view>
+</view>
+</scroll-view>

@@ -1,28 +1,97 @@
-<view class='index'>
+
+<view class="view-page">
+  <!-- <navigation navdata='{{navdata}}'/> -->
+  <scroll-view scroll-y scroll-top='100'>
+  <view bindtap="toPlay">开始播放</view>
+  <navigator url="/pages/form/form">去表单页</navigator>
   
-  <view class='header'>
-    <image src='/images/default.png' class='bg'></image>
-    <view class='info'>
-      <image src='/images/icon-personal_selected.png' class='head'/>
-      <text class='title'>DGR 2018</text>
-      <text class='intro'>简介简介简介简介简介简介简介简介简介简介简介简介简介</text>
+  <!-- <datepicker
+    limited='{{true}}'
+    countList='{{countList}}'
+  /> -->
+  <navigator url="/pages/photo/photo">去相册预览</navigator>
+    <!-- <editor id='editor' bindready='onEditorReady' bindinput='bindEditor'/> -->
+    <button catchtap="submitSpace">确定</button>
+  <textarea value="{{space}}" bindinput="bindArea"></textarea>
+  <navigator url="/pages/map/map">地图</navigator>
+  <view class="section">
+    <view class="iconfont icon-icon-test"></view>
+    <view class="section__title">日期选择器</view>
+    <picker mode="date" value="{{date}}" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+      <view class="picker">
+        当前选择: {{date}}
+      </view>
+    </picker>
+  </view>
+  <navigator url='/pages/draw/draw'>去画布</navigator>
+
+  <navigator url='/pages/upload/upload'>cropper组件</navigator>
+
+  <open-data type="userCity"></open-data>
+  <open-data type="userGender" lang="zh_CN"></open-data>
+  <button open-type='getUserInfo' bindgetuserinfo='wxLogin'>授权微信</button>
+  <button open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">绑定手机号</button>
+  <form bindsubmit='formSubmit'  report-submit="{{true}}">
+    <button form-type='submit'>提交</button>
+  </form>
+  <navigator url='/pages/img/img'>去选择图片</navigator>
+  <navigator url='/pages/avatarUpload/index/index'>cropper</navigator>
+
+  <view class='index'>
+    <rich-text class='rich' nodes='{{nodes}}'>
+    </rich-text>
+    <!-- <view class='header'>
+      <image src='/images/default.png' class='bg'></image>
+      <view class='info'>
+        <image src='/images/icon-personal_selected.png' class='head'/>
+        <text class='title'>DGR 2018</text>
+        <text class='intro'>简介简介简介简介简介简介简介简介简介简介简介简介简介</text>
+      </view>
+    </view> -->
+    <!-- <view class='tab-wrap' style='top:{{height}}rpx'>
+    <Tab tablist='{{tabList}}' id='tab' bindchangeTab='changeTab' class='tab-class'/>
+    </view> -->
+    <view class='wrap'>
+    <swiper
+      bindchange='swiperChange'
+      current='{{curIndex}}'
+      class='swiper'
+    >
+      <swiper-item class='swiper-item'>
+        <scroll-view scroll-y 
+        style='height:1170rpx'
+        bindscrolltolower='tolower'
+        >
+          <view class='footer'>
+            <view class='garage'>车库</view>
+            <view class='profile'>车主</view>
+          </view>
+          <view catchtap='toBenefits'>benefits</view>
+
+  <navigator url='/pages/move/move'>move</navigator>        <image src='/images/default.png'></image>
+          <image src='/images/default.png'></image>
+          <image src='/images/default.png'></image>
+          <view class='post' catchtap="goRelease">post</view>
+        </scroll-view>
+      
+      </swiper-item>
+      <swiper-item>111</swiper-item>
+      <swiper-item>
+      222
+      </swiper-item>
+    </swiper>
     </view>
-    <button>认证座驾</button>
-    <text>会员</text>
-  </view>
-  <view class='main'>
-    <view>  
-      <text>热议</text>|
-      <text>MyRide</text>
+    <!-- <view hidden='{{curIndex!=0}}'>
+      <view class='footer'>
+          <view class='garage'>车库</view>
+          <view class='profile'>车主</view>
+      </view>
+      <view class='post' catchtap="goRelease">post</view>
     </view>
-    <scroll-view class='content'>
-    content
-    </scroll-view>
-    
+    <view hidden='{{curIndex!=2}}'>
+        222222
+    </view> -->
   </view>
-  <view class='footer'>
-      <view class='garage'>车库</view>
-      <view class='profile'>车主</view>
-  </view>
-  <view class='post' catchtap="goRelease">post</view>
+  </scroll-view>
 </view>
+<login/>

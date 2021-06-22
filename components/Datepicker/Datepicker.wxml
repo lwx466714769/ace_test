@@ -1,0 +1,64 @@
+<view class="flex box box-tb box-align-center">
+  <view class="calendar heade-color box box-tb">
+        <view class="top-handle fs28 box box-lr box-align-center box-pack-center">
+            <view class="prev box box-rl" bindtap="handleCalendar" data-handle="prev">
+                <view class="prev-handle box box-lr box-align-center box-pack-center"> {{'<'}} </view>
+            </view>
+            <view bindtap="chooseYearAndMonth" class="date-area box box-lr box-align-center box-pack-center">
+              {{cur_year || "--"}} 年 {{cur_month || "--"}} 月
+            </view>
+            <view class="next box box-lr" bindtap="handleCalendar" data-handle="next">
+                <view class="next-handle box box-lr box-align-center box-pack-center"> {{'>'}} </view>
+            </view>
+        </view>
+        <view class="weeks box box-lr box-pack-center box-align-center">
+          <view class="flex week fs28" wx:for="{{weeks_ch}}" wx:key="{{index}}" data-idx="{{index}}">{{item}}</view>
+        </view>
+        <view class="days box box-lr box-wrap">
+          <!--  填充空位  -->
+          <view wx:if="{{hasEmptyGrid}}" class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+          </view>
+          <!--  生成本月每一天  -->
+          <view class="grid white-color box box-align-center box-pack-center"
+                wx:for="{{days}}" wx:key="{{index}}" 
+                data-idx="{{index}}" bindtap="tapDayItem">
+            <view class="day day-num box-align-center box-pack-center  {{(limited && item.isPrev ? 'limited' : '')}} {{item.choosed ? 'day-item_selected' : ''}} {{sole[cur_year+'-'+cur_month+'-'+item.day] ? 'max' : ''}}">
+              <view class='day-number'>{{item.day}}</view>
+              <view wx:if='{{ countList[index + 1] }}' class="day__count {{item.choosed ? 'day__count_selected' : ''}}">
+                {{countList[index+1].count}}人
+              </view>
+            </view>
+          </view>
+        </view> 
+
+        <!--  批量操作时，更改结构  -->
+        <!-- <view class="days box box-lr box-wrap">
+            <view wx:if="{{hasEmptyGrid}}" class="grid white-color box box-align-center box-pack-center" wx:for="{{empytGrids}}" wx:key="{{index}}" data-idx="{{index}}">
+            </view>
+            <view class="grid white-color box box-align-center box-pack-center" wx:for="{{days}}" wx:key="{{index}}" data-idx="{{index}}" bindtap="tapDayItem">
+                <view class="day {{dateJSON[cur_year][cur_month][index] ? 'day-item_selected' : ''}} day-num box-align-center box-pack-center">
+                  <view class='day-number'>{{item.day}}</view>
+                  <view wx:if='{{dateJSON[cur_year][cur_month][index].count}}' class='day__count'>
+                    {{dateJSON[cur_year][cur_month][index].count}}人
+                  </view>
+                </view>
+            </view>
+        </view> -->
+
+    </view>
+</view>
+
+<view wx:if="{{showPicker}}" class="box box-tb date-selector">
+	<view class="picker-btns box box-lr box-pack-between box-align-center handlebar">
+		<view class="picker-btn" data-type="cancel" bindtap="tapPickerBtn">取消</view>
+		<view class="picker-btn" data-type="confirm" bindtap="tapPickerBtn">确定</view>
+	</view>
+	<picker-view class="flex picker-view " indicator-style="height: 100rpx;" value="{{picker_value}}" bindchange="pickerChange">
+		<picker-view-column>
+			<view class="picker-view__item" wx:for="{{picker_year}}" wx:key="year_{{index}}">{{item}}年</view>
+		</picker-view-column>
+		<picker-view-column>
+			<view class="picker-view__item" wx:for="{{picker_month}}" wx:key="month_{{index}}">{{item}}月</view>
+		</picker-view-column>
+	</picker-view>
+</view>
